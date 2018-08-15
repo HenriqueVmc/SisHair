@@ -62,10 +62,13 @@ CREATE TABLE agendamento(
 
 -- Funcionario --> cliente || adm --> cliente || WEB
 
+
 CREATE TABLE clientes(
 	id INT IDENTITY(1, 1),
 	nome VARCHAR(100),
 	data_nascimento DATETIME,
+	email VARCHAR(100),
+	login VARCHAR(100),
 	celular VARCHAR(100),
 	telefone VARCHAR(100)
 );

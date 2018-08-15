@@ -61,23 +61,48 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         
  <!-- Cadastro do cliente-->
 
-<div>
-    <form>
-        <label>Nome</label>
-        <input type="text" value="NOME" />
+<div class="container border">
+    <form action="~/Views/Login/Store" method="post" onsubmit="return false";>
+        <div class="form-group">
+            <label for="campo-nome">Nome</label>
+            <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome"/>
+        </div>
 
-        <label>Data de Nascimento</label>
-        <input type="date" value="DATA_NASCIMENTO" />
+        <div class="form-group">
+            <label for="campo-data-nascimento">Data de Nascimento</label>
+            <input type="date" class="form-control" name="LoginCliente.DataNascimento" id="campo-dat-nascimento"/>
+        </div>
 
-        <label>Email</label>
-        <input type="email" value="EMAIL" />
+        <div class="form-group">
+            <label for="campo-email">Email</label>
+            <input type="email" class="form-control" name="LoginCliente.Email" id="campo-email"/>
+        </div>
 
-        <label>Login</label>
-        <input type="text" value="LOGIN" />
+        <div class="form-group">
+            <label for="campo-celular">Celular</label>
+            <input type="text" class="form-control" name="LoginCliente.Celular" id="campo-celular"/>
+        </div>
 
-        <label>Senha</label>
-        <input type="password" value="SENHA" />
-    </form>
+        <div class="form-group">
+            <label for="campo-telefone">Telefone</label>
+            <input type="text" class="form-control" name="LoginCliente.Telefone" id="campo-telefone"/>
+        </div>
+
+        <div class="form-group">
+            <label for="campo-login">Login</label>
+            <input type="text" class="form-control" name="LoginCliente.Login" id="campo-login"/>
+        </div>
+
+        <div class="form-group">
+            <label for="campo-senha">Senha</label>
+            <input type="password" class="form-control" name="LoginCliente.Nome" id="campo-senha"/>
+        </div>
+
+        <div class="form-group">
+            <label for="campo-senha2">Senha</label>
+            <input type="password" name="LoginCliente.Senha" id="campo-senha2" />
+        </div>
+</form>
 </div>
 
 
