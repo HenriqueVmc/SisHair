@@ -21,6 +21,12 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        public ActionResult Cadastro()
+        {
+            ViewBag.LoginCliente = new LoginCliente();
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Store(LoginCliente logincliente)
         {

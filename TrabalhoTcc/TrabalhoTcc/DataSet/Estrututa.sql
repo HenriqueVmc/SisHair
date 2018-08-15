@@ -73,6 +73,7 @@ CREATE TABLE clientes(
 	telefone VARCHAR(100)
 );
 
+Select * From clientes
 CREATE TABLE solicitacao(
     id_solicitacao INT IDENTITY,
     id_cliente INT IDENTITY,

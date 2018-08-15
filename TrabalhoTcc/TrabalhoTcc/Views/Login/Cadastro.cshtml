@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+   <title>Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="~/DesgnerLogim/css/style.css" />
+</head>
+<body>
+    <div> <div class="container border">
+    <form action="/DesgnerLogim/Store" method="post" onsubmit="return false" ;>
+        <div class="form-group">
+            <label for="campo-nome">Nome</label>
+            <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-data-nascimento">Data de Nascimento</label>
+            <input type="date" class="form-control" name="LoginCliente.DataNascimento" id="campo-dat-nascimento" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-email">Email</label>
+            <input type="email" class="form-control" name="LoginCliente.Email" id="campo-email" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-celular">Celular</label>
+            <input type="text" class="form-control" name="LoginCliente.Celular" id="campo-celular" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-telefone">Telefone</label>
+            <input type="text" class="form-control" name="LoginCliente.Telefone" id="campo-telefone" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-login">Login</label>
+            <input type="text" class="form-control" name="LoginCliente.Login" id="campo-login" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-senha">Senha</label>
+            <input type="password" class="form-control" name="LoginCliente.Nome" id="campo-senha" />
+        </div>
+
+        <div class="form-group">
+            <label for="campo-senha2">Senha</label>
+            <input type="password" name="LoginCliente.Senha" id="campo-senha2" />
+        </div>
+
+        <div class="row">
+            <div class="col-12  offset-5">
+                <button type="submit" class="btn btn-success">
+                    SALVAR
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+    </div>
+</body>
+</html>
