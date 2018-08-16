@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TrabalhoTcc.Models
 {
-    public class Clientes
+    public class Cliente
     {
         public int Id { get; set; }
         [Required(ErrorMessage= "Nome não pode ser vazio")]
