@@ -1,71 +1,104 @@
-﻿
-@{
+﻿@{
     Layout = "/Views/Shared/Master.cshtml";
 }
 
-<body>
-
-    <div>
-
-
-
-
-
-
+<div class="row mt-3 mb-3">
     <!--Parte de baixo = Cadastro de cliente-->
+    <div class="container">
+        <div class="col-md-12">
+            <div class="col-md-5 float-left mt-6">
+                <h3 class="">Já possuo uma conta</h3>
+                <form action="/Login/Store" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label for="campo-usuario">Usuário:</label>
+                        <input type="text" class="form-control" name="LoginCliente.Usuario" id="campo-usuario" />
+                    </div>
 
-     <div class="container border">
-         <h1>Cadastro de Cliente</h1>
+                    <div class="form-group">
+                        <label for="campo-senha">Senha:</label>
+                        <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha" />
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12 col-md-offset-4">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                                    <i class="fa fa-save"> Entrar</i>
+                                </button>
+                            </div>
 
-    <form action="/Login/Store" method="post" onsubmit="return false" ;>
-        <div class="form-group">
-            <label for="campo-nome">Nome</label>
-            <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome" />
-        </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5 float-right">
+                <div class="container border">
+                    <h3 class="">Criar conta</h3>
+                    <form action="/Login/Store" class="form-horizontal" method="post">
+                        <div class="form-group">
+                            <label for="campo-nome">Nome:</label>
+                            <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome" />
+                        </div>
 
-        <div class="form-group">
-            <label for="campo-data-nascimento">Data de Nascimento</label>
-            <input type="date" class="form-control" name="LoginCliente.DataNascimento" id="campo-dat-nascimento" />
-        </div>
+                        <div class="form-group">
+                            <label for="campo-data-nascimento">Data de Nascimento:</label>
+                            <input type="date" class="form-control" name="LoginCliente.DataNascimento" id="campo-dat-nascimento" />
+                        </div>
 
-        <div class="form-group">
-            <label for="campo-email">Email</label>
-            <input type="email" class="form-control" name="LoginCliente.Email" id="campo-email" />
-        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="campo-celular">Celular:</label>
+                                    <input type="text" class="form-control" name="LoginCliente.Celular" id="campo-celular" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="campo-telefone">Telefone:</label>
+                                    <input type="text" class="form-control" name="LoginCliente.Telefone" id="campo-telefone" />
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="campo-celular">Celular</label>
-            <input type="text" class="form-control" name="LoginCliente.Celular" id="campo-celular" />
-        </div>
+                        <div class="form-group">
+                            <label for="campo-email">Email:</label>
+                            <input type="email" class="form-control" name="LoginCliente.Email" id="campo-email" />
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="campo-login">Usuário</label>
+                                    <input type="text" class="form-control" name="LoginCliente.Usuario" id="campo-login" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="campo-senha">Senha</label>
+                                    <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha" />
+                                </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <label for="campo-telefone">Telefone</label>
-            <input type="text" class="form-control" name="LoginCliente.Telefone" id="campo-telefone" />
-        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
 
-        <div class="form-group">
-            <label for="campo-login">Login</label>
-            <input type="text" class="form-control" name="LoginCliente.Login" id="campo-login" />
-        </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-12">
+                                        <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                                            <i class="fa fa-save"> Cadastrar</i>
+                                        </button>
+                                        <button type="reset" class="btn btn-outline-danger float-right" name=" btnLimpar" id="btnLimpar">
+                                            <i class="fa fa-trash"> Limpar</i>
+                                        </button>
+                                    </div>
+                                </div>
 
-        <div class="form-group">
-            <label for="campo-senha">Senha</label>
-            <input type="password" class="form-control" name="LoginCliente.Nome" id="campo-senha" />
-        </div>
-
-        <div class="form-group">
-            <label for="campo-senha2">Senha</label>
-            <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha2" />
-        </div>
-
-        <div class="row">
-            <div class="col-12  offset-5">
-                <button type="submit" class="btn btn-success">
-                    SALVAR
-                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
-   
-</body>
