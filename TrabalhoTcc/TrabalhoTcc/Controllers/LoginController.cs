@@ -11,15 +11,6 @@ namespace TrabalhoTcc.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public ActionResult Logim()
-        {
-            return View();
-        }
 
         public ActionResult Cadastro()
         {
