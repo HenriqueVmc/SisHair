@@ -1,19 +1,23 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "/Views/Shared/Master.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-   <title>Cadastro</title>
-    <link rel="stylesheet" type="text/css" href="~/DesgnerLogim/css/style.css" />
-</head>
 <body>
-    <div> <div class="container border">
-    <form action="/DesgnerLogim/Store" method="post" onsubmit="return false" ;>
+
+    <div>
+
+
+
+
+
+
+    <!--Parte de baixo = Cadastro de cliente-->
+
+     <div class="container border">
+         <h1>Cadastro de Cliente</h1>
+
+    <form action="/Login/Store" method="post" onsubmit="return false" ;>
         <div class="form-group">
             <label for="campo-nome">Nome</label>
             <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome" />
@@ -51,7 +55,7 @@
 
         <div class="form-group">
             <label for="campo-senha2">Senha</label>
-            <input type="password" name="LoginCliente.Senha" id="campo-senha2" />
+            <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha2" />
         </div>
 
         <div class="row">
@@ -63,6 +67,5 @@
         </div>
     </form>
 </div>
-    </div>
+   
 </body>
-</html>
