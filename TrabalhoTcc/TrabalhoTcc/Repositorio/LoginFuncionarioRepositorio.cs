@@ -21,12 +21,6 @@ namespace TrabalhoTcc.Repositorio
             int id = Convert.ToInt32(command.ExecuteScalar().ToString());
 
             return id;
-            
-
-
-
-
-
         }
     }
 }

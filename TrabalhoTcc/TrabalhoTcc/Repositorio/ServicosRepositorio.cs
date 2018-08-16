@@ -12,8 +12,6 @@ namespace TrabalhoTcc.Repositorio
     {
         public int Servicos(Servicos servicos)
         {
-
-
             SqlCommand command = new BancoDados().ObterConexao();
             command.CommandText = "INSERT INTO servicos (servico, valor, duracao, descricao) VALUES (@SERVICO, @VALOR, @DURACAO, @DESCRICAO)";
             command.Parameters.AddWithValue("@SERVICO", servicos.Servico);
