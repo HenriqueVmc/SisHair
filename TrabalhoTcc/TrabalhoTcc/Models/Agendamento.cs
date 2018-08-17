@@ -10,9 +10,9 @@ namespace TrabalhoTcc.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage="Hora deve ser preenchida")]
-        public double Hora_inicio { get; set; }
+        public DateTime Hora_inicio { get; set; }
         [Required(ErrorMessage="Hora final deve ser preenchida")]
-        public double Hora_final { get; set; }
+        public DateTime Hora_final { get; set; }
         public DateTime Data { get; set; }
     }
 }
