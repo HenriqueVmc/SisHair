@@ -13,5 +13,16 @@ namespace TrabalhoTcc.Controllers
         {
             return View();
         }
+
+
+        public ActionResult ConsultarCliente()
+        {
+            return View();
+        }
+
+        public ActionResult CadastrarFuncionario()
+        {
+            return View();
+        }
     }
 }

@@ -1,37 +1,75 @@
 ﻿@{
-    Layout = "/Views/Shared/MasterADM.cshtml";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div>
-    
+<div class="offset-2">
+    <div class="container style=" style="margin-top: 50px">
+        <div class="col-md-12">
+            <div class="container border">
+                <form action="/Login/Store" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <label for="campo-nome">Nome:</label>
+                        <input type="text" class="form-control" name="LoginCliente.Nome" id="campo-nome" />
+                    </div>
 
-    <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'cliente')">CLIENTE</button>
-        <button class="tablinks" onclick="openCity(event, 'funcionario')">FUNCIONARIO</button>
-        <button class="tablinks" onclick="openCity(event, 'confuncionario')">CONSULTAR FUNCIONARIO</button>
-        <button class="tablinks" onclick="openCity(event, 'conagenda')">CONSULTAR AGENDAS</button>
-        <button class="tablinks" onclick="openCity(event, 'hisservico')">HISTORICO DE SERVIÇOS</button>
-    </div>
+                    <div class="form-group">
+                        <label for="campo-data-nascimento">Data de Nascimento:</label>
+                        <input type="date" class="form-control" name="LoginCliente.DataNascimento" id="campo-dat-nascimento" />
+                    </div>
 
-    <div id="cliente" class="tabcontent">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="campo-celular">Celular:</label>
+                                <input type="text" class="form-control" name="LoginCliente.Celular" id="campo-celular" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="campo-telefone">Telefone:</label>
+                                <input type="text" class="form-control" name="LoginCliente.Telefone" id="campo-telefone" />
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="tab">
-            <button class="tablinks" onclick="openCity(events, 'cadastrarcliente')">CADASTRAR CLIENTE</button>
+                    <div class="form-group">
+                        <label for="campo-email">Email:</label>
+                        <input type="email" class="form-control" name="LoginCliente.Email" id="campo-email" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="campo-login">Usuário</label>
+                                <input type="text" class="form-control" name="LoginCliente.Usuario" id="campo-login" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="campo-senha">Senha</label>
+                                <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-12">
+                                    <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                                        <i class="fa fa-save"> Cadastrar</i>
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-danger float-right" name=" btnLimpar" id="btnLimpar">
+                                        <i class="fa fa-trash"> Limpar</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div id="cadastrarcliente" class="tabcontent">
-            sdhhdksjdhksahfkasfh
-        </div>
-
-       
     </div>
-
-
-
-   
-
-    
-
-    
 </div>
-

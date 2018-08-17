@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MasterAdiministrador</title>
+    <link href="~/Content/css/style.css" type="text/css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="~/Content/jquery.mask.js" type="text/javascript"></script>
+    <script src="~/Content/mascara.js" type="text/javascript"></script>
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+    <div class="">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title text-danger">CLIENTES</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Adm/Index">
+                            Cadastro de cliente
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Adm/ConsultarCliente">
+                            Consulta de clientes
+                        </a>
+                    </li>
+
+
+                    <li class="nav-title text-danger">FUNCIONARIOS</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Adm/CadastrarFuncionario">
+                            Cadastro de funcionarios
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="colors.html">
+                            Consulta de funcionarios
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="colors.html">
+                            Agenda dos funcionarios
+                        </a>
+                    </li>
+
+
+                    <li class="nav-title text-danger">HISTORICO</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="colors.html">
+                            Historico da agenda
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>
