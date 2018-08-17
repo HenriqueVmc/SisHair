@@ -10,6 +10,12 @@ namespace TrabalhoTcc.Repositorio
 {
     public class LoginFuncionarioRepositorio
     {
+        public List<LoginFuncionario> ObterTodos()
+        {
+            List<LoginFuncionario> funcionarios = new List<LoginFuncionario>();
+            SqlCommand command = new BancoDados().ObterConexao();
+            command.CommandText = ""
+        }
         public int Cadastrar(LoginFuncionario loginFuncionario)
         {
             SqlCommand command = new BancoDados().ObterConexao();
