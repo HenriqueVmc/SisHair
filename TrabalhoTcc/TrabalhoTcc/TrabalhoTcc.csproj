@@ -106,7 +106,6 @@
     <Content Include="DesgnerLogim\w3layouts-License.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
     <Content Include="Imagem-carrosel-index\haircut3.jpg" />
     <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
@@ -138,7 +137,6 @@
     <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.js" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
-
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="DesgnerLogim\fonts\fontawesome-webfont.eot" />
@@ -161,14 +159,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\LoginCliente.cs" />
     <Compile Include="Models\LoginFuncionario.cs" />
     <Compile Include="Models\Servicos.cs" />
+    <Compile Include="Models\Solicitacoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\AgendamentoRepositorio.cs" />
+    <Compile Include="Repositorio\ClientesRepositorio.cs" />
     <Compile Include="Repositorio\LoginClienteRepositorio.cs" />
     <Compile Include="Repositorio\LoginFuncionarioRepositorio.cs" />
     <Compile Include="Repositorio\ServicosRepositorio.cs" />
+    <Compile Include="Repositorio\SolicitacaoRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -183,7 +186,6 @@
     <Content Include="Views\Shared\Master.cshtml" />
     <Content Include="Views\Index\PaginaInicipal.cshtml" />
     <Content Include="Views\Index\Index.cshtml" />
-
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
