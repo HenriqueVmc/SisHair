@@ -11,6 +11,12 @@ namespace TrabalhoTcc.Models
 
 
         public int Id { get; set; }
+
+        public Endereco Endereco { get; set; }
+        public int Id_Endereco { get; set; }
+        public Cargo Cargo { get; set; }
+        public int Id_Cargo { get; set; }
+
         [Required(ErrorMessage = "Nome não pode ser vasio")]
         [MinLength(7, ErrorMessage = "Nome não deve conter no mínimo 7 caracteres")]
         [MaxLength(100, ErrorMessage = "Nome não deve conter mias de 100 caracteres")]
@@ -20,10 +26,10 @@ namespace TrabalhoTcc.Models
         [Required(ErrorMessage = "CPF não pode ser vasio")]
         public string CPF { get; set; }
         [Required(ErrorMessage = "CTPS não pode ser vasio")]
-        public string CTPS { get; set; }
-        public string Cargo { get; set; }
-        public string Contato { get; set; }
-        public string Endereco { get; set; }
+        public string Telefone { get; set; }
+        public string Celular { get; set; }
+        public string Descricao { get; set; }
+        public string Email { get; set; }
 
     }
 }
