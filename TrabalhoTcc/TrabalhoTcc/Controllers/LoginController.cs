@@ -14,15 +14,14 @@ namespace TrabalhoTcc.Controllers
 
         public ActionResult Cadastro()
         {
-            ViewBag.LoginCliente = new LoginCliente();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Store(LoginCliente logincliente)
+        public ActionResult Store(Cliente cliente)
         {
-            int identificador = new LoginClienteRepositorio().Cadastrar(logincliente);
-            ViewBag.logincliente = logincliente;
+            int identificador = new ClientesRepositorio().Cadastrar(cliente);
+            ViewBag.Cliente = cliente;
             return View();
         }
 
