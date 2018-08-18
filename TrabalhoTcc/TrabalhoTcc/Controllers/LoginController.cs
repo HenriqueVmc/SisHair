@@ -17,6 +17,11 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Store(Cliente cliente)
         {

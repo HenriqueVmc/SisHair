@@ -2,104 +2,89 @@
     Layout = "/Views/Shared/Master.cshtml";
 }
 
-<div class="row mt-3 mb-3">
-    <!--Parte de baixo = Cadastro de cliente-->
-    <div class="container">
+<div class="container mt-3 mb-3">
+    <div class="row">
+        <!--Parte de baixo = Cadastro de cliente-->
         <div class="col-md-12">
-            <div class="col-md-5 float-left mt-6">
-                <h3 class="">Já possuo uma conta</h3>
-                <form action="/Login/Store" class="form-horizontal" method="post">
-                    <div class="form-group">
-                        <label for="campo-usuario">Usuário:</label>
-                        <input type="text" class="form-control" name="LoginCliente.Usuario" id="campo-usuario" />
-                    </div>
+            <h3 class="text-center">Criar uma conta nova</h3>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6 mt-4">
+            <form action="/Login/Store" class="form-horizontal" method="post">
 
-                    <div class="form-group">
-                        <label for="campo-senha">Senha:</label>
-                        <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha" />
-                    </div>
-                    <hr />
-                    <div class="row">
-                        <div class="col-md-12 col-md-offset-4">
-                           
-                             <div class="form-group">
-                                <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
-                                    <i class="fa fa-save"> Entrar</i>
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-5 float-right">
-                <div class="container border">
-                    <h3 class="">Criar conta</h3>
-                    <form action="/Login/Store" class="form-horizontal" method="post">
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-nome">Nome:</label>
                             <input type="text" class="form-control" name="Cliente.Nome" id="campo-nome" />
                         </div>
-
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-data-nascimento">Data de Nascimento:</label>
                             <input type="date" class="form-control" name="Cliente.Data_Nascimento" id="campo-dat-nascimento" />
                         </div>
+                    </div>
+                </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="campo-celular">Celular:</label>
-                                    <input type="text" class="form-control" name="Cliente.Celular" id="campo-celular" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="campo-telefone">Telefone:</label>
-                                    <input type="text" class="form-control" name="Cliente.Telefone" id="campo-telefone" />
-                                </div>
-                            </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="campo-celular">Celular:</label>
+                            <input type="text" class="form-control" name="Cliente.Celular" id="campo-celular" />
                         </div>
-
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="campo-telefone">Telefone:</label>
+                            <input type="text" class="form-control" name="Cliente.Telefone" id="campo-telefone" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <label for="campo-email">Email:</label>
-                            <input type="email" class="form-control" name="Cliente.Email" id="campo-email" />
+                            <input type="text" class="form-control" name="Cliente.Email" id="campo-email" />
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="campo-login">Login</label>
-                                    <input type="text" class="form-control" name="Cliente.Login" id="campo-login" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="campo-senha">Senha</label>
-                                    <input type="password" class="form-control" name="Cliente.Senha" id="campo-senha" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-12">
-                                        <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
-                                            <i class="fa fa-save"> Cadastrar</i>
-                                        </button>
-                                        <button type="reset" class="btn btn-outline-danger float-right" name=" btnLimpar" id="btnLimpar">
-                                            <i class="fa fa-trash"> Limpar</i>
-                                        </button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="campo-login">Login</label>
+                            <input type="text" class="form-control" name="Cliente.Login" id="campo-login" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="campo-senha">Senha</label>
+                            <input type="password" class="form-control" name="Cliente.Senha" id="campo-senha" />
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-12">
+                                <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                                    <i class="fa fa-save"> Cadastrar</i>
+                                </button>
+                                <button type="reset" class="btn btn-outline-danger float-right" name=" btnLimpar" id="btnLimpar">
+                                    <i class="fa fa-trash"> Limpar</i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
