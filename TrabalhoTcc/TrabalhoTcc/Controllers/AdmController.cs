@@ -26,6 +26,8 @@ namespace TrabalhoTcc.Controllers
 
         public ActionResult CadastrarFuncionario()
         {
+            List<Cargo> cargo = new CargoRepositorio().ObterTodos();
+            ViewBag.Cargo = cargo;
             return View();
         }
 
@@ -35,6 +37,33 @@ namespace TrabalhoTcc.Controllers
             int identificador = new ClientesRepositorio().Cadastrar(cliente);
             ViewBag.Cliente = cliente;
             return View("ConsultarCliente");
+        }
+
+
+/////////////////////////////////////////////////////////////////////////////
+///////////  CARGOS ////////////////  CARGOS   /////////////// CARGOS ///////
+
+
+        public ActionResult CadastrarCargo()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult StoreCargo(Cargo cargo)
+        {
+            int identificador = new CargoRepositorio().Cadastrar(cargo);
+            ViewBag.Cargo = cargo;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ConsultarCargo()
+        {
+            List<Cargo> cargos = new CargoRepositorio().ObterTodos();
+            ViewBag.Cargo = cargos;
+            return View();
         }
     }
 }

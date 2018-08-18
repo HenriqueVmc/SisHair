@@ -14,7 +14,7 @@
                     <br />
                     <div class="form-group">
                         <label for="campo-nome">Nome:</label>
-                        <input type="text" class="form-control" name="" id="campo-nome" />
+                        <input type="text" class="form-control" name="Nome" id="campo-nome" />
                     </div>
 
                   
@@ -45,10 +45,19 @@
                                 </div>
                             </div>
 
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="campo-cargo">Cargo</label>
-                                    <input type="text" class="form-control" name="" id="campo-cargo" />
+                                    <select id="campo-cargo"
+                                            name="" class="custom-select">
+                                        @foreach (TrabalhoTcc.Models.Cargo cargo in @ViewBag.Cargo)
+                                        {
+                                            <option value="0">@cargo.Nome</option>
+                                        }
+
+                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>

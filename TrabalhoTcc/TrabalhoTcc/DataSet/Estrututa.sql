@@ -15,9 +15,10 @@ CREATE TABLE funcionarios(
 
 CREATE TABLE cargos(
 	id INT IDENTITY NOT NULL,
-	cargo VARCHAR(50) NOT NULL,
+	nome VARCHAR(50) NOT NULL,
 	descricao VARCHAR(100)
 );
+SELECT * FROM cargos
 
 CREATE TABLE enderecos(
 	id INT IDENTITY NOT NULL,
