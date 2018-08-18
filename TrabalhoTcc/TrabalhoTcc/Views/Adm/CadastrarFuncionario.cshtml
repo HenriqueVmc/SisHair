@@ -22,8 +22,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="campo-cpf">Cpf</label>
+
                                 <input type="text" class="form-control" id="campo-cpf" name="cpf" onblur="ValidarCPF(form1.cpf);" 
                                        onkeypress="MascaraCPF(form1.cpf);" maxlength="14">
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -68,6 +70,13 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="campo-telefone">Telefone</label>
+
+                                            <input type="text" class="form-control" id="campo-telefone" name="telefone" onblur="ValidarTelefone(form1.telefone);"
+                                                   onkeypress="MascaraTelefone(form1.telefone);" maxlength="14">
+
+
+
+
                                             <input type="text" class="form-control" name="" id="campo-telefone" />
                                         </div>
                                     </div>

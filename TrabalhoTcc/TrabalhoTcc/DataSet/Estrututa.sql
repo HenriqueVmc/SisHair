@@ -64,11 +64,13 @@ CREATE TABLE agendamentos(
 CREATE TABLE clientes(
 	id INT IDENTITY NOT NULL,
 	nome VARCHAR(100) NOT NULL,
-	data_nascimento DATETIME,
+	data_nascimento DATE,
 	celular VARCHAR(15),
 	telefone VARCHAR(15),
 	email VARCHAR(100)
 );
+
+SELECT * FROM clientes
 
 CREATE TABLE login_clientes(
 	id INT IDENTITY NOT NULL,

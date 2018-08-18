@@ -35,15 +35,17 @@ namespace TrabalhoTcc.Repositorio
         public int Cadastrar(Cliente cliente)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = @"INSERT INTO clientes (nome, data_nascimento, celular, telefone) OUTPUT INSERTED.ID VALUES
+            comando.CommandText = @"INSERT INTO clientes (nome, data_nascimento, celular, telefone, email) OUTPUT INSERTED.ID VALUES
 (@NOME,
 @DATA_NASCIMENTO,
 @CELULAR,
-@TELEFONE)";
+@TELEFONE,
+@EMAIL)";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.Data_nascimento);
             comando.Parameters.AddWithValue("@CELULAR", cliente.Celular);
             comando.Parameters.AddWithValue("@TELEFONE", cliente.Telefone);
+            comando.Parameters.AddWithValue("@EMAIL", cliente.Email);
             int id = Convert.ToInt32(comando.ExecuteScalar().ToString());
             return id;
         }            

@@ -72,7 +72,7 @@ WHERE id = @ID";
         {
             Solicitacoes solicitacao = null;
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "SELECT hora_inicio, data, situacao FROM solicitacoes WHERE id = @ID"
+            comando.CommandText = "SELECT hora_inicio, data, situacao FROM solicitacoes WHERE id = @ID";
             comando.Parameters.AddWithValue("@ID", id);
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());

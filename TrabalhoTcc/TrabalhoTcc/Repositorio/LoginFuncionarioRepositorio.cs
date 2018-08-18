@@ -36,10 +36,10 @@ namespace TrabalhoTcc.Repositorio
                 };
 
 
-                Cargo cargo = new Cargo()
+               Cargo cargo = new Cargo()
                 {
                     Id = Convert.ToInt32(linha[8].ToString()),
-                    Cargo = linha[9].ToString(),
+                    //Cargo = linha[9].ToString(),
                     Descricao = linha[10].ToString()
                 };
                 funcionario.Cargo = cargo;

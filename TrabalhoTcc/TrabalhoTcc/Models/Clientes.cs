@@ -23,6 +23,11 @@ namespace TrabalhoTcc.Models
         [MinLength(11,ErrorMessage="Digite um número de telefone valido")]
         [MaxLength(15,ErrorMessage="Digite um telefone de número valido")]
         public string Telefone { get; set; }
+
+
+        public string Email { get; set; }
+
+
         //public string Email { get; set; }
     }
 }
