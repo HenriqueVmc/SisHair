@@ -19,6 +19,8 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public ActionResult ConsultarCliente()
         {
+            List<Cliente> clientes = new ClientesRepositorio().ObterTodos();
+            ViewBag.Clientes = clientes;
             return View();
         }
 
