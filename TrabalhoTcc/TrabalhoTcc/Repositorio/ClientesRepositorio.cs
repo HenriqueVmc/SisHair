@@ -15,7 +15,7 @@ namespace TrabalhoTcc.Repositorio
         {
             List<Cliente> clientes = new List<Cliente>();
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = "SELECT id, nome, data_nascimento, celular, telefone, email FROM clientes";
+            comando.CommandText = "SELECT id, nome, data_nascimento, celular, telefone, email, login, senha FROM clientes";
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             foreach (DataRow linha in tabela.Rows)
@@ -26,7 +26,9 @@ namespace TrabalhoTcc.Repositorio
                     Nome = linha[1].ToString(),
                     Data_nascimento = Convert.ToDateTime(linha[2].ToString()),
                     Celular = linha[3].ToString(),
-                    Telefone = linha[4].ToString()
+                    Telefone = linha[4].ToString(),
+                    Email = linha[5].ToString(),
+                    Senha = linha[6].ToString()
                 };
                 clientes.Add(cliente);
             }
@@ -35,17 +37,21 @@ namespace TrabalhoTcc.Repositorio
         public int Cadastrar(Cliente cliente)
         {
             SqlCommand comando = new BancoDados().ObterConexao();
-            comando.CommandText = @"INSERT INTO clientes (nome, data_nascimento, celular, telefone, email) OUTPUT INSERTED.ID VALUES
+            comando.CommandText = @"INSERT INTO clientes (nome, data_nascimento, celular, telefone, email, login, senha) OUTPUT INSERTED.ID VALUES
 (@NOME,
 @DATA_NASCIMENTO,
 @CELULAR,
 @TELEFONE,
-@EMAIL)";
+@EMAIL,
+@NOME,
+@SENHA)";
             comando.Parameters.AddWithValue("@NOME", cliente.Nome);
             comando.Parameters.AddWithValue("@DATA_NASCIMENTO", cliente.Data_nascimento);
             comando.Parameters.AddWithValue("@CELULAR", cliente.Celular);
             comando.Parameters.AddWithValue("@TELEFONE", cliente.Telefone);
             comando.Parameters.AddWithValue("@EMAIL", cliente.Email);
+            comando.Parameters.AddWithValue("@LOGIN", cliente.Login);
+            comando.Parameters.AddWithValue("@SENHA", cliente.Senha);
             int id = Convert.ToInt32(comando.ExecuteScalar().ToString());
             return id;
         }            

@@ -61,13 +61,16 @@ CREATE TABLE agendamentos(
 	data DATE NOT NULL	
 );
 
+DROP TABLE clientes;
 CREATE TABLE clientes(
 	id INT IDENTITY NOT NULL,
 	nome VARCHAR(100) NOT NULL,
 	data_nascimento DATE,
 	celular VARCHAR(15),
 	telefone VARCHAR(15),
-	email VARCHAR(100)
+	email VARCHAR(100),
+	login VARCHAR(30),
+	senha VARCHAR(30)
 );
 
 SELECT * FROM clientes
