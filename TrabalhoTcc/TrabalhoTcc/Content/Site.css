@@ -54,20 +54,21 @@ textarea {
         }
 
     #quote-carousel img {
-        width: 250px;
-        height: 100px
+        min-width: 200px;
+        min-height: 130px
     }
 
 
 /* End carousel */
 
-.item blockquote {
+.carouselitem blockquote {
     border-left: none;
     margin: 0;
 }
 
 #quote-carousel .carousel-item blockquote img {
     margin-bottom: 10px;
+
 }
 
 
