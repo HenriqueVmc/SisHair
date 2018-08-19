@@ -214,6 +214,9 @@
     <Content Include="Views\Adm\ConsultarCliente.cshtml" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
     <Content Include="Views\Shared\MasterADM.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Index\AreaDoCliente.cshtml" />
+    <Content Include="Views\Index\Cadastro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
