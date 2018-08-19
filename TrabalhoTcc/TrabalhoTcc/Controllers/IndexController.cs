@@ -13,5 +13,16 @@ namespace TrabalhoTcc.Controllers
         {
             return View();
         }
+
+        public ActionResult AreaDoCliente()
+        {            
+            return View();
+        }
+
+        public ActionResult Cadastro()
+        {
+            //Estando tudo OK, Chama View AreaDoCliente
+            return View();
+        }
     }
 }
