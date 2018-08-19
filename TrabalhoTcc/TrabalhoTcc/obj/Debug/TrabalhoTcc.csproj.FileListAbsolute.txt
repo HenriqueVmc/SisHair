@@ -19,3 +19,7 @@ C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.pdb
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csprojAssemblyReference.cache
+C:\Users\eduardovf\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csprojAssemblyReference.cache
+C:\Users\eduardovf\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.CoreCompileInputs.cache
+C:\Users\eduardovf\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.dll
+C:\Users\eduardovf\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.pdb
