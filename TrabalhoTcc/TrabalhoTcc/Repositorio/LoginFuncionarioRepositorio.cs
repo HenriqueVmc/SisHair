@@ -49,7 +49,7 @@ namespace TrabalhoTcc.Repositorio
                     Rua = linha[11].ToString(),
                     Bairro = linha[12].ToString(),
                     NumeroDaCasa = linha[13].ToString(),
-                    complemento = linha[14].ToString(),
+                    Complemento = linha[14].ToString(),
                     Estado = linha[15].ToString(),
                     Cidade = linha[16].ToString(),
                     CEP = linha[17].ToString()

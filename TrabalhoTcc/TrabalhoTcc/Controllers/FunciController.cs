@@ -6,16 +6,15 @@ using System.Web.Mvc;
 
 namespace TrabalhoTcc.Controllers
 {
-    public class FuncionarioController : Controller
+    public class FunciController : Controller
     {
-        // GET: Funcionario
+        // GET: Funci
         public ActionResult Index()
         {
             return View();
         }
 
-
-        public ActionResult ConsultarAgenda()
+        public ActionResult AgendamentoDeServico()
         {
             return View();
         }
