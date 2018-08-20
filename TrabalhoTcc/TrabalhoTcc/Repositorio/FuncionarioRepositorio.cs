@@ -9,11 +9,11 @@ using TrabalhoTcc.Models;
 
 namespace TrabalhoTcc.Repositorio
 {
-    public class LoginFuncionarioRepositorio
+    public class FuncionarioRepositorio
     {
-        public List<LoginFuncionario> ObterTodos()
+        public List<Funcionario> ObterTodos()
         {
-            List<LoginFuncionario> funcionarios = new List<LoginFuncionario>();
+            List<Funcionario> funcionarios = new List<Funcionario>();
             SqlCommand command = new BancoDados().ObterConexao();
             command.CommandText = @"SELECT funcionarios.nome, funcionarios.data_nascimento, funcionarios.cpf, funcionarios.telefone, funcionarios.celular, funcionarios.email, funcionarios.descricao, cargos.cargo, cargos.descricao, enderecos.rua, enderecos.bairro, enderecos.numero_casa, enderecos.complemento, enderecos.estado,enderecos.cidade, enderecos.cep FROM funcionarios 
               join cargos on (funcionarios.id_cargo = cargos.id) 
@@ -22,12 +22,12 @@ namespace TrabalhoTcc.Repositorio
             tabela.Load(command.ExecuteReader());
             foreach(DataRow linha in tabela.Rows)
             {
-                LoginFuncionario funcionario = new LoginFuncionario()
+                Funcionario funcionario = new Funcionario()
                 {
                     Id = Convert.ToInt32(linha[0].ToString()),
                     Nome = linha[1].ToString(),
                     DataNascimento = Convert.ToDateTime(linha[2].ToString()),
-                    CPF = linha[3].ToString(),
+                    Cpf = linha[3].ToString(),
                     Telefone = linha[4].ToString(),
                     Celular = linha[5].ToString(),
                     Email = linha[6].ToString(),
@@ -58,19 +58,19 @@ namespace TrabalhoTcc.Repositorio
             }
             return funcionarios;
         }
-        public int Cadastrar(LoginFuncionario loginFuncionario)
+        public int Cadastrar(Funcionario Funcionario)
         {
             SqlCommand command = new BancoDados().ObterConexao();
             command.CommandText = "INSERT INTO funcionarios (nome, data_nascimento, cpf, telefone, celular, email, descricao, id_cargo, id_endereco) VALUES (@NOME, @NASCIMENTO, @CPF, @TELEFONE, @CELULAR, @EMAIL, @DESCRICAO, @ID_CARGO, @ID_ENDERECO)";
-            command.Parameters.AddWithValue("@NOME", loginFuncionario.Nome);
-            command.Parameters.AddWithValue("@NASCIMENTO", loginFuncionario.DataNascimento);
-            command.Parameters.AddWithValue("@CPF", loginFuncionario.CPF);
-            command.Parameters.AddWithValue("@TELEFONE",loginFuncionario.Telefone);
-            command.Parameters.AddWithValue("@CELULAR",loginFuncionario.Celular);
-            command.Parameters.AddWithValue("@EMAIL",loginFuncionario.Email);
-            command.Parameters.AddWithValue("@DESCRICAO", loginFuncionario.Descricao);
-            command.Parameters.AddWithValue("@ID_CARGO", loginFuncionario.Id_Cargo);
-            command.Parameters.AddWithValue("@ID_ENDERECO", loginFuncionario.Id_Endereco);
+            command.Parameters.AddWithValue("@NOME", Funcionario.Nome);
+            command.Parameters.AddWithValue("@NASCIMENTO", Funcionario.DataNascimento);
+            command.Parameters.AddWithValue("@CPF", Funcionario.Cpf);
+            command.Parameters.AddWithValue("@TELEFONE",Funcionario.Telefone);
+            command.Parameters.AddWithValue("@CELULAR",Funcionario.Celular);
+            command.Parameters.AddWithValue("@EMAIL",Funcionario.Email);
+            command.Parameters.AddWithValue("@DESCRICAO", Funcionario.Descricao);
+            command.Parameters.AddWithValue("@ID_CARGO", Funcionario.Id_Cargo);
+            command.Parameters.AddWithValue("@ID_ENDERECO", Funcionario.Id_Endereco);
             int id = Convert.ToInt32(command.ExecuteScalar().ToString());
 
             return id;

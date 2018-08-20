@@ -1,5 +1,4 @@
-﻿﻿-- TABELAS
-
+﻿--
 CREATE TABLE funcionarios(
 	id INT IDENTITY(1, 1) NOT NULL,
 	nome VARCHAR(100) NOT NULL,
@@ -32,7 +31,7 @@ CREATE TABLE enderecos(
 	cep VARCHAR(8)
 );
 
-CREATE TABLE login_funcionarios(
+CREATE TABLE usuario_funcionarios(
 	id INT IDENTITY NOT NULL,
 	id_funcionario INT NOT NULL,
 	usuario VARCHAR(40) NOT NULL CONSTRAINT UqUsuarioFuncionario UNIQUE,
@@ -71,13 +70,13 @@ CREATE TABLE clientes(
 	celular VARCHAR(15),
 	telefone VARCHAR(15),
 	email VARCHAR(100),
-	login VARCHAR(30),
+	Usuario VARCHAR(30),
 	senha VARCHAR(30)
 );
 
 SELECT * FROM clientes
 
-CREATE TABLE login_clientes(
+CREATE TABLE usuario_clientes(
 	id INT IDENTITY NOT NULL,
 	id_cliente INT NOT NULL,
 	usuario VARCHAR(30) NOT NULL CONSTRAINT UqUsuarioCliente UNIQUE,
@@ -98,22 +97,22 @@ CREATE TABLE solicitacoes(
 ALTER TABLE funcionarios ADD CONSTRAINT PKFuncionarios PRIMARY KEY(id);
 ALTER TABLE enderecos ADD CONSTRAINT PKEnderecos PRIMARY KEY(id);
 ALTER TABLE cargos ADD CONSTRAINT PKCargos PRIMARY KEY(id);
-ALTER TABLE login_funcionarios ADD CONSTRAINT PKLoginFuncionarios PRIMARY KEY(id);
+ALTER TABLE usuario_funcionarios ADD CONSTRAINT PKUsuarioFuncionarios PRIMARY KEY(id);
 ALTER TABLE servicos ADD CONSTRAINT PKServicos PRIMARY KEY(id);
 ALTER TABLE agendamentos ADD CONSTRAINT PKAgendamentos PRIMARY KEY(id);
 ALTER TABLE horarios_funcionarios ADD CONSTRAINT PKHorarios PRIMARY KEY(id);
 ALTER TABLE clientes ADD CONSTRAINT PKClientes PRIMARY KEY(id);
-ALTER TABLE login_clientes ADD CONSTRAINT PKLoginClientes PRIMARY KEY(id);
+ALTER TABLE usuario_clientes ADD CONSTRAINT PKUsuarioClientes PRIMARY KEY(id);
 ALTER TABLE solicitacoes ADD CONSTRAINT PKSolicitacoes PRIMARY KEY(id);
 
 -- CHAVES ESTRANGEIRAS (RELACIONAMENTOS)
 ALTER TABLE funcionarios ADD CONSTRAINT FKCargoFuncionario FOREIGN KEY(id_cargo) REFERENCES cargos(id);
 ALTER TABLE funcionarios ADD CONSTRAINT FKEnderecoFuncionario FOREIGN KEY(id_endereco) REFERENCES enderecos(id);
-ALTER TABLE login_funcionarios ADD CONSTRAINT FKLoginFuncionario FOREIGN KEY(id_funcionario) REFERENCES funcionarios(id);
+ALTER TABLE usuario_funcionarios ADD CONSTRAINT FKUsuarioFuncionario FOREIGN KEY(id_funcionario) REFERENCES funcionarios(id);
 ALTER TABLE agendamentos ADD CONSTRAINT FKFuncionarioAgendamento FOREIGN KEY(id_funcionario) REFERENCES funcionarios(id);
 ALTER TABLE agendamentos ADD CONSTRAINT FKClienteAgendamento FOREIGN KEY(id_cliente) REFERENCES clientes(id);
 ALTER TABLE agendamentos ADD CONSTRAINT FKServicoAgendamento FOREIGN KEY(id_servico) REFERENCES servicos(id);
-ALTER TABLE login_clientes ADD CONSTRAINT FKLoginCliente FOREIGN KEY(id_cliente) REFERENCES clientes(id);
+ALTER TABLE usuario_clientes ADD CONSTRAINT FKUsuarioCliente FOREIGN KEY(id_cliente) REFERENCES clientes(id);
 
 ALTER TABLE solicitacoes ADD CONSTRAINT FKFuncionarioSolicitacao FOREIGN KEY(id_funcionario) REFERENCES funcionarios(id);
 ALTER TABLE solicitacoes ADD CONSTRAINT FKClienteSolicitacao FOREIGN KEY(id_cliente) REFERENCES clientes(id);

@@ -7,7 +7,7 @@ using TrabalhoTcc.Models;
 
 namespace TrabalhoTcc.Controllers
 {
-    public class IndexController : Controller
+    public class HomeController : Controller
     {
         // GET: Index
         public ActionResult Index()
@@ -15,11 +15,17 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
-        public ActionResult AreaDoCliente(Cliente cliente)
+        [HttpGet]
+        public ActionResult SolicitarAgendamento()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult AreaDoCliente()
         {
             //Verifica se os campos estão preenchidos
             //Estando tudo OK, Chama View AreaDoCliente
-            ViewBag.Cliente = cliente;
             return View();
         }
 
