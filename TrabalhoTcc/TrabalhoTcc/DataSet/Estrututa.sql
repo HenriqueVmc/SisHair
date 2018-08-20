@@ -19,6 +19,7 @@ CREATE TABLE cargos(
 	descricao VARCHAR(100)
 );
 SELECT * FROM cargos
+INSERT INTO cargos (nome, descricao) VALUES ('cabelereiro', 'cortes masculinos');
 
 CREATE TABLE enderecos(
 	id INT IDENTITY NOT NULL,

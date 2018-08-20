@@ -53,7 +53,7 @@
                                             name="" class="custom-select">
                                         @foreach (TrabalhoTcc.Models.Cargo cargo in @ViewBag.Cargo)
                                         {
-                                            <option value="0">@cargo.Nome</option>
+                                            <option value="@cargo.Id">@cargo.Nome</option>
                                         }
 
                                         
