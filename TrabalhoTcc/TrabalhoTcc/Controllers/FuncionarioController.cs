@@ -9,7 +9,13 @@ namespace TrabalhoTcc.Controllers
     public class FuncionarioController : Controller
     {
         // GET: Funcionario
-        public ActionResult Funcionario()
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
+        public ActionResult ConsultarAgenda()
         {
             return View();
         }

@@ -3,13 +3,22 @@
 }
 
 <div class="offset-2">
+
+    <div class="text-center">
+        <h1>CADASTRO DE CLIENTES</h1>
+    </div>
+
+
     <div class="container style=" style="margin-top: 50px">
         <div class="col-md-12">
             <div class="container border">
                 <form action="/Adm/Store" class="form-horizontal" method="post">
                     <div class="form-group">
                         <label for="campo-nome">Nome:</label>
+                        <span class="text-danger">*</span>
+
                         <input type="text" class="form-control" name="Cliente.Nome" id="campo-nome" />
+                        @Html.ValidationMessage("Cliente.Nome", new { @class = "text-danger"})
                     </div>
 
                     <div class="form-group">
@@ -60,7 +69,7 @@
                                     <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
                                         <i class="fa fa-save"> Cadastrar</i>
                                     </button>
-                                    <button type="reset" class="btn btn-outline-danger float-right" name=" btnLimpar" id="btnLimpar">
+                                    <button type="reset" class="btn btn-outline-danger float-right" name="btnLimpar" id="btnLimpar">
                                         <i class="fa fa-trash"> Limpar</i>
                                     </button>
                                 </div>

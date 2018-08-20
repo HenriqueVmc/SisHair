@@ -9,10 +9,17 @@ namespace TrabalhoTcc.Models
     public class Cliente
     {
         public int Id { get; set; }
+
+
+
         [Required(ErrorMessage= "Nome não pode ser vazio")]
         [MinLength(7, ErrorMessage="Nome deve conter no mínimo 7 caracteres")]
         [MaxLength(100, ErrorMessage="Nome não deve exceder 100 caracteres")]
         public string Nome { get; set; }
+
+
+
+
         [Required(ErrorMessage="Data de nascimento deve ser preenchida")]        
         public DateTime Data_nascimento { get; set; }
         [Required(ErrorMessage="Celular deve seer preenchida")]

@@ -12,6 +12,7 @@ namespace TrabalhoTcc.Controllers
     {
         // GET: Adm
         public ActionResult Index()
+
         {
             return View();
         }
