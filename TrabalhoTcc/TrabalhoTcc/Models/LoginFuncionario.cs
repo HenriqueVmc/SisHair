@@ -32,6 +32,6 @@ namespace TrabalhoTcc.Models
         public string Descricao { get; set; }
         public string Email { get; set; }
         public Cargo Cargo { get; internal set; }
-        internal Endereco Endereco { get; set; }
+        public Endereco Endereco { get; set; }
     }
 }
