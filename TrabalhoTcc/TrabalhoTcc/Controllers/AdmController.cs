@@ -66,5 +66,15 @@ namespace TrabalhoTcc.Controllers
             ViewBag.Cargo = cargos;
             return View();
         }
+
+
+
+///////////////////////////////////////////////////////////////////
+////////Agenda dos funcionario + historico de servicos////////////
+
+        public ActionResult AgendaFuncionarios()
+        {
+            return View();
+        }
     }
 }
