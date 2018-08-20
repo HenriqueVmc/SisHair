@@ -258,8 +258,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdmController.cs" />
-    <Compile Include="Controllers\IndexController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ContaClienteController.cs" />
+    <Compile Include="Controllers\ContaFuncionarioController.cs" />
+    <Compile Include="Controllers\FunciController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataSet\BancoDados.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,17 +269,20 @@
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Clientes.cs" />
+    <Compile Include="Models\Conta\LoginFuncionario.cs" />
     <Compile Include="Models\Endereco.cs" />
-    <Compile Include="Models\LoginFuncionario.cs" />
+    <Compile Include="Models\Conta\LoginCliente.cs" />
+    <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Servicos.cs" />
     <Compile Include="Models\Solicitacoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\AgendamentoRepositorio.cs" />
     <Compile Include="Repositorio\CargoRepositorio.cs" />
     <Compile Include="Repositorio\ClientesRepositorio.cs" />
-    <Compile Include="Repositorio\LoginFuncionarioRepositorio.cs" />
+    <Compile Include="Repositorio\FuncionarioRepositorio.cs" />
     <Compile Include="Repositorio\ServicosRepositorio.cs" />
     <Compile Include="Repositorio\SolicitacaoRepositorio.cs" />
+    <Compile Include="Repositorio\UsuarioFuncionario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -288,10 +293,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Login\Cadastro.cshtml" />
     <Content Include="Views\Shared\Master.cshtml" />
-    <Content Include="Views\Index\PaginaInicipal.cshtml" />
-    <Content Include="Views\Index\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.0.0.min.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -308,9 +311,11 @@
     <Content Include="Views\Adm\ConsultarCliente.cshtml" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
     <Content Include="Views\Shared\MasterADM.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Index\AreaDoCliente.cshtml" />
-    <Content Include="Views\Index\Cadastro.cshtml" />
+    <Content Include="Views\Funci\AgendamentoDeServico.cshtml" />
+    <Content Include="Views\Home\SolicitarAgendamento.cshtml" />
+    <Content Include="Views\ContaCliente\Login.cshtml" />
+    <Content Include="Views\ContaCliente\CriarConta.cshtml" />
+    <Content Include="Views\ContaFuncionario\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
