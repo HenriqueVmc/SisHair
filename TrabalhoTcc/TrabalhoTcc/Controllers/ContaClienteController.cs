@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Models;
+using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -25,7 +26,18 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult Login(LoginCliente loginC, string returnUrl)
         {
-            return null;
+            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
+
+            if (usuario != null)
+            {
+                return RedirectToAction("SolicitarAgendamento", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Login Inválido");
+            }
+
+            return View(loginC);
         }
 
         [HttpGet]

@@ -70,9 +70,7 @@ CREATE TABLE clientes(
 	data_nascimento DATE,
 	celular VARCHAR(15),
 	telefone VARCHAR(15),
-	email VARCHAR(100),
-	Usuario VARCHAR(30),
-	senha VARCHAR(30)
+	email VARCHAR(100)
 );
 
 SELECT * FROM clientes
