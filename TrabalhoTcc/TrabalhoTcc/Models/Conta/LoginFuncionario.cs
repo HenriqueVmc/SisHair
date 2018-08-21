@@ -25,24 +25,20 @@ namespace TrabalhoTcc.Models.Conta
         {
             LoginFuncionario ret = null;
 
-            using (var db = new SqlConnection())
+            using (var cmd = new BancoDados().ObterConexao())
             {
-                using (var cmd = new SqlCommand())
+                cmd.CommandText = string.Format("SELECT id, usuario, senha FROM usuario_funcionarios WHERE usuario = '{0}' AND senha = '{1}'", login, senha);
+                var reader = cmd.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    cmd.Connection = db;
-                    cmd.CommandText = string.Format("SELECT id, usuario, senha FROM usuario_funcionarios WHERE usuario {0} AND senha {1}", login, senha);
-                    var reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
+                    ret = new LoginFuncionario
                     {
-                        ret = new LoginFuncionario
-                        {
-                            Id = (int)reader["id"],
-                            Usuario = (string)reader["usuario"],
-                            Senha = (string)reader["senha"]
+                        Id = (int)reader["id"],
+                        Usuario = (string)reader["usuario"],
+                        Senha = (string)reader["senha"]
 
-                        };
-                    }
+                    };
                 }
             }
             return ret;
