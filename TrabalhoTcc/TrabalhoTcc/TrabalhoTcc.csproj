@@ -129,10 +129,7 @@
     <Content Include="Content\mdbBootstrap\js\modules\wow.js" />
     <Content Include="Content\mdbBootstrap\js\popper.min.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="DataSet\TCC.mdf" />
-    <Content Include="DataSet\TCC_log.ldf">
-      <DependentUpon>TCC.mdf</DependentUpon>
-    </Content>
+    <Content Include="DataSet\dbTCC.mdf" />
     <Content Include="DataSet\Estrututa.sql" />
     <Content Include="DesgnerLogim\css\flexslider.css" />
     <Content Include="DesgnerLogim\css\font-awesome.css" />
