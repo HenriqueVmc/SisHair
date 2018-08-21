@@ -76,5 +76,18 @@ namespace TrabalhoTcc.Controllers
         {
             return View();
         }
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+        //////////////Caixa/////////////////
+
+        [HttpGet]
+        public ActionResult Caixa()
+        {
+            return View();
+        }
+
     }
 }
