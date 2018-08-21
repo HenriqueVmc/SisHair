@@ -1,4 +1,5 @@
-﻿@{
+﻿@model TrabalhoTcc.Models.Conta.LoginFuncionario
+@{
 
     Layout = "/Views/Shared/Master.cshtml";
 }
@@ -11,30 +12,30 @@
         </div>
         <div class="col-md-4"></div>
         <div class="col-md-4 mt-4">
-            <form action="/ContaFuncionario/Login" class="form-horizontal" method="post">
+            @using (Html.BeginForm("Login", "ContaFuncionario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
                 <div class="form-group">
                     <label for="campo-usuario">Usuário:</label>
-                    <input type="text" class="form-control" name="LoginCliente.Usuario" id="campo-usuario" />
+                    @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
                 </div>
 
                 <div class="form-group">
                     <label for="campo-senha">Senha:</label>
-                    <input type="password" class="form-control" name="LoginCliente.Senha" id="campo-senha" />
+                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
                 </div>
                 <hr />
                 <div class="row">
                     <div class="offset-5">
 
                         <div class="form-group">
-                            @*<button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                           <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
                                     <i class="fa fa-save"> Entrar</i>
-                                </button>*@
-                            <a href="/Adm/Index" class="btn btn-success mt-3">Entrar</a>
+                           </button>
                         </div>
 
                     </div>
                 </div>
-            </form>
+            }
         </div>
         <div class="col-md-4"></div>
     </div>

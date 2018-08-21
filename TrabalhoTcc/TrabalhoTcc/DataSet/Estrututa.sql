@@ -39,6 +39,7 @@ CREATE TABLE usuario_funcionarios(
 );
 
 CREATE TABLE horarios_funcionarios(
+    id INT IDENTITY NOT NULL,
 	hora TIME NOT NULL,
 	disponibilidade BIT NOT NULL,
 	id_funcionario INT NOT NULL
