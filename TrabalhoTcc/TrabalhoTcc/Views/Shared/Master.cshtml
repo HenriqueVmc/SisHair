@@ -26,7 +26,7 @@
       height: 100%;
     }
 
-    @Html.Raw("@")media print (min-width: 800px) and (max-width: 850px) {
+    @@media (min-width: 800px) and (max-width: 850px) {
             .navbar:not(.top-nav-collapse) {
                 background: #1C2331!important;
             }
@@ -38,9 +38,9 @@
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="~/Content/mdbBootstrap/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="~/Content/mdbBootstrap/js/mdb.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="~/Content/mdbBootstrap/js/mdb.min.js"></script>
     <!-- Initializations -->
     <script type="text/javascript">
         // Animations initialization
@@ -86,12 +86,12 @@
                 <!-- Right -->
                 <ul class="navbar-nav nav-flex-icons">
                     <li class="nav-item">
-                        <a href="#" class="nav-link" target="_blank">
+                        <a href="/ContaCliente/Login" class="nav-link" target="_blank">
                             <i class="text-white">Área do cliente</i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" target="_blank">
+                        <a href="/ContaFuncionario/Login" class="nav-link" target="_blank">
                             <i class="text-white">Area restrita</i>
                         </a>
                 </ul>
