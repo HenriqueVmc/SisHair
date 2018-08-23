@@ -27,8 +27,7 @@ namespace TrabalhoTcc.Repositorio
                     Data_nascimento = Convert.ToDateTime(linha[2].ToString()),
                     Celular = linha[3].ToString(),
                     Telefone = linha[4].ToString(),
-                    Email = linha[5].ToString(),
-                    Senha = linha[6].ToString()
+                    Email = linha[5].ToString()
                 };
                 clientes.Add(cliente);
             }
@@ -50,8 +49,7 @@ namespace TrabalhoTcc.Repositorio
             comando.Parameters.AddWithValue("@CELULAR", cliente.Celular);
             comando.Parameters.AddWithValue("@TELEFONE", cliente.Telefone);
             comando.Parameters.AddWithValue("@EMAIL", cliente.Email);
-            comando.Parameters.AddWithValue("@LOGIN", cliente.Login);
-            comando.Parameters.AddWithValue("@SENHA", cliente.Senha);
+
             int id = Convert.ToInt32(comando.ExecuteScalar().ToString());
             return id;
         }            
