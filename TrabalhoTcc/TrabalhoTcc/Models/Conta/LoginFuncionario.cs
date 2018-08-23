@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using TrabalhoTcc.DataSet;
 
 namespace TrabalhoTcc.Models.Conta
 {
@@ -23,25 +22,35 @@ namespace TrabalhoTcc.Models.Conta
 
         public static LoginFuncionario ValidarUsuario(string login, string senha)
         {
-            LoginFuncionario ret = null;
+           LoginFuncionario ret = null;
+           using (var db = new SqlConnection())
+           {
+               //    ret = db.Usuarios
+               //        .Include(x => x.Perfis)
+               //        .Where(x => x.Usuario == login && x.Senha == senha)
+               //        .SingleOrDefault();
 
-            using (var cmd = new BancoDados().ObterConexao())
-            {
-                cmd.CommandText = string.Format("SELECT id, usuario, senha FROM usuario_funcionarios WHERE usuario = '{0}' AND senha = '{1}'", login, senha);
-                var reader = cmd.ExecuteReader();
+               db.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\App_Data\Tcc21.mdf;Integrated Security=True;Connect Timeout=30";
+               db.Open();
+               using (var cmd = new SqlCommand())
+               {
+                   cmd.Connection = db;
+                   cmd.CommandText = string.Format("SELECT Id, Usuario, Senha FROM LoginFuncionarios WHERE Usuario = '{0}' AND Senha = '{1}'", login, senha);
+                   var reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    ret = new LoginFuncionario
-                    {
-                        Id = (int)reader["id"],
-                        Usuario = (string)reader["usuario"],
-                        Senha = (string)reader["senha"]
+                   if (reader.Read())//Encontrou
+                   {
+                       ret = new LoginFuncionario
+                       {
+                           Id = (int)reader["Id"],
+                           Usuario = (string)reader["Usuario"],
+                           Senha = (string)reader["Senha"]
+                       };
+                   }
 
-                    };
-                }
-            }
-            return ret;
+               }
+               return ret;
+           }
         }
     }
 }

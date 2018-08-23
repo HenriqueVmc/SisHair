@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using TrabalhoTcc.Repositorio;
 
 namespace TrabalhoTcc.Models
 {
@@ -28,9 +27,9 @@ namespace TrabalhoTcc.Models
         public string Descricao { get; set; }
         public string Email { get; set; }
 
-        public Endereco Endereco { get; set; }
-        public int Id_Endereco { get; set; }
         public Cargo Cargo { get; set; }
         public int Id_Cargo { get; set; }
+
+
     }
 }

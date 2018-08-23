@@ -8,6 +8,7 @@ namespace TrabalhoTcc.Models
 {
     public class Cargo
     {
+        [Key]
         public int Id { get; set; }
 
 
@@ -17,6 +18,7 @@ namespace TrabalhoTcc.Models
 
         [MaxLength(ErrorMessage="A descrição nao deve conter mais de 100 caracteres")] 
         public string Descricao { get; set; }
-        
+
+        public virtual ICollection<Funcionario> Funcionario { get; set; }
     }
 }

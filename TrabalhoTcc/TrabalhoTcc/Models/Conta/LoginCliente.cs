@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using TrabalhoTcc.DataSet;
 
 namespace TrabalhoTcc.Models.Conta
 {
@@ -24,7 +24,7 @@ namespace TrabalhoTcc.Models.Conta
         {
             LoginCliente ret = null;
 
-            using (var cmd = new BancoDados().ObterConexao())
+            using (var cmd = new SqlCommand())
             {
                 cmd.CommandText = string.Format("SELECT id, usuario, senha FROM usuario_clientes WHERE usuario = '{0}' AND senha = '{1}'", login, senha);
                 var reader = cmd.ExecuteReader();

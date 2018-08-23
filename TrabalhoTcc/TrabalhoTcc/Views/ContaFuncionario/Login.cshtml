@@ -14,6 +14,7 @@
         <div class="col-md-4 mt-4">
             @using (Html.BeginForm("Login", "ContaFuncionario", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     <label for="campo-usuario">Usuário:</label>
                     @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })

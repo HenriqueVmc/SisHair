@@ -8,6 +8,7 @@ namespace TrabalhoTcc.Models
 {
     public class Endereco
     {
+        [Key]
         public int Id { get; set; }
         [Required(ErrorMessage="A rua não pode ser vasia")]
         public string Rua { get; set; }
@@ -24,6 +25,12 @@ namespace TrabalhoTcc.Models
         [MinLength(8, ErrorMessage="CEP inválido")]
         [MaxLength(8,ErrorMessage="CEP inválido")]
         public string CEP { get; set; }
+
+        public virtual Funcionario Funcionario { get; set; }
+
+        public int Id_Funcionario { get; set; }
+
+
 
 
     }

@@ -8,6 +8,7 @@ namespace TrabalhoTcc.Models
 {
     public class Solicitacoes
     {
+        [Key]
         public int Id { get; set; }
 
         public DateTime Hora_inicio { get; set; }

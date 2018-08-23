@@ -19,6 +19,7 @@ namespace TrabalhoTcc.Models
         
         [Required(ErrorMessage="Data de nascimento deve ser preenchida")]       
         [Display(Name="Data de nascimento:")]
+        [DataType(DataType.Date)]
         public DateTime Data_nascimento { get; set; }
 
         [Required(ErrorMessage="Celular deve seer preenchida")]

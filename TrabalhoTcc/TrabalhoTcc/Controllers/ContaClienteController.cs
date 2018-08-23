@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
-using TrabalhoTcc.Repositorio;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -43,24 +42,21 @@ namespace TrabalhoTcc.Controllers
 
         [HttpGet]
         public ActionResult CriarConta()
-        {
-
-                
+        {                
             return View();
         }
 
         [HttpPost]
-        public ActionResult CriarConta(Cliente cliente)
+        public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
             //Validar dados
             //Ver se já existe no banco
             //Cadastrar Cliente
-
             //Redirection Solicitações
 
             if (ModelState.IsValid)
             {
-                                              
+                                               
             }
 
 
