@@ -20,50 +20,76 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <div class="">
         <div class="sidebar">
-            <nav class="sidebar-nav">                
-                <ul class="nav"> 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger" href="#" id="navbardrop" data-toggle="dropdown">
-                           CLIENTES
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Adm/Index">Cadastro de cliente</a>
-                            <a class="dropdown-item" href="/Adm/ConsultarClientes">Consulta de clientes</a>                            
-                        </div>
-                    </li>                                                                        
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger" href="#" id="navbardrop" data-toggle="dropdown">
-                            FUNCIONARIOS
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Adm/Index">Cadastro de Funcionarios</a>
-                            <a class="dropdown-item" href="/Adm/ConsultarClientes">Consulta dos funcionarios</a>
-                            <a class="dropdown-item" href="/Adm/ConsultarClientes">Agenda dos Funcionarios</a>
-                        </div>
-                    </li> 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger" href="#" id="navbardrop" data-toggle="dropdown">
-                            HISTÓRICO
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Adm/Index">Histórico da agenda</a>                           
-                        </div>
-                    </li>                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-danger" href="#" id="navbardrop" data-toggle="dropdown">
-                            CARGO DOS FUNCIONARIOS
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/Adm/CadastrarCargo">Cadastrar Cargo</a>
-                            <a class="dropdown-item" href="/Adm/ConsultarCargo">Consultar Cargo</a>
-                        </div>
-                    </li>                                  
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <a  class=" nav-link text-danger"  data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        CLIENTE
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="cliente">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href=" /Adm/Index">Cadastro de cliente</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Adm/ConsultarClientes">Consulta de clientes</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#funcionario" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        FUNCIONARIO
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="funcionario">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href="/Adm/Index">Cadastro de Funcionarios</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Adm/ConsultarClientes">Consulta dos funcionarios</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Adm/ConsultarClientes">Agenda dos Funcionarios</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#hitorico" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        HISTÓRICO
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="hitorico">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href="/Adm/Index">Histórico da agenda</a>  
+                            </li>
+                       
+                        </ul>
+                    </div>
+
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#cargos" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        CARGOS DOS FUNCIONARIOS
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="cargos">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href="/Adm/CadastrarCargo">Cadastrar Cargo</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Adm/ConsultarCargo">Consultar Cargo</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
                 </ul>
             </nav>
         </div>
-    </div>     
+    </div>
     <div class="container-fluid">
         @RenderBody()
     </div>
 </body>
 </html>
+                                                    
