@@ -27,7 +27,6 @@ namespace TrabalhoTcc.Models
         [Display(Name = ("Telefone: "))]
         public string Telefone { get; set; }
 
-        [Required(ErrorMessage = "Celular deve seer preenchida")]
         [MinLength(11, ErrorMessage = "Digite um número de Celular valido")]
         [MaxLength(15, ErrorMessage = "Digite um número de Celular valido")]
         [Display(Name = "Celular: ")]
