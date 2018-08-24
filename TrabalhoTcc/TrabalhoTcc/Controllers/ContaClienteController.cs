@@ -13,6 +13,7 @@ namespace TrabalhoTcc.Controllers
         // GET: ContaCliente
         public ActionResult Index()
         {
+
             return View();
         }
 
@@ -56,7 +57,9 @@ namespace TrabalhoTcc.Controllers
 
             if (ModelState.IsValid)
             {
-                                               
+                   //db.Clientes.add                             
+                //add cliente
+                //add logincliente(idCliente)
             }
 
 
