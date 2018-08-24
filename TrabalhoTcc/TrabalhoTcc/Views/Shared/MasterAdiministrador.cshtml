@@ -19,14 +19,14 @@
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <div class="">
-        <div class="sidebar">
+        <div class="sidebar" id="accordion">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <a  class=" nav-link text-danger"  data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class=" nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
                         CLIENTE
                         <li class="fa fa-angle-down "></li>
                     </a>
-                    <div class="collapse" id="cliente">
+                    <div class="collapse" id="cliente" data-parent="#accordion">
                         <ul class="list-unstyled">
                             <li>
                                 <a class="nav-link" href="/Cliente/Create">Cadastro de cliente</a>
@@ -40,7 +40,7 @@
                         FUNCIONARIO
                         <li class="fa fa-angle-down "></li>
                     </a>
-                    <div class="collapse" id="funcionario">
+                    <div class="collapse" id="funcionario" data-parent="#accordion">
                         <ul class="list-unstyled">
                             <li>
                                 <a class="nav-link" href="/Adm/Index">Cadastro de Funcionarios</a>
@@ -58,12 +58,13 @@
                         HISTÓRICO
                         <li class="fa fa-angle-down "></li>
                     </a>
-                    <div class="collapse" id="hitorico">
+                    <div class="collapse" id="hitorico" data-parent="#accordion">
+                        
                         <ul class="list-unstyled">
                             <li>
-                                <a class="nav-link" href="/Adm/Index">Histórico da agenda</a>  
+                                <a class="nav-link" href="/Adm/Index">Histórico da agenda</a>
                             </li>
-                       
+
                         </ul>
                     </div>
 
@@ -71,7 +72,7 @@
                         CARGOS DOS FUNCIONARIOS
                         <li class="fa fa-angle-down "></li>
                     </a>
-                    <div class="collapse" id="cargos">
+                    <div class="collapse" id="cargos" data-parent="#accordion">
                         <ul class="list-unstyled">
                             <li>
                                 <a class="nav-link" href="/Adm/CadastrarCargo">Cadastrar Cargo</a>
