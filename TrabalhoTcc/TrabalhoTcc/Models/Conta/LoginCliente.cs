@@ -20,6 +20,12 @@ namespace TrabalhoTcc.Models.Conta
         public int Id_Cliente { get; set; }
         public Cliente Cliente { get;set; }
 
+
+        public void CriarConta()
+        {
+
+        }
+
         public static LoginCliente ValidarUsuario(string login, string senha)
         {
             LoginCliente ret = null;

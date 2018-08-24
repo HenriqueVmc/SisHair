@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 
@@ -10,6 +11,8 @@ namespace TrabalhoTcc.Controllers
 {
     public class ContaClienteController : Controller
     {
+        private DBContext db = new DBContext();
+
         // GET: ContaCliente
         public ActionResult Index()
         {
@@ -56,10 +59,19 @@ namespace TrabalhoTcc.Controllers
             //Redirection Solicitações
 
             if (ModelState.IsValid)
-            {
-                   //db.Clientes.add                             
-                //add cliente
-                //add logincliente(idCliente)
+            {                         
+                db.Clientes.Add(cliente);
+                
+                var LoginCliente = new LoginCliente()
+                {
+                    Usuario = loginC.Usuario,
+                    Senha = loginC.Senha,
+                    Id_Cliente = cliente.Id
+                };
+
+                db.LoginClientes.Add(LoginCliente);
+
+                db.SaveChanges();
             }
 
 
