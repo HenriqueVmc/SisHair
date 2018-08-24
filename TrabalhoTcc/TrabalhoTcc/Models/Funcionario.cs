@@ -22,9 +22,19 @@ namespace TrabalhoTcc.Models
         [Required(ErrorMessage = "CPF não pode ser vasio")]
         public string Cpf { get; set; }
 
+        [MinLength(11, ErrorMessage = "Digite um número de telefone valido")]
+        [MaxLength(15, ErrorMessage = "Digite um telefone de número valido")]
+        [Display(Name = ("Telefone: "))]
         public string Telefone { get; set; }
+
+        [Required(ErrorMessage = "Celular deve seer preenchida")]
+        [MinLength(11, ErrorMessage = "Digite um número de Celular valido")]
+        [MaxLength(15, ErrorMessage = "Digite um número de Celular valido")]
+        [Display(Name = "Celular: ")]
         public string Celular { get; set; }
-        public string Descricao { get; set; }
+
+        [Display(Name = "Email: ")]
+        [EmailAddress]
         public string Email { get; set; }
 
         public Cargo Cargo { get; set; }
