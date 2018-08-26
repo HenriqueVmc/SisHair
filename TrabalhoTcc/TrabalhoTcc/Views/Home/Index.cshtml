@@ -1,8 +1,86 @@
 ﻿@{
-    Layout = "/Views/Shared/Master.cshtml";
+    Layout = null;
 }
 
-<div>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Salao de beleza - sem nome ainda</title>
+    <link href="~/Content/mdbBootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/mdbBootstrap/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Bootstrap core CSS-->
+    <link href="~/Content/mdbBootstrap/css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        html,
+        body,
+        header,
+        .carousel {
+            height: 100%;
+        }
+
+        @@media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #1C2331 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
+                <strong>Salão e barbearia</strong>
+            </a>
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank">Agendamento</a>
+                    </li>
+                </ul>
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" target="_blank">
+                            <i class="text-white">Área do cliente</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" target="_blank">
+                            <i class="text-white">Area restrita</i>
+                        </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+    <!--Carousel Wrapper-->
     <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
         <!--Indicators-->
         <ol class="carousel-indicators">
@@ -201,17 +279,14 @@
                                             Corte de cabelo Masculino R$ 15,00
                                             <i class="fa fa-check green-text ml-1"></i>
                                         </li>
-                                        
                                         <li>
                                             Corte de cabelo e barba Masculino R$ 20,00
                                             <i class="fa fa-check green-text ml-1"></i>
                                         </li>
-                                        
                                         <li>
                                             Somente barba R$ 15,00
                                             <i class="fa fa-check green-text ml-1"></i>
                                         </li>
-                                        
                                         <li>
                                             Ficou interessado? faça um agendamento conosco !
                                             <i class="fa fa-check green-text ml-1"></i>
@@ -251,7 +326,6 @@
                                             Pintura de cabelo com luzes R$ 185,00
                                             <i class="fa fa-check green-text ml-1"></i>
                                         </li>
-                                        
                                         <li>
                                             Pintura de cabelo sem luzes R$ 90,00
                                             <i class="fa fa-check green-text ml-1"></i>
@@ -397,4 +471,109 @@
         </div>
     </main>
     <!--Main layout-->
-</div>
+    <!-- Footer -->
+    <footer class="page-footer font-small stylish-color-dark pt-4">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-4 mx-auto">
+
+                    <!-- Content -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contato</h5>
+                    <a href="tel:47-4444-2121">Telefone Fixo: (47)4444-2121</a>
+                    <hr />
+                    <a href="tel:47-99988-6755">Celular/WhatsApp: (47) 99988-6755</a>
+                    <hr />
+                    <p>Email: salao@beleza.com</p>
+                    <p>______________________________</p>
+                    <p>Redes sociais</p>
+                    <p>
+                        <a class="white-text fa fa-facebook-official" href="https://www.facebook.com/"> Facebook</a>
+                    </p>
+                    <p>
+                        <a class="white-text fa fa-instagram" href="https://www.instagram.com/?hl=pt-br"> Instagram</a>
+                    </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none">
+
+                <!-- Grid column -->
+                <div class="col-md-7 mx-auto">
+                    <a class="white-text">Nossa loja</a>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <hr>
+
+        <!-- Call to action -->
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Área do cliente</h5>
+            </li>
+            <li class="list-inline-item">
+                <a href="#!" class="btn btn-danger btn-rounded">Entre!</a>
+            </li>
+        </ul>
+        <!-- Call to action -->
+
+        <hr>
+
+        <!-- Social buttons -->
+        <ul class="list-unstyled list-inline text-center">
+            <li class="list-inline-item">
+                <a class="btn-floating btn-fb mx-1" href="https://www.facebook.com/">
+                    <i class="fa fa-facebook pr-1"> </i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-tw mx-1" href="https://wwww.twitter.com">
+                    <i class="fa fa-twitter"> </i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn-floating btn-li mx-1">
+                    <span class="fa fa-instagram"> </span>
+                </a>
+            </li>
+        </ul>
+        <!-- Social buttons -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2018 Copyright: Desenvolvido por: Silício E21 Softwares
+
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+    <script type="text/javascript" src="~/Content/mdbBootstrap/js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="~/Content/mdbBootstrap/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="~/Content/mdbBootstrap/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="~/Content/mdbBootstrap/js/mdb.min.js"></script>
+    <!-- Initializations -->
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+
+</body>
+
+</html>
