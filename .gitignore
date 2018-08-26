@@ -14,6 +14,7 @@ TrabalhoTcc/TrabalhoTcc.v12.suo
 *.suo
 *.csproj
 *.suo
+TrabalhoTcc/TrabalhoTcc/Migrations/*
 TrabalhoTcc/.vs/config/applicationhost.config
 TrabalhoTcc/.vs/TrabalhoTcc/v15/.suo
 TrabalhoTcc/.vs/TrabalhoTcc/v15/Server/sqlite3/storage.ide-shm
