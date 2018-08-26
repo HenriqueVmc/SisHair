@@ -1,0 +1,144 @@
+﻿@model TrabalhoTcc.Models.Funcionario
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+<div class="offset-2">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal col-md-6">
+                <h4>Editar Funcionário</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cpf, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CargoId, "Cargo:", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CargoId", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-horizontal col-md-6">
+                <input type="hidden" class="form-control" id="Endereco.Id" name="Endereco.Id" value="@ViewBag.Endereco.Id" />
+                <input type="hidden" class="form-control" id="Endereco.FuncionarioId" name="Endereco.FuncionarioId" value="@ViewBag.Endereco.FuncionarioId" />
+                @*@Html.Action("_Endereco", "Funcionarios")*@
+                <h4>Endereço:</h4>
+                <hr />
+                <div class="form-group">
+                    <label class="control-label col-md-2">CEP:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Cep" name="Endereco.Cep" value="@ViewBag.Endereco.Cep" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Rua:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Rua" name="Endereco.Rua" value="@ViewBag.Endereco.Rua" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Número:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Numero" name="Endereco.Numero" value="@ViewBag.Endereco.Numero" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3">Complemento:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Complemento" name="Endereco.Complemento" value="@ViewBag.Endereco.Complemento" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Bairro:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Bairro" name="Endereco.Bairro" value="@ViewBag.Endereco.Bairro" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Cidade:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Cidade" name="Endereco.Cidade" value="@ViewBag.Endereco.Cidade" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Estado:</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="Endereco.Estado" name="Endereco.Estado" value="@ViewBag.Endereco.Estado" />
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Savar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Lista de Funcionários", "Index")
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

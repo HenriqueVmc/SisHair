@@ -1,0 +1,136 @@
+﻿@model TrabalhoTcc.Models.Funcionario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+<div class="offset-2">
+    <div class="row">
+        <div class="col-md-6">
+
+            <h4>Detalhes - Funcionário</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DataNascimento)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cpf)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cpf)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Celular)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Telefone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cargo.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cargo.Nome)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+
+            <h4>Endereço - Funcionário</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Rua:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Rua
+                </dd>
+
+                <dt>
+                    Número
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Numero
+                </dd>
+
+                <dt>
+                    Bairro:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Bairro
+                </dd>
+
+                <dt>
+                    Cidade:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Cidade
+                </dd>
+
+                <dt>
+                    Estado:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Estado
+                </dd>
+
+                <dt>
+                    Complemento:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Complemento
+                </dd>
+                <dt>
+                    CEP:
+                </dt>
+
+                <dd>
+                    @ViewBag.Endereco.Cep
+                </dd>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+            @Html.ActionLink("Lista de Funcionários", "Index")
+        </p>
+    </div>
+</div>

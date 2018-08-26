@@ -17,8 +17,7 @@ namespace TrabalhoTcc.Context
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<LoginFuncionario> LoginFuncionarios { get; set; }
-
-
+        public DbSet<EnderecoFuncionario> EnderecoFuncionarios { get; set; }
         public DbSet<Servicos> Servicos { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
