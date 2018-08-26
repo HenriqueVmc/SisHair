@@ -275,6 +275,7 @@
     <Compile Include="Controllers\ContaClienteController.cs" />
     <Compile Include="Controllers\ContaFuncionarioController.cs" />
     <Compile Include="Controllers\ContaWebClienteController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -291,14 +292,18 @@
     <Compile Include="Migrations\201808260011365_cliente.Designer.cs">
       <DependentUpon>201808260011365_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808261359087_add funcionarios.cs" />
+    <Compile Include="Migrations\201808261359087_add funcionarios.Designer.cs">
+      <DependentUpon>201808261359087_add funcionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\ClienteN.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Conta\LoginFuncionario.cs" />
-    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Conta\LoginCliente.cs" />
+    <Compile Include="Models\EnderecoFuncionario.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Servicos.cs" />
     <Compile Include="Models\Solicitacoes.cs" />
@@ -331,7 +336,6 @@
     <Content Include="Views\Adm\ConsultarCliente.cshtml" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
     <Content Include="Views\Shared\MasterADM.cshtml" />
-    <Content Include="Views\Funci\AgendamentoDeServico.cshtml" />
     <Content Include="Views\Home\SolicitarAgendamento.cshtml" />
     <Content Include="Views\ContaCliente\Login.cshtml" />
     <Content Include="Views\ContaCliente\CriarConta.cshtml" />
@@ -345,6 +349,11 @@
     <Content Include="Views\ContaWebCliente\login.cshtml" />
     <Content Include="Views\ContaWebCliente\Logado.cshtml" />
     <Content Include="Views\ContaWebCliente\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Cadastrar.cshtml" />
+    <Content Include="Views\Funcionarios\Deletar.cshtml" />
+    <Content Include="Views\Funcionarios\Detalhes.cshtml" />
+    <Content Include="Views\Funcionarios\Editar.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -361,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808260011365_cliente.resx">
       <DependentUpon>201808260011365_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808261359087_add funcionarios.resx">
+      <DependentUpon>201808261359087_add funcionarios.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
