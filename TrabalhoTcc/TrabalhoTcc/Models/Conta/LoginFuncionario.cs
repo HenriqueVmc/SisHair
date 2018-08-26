@@ -30,7 +30,7 @@ namespace TrabalhoTcc.Models.Conta
                //        .Where(x => x.Usuario == login && x.Senha == senha)
                //        .SingleOrDefault();
 
-               db.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\App_Data\Tcc21.mdf;Integrated Security=True;Connect Timeout=30";
+               db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc21;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
                db.Open();
                using (var cmd = new SqlCommand())
                {

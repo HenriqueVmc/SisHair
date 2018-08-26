@@ -271,30 +271,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Controllers\AdmController.cs" />
+    <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaClienteController.cs" />
     <Compile Include="Controllers\ContaFuncionarioController.cs" />
     <Compile Include="Controllers\ContaWebClienteController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServicosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808231849371_inicio.cs" />
-    <Compile Include="Migrations\201808231849371_inicio.Designer.cs">
-      <DependentUpon>201808231849371_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808231952213_Adicionando LoginFuncionario.cs" />
-    <Compile Include="Migrations\201808231952213_Adicionando LoginFuncionario.Designer.cs">
-      <DependentUpon>201808231952213_Adicionando LoginFuncionario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808260011365_cliente.cs" />
-    <Compile Include="Migrations\201808260011365_cliente.Designer.cs">
-      <DependentUpon>201808260011365_cliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808261359087_add funcionarios.cs" />
-    <Compile Include="Migrations\201808261359087_add funcionarios.Designer.cs">
-      <DependentUpon>201808261359087_add funcionarios.cs</DependentUpon>
+    <Compile Include="Migrations\201808261518141_inicio.cs" />
+    <Compile Include="Migrations\201808261518141_inicio.Designer.cs">
+      <DependentUpon>201808261518141_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -305,7 +295,7 @@
     <Compile Include="Models\Conta\LoginCliente.cs" />
     <Compile Include="Models\EnderecoFuncionario.cs" />
     <Compile Include="Models\Funcionario.cs" />
-    <Compile Include="Models\Servicos.cs" />
+    <Compile Include="Models\Servico.cs" />
     <Compile Include="Models\Solicitacoes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -354,6 +344,16 @@
     <Content Include="Views\Funcionarios\Detalhes.cshtml" />
     <Content Include="Views\Funcionarios\Editar.cshtml" />
     <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\Servicos\Cadastrar.cshtml" />
+    <Content Include="Views\Servicos\Deletar.cshtml" />
+    <Content Include="Views\Servicos\Detalhes.cshtml" />
+    <Content Include="Views\Servicos\Editar.cshtml" />
+    <Content Include="Views\Servicos\Index.cshtml" />
+    <Content Include="Views\Cargos\Cadastrar.cshtml" />
+    <Content Include="Views\Cargos\Deletar.cshtml" />
+    <Content Include="Views\Cargos\Detalhes.cshtml" />
+    <Content Include="Views\Cargos\Editar.cshtml" />
+    <Content Include="Views\Cargos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -362,26 +362,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808231849371_inicio.resx">
-      <DependentUpon>201808231849371_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808231952213_Adicionando LoginFuncionario.resx">
-      <DependentUpon>201808231952213_Adicionando LoginFuncionario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808260011365_cliente.resx">
-      <DependentUpon>201808260011365_cliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808261359087_add funcionarios.resx">
-      <DependentUpon>201808261359087_add funcionarios.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808261518141_inicio.resx">
+      <DependentUpon>201808261518141_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

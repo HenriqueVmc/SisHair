@@ -103,7 +103,4 @@ C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\EntityFramework.xml
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\EntityFramework.SqlServer.xml
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.AdicionandoLoginFuncionario.resources
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.cliente.resources
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.cache
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.addfuncionarios.resources
