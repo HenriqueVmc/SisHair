@@ -94,10 +94,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Tcc.mdf" />
-    <Content Include="App_Data\Tcc_log.ldf">
-      <DependentUpon>Tcc.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\style.css" />
@@ -282,9 +278,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808271747087_inicio.cs" />
-    <Compile Include="Migrations\201808271747087_inicio.Designer.cs">
-      <DependentUpon>201808271747087_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201808271913559_inicio.cs" />
+    <Compile Include="Migrations\201808271913559_inicio.Designer.cs">
+      <DependentUpon>201808271913559_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -368,9 +364,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808271747087_inicio.resx">
-      <DependentUpon>201808271747087_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808271913559_inicio.resx">
+      <DependentUpon>201808271913559_inicio.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
