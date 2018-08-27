@@ -22,7 +22,7 @@
         <div class="sidebar" id="accordion">
             <nav class="sidebar-nav">
                 <ul class="nav">
-                    <a class=" nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
                         CLIENTE
                         <li class="fa fa-angle-down "></li>
                     </a>
@@ -43,13 +43,28 @@
                     <div class="collapse" id="funcionario" data-parent="#accordion">
                         <ul class="list-unstyled">
                             <li>
-                                <a class="nav-link" href="/Adm/Index">Cadastro de Funcionarios</a>
+                                <a class="nav-link" href="/Funcionarios/Cadastrar">Cadastro de Funcionarios</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="/Adm/ConsultarClientes">Consulta dos funcionarios</a>
+                                <a class="nav-link" href="/Funcionarios/Index">Consulta dos funcionarios</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="/Adm/ConsultarClientes">Agenda dos Funcionarios</a>
+                                <a class="nav-link" href="#">Agenda dos Funcionarios</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#servico" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        SERVIÇOS
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="servico" data-parent="#accordion">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href="/Servicos/Cadastrar">Cadastro de Serviço</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Servicos/Index">Consultar dos Serviços</a>
                             </li>
                         </ul>
                     </div>
@@ -62,7 +77,7 @@
                         
                         <ul class="list-unstyled">
                             <li>
-                                <a class="nav-link" href="/Adm/Index">Histórico da agenda</a>
+                                <a class="nav-link" href="#">Histórico da agenda</a>
                             </li>
 
                         </ul>
@@ -75,10 +90,10 @@
                     <div class="collapse" id="cargos" data-parent="#accordion">
                         <ul class="list-unstyled">
                             <li>
-                                <a class="nav-link" href="/Adm/CadastrarCargo">Cadastrar Cargo</a>
+                                <a class="nav-link" href="/Cargos/Cadastrar">Cadastrar Cargo</a>
                             </li>
                             <li>
-                                <a class="nav-link" href="/Adm/ConsultarCargo">Consultar Cargo</a>
+                                <a class="nav-link" href="/Cargos/Index">Consultar Cargo</a>
                             </li>
                         </ul>
                     </div>

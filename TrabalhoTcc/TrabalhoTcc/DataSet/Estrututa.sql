@@ -1,4 +1,10 @@
-﻿--
+﻿/*
+
+INSERT INTO  Cargoes (Nome) VALUES ('Cabeleireiro');
+INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Rose', '1999-09-09', '11991578765', '98798798776');
+INSERT INTO LoginFuncionarios (Id_Funcionario, Usuario, Senha ) VALUES (1, 'adm', 'adm');
+
+*/
 CREATE TABLE funcionarios(
 	id INT IDENTITY(1, 1) NOT NULL,
 	nome VARCHAR(100) NOT NULL,

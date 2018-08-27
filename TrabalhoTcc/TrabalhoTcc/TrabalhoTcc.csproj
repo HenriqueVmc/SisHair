@@ -23,7 +23,7 @@
     <UseGlobalApplicationHostFile />
     <Use64BitIISExpress />
     <TargetFrameworkProfile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,9 +94,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Tcc21.mdf" />
-    <Content Include="App_Data\Tcc21_log.ldf">
-      <DependentUpon>Tcc21.mdf</DependentUpon>
+    <Content Include="App_Data\Tcc.mdf" />
+    <Content Include="App_Data\Tcc_log.ldf">
+      <DependentUpon>Tcc.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -282,9 +282,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808261518141_inicio.cs" />
-    <Compile Include="Migrations\201808261518141_inicio.Designer.cs">
-      <DependentUpon>201808261518141_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201808271747087_inicio.cs" />
+    <Compile Include="Migrations\201808271747087_inicio.Designer.cs">
+      <DependentUpon>201808271747087_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -368,8 +368,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808261518141_inicio.resx">
-      <DependentUpon>201808261518141_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808271747087_inicio.resx">
+      <DependentUpon>201808271747087_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

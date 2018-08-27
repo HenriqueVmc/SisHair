@@ -10,7 +10,7 @@ namespace TrabalhoTcc.Context
 {
     public class DBContext : DbContext
     {
-        public DBContext() : base("Tcc21")
+        public DBContext() : base("Tcc")
         {
 
         }
@@ -25,7 +25,6 @@ namespace TrabalhoTcc.Context
         public DbSet<LoginCliente> LoginClientes { get; set; }
 
         //NovoClienteLogin
-
         public DbSet<ClienteN> contacliente { get; set; }
     }
 }

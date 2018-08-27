@@ -32,7 +32,7 @@ namespace TrabalhoTcc.Models.Conta
 
             using (var cmd = new SqlCommand())
             {
-                cmd.CommandText = string.Format("SELECT id, usuario, senha FROM usuario_clientes WHERE usuario = '{0}' AND senha = '{1}'", login, senha);
+                cmd.CommandText = string.Format("SELECT id, usuario, senha FROM loginclientes WHERE usuario = '{0}' AND senha = '{1}'", login, senha);
                 var reader = cmd.ExecuteReader();
 
                 if (reader.Read())
