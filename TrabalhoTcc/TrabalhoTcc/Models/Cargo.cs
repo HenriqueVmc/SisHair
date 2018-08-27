@@ -11,7 +11,8 @@ namespace TrabalhoTcc.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage="Cargo nao pode ser vasio")]
+        [Required(ErrorMessage="Cargo nao pode ser vazio")]
+        [Display(Name="Cargo:")]
         public string Nome { get; set; }
 
         public string Descricao { get; set; }

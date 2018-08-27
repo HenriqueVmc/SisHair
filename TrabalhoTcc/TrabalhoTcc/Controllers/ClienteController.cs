@@ -23,7 +23,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cliente/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
             {
@@ -39,7 +39,7 @@ namespace TrabalhoTcc.Controllers
 
         // GET: Cliente/Create
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Cadastrar()
         {
             return View();
         }
@@ -49,7 +49,7 @@ namespace TrabalhoTcc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
+        public async Task<ActionResult> Cadastrar([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cliente/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -81,7 +81,7 @@ namespace TrabalhoTcc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
+        public async Task<ActionResult> Editar([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cliente/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)
             {
@@ -108,7 +108,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // POST: Cliente/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
