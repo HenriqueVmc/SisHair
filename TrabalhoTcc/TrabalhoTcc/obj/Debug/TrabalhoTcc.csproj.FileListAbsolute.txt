@@ -95,10 +95,10 @@ C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\b
 C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\System.Web.Mvc.xml
 C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.dll
 C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.pdb
-C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
-C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
-C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csprojResolveAssemblyReference.cache
 C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
 C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.cache
+C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
+C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
+C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.AdicionandoSolicitacoes.resources
