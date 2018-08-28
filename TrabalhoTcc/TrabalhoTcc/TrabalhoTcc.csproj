@@ -278,9 +278,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808271913559_inicio.cs" />
-    <Compile Include="Migrations\201808271913559_inicio.Designer.cs">
-      <DependentUpon>201808271913559_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201808280346164_inicio.cs" />
+    <Compile Include="Migrations\201808280346164_inicio.Designer.cs">
+      <DependentUpon>201808280346164_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -326,10 +326,6 @@
     <Content Include="Views\ContaCliente\Login.cshtml" />
     <Content Include="Views\ContaCliente\CriarConta.cshtml" />
     <Content Include="Views\ContaFuncionario\Login.cshtml" />
-    <Content Include="Views\Cliente\Create.cshtml" />
-    <Content Include="Views\Cliente\Delete.cshtml" />
-    <Content Include="Views\Cliente\Details.cshtml" />
-    <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\ContaWebCliente\Cadastro.cshtml" />
     <Content Include="Views\ContaWebCliente\login.cshtml" />
@@ -350,6 +346,10 @@
     <Content Include="Views\Cargos\Detalhes.cshtml" />
     <Content Include="Views\Cargos\Editar.cshtml" />
     <Content Include="Views\Cargos\Index.cshtml" />
+    <Content Include="Views\Cliente\Cadastrar.cshtml" />
+    <Content Include="Views\Cliente\Deletar.cshtml" />
+    <Content Include="Views\Cliente\Detalhes.cshtml" />
+    <Content Include="Views\Cliente\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -364,12 +364,12 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808271913559_inicio.resx">
-      <DependentUpon>201808271913559_inicio.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\201808280346164_inicio.resx">
+      <DependentUpon>201808280346164_inicio.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

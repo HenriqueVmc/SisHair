@@ -79,7 +79,7 @@ namespace TrabalhoTcc.Controllers
             }
             Funcionario funcionario = await db.Funcionarios.FindAsync(id);
 
-            ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).Single();
+            ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
 
             if (funcionario == null)
             {

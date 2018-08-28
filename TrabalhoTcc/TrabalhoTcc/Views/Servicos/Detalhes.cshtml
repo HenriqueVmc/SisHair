@@ -1,51 +1,50 @@
 ﻿@model TrabalhoTcc.Models.Servico
 
 @{
-    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<h2>Details</h2>
+<div class="offset-2">
+    <div>
+        <h4>Serviço</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
 
-<div>
-    <h4>Servico</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Valor)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Valor)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Duracao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Duracao)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Duracao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Duracao)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+        @Html.ActionLink("Lista de Serviços", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
