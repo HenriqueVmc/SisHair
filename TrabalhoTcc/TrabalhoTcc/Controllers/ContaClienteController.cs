@@ -34,11 +34,11 @@ namespace TrabalhoTcc.Controllers
             {
                 return View(loginC);
             }
-            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
+            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha); 
 
             if (usuario != null)
             {
-                return RedirectToAction("Agendamento", "Solicitacao");
+                return RedirectToAction("Agendamento", "Solicitacao", new {@idCliente = usuario.ClienteId});
             }
             else
             {
@@ -57,11 +57,6 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
-            //Validar dados
-            //Ver se já existe no banco
-            //Cadastrar Cliente
-            //Redirection Solicitações
-
             if (ModelState.IsValid)
             {                         
                 db.Clientes.Add(cliente);
@@ -70,12 +65,13 @@ namespace TrabalhoTcc.Controllers
                 {
                     Usuario = loginC.Usuario,
                     Senha = loginC.Senha,
-                    Id_Cliente = cliente.Id
+                    ClienteId = cliente.Id
                 };
 
                 db.LoginClientes.Add(LoginCliente);
 
                 db.SaveChanges();
+                return RedirectToAction("Login", "ContaCliente");
             }
 
 

@@ -17,7 +17,7 @@ namespace TrabalhoTcc.Models.Conta
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
-        public int Id_Funcionario { get; set; }
+        public int FuncionarioId { get; set; }
         public Funcionario Funcionario { get; set; }
 
         public static LoginFuncionario ValidarUsuario(string login, string senha)
@@ -30,7 +30,7 @@ namespace TrabalhoTcc.Models.Conta
                //        .Where(x => x.Usuario == login && x.Senha == senha)
                //        .SingleOrDefault();
 
-               db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+               db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
                db.Open();
                using (var cmd = new SqlCommand())
                {

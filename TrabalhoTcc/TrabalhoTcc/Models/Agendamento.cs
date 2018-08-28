@@ -29,7 +29,7 @@ namespace TrabalhoTcc.Models
 
         [Display(Name = "Funcionário: ")]
         public virtual Funcionario Funcionario { get; set; }
-        public int FuncioonarioId { get; set; }
+        public int FuncionarioId { get; set; }
 
         [Display(Name = "Cliente: ")]
         public virtual Cliente Cliente { get; set; }

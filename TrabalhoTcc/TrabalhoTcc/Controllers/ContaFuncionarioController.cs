@@ -12,6 +12,7 @@ namespace TrabalhoTcc.Controllers
     {
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -31,7 +32,7 @@ namespace TrabalhoTcc.Controllers
 
                 if (Url.IsLocalUrl(returnUrl))
                 {
-                    return RedirectToAction(returnUrl);
+                    return Redirect(returnUrl);
                 }
                 return RedirectToAction("Index", "Adm");
             }
