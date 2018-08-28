@@ -30,11 +30,15 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult Login(LoginCliente loginC, string returnUrl)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(loginC);
+            }
             var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
 
             if (usuario != null)
             {
-                return RedirectToAction("SolicitarAgendamento", "Home");
+                return RedirectToAction("Agendamento", "Solicitacao");
             }
             else
             {
