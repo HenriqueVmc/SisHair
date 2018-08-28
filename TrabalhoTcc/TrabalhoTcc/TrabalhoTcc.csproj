@@ -278,18 +278,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808281652425_inicio.cs" />
-    <Compile Include="Migrations\201808281652425_inicio.Designer.cs">
-      <DependentUpon>201808281652425_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808281707193_Adicionando Solicitacoes.cs" />
-    <Compile Include="Migrations\201808281707193_Adicionando Solicitacoes.Designer.cs">
-      <DependentUpon>201808281707193_Adicionando Solicitacoes.cs</DependentUpon>
+    <Compile Include="Migrations\201808281945498_inicio.cs" />
+    <Compile Include="Migrations\201808281945498_inicio.Designer.cs">
+      <DependentUpon>201808281945498_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Cargo.cs" />
-    <Compile Include="Models\ClienteN.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Conta\LoginFuncionario.cs" />
     <Compile Include="Models\Conta\LoginCliente.cs" />
@@ -326,15 +321,10 @@
     <Content Include="Views\Adm\ConsultarCliente.cshtml" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
     <Content Include="Views\Shared\MasterADM.cshtml" />
-    <Content Include="Views\Home\SolicitarAgendamento.cshtml" />
     <Content Include="Views\ContaCliente\Login.cshtml" />
     <Content Include="Views\ContaCliente\CriarConta.cshtml" />
     <Content Include="Views\ContaFuncionario\Login.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
-    <Content Include="Views\ContaWebCliente\Cadastro.cshtml" />
-    <Content Include="Views\ContaWebCliente\login.cshtml" />
-    <Content Include="Views\ContaWebCliente\Logado.cshtml" />
-    <Content Include="Views\ContaWebCliente\Index.cshtml" />
     <Content Include="Views\Funcionarios\Cadastrar.cshtml" />
     <Content Include="Views\Funcionarios\Deletar.cshtml" />
     <Content Include="Views\Funcionarios\Detalhes.cshtml" />
@@ -377,11 +367,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808281652425_inicio.resx">
-      <DependentUpon>201808281652425_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808281707193_Adicionando Solicitacoes.resx">
-      <DependentUpon>201808281707193_Adicionando Solicitacoes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808281945498_inicio.resx">
+      <DependentUpon>201808281945498_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
