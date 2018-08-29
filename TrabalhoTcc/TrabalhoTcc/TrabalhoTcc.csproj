@@ -278,9 +278,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808281945498_inicio.cs" />
-    <Compile Include="Migrations\201808281945498_inicio.Designer.cs">
-      <DependentUpon>201808281945498_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201808290402081_inicio.cs" />
+    <Compile Include="Migrations\201808290402081_inicio.Designer.cs">
+      <DependentUpon>201808290402081_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808290444337_addRequired.cs" />
+    <Compile Include="Migrations\201808290444337_addRequired.Designer.cs">
+      <DependentUpon>201808290444337_addRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -367,8 +371,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808281945498_inicio.resx">
-      <DependentUpon>201808281945498_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808290402081_inicio.resx">
+      <DependentUpon>201808290402081_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808290444337_addRequired.resx">
+      <DependentUpon>201808290444337_addRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
