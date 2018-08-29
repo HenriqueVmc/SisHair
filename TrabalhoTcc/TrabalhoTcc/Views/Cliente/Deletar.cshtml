@@ -1,8 +1,6 @@
 ﻿@model TrabalhoTcc.Models.Cliente
-
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/Master.cshtml";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 <div class="offset-2">
     <h3>Deseja realmente deletar esse regitro?</h3>
@@ -57,8 +55,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+                <input type="submit" value="Deletar" class="btn btn-default" /> |
+                @Html.ActionLink("Lista de Clientes", "Index")
             </div>
         }
     </div>

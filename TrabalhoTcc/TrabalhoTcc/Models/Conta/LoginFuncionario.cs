@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,8 +13,10 @@ namespace TrabalhoTcc.Models.Conta
         [Key]
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Informe o usuário")]
         public string Usuario { get; set; }
 
+        [Required(ErrorMessage = "Informe a senha")]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 

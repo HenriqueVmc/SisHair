@@ -1,7 +1,7 @@
 ﻿/*
 
 INSERT INTO Cargoes (Nome) VALUES ('Cabeleireiro');
-INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Rose', '1999-09-09', '11991578765', '98798798776');
+INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Administrador', '1999-09-09', '11991578765', '98798798776');
 INSERT INTO LoginFuncionarios (FuncionarioId, Usuario, Senha ) VALUES (1, 'adm', 'adm');
 
 */

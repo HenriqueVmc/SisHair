@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
+using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -54,7 +55,21 @@ namespace TrabalhoTcc.Controllers
             if (ModelState.IsValid)
             {
                 db.Clientes.Add(cliente);
+
+                string senha = Convert.ToString(cliente.Data_nascimento.Day.ToString().PadLeft(2, '0'));
+                senha += Convert.ToString(cliente.Data_nascimento.Month.ToString().PadLeft(2, '0'));
+                senha += Convert.ToString(cliente.Data_nascimento.Year);
+
+                var loginC = new LoginCliente()
+                {
+                    Usuario = cliente.Email,
+                    Senha = senha,
+                    ClienteId = cliente.Id
+                };
+
+                db.LoginClientes.Add(loginC);
                 await db.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
 

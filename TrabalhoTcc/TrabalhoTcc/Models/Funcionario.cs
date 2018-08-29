@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -20,7 +21,6 @@ namespace TrabalhoTcc.Models
         [Required(ErrorMessage = "Dada de nascimento deve ser preenchida")]
         [Display(Name = "Data de Nascimento:")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "CPF deve ser preenchido")]
