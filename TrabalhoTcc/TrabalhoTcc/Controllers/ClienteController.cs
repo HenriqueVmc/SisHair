@@ -56,14 +56,10 @@ namespace TrabalhoTcc.Controllers
             {
                 db.Clientes.Add(cliente);
 
-                string senha = Convert.ToString(cliente.Data_nascimento.Day.ToString().PadLeft(2, '0'));
-                senha += Convert.ToString(cliente.Data_nascimento.Month.ToString().PadLeft(2, '0'));
-                senha += Convert.ToString(cliente.Data_nascimento.Year);
-
                 var loginC = new LoginCliente()
                 {
                     Usuario = cliente.Email,
-                    Senha = senha,
+                    Senha = gerarSenha(cliente),
                     ClienteId = cliente.Id
                 };
 
@@ -76,6 +72,14 @@ namespace TrabalhoTcc.Controllers
             return View(cliente);
         }
 
+        private string gerarSenha(Cliente cliente)
+        {
+            string senha = Convert.ToString(cliente.Data_nascimento.Day.ToString().PadLeft(2, '0'));
+            senha += Convert.ToString(cliente.Data_nascimento.Month.ToString().PadLeft(2, '0'));
+            senha += Convert.ToString(cliente.Data_nascimento.Year);
+
+            return senha;
+        }
         // GET: Cliente/Edit/5
         public async Task<ActionResult> Editar(int? id)
         {

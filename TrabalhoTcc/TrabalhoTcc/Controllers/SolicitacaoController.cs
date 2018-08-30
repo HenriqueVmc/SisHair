@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
+using Newtonsoft.Json;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -25,6 +26,13 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult AgendamentoModal(int? id)
+        {
+            ViewBag.FuncionarioId = id;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Agendamento(Solicitacao solicitacao)
         {
@@ -32,7 +40,8 @@ namespace TrabalhoTcc.Controllers
             {
                 db.Solicitacoes.Add(solicitacao);
                 db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
+
             }
 
             ViewBag.ClienteId = solicitacao.ClienteId;
@@ -40,7 +49,6 @@ namespace TrabalhoTcc.Controllers
 
             return View(solicitacao);
         }
-
         // GET: Solicitacao
         public async Task<ActionResult> Index()
         {

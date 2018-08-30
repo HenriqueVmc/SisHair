@@ -1,0 +1,42 @@
+﻿@model TrabalhoTcc.Models.Solicitacao
+@{
+    Layout = null;
+}
+<div class="modal" tabindex="-1" role="dialog" id="modal-agendamento">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agendar Solicitação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="FuncionarioId" name="FuncionarioId" value="@ViewBag.FuncionarioId"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Data:</p>
+                        @Html.TextBoxFor(m => m.Data, new { @class = "form-control", @type = "date" })
+                        @Html.ValidationMessageFor(m => m.Data, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <p>Horario:</p>
+                        @Html.TextBoxFor(m => m.HoraInicio, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.HoraInicio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <p>Descrição:</p>
+                        @Html.TextBoxFor(m => m.Descricao, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Descricao, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="modal-agendamento-salvar">Agendar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
