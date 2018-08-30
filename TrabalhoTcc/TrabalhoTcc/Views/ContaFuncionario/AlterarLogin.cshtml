@@ -5,10 +5,12 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
+@* new { id = "signupform" } *@
+
 <div class="offset-2">
     <h2>AlterarLogin</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAlterarLogin" }))    
     {
         @Html.AntiForgeryToken()
 
@@ -21,22 +23,38 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })*@
+                    <input type="text" id="usuario" name="usuario"/>
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                    <input type="text" id="senha" name="senha" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })*@
+                    <input type="text" id="novoUsuario" name="novoUsuario" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" id="novaSenha" name="novaSenha" />
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Savar" class="btn btn-default" />
+                    <a href="#" id="btnSalvar btn btn-success">Salvar</a>
+                    @*<input type="submit" value="Savar" class="btn btn-default" />*@
                 </div>
             </div>
         </div>
