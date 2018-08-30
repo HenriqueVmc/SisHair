@@ -41,7 +41,6 @@ namespace TrabalhoTcc.Controllers
                 db.Solicitacoes.Add(solicitacao);
                 db.SaveChangesAsync();
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
-
             }
 
             ViewBag.ClienteId = solicitacao.ClienteId;

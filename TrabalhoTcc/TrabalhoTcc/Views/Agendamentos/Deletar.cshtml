@@ -1,0 +1,81 @@
+﻿@model TrabalhoTcc.Models.Agendamento
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+<div class="offset-2">
+    <h3>Deseja realmente deletar esse registro?</h3>
+    <div>
+        <h4>Agendamento</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cliente.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cliente.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Funcionario.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Funcionario.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HoraInicio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoraInicio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HoraFinal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoraFinal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Data)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Data)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Situacao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Situacao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ServicoId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ServicoId)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Deletar" class="btn btn-default" /> |
+                @Html.ActionLink("Lista de Agendamentos", "Index")
+            </div>
+        }
+    </div>
+</div>
