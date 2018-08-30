@@ -51,8 +51,8 @@
 
         </dl>
     </div>
-    <p>
-        @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
-        @Html.ActionLink("Lista de Clientes", "Index")
+    <p >
+        @Html.ActionLink(" Editar", "Editar", "Cliente", new { id = Model.Id },new { @class = " fa fa-pencil btn btn-outline-dark" })|
+        @Html.ActionLink(" Lista de Clientes", "Index", "Cliente", new { @class = "fa fa-arrow-circle-left btn btn-outline-danger" })
     </p>
 </div>

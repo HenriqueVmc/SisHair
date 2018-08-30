@@ -28,9 +28,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Celular)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Cargo.Nome)
             </th>
@@ -55,16 +53,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Celular)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Cargo.Nome)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
-                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                    @Html.ActionLink(" Detalhes", "Detalhes", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" }) |
+                    @Html.ActionLink(" Deletar", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
                 </td>
             </tr>
         }

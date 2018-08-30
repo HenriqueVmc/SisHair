@@ -55,8 +55,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Deletar" class="btn btn-default" /> |
-                @Html.ActionLink("Lista de Clientes", "Index")
+                <button type="submit" class="btn btn-outline-success"><i class="fa fa-trash"></i> Deletar</button> |
+                @Html.ActionLink("Lista de Clientes", "Index", "Cliente", new { @class = "fa fa-arrow-circle-left btn btn-outline-danger" })
             </div>
         }
     </div>

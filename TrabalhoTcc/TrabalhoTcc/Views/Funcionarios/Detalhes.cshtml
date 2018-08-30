@@ -127,9 +127,9 @@
                 </dd>
             </dl>
         </div>
-        <p>
-            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
-            @Html.ActionLink("Lista de Funcionários", "Index")
+        <p class="float-left ml-3">
+            @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = Model.Id }, new { @class = " fa fa-pencil btn btn-outline-dark" }) 
+            @Html.ActionLink(" Lista de Funcionários", "Index", "Funcionarios", new { @class = "fa fa-arrow-circle-left btn btn-outline-danger" })
         </p>
     </div>
 </div>
