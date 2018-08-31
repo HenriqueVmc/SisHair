@@ -7,7 +7,8 @@
             method: "POST",
             data: dados,
             success: function (data) {
-                alert("Usuário Alterado!")                 
+                alert("Usuário Alterado!");   
+                window.location.replace("/ContaFuncionario/Login");
             }
         });
 

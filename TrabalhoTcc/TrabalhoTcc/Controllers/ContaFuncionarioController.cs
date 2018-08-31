@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -67,19 +68,17 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                LoginFuncionario loginAntigo = db.LoginFuncionarios.Where(lf => lf.Usuario == usuario && lf.Senha == senha).FirstOrDefault();
+                LoginFuncionario loginAntigo = db.LoginFuncionarios.SingleOrDefault(lf => lf.Usuario == usuario && lf.Senha == senha);
 
-                var NovoLogin = new LoginFuncionario(){
-                    Usuario = usuario,
-                    Senha = senha,
-                    FuncionarioId = loginAntigo.FuncionarioId
-                };
+                if (loginAntigo != null)
+                {
+                    loginAntigo.Usuario = novoUsuario;
+                    loginAntigo.Senha = novaSenha;
 
-                db.Entry(NovoLogin).State = EntityState.Modified;
-                db.SaveChanges();
-
-                FormsAuthentication.SetAuthCookie(NovoLogin.Usuario, false);
-                return RedirectToAction("Index", "Adm");
+                    db.Entry(loginAntigo).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                return Content(JsonConvert.SerializeObject(new { id = loginAntigo.Id }));
             }
             else
             {
