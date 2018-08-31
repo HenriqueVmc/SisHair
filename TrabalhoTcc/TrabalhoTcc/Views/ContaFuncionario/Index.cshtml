@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TrabalhoTcc.Models.Conta.LoginFuncionario>
+@{
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<div class="offset-2">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.ActionLink("Alterar Login", "AlterarLogin") |
+                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
