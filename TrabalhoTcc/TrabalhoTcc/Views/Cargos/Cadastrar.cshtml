@@ -31,7 +31,8 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Cadastrar" class="btn btn-default" />
+                    <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> Create</button>
+                    @Html.ActionLink(" Back to List", "Index", "Cargos", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary " })
                 </div>
             </div>
         </div>

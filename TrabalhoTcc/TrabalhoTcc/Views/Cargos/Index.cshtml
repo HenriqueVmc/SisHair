@@ -31,9 +31,9 @@
                     @Html.DisplayFor(modelItem => item.Descricao)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
-                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    @Html.ActionLink(" Editar", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                    @Html.ActionLink(" Detalhes", "Detalhes", "Cargos", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
+                    @Html.ActionLink(" Deletar", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
                 </td>
             </tr>
         }
