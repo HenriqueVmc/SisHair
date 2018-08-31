@@ -378,6 +378,8 @@
     <Content Include="Views\Solicitacao\Agendamento.cshtml" />
     <Content Include="Views\Solicitacao\AgendamentoModal.cshtml" />
     <Content Include="Views\ContaFuncionario\AlterarLogin.cshtml" />
+    <Content Include="Views\ContaFuncionario\Index.cshtml" />
+    <Content Include="Views\ContaFuncionario\Deletar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
