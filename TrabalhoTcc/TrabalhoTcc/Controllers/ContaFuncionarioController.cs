@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -67,25 +69,63 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                LoginFuncionario loginAntigo = db.LoginFuncionarios.Where(lf => lf.Usuario == usuario && lf.Senha == senha).FirstOrDefault();
+                LoginFuncionario loginAntigo = db.LoginFuncionarios.SingleOrDefault(lf => lf.Usuario == usuario && lf.Senha == senha);
 
-                var NovoLogin = new LoginFuncionario(){
-                    Usuario = usuario,
-                    Senha = senha,
-                    FuncionarioId = loginAntigo.FuncionarioId
-                };
+                if (loginAntigo != null)
+                {
+                    loginAntigo.Usuario = novoUsuario;
+                    loginAntigo.Senha = novaSenha;
 
-                db.Entry(NovoLogin).State = EntityState.Modified;
-                db.SaveChanges();
-
-                FormsAuthentication.SetAuthCookie(NovoLogin.Usuario, false);
-                return RedirectToAction("Index", "Adm");
+                    db.Entry(loginAntigo).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                return Content(JsonConvert.SerializeObject(new { id = loginAntigo.Id }));
             }
             else
             {
                 ModelState.AddModelError("", "Login Inválido");
             }
+
             return View();
+        }
+
+        public async Task<ActionResult> Index()
+        {
+            return View(await db.LoginFuncionarios.ToListAsync());
+        }
+
+        public async Task<ActionResult> Deletar(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            LoginFuncionario loginFuncionario = await db.LoginFuncionarios.FindAsync(id);
+            if (loginFuncionario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(loginFuncionario);
+        }
+
+        // POST: ContaFuncionario/Delete/5
+        [HttpPost, ActionName("Deletar")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteConfirmed(int id)
+        {
+            LoginFuncionario loginFuncionario = await db.LoginFuncionarios.FindAsync(id);
+            db.LoginFuncionarios.Remove(loginFuncionario);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
