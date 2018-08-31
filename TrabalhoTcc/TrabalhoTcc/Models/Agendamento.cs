@@ -10,17 +10,21 @@ namespace TrabalhoTcc.Models
     {
         [Key]
         public int Id { get; set; }
+
         //[Required(ErrorMessage="Hora deve ser preenchida")]
         [Display(Name = "Hora Inicial:")]
         [DisplayFormat(DataFormatString = "{0: t}")]
         public DateTime HoraInicio { get; set; }
+
         //[Required(ErrorMessage="Hora final deve ser preenchida")]
         [Display (Name = "Hora Final:")]
         [DisplayFormat(DataFormatString = "{0: t}")]
         public DateTime HoraFinal { get; set; }
+
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Data { get; set; }
+
         //[Required(ErrorMessage="Situacao deve ser preenchida")]
         //[MinLength(8, ErrorMessage="Situacao deve conter no mínimo 8 caracateres")]
         //[MaxLength(50, ErrorMessage="Situacao não deve exceder 50 caracteres")]
@@ -36,7 +40,6 @@ namespace TrabalhoTcc.Models
         public int ClienteId { get; set; }
 
         public virtual ICollection<Servico> Servicos { get; set; }
-        public int ServicoId { get; set; }
 
     }
 }

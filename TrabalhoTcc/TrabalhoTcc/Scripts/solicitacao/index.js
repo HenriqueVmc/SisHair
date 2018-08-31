@@ -11,7 +11,7 @@
                     $("body").append(data);
                     $("#modal-agendamento").modal('show');
                 }
-            });
+            }); 
         } else {
             $("#modal-agendamento").modal('show');
             limparCampos();
