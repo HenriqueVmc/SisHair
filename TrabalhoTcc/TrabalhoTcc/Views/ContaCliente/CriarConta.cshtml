@@ -18,7 +18,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-nome">Nome:</label>
-                            <input type="text" class="form-control" name="Cliente.Nome" id="Cliente.Nome" />
+                            <input type="text" class="form-control" name="Cliente.Nome" id="Cliente.Nome"/>
                             @Html.ValidationMessageFor(m => m.Cliente.Nome, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -84,6 +84,13 @@
                         </div>
                     </div>
                 </div>
+                    <div clas="col-md-6">
+                        <div class="form-group">
+                            <button class="btn btn-outline-success" type="button" id="GoogleLogin" onclick="login()">
+                                <i class="fa fa-google-plus"></i> Preencher seus dados com sua conta Google
+                            </button>
+                        </div>
+                    </div>
 
                 @* ÁREA COM CHECKED "NÃO SOU UM ROBÔ" *@
                 <hr />
