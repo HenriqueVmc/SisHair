@@ -315,6 +315,10 @@
     <Compile Include="Migrations\201809030130317_inicio.Designer.cs">
       <DependentUpon>201809030130317_inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809030412312_solicitacoes.cs" />
+    <Compile Include="Migrations\201809030412312_solicitacoes.Designer.cs">
+      <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Cargo.cs" />
@@ -388,6 +392,7 @@
     <Content Include="Views\ContaFuncionario\Index.cshtml" />
     <Content Include="Views\ContaFuncionario\Deletar.cshtml" />
     <Content Include="Views\Agendamentos\Index.cshtml" />
+    <Content Include="Views\Agendamentos\Solicitacoes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -407,6 +412,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809030130317_inicio.resx">
       <DependentUpon>201809030130317_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809030412312_solicitacoes.resx">
+      <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

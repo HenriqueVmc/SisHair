@@ -75,10 +75,10 @@ C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTc
 C:\Users\105014\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
 C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
 C:\Users\i3i\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
+C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\EntityFramework.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\TrabalhoTcc.dll.config
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\TrabalhoTcc.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\TrabalhoTcc.pdb
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\EntityFramework.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\EntityFramework.SqlServer.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\Newtonsoft.Json.dll
@@ -98,6 +98,7 @@ C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\System.Web.Helpers.xml
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\System.Web.Mvc.xml
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
+C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.solicitacoes.resources
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.cache
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.CoreCompileInputs.cache
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.CopyComplete
