@@ -1,139 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using Newtonsoft.Json;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Data.Entity.Validation;
 
 namespace TrabalhoTcc.Controllers
 {
     public class AgendamentosController : Controller
     {
         private DBContext db = new DBContext();
-
         // GET: Agendamentos
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            var agendamentos = db.Agendamentos.Include(a => a.Cliente).Include(a => a.Funcionario);
-            return View(await agendamentos.ToListAsync());
-        }
-
-        // GET: Agendamentos/Details/5
-        public async Task<ActionResult> Detalhes(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Agendamento agendamento = await db.Agendamentos.FindAsync(id);
-            if (agendamento == null)
-            {
-                return HttpNotFound();                
-            }
-            return View(agendamento);
-        }
-
-        // GET: Agendamentos/Create
-        public ActionResult Cadastrar()
-        {
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome");
             ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome");
-            ViewBag.ServicoId = new SelectList(db.Servicos, "Id", "Nome");
+            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome");
             return View();
         }
 
-        // POST: Agendamentos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpGet]
+        public JsonResult GetAgendamentos()
+        {
+            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao }).ToList();
+
+            return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Cadastrar([Bind(Include = "Id,HoraInicio,HoraFinal,Data,Situacao,FuncionarioId,ClienteId,ServicoId")] Agendamento agendamento)
+        public JsonResult Salvar(Agendamento a)
         {
-            if (ModelState.IsValid)
+            var status = false;
+            try
             {
-                db.Agendamentos.Add(agendamento);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
 
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome", agendamento.ClienteId);
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome", agendamento.FuncionarioId);
-            return View(agendamento);
+                if (a.Id > 0)
+                {
+                    //Update the Agendamento
+                    var result = db.Agendamentos.Where(agen => agen.Id == a.Id).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result.DataHoraInicio = a.DataHoraInicio;
+                        result.DataHoraFinal = a.DataHoraFinal;
+                        result.Situacao = a.Situacao;
+                        result.FuncionarioId = a.FuncionarioId;
+                        result.ClienteId = a.ClienteId;
+                    }
+                }
+                else
+                {
+                    db.Agendamentos.Add(a);
+                }
+
+                db.SaveChanges();
+                status = true;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+            }
+            return new JsonResult { Data = new { status = status } };
         }
 
-        // GET: Agendamentos/Edit/5
-        public async Task<ActionResult> Editar(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Agendamento agendamento = await db.Agendamentos.FindAsync(id);
-            if (agendamento == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome", agendamento.ClienteId);
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome", agendamento.FuncionarioId);
-            return View(agendamento);
-        }
-
-        // POST: Agendamentos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar([Bind(Include = "Id,HoraInicio,HoraFinal,Data,Situacao,FuncionarioId,ClienteId,ServicoId")] Agendamento agendamento)
+        public JsonResult Deletar(int id)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(agendamento).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome", agendamento.ClienteId);
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome", agendamento.FuncionarioId);
-            return View(agendamento);
-        }
+            var status = false;
 
-        // GET: Agendamentos/Delete/5
-        public async Task<ActionResult> Deletar(int? id)
-        {
-            if (id == null)
+            var result = db.Agendamentos.Where(agen => agen.Id == id).FirstOrDefault();
+            if (result != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Agendamentos.Remove(result);
+                db.SaveChanges();
+                status = true;
             }
-            Agendamento agendamento = await db.Agendamentos.FindAsync(id);
-            if (agendamento == null)
-            {
-                return HttpNotFound();
-            }
-            return View(agendamento);
-        }
 
-        // POST: Agendamentos/Delete/5
-        [HttpPost, ActionName("Deletar")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            Agendamento agendamento = await db.Agendamentos.FindAsync(id);
-            db.Agendamentos.Remove(agendamento);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return new JsonResult { Data = new { status = status } };
         }
     }
 }

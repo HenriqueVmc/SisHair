@@ -1,67 +1,90 @@
-﻿@model IEnumerable<TrabalhoTcc.Models.Agendamento>
-
+﻿@model TrabalhoTcc.Models.Agendamento
 @{
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
 <div class="offset-2">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Cliente.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Funcionario.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoraFinal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Situacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServicoId)
-            </th>
-            <th></th>
-        </tr>
+    <div id="agenda"></div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoraInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoraFinal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Situacao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ServicoId)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                    @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |
-                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                </td>
-            </tr>
-        }
+    <div id="agendamento-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agendamento do <span id="eventTitle"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <button id="btnDeletar" class="btn btn-default btn-sm pull-right">
+                        <span class="glyphicon glyphicon-remove"></span> Deletar
+                    </button>
+                    <button id="btnEditar" class="btn btn-default btn-sm pull-right" style="margin-right:5px;">
+                        <span class="glyphicon glyphicon-pencil"></span> Editar
+                    </button>
+                    <p id="pDetails"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    </table>
+    <div id="agendamento-modal-salvar" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Savar Agendamento</h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <form class="col-md-12 form-horizontal">
+                        <input type="hidden" id="Id" value="0" />
+
+                        <div class="form-group">
+                            <label>Funcionários:</label>
+                            @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label>Clientes:</label>
+                            @Html.DropDownList("ClienteId", null, htmlAttributes: new { @class = "form-control" })
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <label>Horário de Início:</label>
+                            <div class="input-group date" id="dtDataHoraInicio">
+                                <input type="text" id="DataHoraInicio" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.DataHoraInicio, "", new { @class = "text-danger" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Horário de Finalização:</label>
+                            <div class="input-group date" id="dtDataHoraFinal">
+                                <input type="text" id="DataHoraFinal" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.DataHoraFinal, "", new { @class = "text-danger" })
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Situação</label>
+                            <textarea id="Situacao" rows="3" class="form-control"></textarea>
+                        </div>
+
+                        <button type="button" id="btnSalvarAgendamento" class="btn btn-success">Salvar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
