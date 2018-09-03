@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap\bootstrap-grid.css" />
@@ -110,6 +111,9 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\fullcalendar\fullcalendar.min.css" />
+    <Content Include="Content\fullcalendar\fullcalendar.print.css" />
     <Content Include="Content\jquery.mask.js" />
     <Content Include="Content\mascara.js" />
     <Content Include="Content\mdbBootstrap\css\addons\datatables.css" />
@@ -171,6 +175,7 @@
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
     <Content Include="Imagem-carrosel-index\haircut3.jpg" />
     <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -253,6 +258,11 @@
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.js" />
+    <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Scripts\fullcalendar\index.js" />
+    <Content Include="Scripts\fullcalendar\moment.min.js" />
+    <Content Include="Scripts\fullcalendar\pt-br.js" />
     <Content Include="Scripts\indexadm.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -289,6 +299,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Controllers\AdmController.cs" />
+    <Compile Include="Controllers\AgendamentosController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaClienteController.cs" />
@@ -300,13 +311,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808290402081_inicio.cs" />
-    <Compile Include="Migrations\201808290402081_inicio.Designer.cs">
-      <DependentUpon>201808290402081_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808290444337_addRequired.cs" />
-    <Compile Include="Migrations\201808290444337_addRequired.Designer.cs">
-      <DependentUpon>201808290444337_addRequired.cs</DependentUpon>
+    <Compile Include="Migrations\201809030130317_inicio.cs" />
+    <Compile Include="Migrations\201809030130317_inicio.Designer.cs">
+      <DependentUpon>201809030130317_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -380,6 +387,7 @@
     <Content Include="Views\ContaFuncionario\AlterarLogin.cshtml" />
     <Content Include="Views\ContaFuncionario\Index.cshtml" />
     <Content Include="Views\ContaFuncionario\Deletar.cshtml" />
+    <Content Include="Views\Agendamentos\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -397,11 +405,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808290402081_inicio.resx">
-      <DependentUpon>201808290402081_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808290444337_addRequired.resx">
-      <DependentUpon>201808290444337_addRequired.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809030130317_inicio.resx">
+      <DependentUpon>201809030130317_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
