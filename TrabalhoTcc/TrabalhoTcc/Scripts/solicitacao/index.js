@@ -19,14 +19,15 @@
     });
 
     $("body").on("click", "#modal-agendamento-salvar", function () {
+        debugger;
         $.ajax({
             url: "/Solicitacao/Agendamento",
-            method: "POST",
+            method: "post",
             data: {
                 funcionarioId: $("#FuncionarioId").val(),
                 clienteId: $("#ClienteId").val(),
-                data: $("#Data").val(),
-                horaInicio: $("#HoraInicio").val(),
+                dataHoraInicio: $("#DataHoraInicio").val(),
+                dataHoraFinal: $("#DataHoraFinal").val(),
                 descricao: $("#Descricao").val()
             },
             success: function (data) {
@@ -39,8 +40,8 @@
     });
 
     function limparCampos() {
-        $("#Data").val("");
-        $("#HoraInicio").val("");
+        $("#DataHoraInicio").val("");
+        $("#DataHoraFinal").val("");
         $("#Descricao").val("");
     }
 });

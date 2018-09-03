@@ -83,7 +83,7 @@ namespace TrabalhoTcc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,HoraInicio,Data,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
+        public async Task<ActionResult> Create([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
         {
             if (ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace TrabalhoTcc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,HoraInicio,Data,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
         {
             if (ModelState.IsValid)
             {

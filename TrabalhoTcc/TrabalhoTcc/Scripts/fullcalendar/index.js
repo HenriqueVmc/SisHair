@@ -34,7 +34,7 @@
         $('#agenda').fullCalendar('destroy');
         $('#agenda').fullCalendar({
 
-            contentHeight: 400,
+            contentHeight: 500,
             defaultDate: new Date(),
             timeFormat: 'h(:mm)a',
             header: {

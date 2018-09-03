@@ -36,7 +36,6 @@ namespace TrabalhoTcc.Controllers
             var status = false;
             try
             {
-
                 if (a.Id > 0)
                 {
                     //Update the Agendamento
@@ -89,6 +88,45 @@ namespace TrabalhoTcc.Controllers
             }
 
             return new JsonResult { Data = new { status = status } };
+        }
+
+
+        public ActionResult Solicitacoes()
+        {
+            var solicitacoes = db.Solicitacoes.ToList();
+            return View(solicitacoes);
+        }
+
+        [HttpGet]
+        public ActionResult SalvarSolicitacao(int id)
+        {
+            var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
+
+            var agendamento = new Agendamento(){
+                DataHoraInicio = s.DataHoraInicio,
+                DataHoraFinal = s.DataHoraFinal,
+                FuncionarioId = s.FuncionarioId,
+                ClienteId = s.ClienteId,
+                Situacao = "Agendado"
+            };
+
+            db.Agendamentos.Add(agendamento);        
+            db.SaveChanges();
+
+            db.Solicitacoes.Remove(s);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult CancelarSolicitacao(int id)
+        {
+            var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
+
+            db.Solicitacoes.Remove(s);
+            db.SaveChanges();
+
+            return RedirectToAction("Solicitacoes");
         }
     }
 }
