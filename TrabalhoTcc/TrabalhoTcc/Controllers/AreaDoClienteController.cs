@@ -19,5 +19,11 @@ namespace TrabalhoTcc.Controllers
             ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.Id == ClienteId).ToList();
             return View();
         }
+        public ActionResult AvaliarAgendamento()
+        {
+            return null;
+        }
+
+
     }
 }

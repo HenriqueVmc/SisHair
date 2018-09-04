@@ -14,6 +14,24 @@ namespace TrabalhoTcc.Models
         [Required(ErrorMessage="Avaliação deve ser preenchida")]
         [MinLength(12, ErrorMessage="A avaliação deve conter no mínimo 12 caracteres")]
         public string AvaliacaoUsuario { get; set; }
+        
+        [Required]
+        public byte NotaVoltarNovamente { get; set; }
+
+        [Required]
+        public byte NotaAgendamento { get; set; }
+
+        [Required]
+        public byte NotaExperienciaAtendimento { get; set; }
+
+        [Required]
+        public byte NotaCondicoesFisicasEstabelecimento { get; set; }
+
+        [Required]
+        public bool VoltariaNovamente { get; set; }
+        
+        [Required]
+        public bool RecomendariaAlguem { get; set; }
 
         public virtual Agendamento Agendamento { get; set; }
         public int AgendamentoId { get; set; }
