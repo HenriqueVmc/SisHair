@@ -168,6 +168,7 @@ namespace TrabalhoTcc.Controllers
                 smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
+                return RedirectToAction("VerificarCodigo");
 
             }
             catch (Exception ex)
@@ -175,8 +176,59 @@ namespace TrabalhoTcc.Controllers
                 return Content(ex.Message);
             }
            
+            return View();
+        }
 
+        [HttpGet]
+        public ActionResult VerificarCodigo()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult VerificarCodigo(string CodigoRetorno)
+        {
+            if (CodigoRetorno != null)
+            {
+                CodigoCliente codCliente = db.CodigosClientes.Where(c => c.Codigo == CodigoRetorno).SingleOrDefault();
+
+                if (codCliente != null)
+                {
+                    string a = "Deu certo";
+                    return RedirectToAction("RedefinirSenha");
+                }
+                else
+                {
+                    string a = "Nao deu";
+                }
+
+            }
+            else
+            {
+                ModelState.AddModelError("", "Digite um codigo valido");
+            }
+
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult RedefinirSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RedefinirSenha(string Senha, string ConfirmarSenha)
+        {
+
+            if (Senha == ConfirmarSenha)
+            {
+                string a = "Aki";
+            }
+            else
+            {
+                string b = "Aki";
+            }
 
             return View();
         }
