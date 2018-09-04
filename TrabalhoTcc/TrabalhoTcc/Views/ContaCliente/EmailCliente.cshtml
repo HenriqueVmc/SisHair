@@ -1,11 +1,16 @@
 ﻿@model TrabalhoTcc.Models.Cliente
 @{
-    Layout = null;
+    Layout = "/Views/Shared/Master.cshtml";
 }
 
-<div class="container mt-3 mb-3">
+<div class="container">
+    <div class="row col-12">
+        <div class="col-md-12">
+            <h1>Recuperar Senha</h1>
+            <h3>Digite seu E-mail</h3>
+        </div>
+        <div class="col-md-4"></div>
 
-    <div class="row">
         <div class="col-md-4 mt-4">
             @using (Html.BeginForm("EmailCliente", "ContaCliente", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -28,5 +33,6 @@
                 </div>
             }
         </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
