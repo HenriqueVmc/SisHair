@@ -82,43 +82,32 @@ namespace TrabalhoTcc.Controllers
 
 //////////////////////////Recuperar Password///////////////////////////
         bool r = false;
+        [HttpGet]
         public ActionResult EmailCliente()
         {
-            if (r == true)
-            {
-                 ModelState.AddModelError("", "Email Invalido");
-                
-            }
-            else
-            {
-
-            }
+           
             return View();
         }
-
-        public ActionResult VerificarEmail(string email)
+        [HttpPost]
+        public ActionResult EmailCliente(string email)
         {
+
                 Cliente cli = db.Clientes.Where(c => c.Email == email).SingleOrDefault();
-                if (cli != null)
+                                
+                 
+
+            if (cli != null)
                 {
-                    Random rdn = new Random();
-                    int codigo = rdn.Next(100000, 999999);
-
-                    /*
-                    int indentificador = new Email.CadastrarCodigo(codigo);
-
-                    tokem = recrutadora.id;
                     PassarMensagem error = new PassarMensagem();
                     error.ErrorMessage = email;
-                    error.Codigo = codigo;
+                    error.Codigo = cli.Id;
+                TempData["Error"] = error;
 
-                    TempData["error"] = error;
-
-                    */
-                    return RedirectToAction("EmailCliente");
+                    return RedirectToAction("CadastrarCodigo");
                 }
                 else
                 {
+                    ModelState.AddModelError("", "Email Invalido");
 
                 }
             
@@ -128,6 +117,24 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        public ActionResult CadastrarCodigo(CodigoCliente codCliente)
+        {
+            Random rdn = new Random();
+            int codigo = rdn.Next(100000, 999999);
+            PassarMensagem error = TempData["error"] as PassarMensagem;
+            ViewData["ErrorMensagem"] = error.ErrorMessage;
+            ViewData["Codigo"] = error.Codigo;
+            codCliente.Email = error.ErrorMessage;
+            codCliente.Id_Usuario = error.Codigo;
+            codCliente.Codigo = Convert.ToString(codigo);
 
+
+            if (ModelState.IsValid)
+            {
+                db.CodigosClientes.Add(codCliente);
+                db.SaveChangesAsync();
+            }
+            return View();
+        }
     }
 }

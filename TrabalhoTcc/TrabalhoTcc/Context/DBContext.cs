@@ -24,6 +24,7 @@ namespace TrabalhoTcc.Context
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<LoginCliente> LoginClientes { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
+        public DbSet<CodigoCliente> CodigosClientes { get; set; }
 
     }
 }
