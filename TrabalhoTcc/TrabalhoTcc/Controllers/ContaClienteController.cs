@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
@@ -124,6 +125,7 @@ namespace TrabalhoTcc.Controllers
             PassarMensagem error = TempData["error"] as PassarMensagem;
             ViewData["ErrorMensagem"] = error.ErrorMessage;
             ViewData["Codigo"] = error.Codigo;
+            error.CodigoVerdadeiro = Convert.ToString(codigo);
             codCliente.Email = error.ErrorMessage;
             codCliente.Id_Usuario = error.Codigo;
             codCliente.Codigo = Convert.ToString(codigo);
@@ -133,7 +135,49 @@ namespace TrabalhoTcc.Controllers
             {
                 db.CodigosClientes.Add(codCliente);
                 db.SaveChangesAsync();
+                return RedirectToAction("EnviarEmail");
+
             }
+            return View();
+        }
+
+        public ActionResult EnviarEmail()
+        {
+
+            try
+            {
+                PassarMensagem error = TempData["error"] as PassarMensagem;
+                ViewData["ErrorMensagem"] = error.ErrorMessage;
+                ViewData["Codigo"] = error.Codigo;
+                string email = error.ErrorMessage;
+                int id = error.Codigo;
+                string codigo = error.CodigoVerdadeiro;
+
+                string assunto = "Este e seu codigo para redifinicao de senha: " + codigo;
+
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("salaosuporte@gmail.com");
+                mail.To.Add(email);
+                mail.Subject = assunto;
+
+
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message);
+            }
+           
+
+
+
             return View();
         }
     }
