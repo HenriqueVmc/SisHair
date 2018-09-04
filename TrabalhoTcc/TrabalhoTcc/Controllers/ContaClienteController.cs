@@ -223,7 +223,21 @@ namespace TrabalhoTcc.Controllers
 
             if (Senha == ConfirmarSenha)
             {
-                string a = "Aki";
+                PassarMensagem error = TempData["error"] as PassarMensagem;
+                int id = error.Codigo;
+                Cliente cli = db.Clientes.Where(c => c.Id == id).SingleOrDefault();
+
+                if (cli != null)
+                {
+                    LoginCliente log = db.LoginClientes.Where(d => d.ClienteId == id).SingleOrDefault();
+                    if (log != null)
+                    {
+                        log.Senha = Senha;
+                        db.SaveChangesAsync();
+                    }
+                }
+               
+
             }
             else
             {
