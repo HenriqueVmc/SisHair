@@ -97,6 +97,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -111,6 +112,7 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fullcalendar\bootstrap-glyphicons.css" />
     <Content Include="Content\fullcalendar\fullcalendar.css" />
     <Content Include="Content\fullcalendar\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar\fullcalendar.print.css" />
@@ -258,6 +260,8 @@
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Content\fullcalendar\bootstrap.min.css" />
+    <Content Include="Scripts\fullcalendar\bootstrap.min.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.min.js" />
     <Content Include="Scripts\fullcalendar\index.js" />
@@ -300,6 +304,7 @@
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Controllers\AdmController.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
+    <Compile Include="Controllers\AreaDoClienteController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaClienteController.cs" />
@@ -319,12 +324,23 @@
     <Compile Include="Migrations\201809030412312_solicitacoes.Designer.cs">
       <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809040414102_mudancasDoAlan.cs" />
+    <Compile Include="Migrations\201809040414102_mudancasDoAlan.Designer.cs">
+      <DependentUpon>201809040414102_mudancasDoAlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809050338181_mudancasValois.cs" />
+    <Compile Include="Migrations\201809050338181_mudancasValois.Designer.cs">
+      <DependentUpon>201809050338181_mudancasValois.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
+    <Compile Include="Models\Avaliacao.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Clientes.cs" />
+    <Compile Include="Models\Conta\CodigoCliente.cs" />
     <Compile Include="Models\Conta\LoginFuncionario.cs" />
     <Compile Include="Models\Conta\LoginCliente.cs" />
+    <Compile Include="Models\Conta\PassarMensagem.cs" />
     <Compile Include="Models\EnderecoFuncionario.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Servico.cs" />
@@ -393,6 +409,8 @@
     <Content Include="Views\ContaFuncionario\Deletar.cshtml" />
     <Content Include="Views\Agendamentos\Index.cshtml" />
     <Content Include="Views\Agendamentos\Solicitacoes.cshtml" />
+    <Content Include="Views\ContaCliente\EmailCliente.cshtml" />
+    <Content Include="Views\AreaDoCliente\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -415,6 +433,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809030412312_solicitacoes.resx">
       <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809040414102_mudancasDoAlan.resx">
+      <DependentUpon>201809040414102_mudancasDoAlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809050338181_mudancasValois.resx">
+      <DependentUpon>201809050338181_mudancasValois.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
