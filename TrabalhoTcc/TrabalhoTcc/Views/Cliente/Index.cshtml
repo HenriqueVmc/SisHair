@@ -6,56 +6,62 @@
 }
 
 <div class="offset-2">
-    <h2>Consulta de Cliente</h2>
+
+    <h2 class="text-center">Clientes:</h2>
 
     <p>
-        @Html.ActionLink("Novo Cliente", "Cadastrar", "Cliente", new { @class = "btn btn-outline-success float right mr-2" })
+        @Html.ActionLink("Novo Cliente", "Cadastrar", "Cliente", new { @class = "btn btn-success mr-2" })
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Data_nascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Celular)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data_nascimento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Celular)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.ActionLink(" Editar", "Editar", "Cliente", new { id = item.Id },     new { @class = "fa fa-pencil btn btn-outline-dark" }) 
-                    @Html.ActionLink(" Detalhes", "Detalhes", "Cliente", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" }) 
-                    @Html.ActionLink(" Deletar", "Deletar", "Cliente", new { id = item.Id },   new { @class = "fa fa-trash btn btn-outline-danger" })
-                </td>
-            </tr>
-        }
 
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_nascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_nascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Celular)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" Editar", "Editar", "Cliente", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                        @Html.ActionLink(" Detalhes", "Detalhes", "Cliente", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
+                        @Html.ActionLink(" Deletar", "Deletar", "Cliente", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot></tfoot>
     </table>
 </div>

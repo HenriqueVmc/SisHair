@@ -11,15 +11,23 @@
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
     <link href="~/Content/css/style.css" type="text/css" rel="stylesheet" />
 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
     <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <div class="">
         <div class="sidebar" id="accordion">
             <nav class="sidebar-nav">
+          
                 <ul class="nav">
+                    <div class="container mb-4">
+                        <h2 class="nav text-white" href="#">SisHAIR</h2>
+                    </div>
+                    
                     <a class="nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
                         CLIENTES
                         <li class="fa fa-angle-down "></li>
@@ -106,19 +114,20 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Content/jquery.mask.js"></script>
     <script src="~/Scripts/login/index.js"></script>
     <script src="~/Content/mascara.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
 
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/fullcalendar/index.js"></script>
     <script src="~/Scripts/fullcalendar/moment.min.js"></script>
+    <script src="~/Scripts/fullcalendar/bootstrap.min.js"></script>
     <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
     <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Scripts/fullcalendar/pt-br.js"></script>

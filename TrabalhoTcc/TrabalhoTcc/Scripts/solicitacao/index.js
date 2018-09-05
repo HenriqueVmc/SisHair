@@ -3,7 +3,7 @@
         //Id do Funcionario
         $id = $(this).data("id");
 
-        if ($("#modal-agendamento").length == 0) {
+        if ($("#modal-agendamento").length === 0) {
             $.ajax({
                 url: "/Solicitacao/AgendamentoModal?id=" + $id,
                 method: "GET",

@@ -20,7 +20,7 @@
                         funcionario: a.Funcionario,
                         title: "Cliente: " + a.Cliente + " - Situação: " + a.Situacao
                     });
-                })
+                });
 
                 GerarAgenda(agendamentos);
             },
@@ -45,7 +45,7 @@
             defaultView: 'agenda',
             allDaySlot: false,
             eventLimit: true,
-            
+
             eventTextColor: 'white',
             eventColor: '#404040',
             events: agendamentos,
@@ -99,13 +99,14 @@
                 };
                 SalvarAgendamento(data);
             }
-        })
+        });
     }
 
     $('#btnEditar').click(function () {
         //Open modal dialog for edit event
         frmEditarAgendamento();
-    })
+    });
+
     $('#btnDeletar').click(function () {
         if (agendamentoSelecionado != null && confirm('Are you sure?')) {
             $.ajax({
@@ -122,12 +123,13 @@
                 error: function () {
                     alert('Failed');
                 }
-            })
+            });
         }
-    })
+    });
 
     $('#dtDataHoraInicio, #dtDataHoraFinal').datetimepicker({
-        format: 'DD/MM/YYYY HH:mm A'
+        format: 'DD/MM/YYYY HH:mm A',
+        locale: 'pt-br'
     });
 
     function frmEditarAgendamento() {
@@ -174,7 +176,7 @@
         }
         SalvarAgendamento(data);
         // call function for submit data to the server
-    })
+    });
 
     function SalvarAgendamento(data) {
         debugger;
@@ -189,6 +191,6 @@
             error: function () {
                 alert('Failed');
             }
-        })
+        });
     }
-})
+});

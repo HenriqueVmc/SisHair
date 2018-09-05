@@ -10,8 +10,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Agendamento do <span id="eventTitle"></span></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <button id="btnDeletar" class="btn btn-default btn-sm pull-right">
@@ -33,24 +33,25 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Savar Agendamento</h4>
+                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    
+
                     <form class="col-md-12 form-horizontal">
                         <input type="hidden" id="Id" value="0" />
 
                         <div class="form-group">
-                            <label>Funcionários:</label>
-                            @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
-                            
-                        </div>
-
-                        <div class="form-group">
-                            <label>Clientes:</label>
-                            @Html.DropDownList("ClienteId", null, htmlAttributes: new { @class = "form-control" })
-                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Funcionários:</label>
+                                    @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Clientes:</label>
+                                    @Html.DropDownList("ClienteId", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -77,7 +78,11 @@
 
                         <div class="form-group">
                             <label>Situação</label>
-                            <textarea id="Situacao" rows="3" class="form-control"></textarea>
+                            <select id="Situacao" class="custom-select">                                
+                                <option value="Confirmado" selected>Confirmado</option>
+                                <option value="Pendente">Pendente</option>
+                                <option value="Cancelado">Cancelado</option>
+                            </select>
                         </div>
 
                         <button type="button" id="btnSalvarAgendamento" class="btn btn-success">Salvar</button>
@@ -88,3 +93,7 @@
         </div>
     </div>
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
