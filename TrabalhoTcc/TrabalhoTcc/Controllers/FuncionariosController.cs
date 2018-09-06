@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
+using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -54,21 +55,50 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco)
+        public  ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco)
         {
             if (ModelState.IsValid)
             {
                 db.Funcionarios.Add(funcionario);
-                await db.SaveChangesAsync();
+   
                 if (endereco != null)
                 {
                     new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
                 }
+
+                /////
+                var loginF = new LoginFuncionario()
+                {
+                    Usuario = funcionario.Email,
+                    Senha = gerarSenha(funcionario),
+                    FuncionarioId = funcionario.Id
+                };
+                /////
+                db.LoginFuncionarios.Add(loginF);            
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
         }
+
+
+        private string gerarSenha(Funcionario funcionario)
+        {
+            string senha = Convert.ToString(funcionario.DataNascimento.Day.ToString().PadLeft(2, '0'));
+            senha += Convert.ToString(funcionario.DataNascimento.Month.ToString().PadLeft(2, '0'));
+            senha += Convert.ToString(funcionario.DataNascimento.Year);
+
+            return senha;
+        }
+
+
+
+
+
+
+
 
         // GET: Funcionarios/Edit/5
         public async Task<ActionResult> Editar(int? id)
