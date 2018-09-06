@@ -18,14 +18,16 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-nome">Nome:</label>
-                            <input type="text" class="form-control" name="Cliente.Nome" id="Cliente.Nome"/>
+                            @Html.EditorFor(model => model.Cliente.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @*<input type="text" class="form-control" name="Cliente.Nome" id="Cliente.Nome"/>*@
                             @Html.ValidationMessageFor(m => m.Cliente.Nome, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-data-nascimento">Data de Nascimento:</label>
-                            <input type="date" class="form-control" name="Cliente.Data_Nascimento" id="Cliente.Data_Nascimento" />
+                            @Html.EditorFor(model => model.Cliente.Data_nascimento, new { htmlAttributes = new { @class = "form-control" } })
+                            @*<input type="date" class="form-control" name="Cliente.Data_Nascimento" id="Cliente.Data_Nascimento" />*@
                             @Html.ValidationMessageFor(m => m.Cliente.Data_nascimento, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -35,14 +37,16 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-celular">Celular:</label>
-                            <input type="text" class="form-control" name="Cliente.Celular" id="Cliente.Celular" />
+                            @Html.EditorFor(model => model.Cliente.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                            @*<input type="text" class="form-control" name="Cliente.Celular" id="Cliente.Celular" />*@
                             @Html.ValidationMessageFor(m => m.Cliente.Celular, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-telefone">Telefone:</label>
-                            <input type="text" class="form-control" name="Cliente.Telefone" id="Cliente.Telefone" />
+                            @Html.EditorFor(model => model.Cliente.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                            @*<input type="text" class="form-control" name="Cliente.Telefone" id="Cliente.Telefone" />*@
                             @Html.ValidationMessageFor(m => m.Cliente.Telefone, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -51,7 +55,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="campo-email">Email:</label>
-                            <input type="text" class="form-control" name="Cliente.Email" id="Cliente.Email" />
+                            @Html.EditorFor(model => model.Cliente.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @*<input type="text" class="form-control" name="Cliente.Email" id="Cliente.Email" />*@
                             @Html.ValidationMessageFor(m => m.Cliente.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -62,7 +67,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             @Html.LabelFor(m => m.Usuario, new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                            @Html.EditorFor(m => m.Usuario, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                         </div>
                     </div>
