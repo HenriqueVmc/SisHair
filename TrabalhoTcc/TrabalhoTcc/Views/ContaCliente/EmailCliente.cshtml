@@ -17,16 +17,16 @@
                     <h1>Recuperar Senha</h1>
                     <label for="campo-usuario">Digite seu E-mail:</label>
                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    <div class="offset-3">
+                        <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                            <i class="fa fa-location-arrow"> Enviar</i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="row">
-                    <div class="offset-5">
 
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
-                                <i class="fa fa-location-arrow"> Enviar</i>
-                            </button>
-                        </div>
+                    <div class="form-group">
 
                     </div>
                 </div>

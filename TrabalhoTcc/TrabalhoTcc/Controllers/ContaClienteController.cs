@@ -35,11 +35,11 @@ namespace TrabalhoTcc.Controllers
             {
                 return View(loginC);
             }
-            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha); 
+            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
 
             if (usuario != null)
             {
-                return RedirectToAction("Agendamento", "Solicitacao", new {@idCliente = usuario.ClienteId});
+                return RedirectToAction("Agendamento", "Solicitacao", new { @idCliente = usuario.ClienteId });
             }
             else
             {
@@ -51,7 +51,7 @@ namespace TrabalhoTcc.Controllers
 
         [HttpGet]
         public ActionResult CriarConta()
-        {                
+        {
             return View();
         }
 
@@ -59,9 +59,9 @@ namespace TrabalhoTcc.Controllers
         public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
             if (ModelState.IsValid)
-            {                         
+            {
                 db.Clientes.Add(cliente);
-                
+
                 var LoginCliente = new LoginCliente()
                 {
                     Usuario = loginC.Usuario,
@@ -81,40 +81,40 @@ namespace TrabalhoTcc.Controllers
         }
 
 
-//////////////////////////Recuperar Password///////////////////////////
+        //////////////////////////Recuperar Password///////////////////////////
         bool r = false;
         [HttpGet]
         public ActionResult EmailCliente()
         {
-           
+
             return View();
         }
         [HttpPost]
         public ActionResult EmailCliente(string email)
         {
 
-                Cliente cli = db.Clientes.Where(c => c.Email == email).SingleOrDefault();
-                                
-                 
+            Cliente cli = db.Clientes.Where(c => c.Email == email).SingleOrDefault();
+
+
 
             if (cli != null)
-                {
-                    PassarMensagem error = new PassarMensagem();
-                    error.ErrorMessage = email;
-                    error.Codigo = cli.Id;
+            {
+                PassarMensagem error = new PassarMensagem();
+                error.ErrorMessage = email;
+                error.Codigo = cli.Id;
                 TempData["Error"] = error;
 
-                    return RedirectToAction("CadastrarCodigo");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Email Invalido");
+                return RedirectToAction("CadastrarCodigo");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Email Invalido");
 
-                }
-            
-           
+            }
 
-           
+
+
+
             return View();
         }
 
@@ -153,7 +153,7 @@ namespace TrabalhoTcc.Controllers
                 int id = error.Codigo;
                 string codigo = error.CodigoVerdadeiro;
 
-                string assunto = "Este e seu codigo para redifinicao de senha: " + codigo;
+                string assunto = "Este e seu código para redifinição de senha: " + codigo;
 
                 MailMessage mail = new MailMessage();
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com");
@@ -175,7 +175,7 @@ namespace TrabalhoTcc.Controllers
             {
                 return Content(ex.Message);
             }
-           
+
             return View();
         }
 
@@ -234,9 +234,14 @@ namespace TrabalhoTcc.Controllers
                     {
                         log.Senha = Senha;
                         db.SaveChangesAsync();
+                         string codigo = error.CodigoVerdadeiro;
+                         CodigoCliente cod = db.CodigosClientes.Where(d=>d.Codigo == codigo).SingleOrDefault();
+                         db.CodigosClientes.Remove(cod);
+                         db.SaveChanges();
+                        return RedirectToAction("Login");
                     }
                 }
-               
+
 
             }
             else
@@ -246,5 +251,6 @@ namespace TrabalhoTcc.Controllers
 
             return View();
         }
+
     }
 }
