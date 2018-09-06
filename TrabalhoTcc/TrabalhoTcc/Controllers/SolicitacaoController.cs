@@ -180,5 +180,21 @@ namespace TrabalhoTcc.Controllers
             ViewBag.AgendamentoId = id;
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SalvarAvaliacao(Avaliacao avaliacao)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Avaliacoes.Add(avaliacao);
+                db.SaveChanges();
+                return Content(JsonConvert.SerializeObject(new { id = avaliacao.Id }));
+            }
+
+            //ViewBag.ClienteId = avaliacao.Agendamento.ClienteId;
+           // ViewBag.Avaliacoes = db.Funcionarios.Include(f => f.Cargo).ToList();
+
+            return View(avaliacao);
+        }
     }
 }

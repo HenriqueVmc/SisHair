@@ -18,32 +18,28 @@
         }
     });
 
-    $('.mdb-select').material_select();
 
-    //$("body").on("click", "#modal-agendamento-salvar", function () {
-    //    debugger;
-    //    $.ajax({
-    //        url: "/Solicitacao/Agendamento",
-    //        method: "post",
-    //        data: {
-    //            funcionarioId: $("#FuncionarioId").val(),
-    //            clienteId: $("#ClienteId").val(),
-    //            dataHoraInicio: $("#DataHoraInicio").val(),
-    //            dataHoraFinal: $("#DataHoraFinal").val(),
-    //            descricao: $("#Descricao").val()
-    //        },
-    //        success: function (data) {
-    //            var resultado = JSON.parse(data);
-    //            limparCampos();
-    //            $("#modal-agendamento").modal('hide');
-    //            alert("Solicitação Realizada!");
-    //        }
-    //    });
-    //});
+    $("body").on("click", "#modal-avaliar-salvar", function () {
+        debugger;
+        $.ajax({
+            url: "/Solicitacao/SalvarAvaliacao",
+            method: "post",
+            data: {
+                agendamentoId: $("#AgendamentoId").val(),
+                avaliacaoUsuario: $("#AvaliacaoUsuario").val()
+            },
+            success: function (data) {
+                var resultado = JSON.parse(data);
+                limparCampos();
+                $("#modal-avaliacao").modal('hide');
+                alert("Avaliacao Realizada!");
+            }
+        });
+    });
 
-    //function limparCampos() {
-    //    $("#DataHoraInicio").val("");
-    //    $("#DataHoraFinal").val("");
-    //    $("#Descricao").val("");
-    //}
+    function limparCampos() {
+        $("#DataHoraInicio").val("");
+        $("#DataHoraFinal").val("");
+        $("#Descricao").val("");
+    }
 });
