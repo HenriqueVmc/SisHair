@@ -316,21 +316,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809030130317_inicio.cs" />
-    <Compile Include="Migrations\201809030130317_inicio.Designer.cs">
-      <DependentUpon>201809030130317_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809030412312_solicitacoes.cs" />
-    <Compile Include="Migrations\201809030412312_solicitacoes.Designer.cs">
-      <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809040414102_mudancasDoAlan.cs" />
-    <Compile Include="Migrations\201809040414102_mudancasDoAlan.Designer.cs">
-      <DependentUpon>201809040414102_mudancasDoAlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809050338181_mudancasValois.cs" />
-    <Compile Include="Migrations\201809050338181_mudancasValois.Designer.cs">
-      <DependentUpon>201809050338181_mudancasValois.cs</DependentUpon>
+    <Compile Include="Migrations\201809051756517_inicio.cs" />
+    <Compile Include="Migrations\201809051756517_inicio.Designer.cs">
+      <DependentUpon>201809051756517_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -428,17 +416,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809030130317_inicio.resx">
-      <DependentUpon>201809030130317_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809030412312_solicitacoes.resx">
-      <DependentUpon>201809030412312_solicitacoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809040414102_mudancasDoAlan.resx">
-      <DependentUpon>201809040414102_mudancasDoAlan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809050338181_mudancasValois.resx">
-      <DependentUpon>201809050338181_mudancasValois.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809051756517_inicio.resx">
+      <DependentUpon>201809051756517_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
