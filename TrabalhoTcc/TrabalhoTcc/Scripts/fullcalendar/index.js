@@ -47,7 +47,7 @@
             eventLimit: true,
 
             eventTextColor: 'white',
-            eventColor: '#404040',
+            eventColor: '#06050c',
             events: agendamentos,
             eventClick: function (Agendamento, jsEvent, view) {
                 agendamentoSelecionado = Agendamento;
@@ -108,7 +108,7 @@
     });
 
     $('#btnDeletar').click(function () {
-        if (agendamentoSelecionado != null && confirm('Are you sure?')) {
+        if (agendamentoSelecionado != null && confirm('Deseja realmente deletar esse registro?')) {
             $.ajax({
                 type: "POST",
                 url: '/Agendamentos/Deletar',

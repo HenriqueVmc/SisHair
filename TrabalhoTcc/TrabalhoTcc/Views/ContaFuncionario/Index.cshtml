@@ -4,26 +4,32 @@
 }
 
 <div class="offset-2">
+
+    <h2 class="text-center">Usuários dos funcionários:</h2>
+
     <table class="table table-striped">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <thead class="thead-dark">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usuario)
-                </td>
-                <td>
-                    @Html.ActionLink("Alterar Login", "AlterarLogin") |
-                    @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario)
+                </th>
+                <th class="">Ações:</th>
             </tr>
-        }
-
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" Alterar Login", "AlterarLogin", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" }) |
+                        @Html.ActionLink(" Deletar", "Deletar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot></tfoot>
     </table>
 </div>

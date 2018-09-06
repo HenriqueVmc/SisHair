@@ -39,7 +39,7 @@ namespace TrabalhoTcc.Controllers
             if (ModelState.IsValid)
             {
                 db.Solicitacoes.Add(solicitacao);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
             }
 

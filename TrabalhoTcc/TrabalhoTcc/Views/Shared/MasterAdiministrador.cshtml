@@ -27,7 +27,22 @@
                     <div class="container mb-4">
                         <h2 class="nav text-white" href="#">SisHAIR</h2>
                     </div>
-                    
+
+                    <a class="nav-link text-danger" data-toggle="collapse" href="#agendamentos" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        AGENDAMENTOS
+                        <li class="fa fa-angle-down "></li>
+                    </a>
+                    <div class="collapse" id="agendamentos" data-parent="#accordion">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a class="nav-link" href="/Agendamentos/Index">Minha Agenda</a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="/Agendamentos/Solicitacoes">Solicitações</a>
+                            </li>
+                        </ul>
+                    </div>
+
                     <a class="nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
                         CLIENTES
                         <li class="fa fa-angle-down "></li>
@@ -53,9 +68,6 @@
                             </li>
                             <li>
                                 <a class="nav-link" href="/Funcionarios/Index">Consulta de Funcionários</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Agendamentos/Index">Agenda dos Funcionários</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="/ContaFuncionario/Index">Usuários</a>
