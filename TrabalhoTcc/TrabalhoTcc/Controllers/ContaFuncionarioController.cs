@@ -109,6 +109,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // POST: ContaFuncionario/Delete/5
+        [Authorize()]
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)

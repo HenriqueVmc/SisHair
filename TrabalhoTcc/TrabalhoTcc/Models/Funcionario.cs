@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Models
 {
@@ -46,5 +47,10 @@ namespace TrabalhoTcc.Models
 
         [Display(Name = "Cargo:")]
         public virtual Cargo Cargo { get; set; }
+
+        [Display(Name= "Permissao")]
+        public virtual Permissoes Permissoes{ get; set; }
+        public int PermissaoId { get; set; }
+
     }
 }

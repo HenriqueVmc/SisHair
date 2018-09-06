@@ -47,6 +47,7 @@ namespace TrabalhoTcc.Controllers
         public ActionResult Cadastrar()
         {
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
+            ViewBag.PermissaoId = new SelectList(db.permissoes, "Id", "TipoPermissao");
             return View();
         }
 
@@ -139,6 +140,7 @@ namespace TrabalhoTcc.Controllers
             return View(funcionario);
         }
 
+
         // GET: Funcionarios/Delete/5
         public async Task<ActionResult> Deletar(int? id)
         {
@@ -154,6 +156,7 @@ namespace TrabalhoTcc.Controllers
             return View(funcionario);
         }
 
+         
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
