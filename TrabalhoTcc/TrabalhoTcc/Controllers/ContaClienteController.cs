@@ -39,7 +39,7 @@ namespace TrabalhoTcc.Controllers
 
             if (usuario != null)
             {
-                return RedirectToAction("Agendamento", "Solicitacao", new { @idCliente = usuario.ClienteId });
+                return RedirectToAction("AreaDoCliente", "Solicitacao", new { @idCliente = usuario.ClienteId });
             }
             else
             {

@@ -166,5 +166,19 @@ namespace TrabalhoTcc.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult AreaDoCliente(int? idCliente)
+        {
+            ViewBag.ClienteId = idCliente;
+            ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.Id == idCliente).ToList();
+            return View();
+        }
+        
+        [HttpGet]
+        public ActionResult AvaliacaoModal(int? id)
+        {
+            ViewBag.AgendamentoId = id;
+            return View();
+        }
     }
 }
