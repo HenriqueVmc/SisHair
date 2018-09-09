@@ -2,57 +2,115 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>...</title>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Funcionario.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoraInicio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>Ações:</th>
-    </tr>
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+    <link href="~/Content/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoraInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark scrolling-navbar">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" target="_blank">
+                <strong>Salão e barbearia</strong>
+            </a>
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
 
-</table>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank">Meus Agendamentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank"> Minhas Avaliações</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4 mb-3">
+
+        <div class="row mt-5">
+            <input type="hidden" id="ClienteId" name="ClienteId" value="@ViewBag.ClienteId" />
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Cliente:")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Funcionário:")
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataHoraInicio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DataHoraFinal)
+                        </th>
+                        <th>
+                            @Html.DisplayName("Serviços:")
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Situacao)
+                        </th>
+                        <th>Ações:</th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataHoraFinal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Servicos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Situacao)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                        @Html.ActionLink("Deletar", "Deletar", new { id = item.Id })
+                    </td>
+                </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>

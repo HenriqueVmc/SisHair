@@ -32,6 +32,9 @@
     }
 
     function GerarAgenda(agendamentos) {
+        var date = new Date();
+        date.setDate(date.getDate() - 1);
+
         $('#agenda').fullCalendar('destroy');
         $('#agenda').fullCalendar({
 
@@ -46,6 +49,9 @@
             defaultView: 'agenda',
             allDaySlot: false,
             eventLimit: true,
+            validRange: {
+                start: date
+            },
 
             eventTextColor: 'white',
             eventColor: '#06050c',

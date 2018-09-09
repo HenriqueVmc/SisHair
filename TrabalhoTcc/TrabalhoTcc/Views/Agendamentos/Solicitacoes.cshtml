@@ -13,10 +13,10 @@
         <thead class="thead-dark">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Cliente.Nome)
+                    @Html.DisplayName("Cliente:")
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Funcionario.Nome)
+                    @Html.DisplayName("Funcionário:")
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DataHoraInicio)
@@ -25,7 +25,13 @@
                     @Html.DisplayNameFor(model => model.DataHoraFinal)
                 </th>
                 <th>
+                    @Html.DisplayName("Serviços:")
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Situacao)
                 </th>
                 <th>Ações:</th>
             </tr>
@@ -33,29 +39,35 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHoraInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHoraFinal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @*@Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |*@
-                        @Html.ActionLink(" Deletar", "CancelarSolicitacao", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" }) |
-                        @Html.ActionLink(" Agendar", "SalvarSolicitacao", new { id = item.Id }, new { @class = "fa fa-save btn btn-outline-success" })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataHoraFinal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Servicos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Situacao)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |*@
+                    @Html.ActionLink(" Deletar", "CancelarSolicitacao", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" }) |
+                    @Html.ActionLink(" Agendar", "SalvarSolicitacao", new { id = item.Id }, new { @class = "fa fa-save btn btn-outline-success" })
+                </td>
+            </tr>
             }
         </tbody>
         <tfoot></tfoot>

@@ -2,8 +2,8 @@
 @{
     Layout = null;
 }
-<div class="modal" tabindex="-1" role="dialog" id="modal-agendamento">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" role="dialog" id="modal-agendamento">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Agendar Solicitação</h5>
@@ -14,19 +14,32 @@
             <div class="modal-body">
                 <input type="hidden" id="FuncionarioId" name="FuncionarioId" value="@ViewBag.FuncionarioId" />
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-md-6">
                             <label>Horário de Início:</label>
-                            @Html.TextBoxFor(m => m.DataHoraInicio, new { @class = "form-control", @type = "date" })
-                            @Html.ValidationMessageFor(model => model.DataHoraInicio, "", new { @class = "text-danger" })
-
+                            <div class="input-group date" id="dtDataHoraInicio2">
+                                <input type="text" id="DataHoraInicio" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Horário de Finalização:</label>
+                            <div class="input-group date" id="dtDataHoraFinal2">
+                                <input type="text" id="DataHoraFinal" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Horário de Finalização:</label>
-                            @Html.TextBoxFor(m => m.DataHoraFinal, new { @class = "form-control", @type = "date" })
-                            @Html.ValidationMessageFor(model => model.DataHoraFinal, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Serviços:</label>
+                            <select multiple="multiple" name="states[]" id="selectServicos" class="custom-select"></select>
                         </div>
                     </div>
                 </div>
@@ -45,3 +58,11 @@
         </div>
     </div>
 </div>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/solicitacao/index.js"></script>
+<script src="~/Scripts/fullcalendar/moment.min.js"></script>
+<script src="~/Scripts/fullcalendar/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script src="~/Scripts/fullcalendar/pt-br.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

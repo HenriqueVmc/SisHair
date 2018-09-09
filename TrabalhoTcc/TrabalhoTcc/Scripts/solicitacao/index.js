@@ -1,25 +1,26 @@
-﻿$(function () {
+﻿$(document).ready(function () {
     $("table").on("click", ".btnSolicitar", function () {
         //Id do Funcionario
+        debugger;
         $id = $(this).data("id");
 
-        if ($("#modal-agendamento").length === 0) {
-            $.ajax({
-                url: "/Solicitacao/AgendamentoModal?id=" + $id,
-                method: "GET",
-                success: function (data) {
-                    $("body").append(data);
-                    $("#modal-agendamento").modal('show');
-                }
-            }); 
-        } else {
-            $("#modal-agendamento").modal('show');
-            limparCampos();
-        }
+        $.ajax({
+            url: "/Solicitacao/AgendamentoModal?id=" + $id,
+            method: "GET",
+            success: function (data) {
+                $("body").append(data);
+                $("#modal-agendamento").modal('show');
+            }
+        });
+
     });
 
-    $("body").on("click", "#modal-agendamento-salvar", function () {
-        debugger;
+    $('#dtDataHoraInicio2, #dtDataHoraFinal2').datetimepicker({
+        format: 'DD/MM/YYYY HH:mm A',
+        locale: 'pt-br'
+    });
+
+    $("#modal-agendamento-salvar").on("click", function () { 
         $.ajax({
             url: "/Solicitacao/Agendamento",
             method: "post",
@@ -28,10 +29,10 @@
                 clienteId: $("#ClienteId").val(),
                 dataHoraInicio: $("#DataHoraInicio").val(),
                 dataHoraFinal: $("#DataHoraFinal").val(),
-                descricao: $("#Descricao").val()
+                descricao: $("#Descricao").val(),
+                servicos: $("#selectServicos").val()
             },
             success: function (data) {
-                var resultado = JSON.parse(data);
                 limparCampos();
                 $("#modal-agendamento").modal('hide');
                 alert("Solicitação Realizada!");
@@ -43,5 +44,28 @@
         $("#DataHoraInicio").val("");
         $("#DataHoraFinal").val("");
         $("#Descricao").val("");
+        $("#selectServicos").val("");
     }
+
+    $("#selectServicos").select2({
+        width: "100%",
+        ajax: {
+            url: "/Servicos/GetServicos",
+            dataType: 'json',
+            type: "GET",
+            data: function (params) {
+
+                var queryParameters = {
+                    term: params.term
+                }
+                return queryParameters;
+            },
+            processResults: function (data) {
+                // Tranforms the top-level key of the response object from 'items' to 'results'
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
 });

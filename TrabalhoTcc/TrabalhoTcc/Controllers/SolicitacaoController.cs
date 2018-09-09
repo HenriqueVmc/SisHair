@@ -34,11 +34,22 @@ namespace TrabalhoTcc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agendamento(Solicitacao solicitacao)
+        public ActionResult Agendamento([Bind(Include ="Id, DataHoraInicio, DataHoraFinal, ClienteId, FuncionarioId, Descricao")]Solicitacao solicitacao, List<int> servicos)
         {
             if (ModelState.IsValid)
             {
+                solicitacao.Situacao = "Pendente";
                 db.Solicitacoes.Add(solicitacao);
+
+                if (servicos != null)
+                {
+                    foreach (int idServico in servicos)
+                    {
+                        var servico = db.Servicos.Where(s => s.Id == idServico).SingleOrDefault();
+
+                        solicitacao.Servicos += (string.IsNullOrEmpty(solicitacao.Servicos)) ? servico.Nome : ", " + servico.Nome;
+                    }
+                }
                 db.SaveChanges();
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
             }
@@ -55,50 +66,9 @@ namespace TrabalhoTcc.Controllers
             return View(await solicitacoes.ToListAsync());
         }
 
-        // GET: Solicitacao/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Solicitacao solicitacao = await db.Solicitacoes.FindAsync(id);
-            if (solicitacao == null)
-            {
-                return HttpNotFound();
-            }
-            return View(solicitacao);
-        }
-
-        // GET: Solicitacao/Create
-        public ActionResult Create()
-        {
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome");
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome");
-            return View();
-        }
-
-        // POST: Solicitacao/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Solicitacoes.Add(solicitacao);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome", solicitacao.ClienteId);
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome", solicitacao.FuncionarioId);
-            return View(solicitacao);
-        }
 
         // GET: Solicitacao/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
             {
@@ -119,7 +89,7 @@ namespace TrabalhoTcc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
+        public async Task<ActionResult> Editar([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,FuncionarioId,ClienteId")] Solicitacao solicitacao)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +103,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Solicitacao/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)
             {
@@ -148,7 +118,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // POST: Solicitacao/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {

@@ -140,12 +140,14 @@ namespace TrabalhoTcc.Controllers
                 DataHoraFinal = s.DataHoraFinal,
                 FuncionarioId = s.FuncionarioId,
                 ClienteId = s.ClienteId,
-                Situacao = "Agendado"
+                Situacao = "Confirmado",
+                Descricao = s.Servicos
             };
 
             db.Agendamentos.Add(agendamento);        
             db.SaveChanges();
 
+            //s.Situacao = "Confirmado";
             db.Solicitacoes.Remove(s);
             db.SaveChanges();
 

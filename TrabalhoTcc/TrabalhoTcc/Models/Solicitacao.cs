@@ -13,12 +13,12 @@ namespace TrabalhoTcc.Models
         //[Required(ErrorMessage="Hora deve ser preenchida")]
         [Required(ErrorMessage = "Horarios devem ser preenchidos")]
         [Display(Name = "Horario de Inicio:")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy t}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraInicio { get; set; }
 
         [Required(ErrorMessage = "Horarios devem ser preenchidos")]
         [Display(Name = "Horario Final:")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy t}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraFinal { get; set; }
 
         //[Required(ErrorMessage="Situacao deve ser preenchida")]
@@ -37,6 +37,9 @@ namespace TrabalhoTcc.Models
 
         [Display(Name = "Descrição:")]
         public string Descricao { get; set; }
+
+        [Display(Name = "Servicos:")]
+        public string Servicos { get; set; }
 
     }
 }
