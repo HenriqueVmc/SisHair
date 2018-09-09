@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
+using Newtonsoft.Json;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -125,6 +126,27 @@ namespace TrabalhoTcc.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        [HttpGet]
+        public ActionResult GetServicos(string term)
+        {
+            var servicos = db.Servicos.ToList();
+
+            if (term != null)
+            {
+                servicos = db.Servicos.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+            }
+
+            var Results = servicos.Select(s => new
+            {
+                text = s.Nome,
+                id = s.Id
+
+            });
+            return Content(JsonConvert.SerializeObject(new { items = Results }));
+            //return Json(Results, JsonRequestBehavior.AllowGet);
         }
     }
 }

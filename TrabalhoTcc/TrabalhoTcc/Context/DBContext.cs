@@ -28,5 +28,8 @@ namespace TrabalhoTcc.Context
         public DbSet<Avaliacao> Avaliacoes { get; set; }
         public DbSet<Permissoes> permissoes { get; set; }
 
+        public DbSet<ServicosAgendamento> ServicosAgendamento { get; set; }
+
+
     }
 }

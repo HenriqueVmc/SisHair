@@ -27,7 +27,5 @@ namespace TrabalhoTcc.Models
         //[Required(ErrorMessage = "Descriçao não pode ser vasio")]
         [Display(Name = "Descrição: ")]
         public string Descricao { get; set; }
-
-        public virtual ICollection<Agendamento> Agendamentos { get; set; }
     }
 }

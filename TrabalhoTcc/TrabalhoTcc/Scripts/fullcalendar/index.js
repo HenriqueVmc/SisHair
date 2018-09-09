@@ -18,7 +18,8 @@
                         situacao: a.Situacao,
                         cliente: a.Cliente,
                         funcionario: a.Funcionario,
-                        title: "Cliente: " + a.Cliente + " - Situação: " + a.Situacao
+                        descricao: a.Descricao,
+                        title: " Cliente: " + a.Cliente + " | Serviços: " + a.Descricao + " [ Situação: " + a.Situacao + " ]"
                     });
                 });
 
@@ -60,6 +61,7 @@
                 }
                 $description.append($('<p/>').html('<b>Cliente: </b>' + Agendamento.cliente));
                 $description.append($('<p/>').html('<b>Funcionário: </b>' + Agendamento.funcionario));
+                $description.append($('<p/>').html('<b>Serviços: </b>' + Agendamento.descricao));
                 $description.append($('<p/>').html('<b>Situação: </b>' + Agendamento.situacao));
                 $('#agendamento-modal #pDetails').empty().html($description);
 
@@ -71,7 +73,8 @@
                     agendamentoId: 0,
                     start: start,
                     end: end,
-                    situacao: ''
+                    situacao: '',
+                    descricao: ''
                 };
                 frmEditarAgendamento();
                 $('#agenda').fullCalendar('unselect');
@@ -83,8 +86,9 @@
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
                     DataHoraFinal: agendamento.end != null ? agendamento.end.format('DD/MM/YYYY HH:mm A') : null,
                     Situacao: agendamento.situacao,
+                    Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId
+                    ClienteId: agendamento.clienteId                    
                 };
                 SalvarAgendamento(data);
             },
@@ -94,8 +98,9 @@
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
                     DataHoraFinal: agendamento.end != null ? agendamento.end.format('DD/MM/YYYY HH:mm A') : null,
                     Situacao: agendamento.situacao,
+                    Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId
+                    ClienteId: agendamento.clienteId                    
                 };
                 SalvarAgendamento(data);
             }
@@ -139,6 +144,7 @@
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
             $('#DataHoraFinal').val(agendamentoSelecionado.end != null ? agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A') : '');
             $('#Situacao').val(agendamentoSelecionado.situacao);
+            $('#selectServicos').val(agendamentoSelecionado.descricao);
             $('#FuncionarioId').val(agendamentoSelecionado.funcionarioId);
             $('#ClienteId').val(agendamentoSelecionado.clienteId);
         }
@@ -172,7 +178,8 @@
             DataHoraFinal: $('#DataHoraFinal').val().trim(),
             Situacao: $('#Situacao').val(),
             FuncionarioId: $('#FuncionarioId').val(),
-            ClienteId: $('#ClienteId').val()
+            ClienteId: $('#ClienteId').val(),
+            servicos: $('#selectServicos').val()
         }
         SalvarAgendamento(data);
         // call function for submit data to the server
@@ -193,4 +200,26 @@
             }
         });
     }
+
+    $("#selectServicos").select2({
+        width: "100%",
+        ajax: {
+            url: "/Servicos/GetServicos",
+            dataType: 'json',
+            type: "GET",
+            data: function (params) {
+
+                var queryParameters = {
+                    term: params.term
+                }
+                return queryParameters;
+            },
+            processResults: function (data) {
+                // Tranforms the top-level key of the response object from 'items' to 'results'
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
 });

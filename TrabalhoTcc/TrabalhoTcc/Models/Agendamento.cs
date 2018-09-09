@@ -26,7 +26,10 @@ namespace TrabalhoTcc.Models
         //[MaxLength(50, ErrorMessage="Situacao não deve exceder 50 caracteres")]
         [Display(Name = "Situação: ")]
         public string Situacao { get; set; }
-        
+
+        [Display(Name = "Descrição: ")]
+        public string Descricao { get; set; }
+
         [Display(Name = "Funcionário: ")]
         public virtual Funcionario Funcionario { get; set; }
         public int FuncionarioId { get; set; }
@@ -35,7 +38,7 @@ namespace TrabalhoTcc.Models
         public virtual Cliente Cliente { get; set; }
         public int ClienteId { get; set; }
 
-        public virtual ICollection<Servico> Servicos { get; set; }
-
+        //public ICollection<Servico> Servicos { get; set; }
+       
     }
 }

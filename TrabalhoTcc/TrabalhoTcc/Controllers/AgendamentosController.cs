@@ -25,35 +25,68 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public JsonResult GetAgendamentos()
         {
-            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao }).ToList();
-
+            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao }).ToList();
+            
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+   
         [HttpPost]
-        public JsonResult Salvar(Agendamento a)
+        public JsonResult Salvar(Agendamento a, List<int> servicos)
         {
             var status = false;
             try
             {
                 if (a.Id > 0)
                 {
-                    //Update the Agendamento
-                    var result = db.Agendamentos.Where(agen => agen.Id == a.Id).FirstOrDefault();
-                    if (result != null)
+                    //Update no Agendamento
+                    var agendamento = db.Agendamentos.Where(agen => agen.Id == a.Id).FirstOrDefault();
+                    
+                    if (agendamento != null)
                     {
-                        result.DataHoraInicio = a.DataHoraInicio;
-                        result.DataHoraFinal = a.DataHoraFinal;
-                        result.Situacao = a.Situacao;
-                        result.FuncionarioId = a.FuncionarioId;
-                        result.ClienteId = a.ClienteId;
-                    }
+                        agendamento.DataHoraInicio = a.DataHoraInicio;
+                        agendamento.DataHoraFinal = a.DataHoraFinal;
+                        agendamento.Situacao = a.Situacao;
+                        agendamento.FuncionarioId = a.FuncionarioId;
+                        agendamento.ClienteId = a.ClienteId;
+
+                        if (servicos != null)
+                        {
+                            var servicosAgendamento = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == a.Id).ToList();
+                            if (servicosAgendamento != null)
+                            {
+                                foreach (ServicosAgendamento servicoA in servicosAgendamento)
+                                {
+                                    db.ServicosAgendamento.Remove(servicoA);
+                                }
+                            }
+
+                            agendamento.Descricao = null;
+                            agendamento.Descricao = new ServicosAgendamento().salvarServicosAgendamento(agendamento, servicos);
+                        }
+                    }    
+                    
                 }
                 else
                 {
                     db.Agendamentos.Add(a);
-                }
+                   
+                    if (servicos != null)
+                    {
+                        foreach (int idServico in servicos)
+                        {
+                            var servico = db.Servicos.Where(s => s.Id == idServico).SingleOrDefault();
 
+                            ServicosAgendamento sa = new ServicosAgendamento();
+                            sa.AgendamentoId = a.Id;
+                            sa.ServicoId = servico.Id;
+
+                            db.ServicosAgendamento.Add(sa);
+
+                            a.Descricao += (string.IsNullOrEmpty(a.Descricao)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;                          
+                        }
+                    }
+                }
                 db.SaveChanges();
                 status = true;
             }
