@@ -44,6 +44,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Funcionarios/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Cadastrar()
         {
            
@@ -58,6 +59,7 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public  ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco)
         {
             if (ModelState.IsValid)
@@ -104,6 +106,7 @@ namespace TrabalhoTcc.Controllers
 
 
         // GET: Funcionarios/Edit/5
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
@@ -127,6 +130,7 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Funcionario funcionario, EnderecoFuncionario endereco)
         {
             if (ModelState.IsValid)
@@ -144,6 +148,7 @@ namespace TrabalhoTcc.Controllers
 
 
         // GET: Funcionarios/Delete/5
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)
@@ -162,6 +167,7 @@ namespace TrabalhoTcc.Controllers
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Funcionario funcionario = await db.Funcionarios.FindAsync(id);

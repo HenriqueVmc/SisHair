@@ -32,10 +32,10 @@ namespace TrabalhoTcc.Controllers
         {
             //Valida dados
             var usuario = LoginFuncionario.ValidarUsuario(loginF.Usuario, loginF.Senha);
-
+            int id = usuario.Id;
             if (usuario != null)
             {
-                var a = db.LoginFuncionarios.Where(end => end.PermissaoId == 1).Single();
+                var a = db.LoginFuncionarios.Where(end => end.Id == id).Single();
                 int b = a.PermissaoId;
 
                 if (b == 1)
