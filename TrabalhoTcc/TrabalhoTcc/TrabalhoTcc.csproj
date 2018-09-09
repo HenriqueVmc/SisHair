@@ -177,6 +177,7 @@
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
     <Content Include="Imagem-carrosel-index\haircut3.jpg" />
     <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
+    <Content Include="Scripts\avaliacao\avaliacao.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
