@@ -26,7 +26,14 @@
             method: "post",
             data: {
                 agendamentoId: $("#AgendamentoId").val(),
-                avaliacaoUsuario: $("#AvaliacaoUsuario").val()
+                avaliacaoUsuario: $("#AvaliacaoUsuario").val(),
+                notaVoltarNovamente: $("#NotaVoltarNovamente").val(),
+                notaAgendamento: $("#NotaVoltarNovamente").val(),
+                notaExperienciaAtendimento: $("#NotaExperienciaAtendimento").val(),
+                notaCondicoesFisicasEstabelecimento: $("#NotaCondicoesFisicasEstabelecimento").val(),
+                voltariaNovamente: $("#VoltariaNovamente"),
+                recomendariaAlguem: $("#RecomendariaAlguem")
+
             },
             success: function (data) {
                 var resultado = JSON.parse(data);

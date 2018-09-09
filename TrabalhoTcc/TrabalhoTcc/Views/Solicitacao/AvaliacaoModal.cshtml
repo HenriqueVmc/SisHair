@@ -17,34 +17,80 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Avaliação: </label>
-                            @Html.TextBoxFor(m => m.AvaliacaoUsuario, new { @class = "form-control"} )
+                            @Html.TextBoxFor(m => m.AvaliacaoUsuario, new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.AvaliacaoUsuario, "", new { @class = "text-danger" })
-                            <select class="mdb-select">
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>
+                            <div>
+                            <label>De 0-5 Estrelas, qual é a chance de voltar novamente ao salão ?</label>
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+                            </fieldset>
+                             </div>
+                            <div>
+                            <label>De 0-5 Estrelas, qual é sua nota para o seu Agendamento?</label>
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+                            </fieldset>
+                            </div>
+                            <div>
+                            <label>De 0-5 Estrelas, qualifique como foi a sua experiência no salão?</label>
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+                            </fieldset>
+                            </div>
+                            <div>
+                            <label>De 0-5 Estrelas, referente as condicões do estabelecimento, qualifique-nos!</label>
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5"></label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4"></label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2"></label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1"></label>
+                            </fieldset>
+                            </div>
+                            <div>
+                            <label>Você voltaria novamente para efetuar um outro agendamento?</label>
+                            <!-- Material inline 1 -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample">
+                                <label class="form-check-label" for="materialInline1">Sim</label>
+                            </div>
+
+                            <!-- Material inline 2 -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample">
+                                <label class="form-check-label" for="materialInline2">Não</label>
+                            </div>
+                            </div>
+                            <div>
+                            <label>Você recomendaria esse agendamento para outra pessoa?</label>
+                            <!-- Material inline 1 -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample">
+                                <label class="form-check-label" for="materialInline1">Sim</label>
+                            </div>
+
+                            <!-- Material inline 2 -->
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample">
+                                <label class="form-check-label" for="materialInline2">Não</label>
+                            </div>
+                            </div>
+
+                        </div>                    
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                         
-                            @*@Html.TextBoxFor(m => m.DataHoraFinal, new { @class = "form-control", @type = "date" })*@
-                            @*@Html.ValidationMessageFor(model => model.DataHoraFinal, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="form-group">
-                    <label>De uma nota de 0-5, você voltaria novamente?</label>
-                        <div class="row lead">
-                            <div id="stars" class="starrr"></div>
-                                Você nos deu um total de <span id="count">0</span> estrela(s)
-                        </div>
-                        </div>
-                  </div>
-            </div>
+                </div>                
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="modal-avaliar-salvar">Avaliar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -52,3 +98,5 @@
         </div>
     </div>
 </div>
+</div>
+

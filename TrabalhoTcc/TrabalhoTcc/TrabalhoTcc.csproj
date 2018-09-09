@@ -316,21 +316,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809082058187_inicio.cs" />
-    <Compile Include="Migrations\201809082058187_inicio.Designer.cs">
-      <DependentUpon>201809082058187_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809090028412_addDEscricaoInAgendamentp.cs" />
-    <Compile Include="Migrations\201809090028412_addDEscricaoInAgendamentp.Designer.cs">
-      <DependentUpon>201809090028412_addDEscricaoInAgendamentp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809090249106_seila.cs" />
-    <Compile Include="Migrations\201809090249106_seila.Designer.cs">
-      <DependentUpon>201809090249106_seila.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809090531254_seila1.cs" />
-    <Compile Include="Migrations\201809090531254_seila1.Designer.cs">
-      <DependentUpon>201809090531254_seila1.cs</DependentUpon>
+    <Compile Include="Migrations\201809091941058_inicio.cs" />
+    <Compile Include="Migrations\201809091941058_inicio.Designer.cs">
+      <DependentUpon>201809091941058_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -432,17 +420,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809082058187_inicio.resx">
-      <DependentUpon>201809082058187_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809090028412_addDEscricaoInAgendamentp.resx">
-      <DependentUpon>201809090028412_addDEscricaoInAgendamentp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809090249106_seila.resx">
-      <DependentUpon>201809090249106_seila.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809090531254_seila1.resx">
-      <DependentUpon>201809090531254_seila1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809091941058_inicio.resx">
+      <DependentUpon>201809091941058_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
