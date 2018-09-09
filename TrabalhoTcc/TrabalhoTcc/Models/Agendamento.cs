@@ -11,14 +11,14 @@ namespace TrabalhoTcc.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage="Horarios devem ser preenchidos")]
-        [Display(Name = "Horario de Inicio:")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage="Horários devem ser preenchidos")]
+        [Display(Name = "Horário de Inicio:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraInicio { get; set; }
 
-        [Required(ErrorMessage = "Horarios devem ser preenchidos")]
-        [Display(Name = "Horario Final:")]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy HH:mm}", ApplyFormatInEditMode = true)]
+        [Required(ErrorMessage = "Horários devem ser preenchidos")]
+        [Display(Name = "Horário de Finalização:")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DataHoraFinal { get; set; }
 
         //[Required(ErrorMessage="Situacao deve ser preenchida")]

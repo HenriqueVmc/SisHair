@@ -19,6 +19,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
+    <link href="~/Content/pnotify.custom.min.css" rel="stylesheet" />
 </head>
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
     <div class="">
@@ -27,11 +28,11 @@
 
                 <ul class="nav">
                     <div class="container mb-4">
-                        <h2 class="nav text-white" href="#">SisHAIR</h2>
+                        <img src="~/fonts/logoSisHAIR.png" width="165px"/>
                     </div>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#agendamentos" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        AGENDAMENTOS
+                        <span class="fa fa-calendar"></span> <b>AGENDAMENTOS</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="agendamentos" data-parent="#accordion">
@@ -46,7 +47,7 @@
                     </div>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        CLIENTES
+                        <span class="fa fa-users"></span> <b>CLIENTES</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="cliente" data-parent="#accordion">
@@ -60,7 +61,7 @@
                         </ul>
                     </div>
                     <a class="nav-link text-danger" data-toggle="collapse" href="#funcionario" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        FUNCIONÁRIOS
+                        <span class="fa fa-briefcase"></span> <b>FUNCIONÁRIOS</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="funcionario" data-parent="#accordion">
@@ -78,7 +79,7 @@
                     </div>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#servico" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        SERVIÇOS
+                        <span class="fa fa-cut"></span> <b>SERVIÇOS</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="servico" data-parent="#accordion">
@@ -93,7 +94,7 @@
                     </div>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#cargos" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        CARGOS
+                        <span class="fa fa-cogs"></span> <b>CARGOS</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="cargos" data-parent="#accordion">
@@ -108,18 +109,19 @@
                     </div>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#hitorico" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        HISTÓRICO
+                        <span class="fa fa-book"></span> <b>HISTÓRICO</b>
                         <li class="fa fa-angle-down "></li>
                     </a>
                     <div class="collapse" id="hitorico" data-parent="#accordion">
 
                         <ul class="list-unstyled">
                             <li>
-                                <a class="nav-link" href="#">Histórico da agenda</a>
+                                <a class="nav-link" href="/Caixa/Index">Histórico do Caixa</a>
                             </li>
 
                         </ul>
                     </div>
+
 
                 </ul>
             </nav>
@@ -145,7 +147,8 @@
     <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
     <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Scripts/fullcalendar/pt-br.js"></script>
-
+    <script src="~/Scripts/caixa/index.js"></script>
+    <script src="~/Scripts/pnotify.custom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 </body>

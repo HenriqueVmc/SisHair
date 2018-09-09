@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TrabalhoTcc.Models.Caixa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<div class="offset-2">
+    <h2 class="text-center">Caixa:</h2>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Agendamento.Situacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorPago)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Divida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FormaPagamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataPagamento)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Agendamento.Situacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorPago)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Divida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FormaPagamento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataPagamento)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" Editar", "Editar", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                        @Html.ActionLink(" Deletar", "Deletar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+</div>

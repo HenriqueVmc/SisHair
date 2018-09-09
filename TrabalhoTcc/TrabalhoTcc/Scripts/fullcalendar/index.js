@@ -26,7 +26,11 @@
                 GerarAgenda(agendamentos);
             },
             error: function (error) {
-                alert('failed');
+                new PNotify({
+                    title: 'Erro:',
+                    text: 'Não foi possível carregar agenda',
+                    type: 'error'
+                });
             }
         })
     }
@@ -39,14 +43,14 @@
         $('#agenda').fullCalendar({
 
             contentHeight: 500,
-            defaultDate: new Date(),
-            timeFormat: 'h(:mm)a',
+            timeFormat: 'HH:mm a',
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,basicWeek,basicDay,agenda'
             },
             defaultView: 'agenda',
+            /*scrollTime: ,*/
             allDaySlot: false,
             eventLimit: true,
             validRange: {
@@ -54,16 +58,16 @@
             },
 
             eventTextColor: 'white',
-            eventColor: '#06050c',
+            eventColor: '#000',
             events: agendamentos,
             eventClick: function (Agendamento, jsEvent, view) {
                 agendamentoSelecionado = Agendamento;
                 $('#agendamento-modal #eventTitle').text(Agendamento.cliente);
 
                 var $description = $('<div/>');
-                $description.append($('<p/>').html('<b>Horario Inicial: </b>' + Agendamento.start.format("DD/MMM/YYYY HH:mm a")));
+                $description.append($('<p/>').html('<b>Horário Inicial: </b>' + Agendamento.start.format("DD/MMM/YYYY HH:mm a")));
                 if (Agendamento.end != null) {
-                    $description.append($('<p/>').html('<b>Horario Final: </b>' + Agendamento.end.format("DD/MMM/YYYY HH:mm a")));
+                    $description.append($('<p/>').html('<b>Horário Final: </b>' + Agendamento.end.format("DD/MMM/YYYY HH:mm a")));
                 }
                 $description.append($('<p/>').html('<b>Cliente: </b>' + Agendamento.cliente));
                 $description.append($('<p/>').html('<b>Funcionário: </b>' + Agendamento.funcionario));
@@ -94,7 +98,7 @@
                     Situacao: agendamento.situacao,
                     Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId                    
+                    ClienteId: agendamento.clienteId
                 };
                 SalvarAgendamento(data);
             },
@@ -106,7 +110,7 @@
                     Situacao: agendamento.situacao,
                     Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId                    
+                    ClienteId: agendamento.clienteId
                 };
                 SalvarAgendamento(data);
             }
@@ -127,12 +131,17 @@
                 success: function (data) {
                     if (data.status) {
                         //Refresh the calender
+                        new PNotify({ text:'Registro removido!', type: 'success' });
                         UpdateAgenda();
                         $('#agendamento-modal').modal('hide');
                     }
                 },
                 error: function () {
-                    alert('Failed');
+                    new PNotify({
+                        title: 'Erro:',
+                        text: 'Não foi possível remover o agendamento',
+                        type: 'error'
+                    });
                 }
             });
         }
@@ -161,19 +170,35 @@
     $('#btnSalvarAgendamento').click(function () {
         debugger;
         //Validation/
-        //if ($('#DataHoraInicio').val().trim() == "") {
-        //    alert('start date required');
-        //    return;
-        //}
-        //if ($('#DataHoraFinal').val().trim() == "") {
-        //    alert('End date required');
-        //    return;
-        //}
+        if ($('#DataHoraInicio').val().trim() == "") {
+            new PNotify('Horário de inicio deve ser preenchido!');
+            return;
+        }
+        if ($('#DataHoraFinal').val().trim() == "") {
+            new PNotify('Horário de finalização deve ser preenchido!');
+            return;
+        }
+        if ($('#FuncionarioId').val() == null) {
+            new PNotify('Selecione um Funcionário!');
+            return;
+        }
+        if ($('#ClienteId').val() == null) {
+            new PNotify('Selecione um Cliente!');
+            return;
+        }
+
+        if ($('#selectServicos').val() == null) {
+            new PNotify('Selecione um Serviço!');
+            return;
+        }
         //else {
         var hrInicio = moment($('#DataHoraInicio').val(), "DD/MM/YYYY HH:mm A").toDate();
         var hrFinal = moment($('#DataHoraFinal').val(), "DD/MM/YYYY HH:mm A").toDate();
         if (hrInicio > hrFinal) {
-            alert('Invalid end date');
+            new PNotify({
+                title: 'Horários Inválidos',
+                text: 'Data e Horário de finalização deve ser maior que inicial...'
+            });
             return;
         }
         //}
@@ -198,13 +223,41 @@
             url: '/Agendamentos/Salvar',
             data: data,
             success: function (data) {
+                new PNotify({                    
+                    text: 'Agendamento Realizado!',
+                    type: 'success'
+                });
                 UpdateAgenda();
                 $('#agendamento-modal-salvar').modal('hide');
             },
             error: function () {
-                alert('Failed');
+                new PNotify({
+                    title: 'Erro:',
+                    text: 'Não foi possível realizar o agendamento. Verifique se os campos foram preenchidos corretamente...',
+                    type: 'error'
+                });
             }
         });
+    }
+
+
+    $('#btnPagar').click(function () {
+        //Open modal dialog for edit event
+        frmPagarAgendamento();
+    });
+
+    function frmPagarAgendamento() {
+        if (agendamentoSelecionado != null) {
+
+            if (agendamentoSelecionado.situacao == "Pago") {
+                $('#agendamento-modal').modal('hide');
+   
+                new PNotify('Esse agendamento já foi Pago!'); 
+            } else {
+                var id = agendamentoSelecionado.agendamentoId;
+                window.location.replace("/Caixa/Pagamento?id=" + id);
+            }
+        }
     }
 
     $("#selectServicos").select2({

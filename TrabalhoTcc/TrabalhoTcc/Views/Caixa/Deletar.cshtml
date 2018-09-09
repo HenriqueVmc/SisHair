@@ -1,0 +1,124 @@
+﻿@model TrabalhoTcc.Models.Caixa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+<div class="offset-2">
+    <h3>Deseja realmente deletar esse regitro?</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Agendamento.Situacao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Agendamento.Situacao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValorTotal)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValorTotal)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ValorPago)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ValorPago)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Divida)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Divida)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FormaPagamento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FormaPagamento)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.DataPagamento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DataPagamento)
+                </dd>
+
+            </dl>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Deletar</button> |
+                    @Html.ActionLink(" Caixa", "Index", "Caixa", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h4 class="text-center">Agendamento:</h4>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayName("Cliente:")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Agendamento.Cliente.Nome)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayName("Funcionário:")
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Agendamento.Funcionario.Nome)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Agendamento.DataHoraInicio)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Agendamento.DataHoraInicio)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Agendamento.DataHoraFinal)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Agendamento.DataHoraFinal)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Agendamento.Descricao)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Agendamento.Descricao)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+</div>

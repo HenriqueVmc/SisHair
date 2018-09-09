@@ -25,6 +25,7 @@ namespace TrabalhoTcc.Context
         public DbSet<LoginCliente> LoginClientes { get; set; }
         public DbSet<Solicitacao> Solicitacoes { get; set; }
         public DbSet<CodigoCliente> CodigosClientes { get; set; }
+        public DbSet<Caixa> Caixa { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
         public DbSet<Permissoes> permissoes { get; set; }
 

@@ -35,7 +35,11 @@
             success: function (data) {
                 limparCampos();
                 $("#modal-agendamento").modal('hide');
-                alert("Solicitação Realizada!");
+                new PNotify({
+                    title: 'Solicitação Realizada!',
+                    text: 'Aguarde é só aguardar nosso retorno :)',
+                    type: 'success'
+                });                
             }
         });
     });

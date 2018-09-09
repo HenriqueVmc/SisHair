@@ -18,14 +18,14 @@
                 @Html.DisplayFor(model => model.Usuario)
             </dd>
         </dl>
-
+        <hr />
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
                 <input type="submit" value="Deletar" class="btn btn-default" /> |
-                @Html.ActionLink("Lista de Usuários", "Index")
+                @Html.ActionLink(" Lista de Usuários", "Index")
             </div>
         }
     </div>
