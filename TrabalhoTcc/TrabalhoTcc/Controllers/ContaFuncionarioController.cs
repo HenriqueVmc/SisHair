@@ -15,6 +15,7 @@ namespace TrabalhoTcc.Controllers
 {
     public class ContaFuncionarioController : Controller
     {
+        string permissao = "";
         private DBContext db = new DBContext();
 
         [HttpGet]
@@ -34,8 +35,22 @@ namespace TrabalhoTcc.Controllers
 
             if (usuario != null)
             {
+                var a = db.LoginFuncionarios.Where(end => end.PermissaoId == 1).Single();
+                int b = a.PermissaoId;
+
+                if (b == 1)
+                {
+                    permissao = "Administrador";
+                }
+                else if (b != 1)
+                {
+                    permissao = "Funcionario";
+                }
+                
+
+
                 //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
-                 var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, "Gerente" ));
+                var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao ));
                 var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
                 Response.Cookies.Add(cookie);
 

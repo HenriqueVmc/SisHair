@@ -18,7 +18,7 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Funcionarios       
-        [Authorize(Roles = "Ger")]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
             var funcionarios = db.Funcionarios.Include(f => f.Cargo);
@@ -34,7 +34,7 @@ namespace TrabalhoTcc.Controllers
             }
             Funcionario funcionario = await db.Funcionarios.Include(f => f.Cargo).Where(f => f.Id == id).FirstAsync();
 
-            ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).Single();
+               ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).Single();
 
             if (funcionario == null)
             {

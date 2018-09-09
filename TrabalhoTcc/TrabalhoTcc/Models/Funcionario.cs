@@ -48,9 +48,5 @@ namespace TrabalhoTcc.Models
         [Display(Name = "Cargo:")]
         public virtual Cargo Cargo { get; set; }
 
-        [Display(Name= "Permissao")]
-        public virtual Permissoes Permissoes{ get; set; }
-        public int PermissaoId { get; set; }
-
     }
 }

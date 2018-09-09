@@ -25,6 +25,11 @@ namespace TrabalhoTcc.Models.Conta
         public int FuncionarioId { get; set; }
         public Funcionario Funcionario { get; set; }
 
+        [Display(Name = "Permissao")]
+        public virtual Permissoes Permissoes { get; set; }
+        public int PermissaoId { get; set; }
+
+
         public static LoginFuncionario ValidarUsuario(string login, string senha)
         {
            LoginFuncionario ret = null;
