@@ -316,9 +316,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809051756517_inicio.cs" />
-    <Compile Include="Migrations\201809051756517_inicio.Designer.cs">
-      <DependentUpon>201809051756517_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201809082058187_inicio.cs" />
+    <Compile Include="Migrations\201809082058187_inicio.Designer.cs">
+      <DependentUpon>201809082058187_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809090028412_addDEscricaoInAgendamentp.cs" />
+    <Compile Include="Migrations\201809090028412_addDEscricaoInAgendamentp.Designer.cs">
+      <DependentUpon>201809090028412_addDEscricaoInAgendamentp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809090249106_seila.cs" />
+    <Compile Include="Migrations\201809090249106_seila.Designer.cs">
+      <DependentUpon>201809090249106_seila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809090531254_seila1.cs" />
+    <Compile Include="Migrations\201809090531254_seila1.Designer.cs">
+      <DependentUpon>201809090531254_seila1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -328,10 +340,14 @@
     <Compile Include="Models\Conta\CodigoCliente.cs" />
     <Compile Include="Models\Conta\LoginFuncionario.cs" />
     <Compile Include="Models\Conta\LoginCliente.cs" />
+    <Compile Include="Models\Conta\NovaSenha.cs" />
     <Compile Include="Models\Conta\PassarMensagem.cs" />
+    <Compile Include="Models\Conta\Permissoes.cs" />
+    <Compile Include="Models\Conta\VerificarCodigo.cs" />
     <Compile Include="Models\EnderecoFuncionario.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Servico.cs" />
+    <Compile Include="Models\ServicosAgendamento.cs" />
     <Compile Include="Models\Solicitacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -385,10 +401,8 @@
     <Content Include="Views\Cliente\Deletar.cshtml" />
     <Content Include="Views\Cliente\Detalhes.cshtml" />
     <Content Include="Views\Cliente\Editar.cshtml" />
-    <Content Include="Views\Solicitacao\Create.cshtml" />
-    <Content Include="Views\Solicitacao\Delete.cshtml" />
-    <Content Include="Views\Solicitacao\Details.cshtml" />
-    <Content Include="Views\Solicitacao\Edit.cshtml" />
+    <Content Include="Views\Solicitacao\Deletar.cshtml" />
+    <Content Include="Views\Solicitacao\Editar.cshtml" />
     <Content Include="Views\Solicitacao\Index.cshtml" />
     <Content Include="Views\Solicitacao\Agendamento.cshtml" />
     <Content Include="Views\Solicitacao\AgendamentoModal.cshtml" />
@@ -399,6 +413,8 @@
     <Content Include="Views\Agendamentos\Solicitacoes.cshtml" />
     <Content Include="Views\ContaCliente\EmailCliente.cshtml" />
     <Content Include="Views\AreaDoCliente\Index.cshtml" />
+    <Content Include="Views\Solicitacao\AreaDoCliente.cshtml" />
+    <Content Include="Views\Solicitacao\AvaliacaoModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -416,8 +432,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809051756517_inicio.resx">
-      <DependentUpon>201809051756517_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809082058187_inicio.resx">
+      <DependentUpon>201809082058187_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809090028412_addDEscricaoInAgendamentp.resx">
+      <DependentUpon>201809090028412_addDEscricaoInAgendamentp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809090249106_seila.resx">
+      <DependentUpon>201809090249106_seila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809090531254_seila1.resx">
+      <DependentUpon>201809090531254_seila1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
