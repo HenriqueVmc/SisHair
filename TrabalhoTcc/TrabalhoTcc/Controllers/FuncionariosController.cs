@@ -17,8 +17,8 @@ namespace TrabalhoTcc.Controllers
     {
         private DBContext db = new DBContext();
 
-        [Authorize]
-        // GET: Funcionarios
+        // GET: Funcionarios       
+        [Authorize(Roles = "Ger")]
         public ActionResult Index()
         {
             var funcionarios = db.Funcionarios.Include(f => f.Cargo);
@@ -46,6 +46,8 @@ namespace TrabalhoTcc.Controllers
         // GET: Funcionarios/Create
         public ActionResult Cadastrar()
         {
+           
+
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
             ViewBag.PermissaoId = new SelectList(db.permissoes, "Id", "TipoPermissao");
             return View();

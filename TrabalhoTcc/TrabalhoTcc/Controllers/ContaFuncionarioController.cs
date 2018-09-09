@@ -34,7 +34,10 @@ namespace TrabalhoTcc.Controllers
 
             if (usuario != null)
             {
-                FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
+                //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
+                 var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, "Gerente" ));
+                var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
+                Response.Cookies.Add(cookie);
 
                 if (Url.IsLocalUrl(returnUrl))
                 {
