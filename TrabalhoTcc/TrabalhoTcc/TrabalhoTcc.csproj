@@ -157,6 +157,7 @@
     <Content Include="Content\mdbBootstrap\js\modules\waves.js" />
     <Content Include="Content\mdbBootstrap\js\modules\wow.js" />
     <Content Include="Content\mdbBootstrap\js\popper.min.js" />
+    <Content Include="Content\pnotify.custom.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="DataSet\Estrututa.sql" />
     <Content Include="DesgnerLogim\css\flexslider.css" />
@@ -177,11 +178,11 @@
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
     <Content Include="Imagem-carrosel-index\haircut3.jpg" />
     <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
-    <Content Include="Scripts\avaliacao\avaliacao.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\caixa\index.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
@@ -291,6 +292,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\login\index.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pnotify.custom.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -306,6 +308,7 @@
     <Compile Include="Controllers\AdmController.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
     <Compile Include="Controllers\AreaDoClienteController.cs" />
+    <Compile Include="Controllers\CaixaController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaClienteController.cs" />
@@ -317,13 +320,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809091941058_inicio.cs" />
-    <Compile Include="Migrations\201809091941058_inicio.Designer.cs">
-      <DependentUpon>201809091941058_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201809091531203_caixa.cs" />
+    <Compile Include="Migrations\201809091531203_caixa.Designer.cs">
+      <DependentUpon>201809091531203_caixa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
     <Compile Include="Models\Avaliacao.cs" />
+    <Compile Include="Models\Caixa.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Conta\CodigoCliente.cs" />
@@ -404,6 +408,10 @@
     <Content Include="Views\AreaDoCliente\Index.cshtml" />
     <Content Include="Views\Solicitacao\AreaDoCliente.cshtml" />
     <Content Include="Views\Solicitacao\AvaliacaoModal.cshtml" />
+    <Content Include="Views\Caixa\Pagamento.cshtml" />
+    <Content Include="Views\Caixa\Deletar.cshtml" />
+    <Content Include="Views\Caixa\Editar.cshtml" />
+    <Content Include="Views\Caixa\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -421,8 +429,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809091941058_inicio.resx">
-      <DependentUpon>201809091941058_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809091531203_caixa.resx">
+      <DependentUpon>201809091531203_caixa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
