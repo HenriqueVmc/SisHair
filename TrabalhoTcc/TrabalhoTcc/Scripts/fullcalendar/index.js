@@ -304,7 +304,7 @@
         }
     });
 
-    $("#Funcionario").select2({
+    $("#FuncionarioId").select2({
         width: "100%",
         ajax: {
             url: "/Funcionarios/GetFuncionarios",

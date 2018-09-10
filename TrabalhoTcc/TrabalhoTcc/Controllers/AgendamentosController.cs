@@ -17,8 +17,6 @@ namespace TrabalhoTcc.Controllers
         // GET: Agendamentos
         public ActionResult Index()
         {
-            ViewBag.FuncionarioId = new SelectList(db.Funcionarios, "Id", "Nome");
-            //ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome");
             return View();
         }
 
