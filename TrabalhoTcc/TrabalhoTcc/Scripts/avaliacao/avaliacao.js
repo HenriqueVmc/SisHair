@@ -18,6 +18,32 @@
         }
     });
 
+    $("body").on("click",'.star',function () {
+        $("#NotaVoltarNovamente").val($(this).val());
+    });
+
+    $("body").on("click", '.star2', function () {
+        $("#NotaAgendamento").val($(this).val());
+    });
+
+    $("body").on("click", '.star3', function () {
+        $("#NotaExperienciaAtendimento").val($(this).val());
+    });
+
+    $("body").on("click", '.star4', function () {
+        $("#NotaCondicoesFisicasEstabelecimento").val($(this).val());
+    });
+
+    $("body").on("click", '.btnVoltariaNovamente', function () {
+        debugger;
+        $("#VoltariaNovamente").val($(this).val());
+    });
+
+    $("body").on("click", '.btnRecomendariaAgendamento', function () {
+        debugger;
+        $("#RecomendariaAlguem").val($(this).val());
+    });
+
 
     $("body").on("click", "#modal-avaliar-salvar", function () {
         debugger;
@@ -28,25 +54,28 @@
                 agendamentoId: $("#AgendamentoId").val(),
                 avaliacaoUsuario: $("#AvaliacaoUsuario").val(),
                 notaVoltarNovamente: $("#NotaVoltarNovamente").val(),
-                notaAgendamento: $("#NotaVoltarNovamente").val(),
+                notaAgendamento: $("#NotaAgendamento").val(),
                 notaExperienciaAtendimento: $("#NotaExperienciaAtendimento").val(),
                 notaCondicoesFisicasEstabelecimento: $("#NotaCondicoesFisicasEstabelecimento").val(),
-                voltariaNovamente: $("#VoltariaNovamente"),
-                recomendariaAlguem: $("#RecomendariaAlguem")
+                voltariaNovamente: $("#VoltariaNovamente").val(),
+                recomendariaAlguem: $("#RecomendariaAlguem").val()
 
             },
             success: function (data) {
                 var resultado = JSON.parse(data);
                 limparCampos();
                 $("#modal-avaliacao").modal('hide');
-                alert("Avaliacao Realizada!");
+                //alert("Avaliacao Realizada!");
+                new PNotify({text:'Avaliação realizada com sucesso', type:"success"});                
             }
         });
     });
 
     function limparCampos() {
-        $("#DataHoraInicio").val("");
-        $("#DataHoraFinal").val("");
-        $("#Descricao").val("");
+        $("#AvaliacaoUsuario").val("");
+        $("#NotaVoltarNovamente").val("");
+        $("#NotaAgendamento").val("");
+        $("#NotaExperienciaAtendimento").val("");
+        $("#NotaCondicoesFisicasEstabelecimento").val("");                    
     }
 });
