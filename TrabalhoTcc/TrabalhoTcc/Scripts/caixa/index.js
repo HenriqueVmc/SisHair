@@ -14,9 +14,13 @@
             $("#Troco").val(0);
         } else {
             $("#Divida").val(0);
-            $("#Troco").val((result*-1).toString());
+            $("#Troco").val((result * -1).toString());
         }
     });
+
+    $('#Status').select2();
+    $('#FormaPagamento').select2();
+
 
     $("#btnPagar").on("click", function () {
         if ($("#ValorTotal").val() == "") {

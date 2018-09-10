@@ -29,7 +29,10 @@ namespace TrabalhoTcc.Models
         [Display(Name = "Data de Pagamento:")]
         [DataType(DataType.Date)]
         public DateTime DataPagamento { get; set; }
-        
+
+        [Display(Name = "Status")]
+        public string Status { get; set; }
+
         public virtual Agendamento Agendamento { get; set; }
         public int AgendamentoId { get; set; }
 

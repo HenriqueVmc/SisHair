@@ -43,19 +43,30 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         @Html.LabelFor(model => model.FormaPagamento, htmlAttributes: new { @class = "control-label" })
 
-                        @Html.EditorFor(model => model.FormaPagamento, new { htmlAttributes = new { @class = "form-control" } })
-                        @*<select class="custom-select" id="Caixa.FormaPagamento">
+                        <select class="custom-select" id="FormaPagamento" name="FormaPagamento">
                             <option value="Dinheiro" selected>Dinheiro</option>
                             <option value="Débito">Débito</option>
                             <option value="Crédito">Crédito</option>
-                        </select>*@
+                        </select>
 
                         @Html.ValidationMessageFor(model => model.FormaPagamento, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+
+                        <select class="custom-select" id="Status" name="Status">
+                            <option value="Pago" selected>Pago</option>
+                            <option value="Pendente">Pendente</option>
+                        </select>
+
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
                         @Html.LabelFor(model => model.DataPagamento, htmlAttributes: new { @class = "control-label" })
 
                         @Html.EditorFor(model => model.DataPagamento, new { htmlAttributes = new { @class = "form-control" } })

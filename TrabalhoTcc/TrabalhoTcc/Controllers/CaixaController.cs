@@ -51,7 +51,7 @@ namespace TrabalhoTcc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Pagamento([Bind(Include = "Id,ValorTotal,ValorPago,Divida,FormaPagamento,DataPagamento,AgendamentoId")] Caixa caixa)
+        public ActionResult Pagamento([Bind(Include = "Id,ValorTotal,ValorPago,Divida,FormaPagamento,DataPagamento,Status,AgendamentoId")] Caixa caixa)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace TrabalhoTcc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Editar([Bind(Include = "Id,ValorTotal,ValorPago,Divida,FormaPagamento,DataPagamento,AgendamentoId")] Caixa caixa)
+        public ActionResult Editar([Bind(Include = "Id,ValorTotal,ValorPago,Divida,FormaPagamento,DataPagamento,Status,AgendamentoId")] Caixa caixa)
         {
             if (ModelState.IsValid)
             {

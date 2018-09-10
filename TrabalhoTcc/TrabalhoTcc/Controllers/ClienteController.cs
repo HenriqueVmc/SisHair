@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
+using Newtonsoft.Json;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -144,6 +145,26 @@ namespace TrabalhoTcc.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpGet]
+        public ActionResult GetClientes(string term)
+        {
+            var clientes = db.Clientes.ToList();
+
+            if (term != null)
+            {
+                clientes = db.Clientes.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+            }
+
+            var Results = clientes.Select(s => new
+            {
+                text = s.Nome,
+                id = s.Id
+
+            });
+            return Content(JsonConvert.SerializeObject(new { items = Results }));
+            //return Json(Results, JsonRequestBehavior.AllowGet);
         }
     }
 }
