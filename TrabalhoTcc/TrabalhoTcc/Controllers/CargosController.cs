@@ -17,12 +17,14 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Cargo
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Cargos.ToListAsync());
         }
 
         // GET: Cargo/Details/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cargo/Cadastrar
+        [Authorize(Roles = "Administrador")]
         public ActionResult Cadastrar()
         {
             return View();
@@ -61,6 +64,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cargo/Edit/5
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
@@ -80,6 +84,7 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Editar([Bind(Include = "Id,Nome,Descricao")] Cargo cargo)
         {
             if (ModelState.IsValid)
@@ -92,6 +97,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cargo/Delete/5
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)

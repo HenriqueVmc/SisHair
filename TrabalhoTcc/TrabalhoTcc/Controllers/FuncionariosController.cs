@@ -19,7 +19,7 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Funcionarios       
-        [Authorize(Roles = "Administrador")]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Index()
         {
             var funcionarios = db.Funcionarios.Include(f => f.Cargo);
@@ -27,6 +27,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Funcionarios/Details/5
+         [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -51,7 +52,7 @@ namespace TrabalhoTcc.Controllers
            
 
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
-            ViewBag.PermissaoId = new SelectList(db.permissoes, "Id", "TipoPermissao");
+            ViewBag.PermissoesId = new SelectList(db.permissoes, "Id", "TipoPermissao");
             return View();
         }
 
@@ -60,8 +61,7 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
-        public  ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco)
+        public ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco, int PermissoesId)
         {
             if (ModelState.IsValid)
             {
@@ -71,16 +71,17 @@ namespace TrabalhoTcc.Controllers
                 {
                     new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
                 }
-
-                /////
+         
+                ////
                 var loginF = new LoginFuncionario()
                 {
                     Usuario = funcionario.Email,
                     Senha = gerarSenha(funcionario),
-                    FuncionarioId = funcionario.Id
+                    FuncionarioId = funcionario.Id,
+                    PermissoesId = PermissoesId
                 };
-                /////
-                db.LoginFuncionarios.Add(loginF);            
+                ////
+                db.LoginFuncionarios.Add(loginF);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -131,7 +132,6 @@ namespace TrabalhoTcc.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
         public ActionResult Editar(Funcionario funcionario, EnderecoFuncionario endereco)
         {
             if (ModelState.IsValid)
@@ -168,7 +168,6 @@ namespace TrabalhoTcc.Controllers
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Funcionario funcionario = await db.Funcionarios.FindAsync(id);

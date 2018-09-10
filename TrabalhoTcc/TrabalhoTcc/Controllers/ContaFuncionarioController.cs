@@ -36,7 +36,7 @@ namespace TrabalhoTcc.Controllers
             if (usuario != null)
             {
                 var a = db.LoginFuncionarios.Where(end => end.Id == id).Single();
-                int b = a.PermissaoId;
+                int b = a.PermissoesId;
 
                 if (b == 1)
                 {
@@ -46,11 +46,11 @@ namespace TrabalhoTcc.Controllers
                 {
                     permissao = "Funcionario";
                 }
-                
+
 
 
                 //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
-                var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao ));
+                var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
                 var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
                 Response.Cookies.Add(cookie);
 
@@ -146,5 +146,29 @@ namespace TrabalhoTcc.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
+        [HttpGet]
+        public ActionResult GetPermissoes(string term)
+        {
+            var permissoes = db.permissoes.ToList();
+
+            if (term != null)
+            {
+                permissoes = db.permissoes.Where(p => p.TipoPermissao.ToLower().StartsWith(term.ToLower())).ToList();
+            }
+
+            var Results = permissoes.Select(p => new
+            {
+                text = p.TipoPermissao,
+                id = p.Id
+
+            });
+
+            return Content(JsonConvert.SerializeObject(new { items = Results }));
+            //return Json(Results, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

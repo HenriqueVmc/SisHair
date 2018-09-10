@@ -194,18 +194,18 @@ namespace TrabalhoTcc.Controllers
 
                 if (codCliente != null)
                 {
-                    string a = "Deu certo";
+
                     return RedirectToAction("RedefinirSenha");
                 }
                 else
                 {
-                    string a = "Nao deu";
+                    ModelState.AddModelError("", "Codigo Invalido");
                 }
 
             }
             else
             {
-                ModelState.AddModelError("", "Digite um codigo valido");
+                ModelState.AddModelError("", "Codigo Invalido");
             }
 
             return View();
@@ -233,11 +233,10 @@ namespace TrabalhoTcc.Controllers
                     if (log != null)
                     {
                         log.Senha = Senha;
-                        db.SaveChangesAsync();
-                         string codigo = error.CodigoVerdadeiro;
-                         CodigoCliente cod = db.CodigosClientes.Where(d=>d.Codigo == codigo).SingleOrDefault();
-                         db.CodigosClientes.Remove(cod);
-                         db.SaveChanges();
+                        string codigo = error.CodigoVerdadeiro;
+                        CodigoCliente cod = db.CodigosClientes.Where(d => d.Codigo == codigo).SingleOrDefault();
+                        db.CodigosClientes.Remove(cod);
+                        db.SaveChanges();
                         return RedirectToAction("Login");
                     }
                 }
@@ -246,7 +245,7 @@ namespace TrabalhoTcc.Controllers
             }
             else
             {
-                string b = "Aki";
+                ModelState.AddModelError("", "Senhas não conferem");
             }
 
             return View();
