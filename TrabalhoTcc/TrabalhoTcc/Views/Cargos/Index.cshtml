@@ -6,40 +6,43 @@
 }
 <div class="offset-2">
     <h2 class="text-center">Cargos:</h2>
+    <div class="col-md-12" style="width:100%;overflow:auto; max-height:400px;">
 
-    <p>
-        @Html.ActionLink("Novo Cargo", "Cadastrar", "Cargos", new { @class = "btn btn-success float right mr-2" })
-    </p>
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Descricao)
-                </th>
-                <th>Ações:</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+
+        <p>
+            @Html.ActionLink("Novo Cargo", "Cadastrar", "Cargos", new { @class = "btn btn-success float right mr-2" })
+        </p>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.ActionLink(" Editar", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
-                        @Html.ActionLink(" Detalhes", "Detalhes", "Cargos", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
-                        @Html.ActionLink(" Deletar", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>Ações:</th>
                 </tr>
-            }
-        </tbody>
-        <tfoot></tfoot>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" Editar", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                            @Html.ActionLink(" Detalhes", "Detalhes", "Cargos", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
+                            @Html.ActionLink(" Deletar", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
 </div>

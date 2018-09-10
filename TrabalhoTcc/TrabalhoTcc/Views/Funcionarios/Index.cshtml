@@ -7,66 +7,68 @@
 
 <div class="offset-2">
     <h2 class="text-center">Funcionários:</h2>
+    <div class="col-md-12" style="width:100%;overflow:auto; max-height:400px;">
 
-    <p>
-        @Html.ActionLink("Novo Funcionário", "Cadastrar", "Cliente", new { @class = "btn btn-success float right mr-2" })
-    </p>
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DataNascimento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Cpf)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Celular)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Cargo.Nome)
-                </th>
-                <th>Ações:</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+        <p>
+            @Html.ActionLink("Novo Funcionário", "Cadastrar", "Cliente", new { @class = "btn btn-success float right mr-2" })
+        </p>
+        <table class="table table-striped">
+            <thead class="thead-dark">
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataNascimento)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cpf)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Celular)
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataNascimento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cpf)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telefone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Celular)
+                    </th>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cargo.Nome)
-                    </td>
-                    <td>
-                        @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
-                        @Html.ActionLink(" Detalhes", "Detalhes", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
-                        @Html.ActionLink(" Deletar", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cargo.Nome)
+                    </th>
+                    <th>Ações:</th>
                 </tr>
-            }
-        </tbody>
-        <tfoot></tfoot>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataNascimento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cpf)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Celular)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cargo.Nome)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                            @Html.ActionLink(" Detalhes", "Detalhes", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-warning" })
+                            @Html.ActionLink(" Deletar", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>   
+ </div>
