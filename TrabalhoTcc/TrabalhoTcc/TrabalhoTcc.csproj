@@ -320,9 +320,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809091531203_caixa.cs" />
-    <Compile Include="Migrations\201809091531203_caixa.Designer.cs">
-      <DependentUpon>201809091531203_caixa.cs</DependentUpon>
+    <Compile Include="Migrations\201809092350255_inicio.cs" />
+    <Compile Include="Migrations\201809092350255_inicio.Designer.cs">
+      <DependentUpon>201809092350255_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100042313_statusPagamentp.cs" />
+    <Compile Include="Migrations\201809100042313_statusPagamentp.Designer.cs">
+      <DependentUpon>201809100042313_statusPagamentp.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -429,8 +433,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809091531203_caixa.resx">
-      <DependentUpon>201809091531203_caixa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809092350255_inicio.resx">
+      <DependentUpon>201809092350255_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100042313_statusPagamentp.resx">
+      <DependentUpon>201809100042313_statusPagamentp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
