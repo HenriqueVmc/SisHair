@@ -26,14 +26,13 @@
                     </div>
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.ValorPago, htmlAttributes: new { @class = "control-label" })
-
-                        @Html.EditorFor(model => model.ValorPago, new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="text" id="ValorPago" name="ValorPago" class="form-control" />
                         @Html.ValidationMessageFor(model => model.ValorPago, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">
-                        @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
 
-                        @Html.EditorFor(model => model.Divida, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
+                        <input type="text" id="Divida" name="Divida" class="form-control" />
                         @Html.ValidationMessageFor(model => model.Divida, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">

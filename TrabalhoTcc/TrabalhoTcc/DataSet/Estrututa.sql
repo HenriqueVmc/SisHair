@@ -1,10 +1,30 @@
 ﻿/*
 
+INSERT INTO Servicoes(Nome, Valor, Duracao) VALUES ('Corte', 30, 10);
 INSERT INTO Cargoes (Nome) VALUES ('Cabeleireiro');
-INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Administrador', '1999-09-09', '11991578765', '98798798776');
-INSERT INTO LoginFuncionarios (FuncionarioId, Usuario, Senha ) VALUES (1, 'adm', 'adm');
+
+INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Rosimeire de Oliveira', '1999-09-09', '11991578765', '98798798776');
+INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (1,'Cláudia dos Santos', '2000-11-11', '22222222222', '11111111111');
+INSERT INTO Permissoes (TipoPermissao) VALUES ('Administrador')
+INSERT INTO Permissoes (TipoPermissao) VALUES ('Funcionario')
+
+INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('adm','adm',1,1);
+INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('fun','fun', 2,2);
+
+SELECT * FROM Cargoes;
+SELECT * FROM Servicoes;
+SELECT * FROM Permissoes;
+SELECT * FROM LoginFuncionarios;
+SELECT * FROM Funcionarios;
+SELECT * FROM Clientes;
+SELECT * FROM LoginClientes;
+
+INSERT INTO Clientes (Nome, Data_nascimento, Celular, Telefone, Email) VALUES ('Alan', '2000-05-05', '479998956', '4566666666', 'alaneduardoalves2018@gmail.com')
+INSERT INTO LoginClientes (Usuario, Senha, ClienteId) VALUES ('cli','cli', 1);
 
 */
+
+
 CREATE TABLE funcionarios(
 	id INT IDENTITY(1, 1) NOT NULL,
 	nome VARCHAR(100) NOT NULL,

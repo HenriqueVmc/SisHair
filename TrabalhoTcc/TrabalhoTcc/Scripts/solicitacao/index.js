@@ -37,7 +37,7 @@
                 $("#modal-agendamento").modal('hide');
                 new PNotify({
                     title: 'Solicitação Realizada!',
-                    text: 'Aguarde é só aguardar nosso retorno :)',
+                    text: 'Pronto! Agora é só aguardar nosso retorno :)',
                     type: 'success'
                 });                
             }

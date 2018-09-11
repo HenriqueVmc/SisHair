@@ -42,9 +42,9 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Agendamento.DataHoraInicio) |
-                            @Html.DisplayFor(modelItem => item.Agendamento.Cliente.Nome) |
-                            @Html.DisplayFor(modelItem => item.Agendamento.Funcionario.Nome)
+                            Cliente: @Html.DisplayFor(modelItem => item.Agendamento.Cliente.Nome)<br>
+                            Horário de Inicio: @Html.DisplayFor(modelItem => item.Agendamento.DataHoraInicio)<br>          
+                            Funcionário: @Html.DisplayFor(modelItem => item.Agendamento.Funcionario.Nome)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ValorTotal)

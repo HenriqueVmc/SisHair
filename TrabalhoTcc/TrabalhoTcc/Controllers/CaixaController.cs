@@ -69,7 +69,12 @@ namespace TrabalhoTcc.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AgendamentoId = new SelectList(db.Agendamentos, "Id", "Situacao", caixa.AgendamentoId);
+            ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == caixa.AgendamentoId).Include(sa => sa.Servico).Select(sa => new
+            {
+                sa.Servico.Valor
+            }).Sum(s => s.Valor);
+
+            ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
             return View(caixa);
         }
 
@@ -87,6 +92,7 @@ namespace TrabalhoTcc.Controllers
             }
 
             ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
+            ViewBag.Caixa = db.Caixa.ToList();
             return View(caixa);
         }
 
@@ -102,7 +108,12 @@ namespace TrabalhoTcc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AgendamentoId = new SelectList(db.Agendamentos, "Id", "Situacao", caixa.AgendamentoId);
+            ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == caixa.AgendamentoId).Include(sa => sa.Servico).Select(sa => new
+            {
+                sa.Servico.Valor
+            }).Sum(s => s.Valor);
+
+            ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
             return View(caixa);
         }
 

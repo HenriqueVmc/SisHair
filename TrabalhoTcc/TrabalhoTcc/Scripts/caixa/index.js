@@ -1,16 +1,23 @@
 ﻿$(document).ready(function () {
 
+    $("#ValorTotal").mask("#.##0,00", { reverse: true });
+    $("#Divida").mask("#.##0,00", { reverse: true });
+    $("#ValorPago").mask("#.##0,00", { reverse: true });
+    $("#Troco").mask("#.##0,00", { reverse: true });
+
     $("#ValorPago").on("focusout", function () {
 
         if ($("#ValorTotal").val() == "") {
             new PNotify('Informe o Valor Total!');
             return;
         }
+
         var valPago = parseFloat($("#ValorPago").val());
         var valTotal = parseFloat($("#ValorTotal").val());
+
         var result = valTotal - valPago;
         if (result > 0) {
-            $("#Divida").val(result.toString());
+            $("#Divida").val(result.toString().replace('.',','));
             $("#Troco").val(0);
         } else {
             $("#Divida").val(0);
