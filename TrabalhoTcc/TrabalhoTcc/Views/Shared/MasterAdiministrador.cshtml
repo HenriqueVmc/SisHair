@@ -25,11 +25,25 @@
     <div class="">
         <div class="sidebar" id="accordion">
             <nav class="sidebar-nav">
-
+                
                 <ul class="nav">
-                    <div class="container mb-4">
-                        <img src="~/fonts/logoSisHAIR.png" width="165px"/>
+                    <div class=""  >
+                        <div class="text-danger text-center">
+                            <h3><label>Seja bem-vindo</label></h3>
+                        </div>
+                        <div class="text-center text-danger">
+                            <label> @User.Identity.Name</label>
+                        </div>
                     </div>
+                    <div>
+
+                    <hr class="bg-white"/>
+                    </div>
+                    <form action="/ContaFuncionario/LogOff" method="GET">
+
+                        <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
+
+                    </form>
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#agendamentos" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <span class="fa fa-calendar"></span> <b>AGENDAMENTOS</b>
@@ -60,24 +74,26 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="nav-link text-danger" data-toggle="collapse" href="#funcionario" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-briefcase"></span> <b>FUNCIONÁRIOS</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="funcionario" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Funcionarios/Index">Consulta de Funcionários</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/ContaFuncionario/Index">Usuários</a>
-                            </li>
-                        </ul>
-                    </div>
-
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                    {
+                        <a class="nav-link text-danger" data-toggle="collapse" href="#funcionario" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="fa fa-briefcase"></span> <b>FUNCIONÁRIOS</b>
+                            <li class="fa fa-angle-down "></li>
+                        </a>
+                        <div class="collapse" id="funcionario" data-parent="#accordion">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="nav-link" href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Funcionarios/Index">Consulta de Funcionários</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/ContaFuncionario/Index">Usuários</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
                     <a class="nav-link text-danger" data-toggle="collapse" href="#servico" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <span class="fa fa-cut"></span> <b>SERVIÇOS</b>
                         <li class="fa fa-angle-down "></li>
@@ -93,20 +109,23 @@
                         </ul>
                     </div>
 
-                    <a class="nav-link text-danger" data-toggle="collapse" href="#cargos" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-cogs"></span> <b>CARGOS</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="cargos" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Cargos/Cadastrar">Cadastro de Cargo</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Cargos/Index">Consulta de Cargos</a>
-                            </li>
-                        </ul>
-                    </div>
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                    {
+                        <a class="nav-link text-danger" data-toggle="collapse" href="#cargos" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="fa fa-cogs"></span> <b>CARGOS</b>
+                            <li class="fa fa-angle-down "></li>
+                        </a>
+                        <div class="collapse" id="cargos" data-parent="#accordion">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="nav-link" href="/Cargos/Cadastrar">Cadastro de Cargo</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Cargos/Index">Consulta de Cargos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
 
                     <a class="nav-link text-danger" data-toggle="collapse" href="#hitorico" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <span class="fa fa-book"></span> <b>HISTÓRICO</b>
@@ -122,9 +141,15 @@
                         </ul>
                     </div>
 
-
                 </ul>
             </nav>
+            <footer class="footer-copyright mb-4 ml-3">
+                
+
+                <div class="container mb-4">
+                    <img src="~/fonts/logoSisHAIR.png" width="165px" />
+                </div>
+            </footer>
         </div>
     </div>
     <div class="container-fluid">
@@ -155,4 +180,3 @@
 
 </body>
 </html>
-

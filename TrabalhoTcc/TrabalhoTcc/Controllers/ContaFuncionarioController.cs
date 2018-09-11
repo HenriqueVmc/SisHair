@@ -70,11 +70,16 @@ namespace TrabalhoTcc.Controllers
             return View(loginF);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult LogOff()
         {
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+
+       
+
 
         [HttpGet]
         [AllowAnonymous]
