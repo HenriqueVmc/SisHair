@@ -34,15 +34,22 @@
         $("#NotaCondicoesFisicasEstabelecimento").val($(this).val());
     });
 
-    $("body").on("click", '.btnVoltariaNovamente', function () {
-        debugger;
-        $("#VoltariaNovamente").val($(this).val());
+    $("body").on("click", '#rdbVoltariaNovamente1', function () {
+        $("#VoltariaNovamente").val(true);
     });
 
-    $("body").on("click", '.btnRecomendariaAgendamento', function () {
-        debugger;
-        $("#RecomendariaAlguem").val($(this).val());
+    $("body").on("click", '#rdbVoltariaNovamente2', function () {
+        $("#VoltariaNovamente").val(false);
     });
+
+    $("body").on("click", '#rdbRecomendariaAlguem1', function () {
+        $("#RecomendariaAlguem").val(true);
+    });
+
+    $("body").on("click", '#rdbRecomendariaAlguem2', function () {
+        $("#RecomendariaAlguem").val(false);
+    });
+
 
 
     $("body").on("click", "#modal-avaliar-salvar", function () {
