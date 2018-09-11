@@ -1,4 +1,4 @@
-﻿/*
+﻿
 
 INSERT INTO Servicoes(Nome, Valor, Duracao) VALUES ('Corte', 30, 10);
 INSERT INTO Cargoes (Nome) VALUES ('Cabeleireiro');
@@ -8,8 +8,8 @@ INSERT INTO Funcionarios (CargoId, Nome, DataNascimento, Telefone, Cpf) VALUES (
 INSERT INTO Permissoes (TipoPermissao) VALUES ('Administrador')
 INSERT INTO Permissoes (TipoPermissao) VALUES ('Funcionario')
 
-INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('adm','adm',1,1);
-INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('fun','fun', 2,2);
+INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('adm','b09c600fddc573f117449b3723f23d64',1,1);
+INSERT INTO LoginFuncionarios (Usuario, Senha, FuncionarioId, PermissoesId) VALUES ('fun','77004ea213d5fc71acf74a8c9c6795fb', 2,2);
 
 SELECT * FROM Cargoes;
 SELECT * FROM Servicoes;
@@ -22,7 +22,6 @@ SELECT * FROM LoginClientes;
 INSERT INTO Clientes (Nome, Data_nascimento, Celular, Telefone, Email) VALUES ('Alan', '2000-05-05', '479998956', '4566666666', 'alaneduardoalves2018@gmail.com')
 INSERT INTO LoginClientes (Usuario, Senha, ClienteId) VALUES ('cli','cli', 1);
 
-*/
 
 
 CREATE TABLE funcionarios(
