@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TrabalhoTcc.Context;
+using TrabalhoTcc.Helpers;
 using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Controllers
@@ -88,12 +89,13 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
+                senha = CriptoHelper.HashMD5(senha);
                 LoginFuncionario loginAntigo = db.LoginFuncionarios.SingleOrDefault(lf => lf.Usuario == usuario && lf.Senha == senha);
 
                 if (loginAntigo != null)
                 {
                     loginAntigo.Usuario = novoUsuario;
-                    loginAntigo.Senha = novaSenha;
+                    loginAntigo.Senha = CriptoHelper.HashMD5(novaSenha);
 
                     db.Entry(loginAntigo).State = EntityState.Modified;
                     db.SaveChanges();

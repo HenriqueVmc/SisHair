@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using TrabalhoTcc.Context;
+using TrabalhoTcc.Helpers;
 
 namespace TrabalhoTcc.Models.Conta
 {
@@ -26,14 +28,21 @@ namespace TrabalhoTcc.Models.Conta
 
         public static LoginCliente ValidarUsuario(string login, string senha)
         {
+            DBContext db = new DBContext();
             LoginCliente ret = null;
-            using (var db = new SqlConnection())
-            {
-                //    ret = db.Usuarios
-                //        .Include(x => x.Perfis)
-                //        .Where(x => x.Usuario == login && x.Senha == senha)
-                //        .SingleOrDefault();
 
+            //senha = CriptoHelper.HashMD5(senha);
+            ret = db.LoginClientes.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
+
+            return ret;
+        }
+    }
+}
+
+/*
+ * 
+ * using (var db = new SqlConnection())
+            {
                 db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
                 db.Open();
                 using (var cmd = new SqlCommand())
@@ -54,7 +63,4 @@ namespace TrabalhoTcc.Models.Conta
                     }
                 }              
             }
-            return ret;
-        }
-    }
-}
+*/

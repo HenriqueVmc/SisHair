@@ -11,6 +11,7 @@ using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 using Newtonsoft.Json;
+using TrabalhoTcc.Helpers;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -97,7 +98,7 @@ namespace TrabalhoTcc.Controllers
             senha += Convert.ToString(funcionario.DataNascimento.Month.ToString().PadLeft(2, '0'));
             senha += Convert.ToString(funcionario.DataNascimento.Year);
 
-            return senha;
+            return CriptoHelper.HashMD5(senha);
         }
 
 

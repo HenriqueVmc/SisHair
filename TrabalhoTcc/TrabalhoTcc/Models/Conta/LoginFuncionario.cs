@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using TrabalhoTcc.Context;
+using TrabalhoTcc.Helpers;
 
 namespace TrabalhoTcc.Models.Conta
 {
@@ -14,7 +16,7 @@ namespace TrabalhoTcc.Models.Conta
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Informe o usuário")]
-        [Display(Name ="Usuário:")]
+        [Display(Name = "Usuário:")]
         public string Usuario { get; set; }
 
         [Required(ErrorMessage = "Informe a senha")]
@@ -32,35 +34,40 @@ namespace TrabalhoTcc.Models.Conta
 
         public static LoginFuncionario ValidarUsuario(string login, string senha)
         {
-           LoginFuncionario ret = null;
-           using (var db = new SqlConnection())
-           {
-               //    ret = db.Usuarios
-               //        .Include(x => x.Perfis)
-               //        .Where(x => x.Usuario == login && x.Senha == senha)
-               //        .SingleOrDefault();
+            DBContext db = new DBContext();
+            LoginFuncionario ret = null;
 
-               db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-               db.Open();
-               using (var cmd = new SqlCommand())
-               {
-                   cmd.Connection = db;
-                   cmd.CommandText = string.Format("SELECT Id, Usuario, Senha FROM LoginFuncionarios WHERE Usuario = '{0}' AND Senha = '{1}'", login, senha);
-                   var reader = cmd.ExecuteReader();
+            senha = CriptoHelper.HashMD5(senha);
 
-                   if (reader.Read())//Encontrou
-                   {
-                       ret = new LoginFuncionario
-                       {
-                           Id = (int)reader["Id"],
-                           Usuario = (string)reader["Usuario"],
-                           Senha = (string)reader["Senha"]
-                       };
-                   }
+            ret = db.LoginFuncionarios.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
 
-               }
-               return ret;
-           }
+            return ret;
         }
     }
 }
+
+/*
+using (var db = new SqlConnection())
+    {
+
+        db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+        db.Open();
+        using (var cmd = new SqlCommand())
+        {
+            cmd.Connection = db;
+            cmd.CommandText = string.Format("SELECT Id, Usuario, Senha FROM LoginFuncionarios WHERE Usuario = '{0}' AND Senha = '{1}'", login, senha);
+            var reader = cmd.ExecuteReader();
+
+            if (reader.Read())//Encontrou
+            {
+                ret = new LoginFuncionario
+                {
+                    Id = (int)reader["Id"],
+                    Usuario = (string)reader["Usuario"],
+                    Senha = (string)reader["Senha"]
+                };
+            }
+
+        }
+    }
+*/
