@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -31,9 +32,14 @@ namespace TrabalhoTcc.Models.Conta
             DBContext db = new DBContext();
             LoginCliente ret = null;
 
-            //senha = CriptoHelper.HashMD5(senha);
-            ret = db.LoginClientes.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
-
+            senha = CriptoHelper.HashMD5(senha);
+            try
+            {
+                ret = db.LoginClientes.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
+            }catch(EntityException e)
+            {
+                return new LoginCliente();
+            }
             return ret;
         }
     }

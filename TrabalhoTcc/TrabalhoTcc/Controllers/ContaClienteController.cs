@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using TrabalhoTcc.Context;
+using TrabalhoTcc.Helpers;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 
@@ -65,7 +66,7 @@ namespace TrabalhoTcc.Controllers
                 var LoginCliente = new LoginCliente()
                 {
                     Usuario = loginC.Usuario,
-                    Senha = loginC.Senha,
+                    Senha = CriptoHelper.HashMD5(loginC.Senha),
                     ClienteId = cliente.Id
                 };
 

@@ -38,8 +38,8 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                solicitacao.Situacao = "Pendente";
-                db.Solicitacoes.Add(solicitacao);
+                solicitacao.Situacao = "Pendente";                
+                db.Solicitacoes.Add(solicitacao);                
 
                 if (servicos != null)
                 {
@@ -47,10 +47,16 @@ namespace TrabalhoTcc.Controllers
                     {
                         var servico = db.Servicos.Where(s => s.Id == idServico).SingleOrDefault();
 
+                        ServicosSolicitacao sa = new ServicosSolicitacao();
+                        sa.SolicitacaoId = solicitacao.Id;
+                        sa.ServicoId = servico.Id;
                         solicitacao.Servicos += (string.IsNullOrEmpty(solicitacao.Servicos)) ? servico.Nome : ", " + servico.Nome;
+
+                        db.ServicosSolicitacao.Add(sa);
+                        db.SaveChanges();
                     }
                 }
-                db.SaveChanges();
+                
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
             }
 
@@ -59,6 +65,16 @@ namespace TrabalhoTcc.Controllers
 
             return View(solicitacao);
         }
+
+        public ActionResult Cancelar(int? id)
+        {
+            Solicitacao solicitacao = db.Solicitacoes.Find(id);
+            db.Solicitacoes.Remove(solicitacao);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");            
+        }
+
         // GET: Solicitacao
         public async Task<ActionResult> Index()
         {

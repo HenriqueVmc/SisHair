@@ -92,7 +92,11 @@ namespace TrabalhoTcc.Controllers
             }
 
             ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
-            ViewBag.Caixa = db.Caixa.ToList();
+            ViewBag.ValorTotal = db.Caixa.Where(c => c.Id == id).Select(c => new
+            {
+                c.ValorTotal
+            }).SingleOrDefault();
+
             return View(caixa);
         }
 

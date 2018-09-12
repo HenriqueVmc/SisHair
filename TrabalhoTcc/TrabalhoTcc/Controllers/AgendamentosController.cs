@@ -21,14 +21,14 @@ namespace TrabalhoTcc.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAgendamentos()
+        public JsonResult GetAgendamentos()//int? id
         {
-            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao }).ToList();
-            
+            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao }).ToList();//.Where(a => a.FuncionarioId == id)
+
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-   
+
         [HttpPost]
         public JsonResult Salvar(Agendamento a, List<int> servicos)
         {
@@ -39,7 +39,7 @@ namespace TrabalhoTcc.Controllers
                 {
                     //Update no Agendamento
                     var agendamento = db.Agendamentos.Where(agen => agen.Id == a.Id).FirstOrDefault();
-                    
+
                     if (agendamento != null)
                     {
                         agendamento.DataHoraInicio = a.DataHoraInicio;
@@ -62,13 +62,13 @@ namespace TrabalhoTcc.Controllers
                             agendamento.Descricao = null;
                             agendamento.Descricao = new ServicosAgendamento().salvarServicosAgendamento(agendamento, servicos);
                         }
-                    }    
-                    
+                    }
+
                 }
                 else
                 {
                     db.Agendamentos.Add(a);
-                   
+
                     if (servicos != null)
                     {
                         foreach (int idServico in servicos)
@@ -81,7 +81,7 @@ namespace TrabalhoTcc.Controllers
 
                             db.ServicosAgendamento.Add(sa);
 
-                            a.Descricao += (string.IsNullOrEmpty(a.Descricao)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;                          
+                            a.Descricao += (string.IsNullOrEmpty(a.Descricao)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;
                         }
                     }
                 }
@@ -133,7 +133,8 @@ namespace TrabalhoTcc.Controllers
         {
             var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
 
-            var agendamento = new Agendamento(){
+            var agendamento = new Agendamento()
+            {
                 DataHoraInicio = s.DataHoraInicio,
                 DataHoraFinal = s.DataHoraFinal,
                 FuncionarioId = s.FuncionarioId,
@@ -142,12 +143,31 @@ namespace TrabalhoTcc.Controllers
                 Descricao = s.Servicos
             };
 
-            db.Agendamentos.Add(agendamento);        
+            db.Agendamentos.Add(agendamento);
+
+            s.Situacao = "Confirmado";
+            db.Entry(s).State = EntityState.Modified;
+            
             db.SaveChanges();
 
-            //s.Situacao = "Confirmado";
-            db.Solicitacoes.Remove(s);
-            db.SaveChanges();
+            var servicosSolicitacao = db.ServicosSolicitacao.Where(ss => ss.SolicitacaoId == id).Select(ss => new { ss.ServicoId }).ToList();
+
+            if (servicosSolicitacao != null)
+            {
+                foreach (var ss in servicosSolicitacao)
+                {
+                    var servico = db.Servicos.Where(ser => ser.Id == ss.ServicoId).SingleOrDefault();
+
+                    ServicosAgendamento sa = new ServicosAgendamento();
+                    sa.AgendamentoId = agendamento.Id;
+                    sa.ServicoId = servico.Id;
+
+                    db.ServicosAgendamento.Add(sa);
+                    db.SaveChanges();
+                }
+            }
+
+            //s.Situacao = "Confirmado";            
 
             return RedirectToAction("Index");
         }

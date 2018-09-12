@@ -20,24 +20,24 @@
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label" })
 
-                        @Html.EditorFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="text" id="ValorTotal" name="ValorTotal" value="@ViewBag.ValorTotal" class="form-control" />
+                        @*Html.EditorFor(model => model.ValorTotal, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.ValidationMessageFor(model => model.ValorTotal, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">
                         @Html.LabelFor(model => model.ValorPago, htmlAttributes: new { @class = "control-label" })
-
-                        @Html.EditorFor(model => model.ValorPago, new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="text" id="ValorPago" name="ValorPago" class="form-control" />
                         @Html.ValidationMessageFor(model => model.ValorPago, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">
-                        @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
 
-                        @Html.EditorFor(model => model.Divida, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
+                        <input type="text" id="Divida" name="Divida" class="form-control" readonly />
                         @Html.ValidationMessageFor(model => model.Divida, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3">
                         @Html.Label("Troco:", htmlAttributes: new { @class = "control-label" })
-                        @Html.Editor("Troco", new { htmlAttributes = new { @class = "form-control" } })
+                        <input type="text" id="Troco" name="Truco" class="form-control" readonly />
                     </div>
                 </div>
 
@@ -147,6 +147,9 @@
         </div>
     }
 </div>
+
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

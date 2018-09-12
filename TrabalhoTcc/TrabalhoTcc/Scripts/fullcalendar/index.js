@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
+
     var agendamentos = [];
     var agendamentoSelecionado = null;
     UpdateAgenda();
+
     function UpdateAgenda() {
         agendamentos = [];
         $.ajax({
@@ -12,7 +14,7 @@
                     agendamentos.push({
                         agendamentoId: a.Id,
                         start: moment(a.DataHoraInicio),
-                        end: a.DataHoraFinal != null ? moment(a.DataHoraFinal) : null,
+                        end: moment(a.DataHoraFinal),
                         funcionarioId: a.FuncionarioId,
                         clienteId: a.ClienteId,
                         situacao: a.Situacao,
@@ -36,6 +38,7 @@
     }
 
     function GerarAgenda(agendamentos) {
+        // Colocando data de inicio do calendário
         var date = new Date();
         date.setDate(date.getDate() - 1);
 
@@ -94,7 +97,7 @@
                 var data = {
                     Id: agendamento.agendamentoId,
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
-                    DataHoraFinal: agendamento.end != null ? agendamento.end.format('DD/MM/YYYY HH:mm A') : null,
+                    DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
                     Situacao: agendamento.situacao,
                     Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
@@ -106,7 +109,7 @@
                 var data = {
                     Id: agendamento.agendamentoId,
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
-                    DataHoraFinal: agendamento.end != null ? agendamento.end.format('DD/MM/YYYY HH:mm A') : null,
+                    DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
                     Situacao: agendamento.situacao,
                     Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
@@ -131,7 +134,7 @@
                 success: function (data) {
                     if (data.status) {
                         //Refresh the calender
-                        new PNotify({ text:'Registro removido!', type: 'success' });
+                        new PNotify({ text:'Registro removido!', type: 'success', delay: 500 });
                         UpdateAgenda();
                         $('#agendamento-modal').modal('hide');
                     }
@@ -149,7 +152,8 @@
 
     $('#dtDataHoraInicio, #dtDataHoraFinal').datetimepicker({
         format: 'DD/MM/YYYY HH:mm A',
-        locale: 'pt-br'
+        locale: 'pt-br',
+        minDate: new Date()
     });
 
     function frmEditarAgendamento() {
@@ -157,11 +161,13 @@
 
             $('#Id').val(agendamentoSelecionado.agendamentoId);
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
-            $('#DataHoraFinal').val(agendamentoSelecionado.end != null ? agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A') : '');
-            $('#Situacao').val(agendamentoSelecionado.situacao);
-            $('#selectServicos').val(agendamentoSelecionado.descricao);
-            $('#FuncionarioId').val(agendamentoSelecionado.funcionarioId);
-            $('#ClienteId').val(agendamentoSelecionado.clienteId);
+            $('#DataHoraFinal').val(agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A'));
+            $("#Situacao").val(agendamentoSelecionado.situacao).change();
+            //$('#Situacao').val(agendamentoSelecionado.situacao);
+            $("#selectServicos").val(agendamentoSelecionado.descricao).change();
+            //$('#selectServicos').val(agendamentoSelecionado.descricao);
+            $('#FuncionarioId').val(agendamentoSelecionado.funcionarioId).change();
+            $('#ClienteId').val(agendamentoSelecionado.clienteId).change();
         }
         $('#agendamento-modal').modal('hide');
         $('#agendamento-modal-salvar').modal();
@@ -223,7 +229,9 @@
             url: '/Agendamentos/Salvar',
             data: data,
             success: function (data) {
-                new PNotify({                    
+
+                new PNotify({   
+                    delay: 500,
                     text: 'Agendamento Realizado!',
                     type: 'success'
                 });
@@ -238,6 +246,8 @@
                 });
             }
         });
+
+        limparCampos();
     }
 
 
@@ -325,4 +335,14 @@
             }
         }
     });
+
+    //function limparCampos() {
+    //    $('#Id').val("");
+    //    $('#DataHoraInicio').val("");
+    //    $('#DataHoraFinal').val("");
+    //    $("#Situacao").val("");
+    //    $("#selectServicos").val("");
+    //    $('#FuncionarioId').val("");
+    //    $('#ClienteId').val("");
+    //}
 });

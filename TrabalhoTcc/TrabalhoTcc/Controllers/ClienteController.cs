@@ -11,6 +11,7 @@ using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 using Newtonsoft.Json;
+using TrabalhoTcc.Helpers;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -79,7 +80,7 @@ namespace TrabalhoTcc.Controllers
             senha += Convert.ToString(cliente.Data_nascimento.Month.ToString().PadLeft(2, '0'));
             senha += Convert.ToString(cliente.Data_nascimento.Year);
 
-            return senha;
+            return CriptoHelper.HashMD5(senha);
         }
         // GET: Cliente/Edit/5
         public async Task<ActionResult> Editar(int? id)

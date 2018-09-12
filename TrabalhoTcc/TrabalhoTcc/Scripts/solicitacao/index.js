@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     $("table").on("click", ".btnSolicitar", function () {
         //Id do Funcionario
-        debugger;
         $id = $(this).data("id");
 
         $.ajax({
@@ -17,7 +16,9 @@
 
     $('#dtDataHoraInicio2, #dtDataHoraFinal2').datetimepicker({
         format: 'DD/MM/YYYY HH:mm A',
-        locale: 'pt-br'
+        locale: 'pt-br',
+        defaultDate: new Date(),
+        minDate: new Date()
     });
 
     $("#modal-agendamento-salvar").on("click", function () { 
