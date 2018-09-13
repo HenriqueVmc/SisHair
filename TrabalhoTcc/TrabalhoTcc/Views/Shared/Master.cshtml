@@ -37,7 +37,7 @@
 <body>
     <div class="custom-scrollbar" style="display:none;"></div>
     <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark  scrolling-navbar">
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand" href="#" target="_blank">
@@ -48,7 +48,24 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+
+
+
             <!-- Links -->
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
@@ -80,6 +97,15 @@
                             <i class="text-white">Área restrita</i>
                         </a>
                 </ul>
+
+
+                <footer>
+                    <form action="/ContaFuncionario/LogOff" method="GET">
+
+                        <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
+
+                    </form>
+                </footer>
             </div>
         </div>
     </nav>
@@ -183,7 +209,7 @@
     <!-- SCRIPTS -->
     <!-- JQuery -->
 
-    @*<script src="~/Scripts/jquery-3.0.0.js"></script>*@
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="~/Content/mdbBootstrap/js/jquery-3.3.1.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="~/Content/mdbBootstrap/js/popper.min.js"></script>
@@ -196,6 +222,8 @@
         new WOW().init();
     </script>
   
+
+    <script src="~/Scripts/contacliente/indexfuncionario.js"></script>
     <script src="~/Scripts/fullcalendar/moment.min.js"></script>
     <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
     <script src="~/Scripts/avaliacao/avaliacao.js"></script>
