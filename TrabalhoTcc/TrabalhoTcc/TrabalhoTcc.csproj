@@ -159,6 +159,7 @@
     <Content Include="Content\mdbBootstrap\js\popper.min.js" />
     <Content Include="Content\pnotify.custom.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DataSet\Estrutura 01.sql" />
     <Content Include="DataSet\Estrututa.sql" />
     <Content Include="DesgnerLogim\css\flexslider.css" />
     <Content Include="DesgnerLogim\css\font-awesome.css" />
@@ -178,6 +179,8 @@
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
     <Content Include="Imagem-carrosel-index\haircut3.jpg" />
     <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
+    <Content Include="Scripts\additional-methods.min.js" />
+    <Content Include="Scripts\avaliacao\avaliacao.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -269,6 +272,8 @@
     <Content Include="Scripts\fullcalendar\index.js" />
     <Content Include="Scripts\fullcalendar\moment.min.js" />
     <Content Include="Scripts\fullcalendar\pt-br.js" />
+    <Content Include="Scripts\funcionario\index.js" />
+    <Content Include="Scripts\funcionario\validacao.js" />
     <Content Include="Scripts\indexadm.js" />
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
@@ -320,13 +325,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809092350255_inicio.cs" />
-    <Compile Include="Migrations\201809092350255_inicio.Designer.cs">
-      <DependentUpon>201809092350255_inicio.cs</DependentUpon>
+    <Compile Include="Helpers\CriptoHelper.cs" />
+    <Compile Include="Migrations\201809110321124_inicio.cs" />
+    <Compile Include="Migrations\201809110321124_inicio.Designer.cs">
+      <DependentUpon>201809110321124_inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809100042313_statusPagamentp.cs" />
-    <Compile Include="Migrations\201809100042313_statusPagamentp.Designer.cs">
-      <DependentUpon>201809100042313_statusPagamentp.cs</DependentUpon>
+    <Compile Include="Migrations\201809121235526_adiconando servicosSolicitacao.cs" />
+    <Compile Include="Migrations\201809121235526_adiconando servicosSolicitacao.Designer.cs">
+      <DependentUpon>201809121235526_adiconando servicosSolicitacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809130356073_servicosEmAgendamento.cs" />
+    <Compile Include="Migrations\201809130356073_servicosEmAgendamento.Designer.cs">
+      <DependentUpon>201809130356073_servicosEmAgendamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -345,6 +355,7 @@
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\Servico.cs" />
     <Compile Include="Models\ServicosAgendamento.cs" />
+    <Compile Include="Models\ServicosSolicitacao.cs" />
     <Compile Include="Models\Solicitacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -433,11 +444,14 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809092350255_inicio.resx">
-      <DependentUpon>201809092350255_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809110321124_inicio.resx">
+      <DependentUpon>201809110321124_inicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809100042313_statusPagamentp.resx">
-      <DependentUpon>201809100042313_statusPagamentp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809121235526_adiconando servicosSolicitacao.resx">
+      <DependentUpon>201809121235526_adiconando servicosSolicitacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809130356073_servicosEmAgendamento.resx">
+      <DependentUpon>201809130356073_servicosEmAgendamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
