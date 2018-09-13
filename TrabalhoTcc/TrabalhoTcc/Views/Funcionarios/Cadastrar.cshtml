@@ -6,13 +6,12 @@
 
 <div class="offset-2">
 
-    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "cadastrarFuncionario" }))
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <div class="container">
         <h2 class="text-center">Cadastro de Funcionário</h2>
         <hr />
-        <form >
         <div class="row">
             <div class="form-horizontal col-md-6">
 
@@ -139,7 +138,6 @@
                 </div>
             </div>
         </div>
-    </form>
 </div>
 
 
