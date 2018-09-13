@@ -57,7 +57,7 @@ namespace TrabalhoTcc.Models
             if (cadastro != null)
             {
                 db.EnderecoFuncionarios.Add(cadastro);
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
 
             return cadastro;
@@ -66,7 +66,7 @@ namespace TrabalhoTcc.Models
         public void EditarEndereco(EnderecoFuncionario endereco)
         {
             db.Entry(endereco).State = EntityState.Modified;
-            db.SaveChangesAsync();
+            db.SaveChanges();
         }
     }
 }

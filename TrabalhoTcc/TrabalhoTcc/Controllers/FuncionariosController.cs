@@ -37,7 +37,7 @@ namespace TrabalhoTcc.Controllers
             }
             Funcionario funcionario = await db.Funcionarios.Include(f => f.Cargo).Where(f => f.Id == id).FirstAsync();
 
-               ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).Single();
+               ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).SingleOrDefault();
 
             if (funcionario == null)
             {
@@ -68,7 +68,8 @@ namespace TrabalhoTcc.Controllers
             if (ModelState.IsValid)
             {
                 db.Funcionarios.Add(funcionario);
-   
+                db.SaveChanges();
+
                 if (endereco != null)
                 {
                     new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
