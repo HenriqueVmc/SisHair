@@ -15,6 +15,7 @@ namespace TrabalhoTcc
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            HtmlHelper.ClientValidationEnabled = false;
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
         }

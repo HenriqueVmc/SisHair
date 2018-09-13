@@ -11,8 +11,8 @@
 //        }
 //    })
 //})
+$(function(){
 
-$(document).ready(function () {
     $("#formCadastroFuncionario").validate({
         rules: {
             Nome: {
@@ -29,8 +29,23 @@ $(document).ready(function () {
                 maxlength: 100
             }
 
+        },
+        messages: {
+            Nome: {
+                required: "Nome é obrigatório"
+            }
         }
 
 
+    });
+
+    $("#formCadastroFuncionario").on("submit", function (e) {
+        e.preventDefault;
+        if ($("#formCadastroFuncionario").valid()) {
+            alert("asdasd");
+        } else {
+            
+        }
     })
-})
+
+});

@@ -6,7 +6,7 @@
 
 <div class="offset-2">
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Cadastrar", "Funcionario", FormMethod.Post, new { id = "formCadastroFuncionario" }))
     {
         @Html.AntiForgeryToken()
         <div class="container">
@@ -133,7 +133,7 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> Cadastrar</button>
-                        @Html.ActionLink(" Back to List", "Index", "Funcionarios", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary " })
+                        @Html.ActionLink(" Voltar para lista", "Index", "Funcionarios", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary " })
                     </div>
                 </div>
             </div>
@@ -143,6 +143,6 @@
 
     }
 </div>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

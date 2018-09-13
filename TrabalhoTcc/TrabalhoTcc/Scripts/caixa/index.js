@@ -50,10 +50,10 @@
         $('#Status').select2();
         $('#FormaPagamento').select2();
 
-        $("#ValorTotal").rules("remove", "number");
+       /* $("#ValorTotal").rules("remove", "number");
         $("#Divida").rules("remove", "number");
         $("#ValorPago").rules("remove", "number");
-        $("#Troco").rules("remove", "number");
+        $("#Troco").rules("remove", "number");*/
 
         $("#ValorTotal").mask("#.##0,00", { reverse: true });
         $("#Divida").mask("#.##0,00", { reverse: true });

@@ -50,8 +50,9 @@ namespace TrabalhoTcc.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Cadastrar()
         {
-           
 
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
             ViewBag.PermissoesId = new SelectList(db.permissoes, "Id", "TipoPermissao");
             return View();
@@ -87,6 +88,8 @@ namespace TrabalhoTcc.Controllers
 
                 return RedirectToAction("Index");
             }
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
         }
