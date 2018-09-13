@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using TrabalhoTcc.Context;
 
 namespace TrabalhoTcc.Models
@@ -20,7 +21,7 @@ namespace TrabalhoTcc.Models
         public virtual Servico Servico { get; set; }
         public int ServicoId { get; set; }
 
-        public string salvarServicosAgendamento(Agendamento a, List<int> servicos)
+        public string salvarServicosAgendamento([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
         {
             
             foreach (int idServico in servicos)
@@ -33,11 +34,11 @@ namespace TrabalhoTcc.Models
 
                 db.ServicosAgendamento.Add(sa);                
 
-                a.Descricao += (string.IsNullOrEmpty(a.Descricao)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;
+                a.Servicos += (string.IsNullOrEmpty(a.Servicos)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;
                 db.SaveChanges();
 
             }
-            return a.Descricao;
+            return a.Servicos;
         }
     }
 }

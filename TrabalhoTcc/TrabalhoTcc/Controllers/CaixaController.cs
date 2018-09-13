@@ -61,10 +61,14 @@ namespace TrabalhoTcc.Controllers
                 Agendamento agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
                 agendamento.Situacao = "Pago";
 
-                //db.Historico.Add(agendamento);
                 //db.Agendamentos.Remove(agendamento);
 
                 db.SaveChanges();
+
+                //db.Solicitacoes.Where(s => s.DataHoraInicio == agendamento.DataHoraInicio &&
+                //                           s.DataHoraFinal == agendamento.DataHoraFinal &&
+                //                           s.ClienteId == agendamento.ClienteId &&
+                //                           s.FuncionarioId == agendamento.FuncionarioId).SingleOrDefault();
 
                 return RedirectToAction("Index");
             }

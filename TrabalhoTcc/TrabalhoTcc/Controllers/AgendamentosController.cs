@@ -23,14 +23,14 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public JsonResult GetAgendamentos()//int? id
         {
-            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao }).ToList();//.Where(a => a.FuncionarioId == id)
+            var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao, a.Servicos }).ToList();//.Where(a => a.FuncionarioId == id)
 
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
 
         [HttpPost]
-        public JsonResult Salvar(Agendamento a, List<int> servicos)
+        public JsonResult Salvar([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
         {
             var status = false;
             try
@@ -47,6 +47,7 @@ namespace TrabalhoTcc.Controllers
                         agendamento.Situacao = a.Situacao;
                         agendamento.FuncionarioId = a.FuncionarioId;
                         agendamento.ClienteId = a.ClienteId;
+                        agendamento.Descricao = a.Descricao;
 
                         if (servicos != null)
                         {
@@ -59,8 +60,8 @@ namespace TrabalhoTcc.Controllers
                                 }
                             }
 
-                            agendamento.Descricao = null;
-                            agendamento.Descricao = new ServicosAgendamento().salvarServicosAgendamento(agendamento, servicos);
+                            agendamento.Servicos = null;
+                            agendamento.Servicos = new ServicosAgendamento().salvarServicosAgendamento(agendamento, servicos);
                         }
                     }
 
@@ -81,7 +82,7 @@ namespace TrabalhoTcc.Controllers
 
                             db.ServicosAgendamento.Add(sa);
 
-                            a.Descricao += (string.IsNullOrEmpty(a.Descricao)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;
+                            a.Servicos += (string.IsNullOrEmpty(a.Servicos)) ? sa.Servico.Nome : ", " + sa.Servico.Nome;
                         }
                     }
                 }
@@ -140,7 +141,8 @@ namespace TrabalhoTcc.Controllers
                 FuncionarioId = s.FuncionarioId,
                 ClienteId = s.ClienteId,
                 Situacao = "Confirmado",
-                Descricao = s.Servicos
+                Descricao = s.Descricao,
+                Servicos = s.Servicos
             };
 
             db.Agendamentos.Add(agendamento);

@@ -21,7 +21,8 @@
                         cliente: a.Cliente,
                         funcionario: a.Funcionario,
                         descricao: a.Descricao,
-                        title: " Cliente: " + a.Cliente + " | Serviços: " + a.Descricao + " [ Situação: " + a.Situacao + " ]"
+                        servicos: a.Servicos,
+                        title: " Cliente: " + a.Cliente + " | Serviços: " + a.Servicos + " [ Situação: " + a.Situacao + " ]"
                     });
                 });
 
@@ -69,25 +70,26 @@
 
                 var $description = $('<div/>');
                 $description.append($('<p/>').html('<b>Horário Inicial: </b>' + Agendamento.start.format("DD/MMM/YYYY HH:mm a")));
-                if (Agendamento.end != null) {
-                    $description.append($('<p/>').html('<b>Horário Final: </b>' + Agendamento.end.format("DD/MMM/YYYY HH:mm a")));
-                }
+
+                $description.append($('<p/>').html('<b>Horário Final: </b>' + Agendamento.end.format("DD/MMM/YYYY HH:mm a")));
+
                 $description.append($('<p/>').html('<b>Cliente: </b>' + Agendamento.cliente));
                 $description.append($('<p/>').html('<b>Funcionário: </b>' + Agendamento.funcionario));
-                $description.append($('<p/>').html('<b>Serviços: </b>' + Agendamento.descricao));
+                $description.append($('<p/>').html('<b>Serviços: </b>' + Agendamento.servicos));
+                $description.append($('<p/>').html('<b>Descrição: </b>' + Agendamento.descricao));
                 $description.append($('<p/>').html('<b>Situação: </b>' + Agendamento.situacao));
                 $('#agendamento-modal #pDetails').empty().html($description);
 
                 $('#agendamento-modal').modal();
             },
             selectable: true,
-            select: function (start, end) {
+            select: function (start, end, agendamento) {
                 agendamentoSelecionado = {
                     agendamentoId: 0,
                     start: start,
                     end: end,
-                    situacao: '',
-                    descricao: ''
+                    situacao: agendamento.situacao,
+                    descricao: agendamento.descricao
                 };
                 frmEditarAgendamento();
                 $('#agenda').fullCalendar('unselect');
@@ -99,9 +101,9 @@
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
                     DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
                     Situacao: agendamento.situacao,
-                    Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId
+                    ClienteId: agendamento.clienteId,
+                    Descricao: agendamento.descricao
                 };
                 SalvarAgendamento(data);
             },
@@ -111,9 +113,9 @@
                     DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
                     DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
                     Situacao: agendamento.situacao,
-                    Descricao: agendamento.descricao,
                     FuncionarioId: agendamento.funcionarioId,
-                    ClienteId: agendamento.clienteId
+                    ClienteId: agendamento.clienteId,
+                    Descricao: agendamento.descricao
                 };
                 SalvarAgendamento(data);
             }
@@ -134,7 +136,7 @@
                 success: function (data) {
                     if (data.status) {
                         //Refresh the calender
-                        new PNotify({ text:'Registro removido!', type: 'success', delay: 500 });
+                        new PNotify({ text: 'Registro removido!', type: 'success', delay: 500 });
                         UpdateAgenda();
                         $('#agendamento-modal').modal('hide');
                     }
@@ -156,18 +158,19 @@
         minDate: new Date()
     });
 
+
     function frmEditarAgendamento() {
         if (agendamentoSelecionado != null) {
 
             $('#Id').val(agendamentoSelecionado.agendamentoId);
+            $('#FuncionarioId').val(agendamentoSelecionado.funcionario).change();
+            $('#ClienteId').val(agendamentoSelecionado.cliente).change();
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
             $('#DataHoraFinal').val(agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A'));
             $("#Situacao").val(agendamentoSelecionado.situacao).change();
-            //$('#Situacao').val(agendamentoSelecionado.situacao);
-            $("#selectServicos").val(agendamentoSelecionado.descricao).change();
+            $("#Descricao").val(agendamentoSelecionado.descricao);
+            $("#selectServicos").val(agendamentoSelecionado.servicos[0], agendamentoSelecionado.servicos[1]).change();
             //$('#selectServicos').val(agendamentoSelecionado.descricao);
-            $('#FuncionarioId').val(agendamentoSelecionado.funcionarioId).change();
-            $('#ClienteId').val(agendamentoSelecionado.clienteId).change();
         }
         $('#agendamento-modal').modal('hide');
         $('#agendamento-modal-salvar').modal();
@@ -216,6 +219,7 @@
             Situacao: $('#Situacao').val(),
             FuncionarioId: $('#FuncionarioId').val(),
             ClienteId: $('#ClienteId').val(),
+            Descricao: $('#Descricao').val(),
             servicos: $('#selectServicos').val()
         }
         SalvarAgendamento(data);
@@ -230,7 +234,7 @@
             data: data,
             success: function (data) {
 
-                new PNotify({   
+                new PNotify({
                     delay: 500,
                     text: 'Agendamento Realizado!',
                     type: 'success'
@@ -261,8 +265,8 @@
 
             if (agendamentoSelecionado.situacao == "Pago") {
                 $('#agendamento-modal').modal('hide');
-   
-                new PNotify('Esse agendamento já foi Pago!'); 
+
+                new PNotify('Esse agendamento já foi Pago!');
             } else {
                 var id = agendamentoSelecionado.agendamentoId;
                 window.location.replace("/Caixa/Pagamento?id=" + id);
