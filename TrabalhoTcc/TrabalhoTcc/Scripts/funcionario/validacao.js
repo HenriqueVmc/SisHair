@@ -18,34 +18,38 @@ $(function(){
             Nome: {
                 required: true,
                 maxlength: 100,
-                minlength: 10,
+                minlength: 3,
                 minWords: 2
             },
             Cpf: {
+                required: true,
                 cpfBR: true
             },
             Celular: {
-                minlength: 8,
-                maxlength: 100
+                required: true,
+            },
+            Telefone: {                
+            },
+            Email: {
+                required: true,
+                email: true
+            },
+            DataNascimento: {
+                required: true
             }
+
 
         },
         messages: {
             Nome: {
-                required: "Nome é obrigatório"
+                required: "Nome é obrigatório",
+                minWords: "Por favor insira nome e sobrenome"
             }
         }
 
 
     });
 
-    $("#formCadastroFuncionario").on("submit", function (e) {
-        e.preventDefault;
-        if ($("#formCadastroFuncionario").valid()) {
-            alert("asdasd");
-        } else {
-            
-        }
-    })
+   
 
 });
