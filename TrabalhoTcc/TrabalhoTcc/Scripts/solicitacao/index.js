@@ -25,7 +25,7 @@
         } else {
             $("#modal-agendamento").modal('show');
             limparCampos();
-        }      
+        }
     });
 
     $('#dtDataHoraInicio2, #dtDataHoraFinal2').datetimepicker({
@@ -114,13 +114,13 @@
             new PNotify('Horário de finalização deve ser preenchido!');
             return 0;
         }
-        
+
         if ($('#selectServicos').val() == "") {
             new PNotify('Selecione um Serviço!');
             return 0;
         }
         //else {
-        
+
         var hrInicio = moment($('#DataHoraInicio').val(), "DD/MM/YYYY HH:mm A").toDate();
         var hrFinal = moment($('#DataHoraFinal').val(), "DD/MM/YYYY HH:mm A").toDate();
         if (hrInicio >= hrFinal) {
