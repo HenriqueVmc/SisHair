@@ -76,7 +76,8 @@ namespace TrabalhoTcc.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Login", "ContaCliente");
             }
-
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
 
             ViewBag.cliente = cliente;
             return View();

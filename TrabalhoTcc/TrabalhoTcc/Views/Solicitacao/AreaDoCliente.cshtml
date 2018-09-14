@@ -43,9 +43,19 @@
                             </blockquote>
                         </td>
                         <td scope="col">
-                            <div class="mt-3" style=" margin-top: 22%;">
-                                <a href="#" data-id="@agendamento.Id" class="btnRealizarAvaliacao btn btn-success">Realizar avaliação</a>
-                            </div>
+                            @if (agendamento.Situacao != "Pendente")
+                            {
+                                <div class="mt-3" style=" margin-top: 22%;">
+                                    <a href="#" data-id="@agendamento.Id" class="btnRealizarAvaliacao btn btn-success">Realizar avaliação</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="mt-3" style=" margin-top: 22%;">
+                                    <a href="#" class="btn btn btn-danger disabled">Não é possivel avaliar um agendamento pendente</a>
+                                </div>
+                            }
+                            
                         </td>
                     </tr>
                 }

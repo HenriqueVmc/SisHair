@@ -191,7 +191,7 @@ namespace TrabalhoTcc.Controllers
                 {
                     //Receber cliente e rotornar em ViewBag para campos hiddens 
                     ViewBag.ClienteId = id;
-                    ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.Id == id).ToList();
+                    ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.ClienteId == id).ToList();
                     return View();
                 }
             }

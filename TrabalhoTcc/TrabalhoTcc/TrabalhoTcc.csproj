@@ -330,17 +330,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201809110321124_inicio.cs" />
-    <Compile Include="Migrations\201809110321124_inicio.Designer.cs">
-      <DependentUpon>201809110321124_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809121235526_adiconando servicosSolicitacao.cs" />
-    <Compile Include="Migrations\201809121235526_adiconando servicosSolicitacao.Designer.cs">
-      <DependentUpon>201809121235526_adiconando servicosSolicitacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809130356073_servicosEmAgendamento.cs" />
-    <Compile Include="Migrations\201809130356073_servicosEmAgendamento.Designer.cs">
-      <DependentUpon>201809130356073_servicosEmAgendamento.cs</DependentUpon>
+    <Compile Include="Migrations\201809141651319_inicio.cs" />
+    <Compile Include="Migrations\201809141651319_inicio.Designer.cs">
+      <DependentUpon>201809141651319_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -448,14 +440,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809110321124_inicio.resx">
-      <DependentUpon>201809110321124_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809121235526_adiconando servicosSolicitacao.resx">
-      <DependentUpon>201809121235526_adiconando servicosSolicitacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809130356073_servicosEmAgendamento.resx">
-      <DependentUpon>201809130356073_servicosEmAgendamento.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809141651319_inicio.resx">
+      <DependentUpon>201809141651319_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

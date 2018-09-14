@@ -79,17 +79,16 @@ function getUserInfo() {
 (function () {
 
     $("#formCriarContaCliente").validate({
-        rules: {
-            "Cliente.Nome": {
-                required: true,                
-                minWords: 10
-            }  
-        },
-        messages: {
-            "Cliente.Nome": {
-                required: "Nome é obrigatório",
-                minWords: "Por favor insira nome e sobrenome"
+        rules: {            
+            Usuario: {
+                required: true,
+                minlength: 100
             }
-        }
+            //"user.address.street": "required"
+            //Cliente: required,
+            //Cliente: minWords: 2,
+            //Cliente: minlength: 7,
+            //Cliente: maxlength: 80      
+          }
     });
 });
