@@ -186,6 +186,9 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caixa\index.js" />
+    <Content Include="Scripts\tables\index.js" />
+    <Content Include="Scripts\contacliente\criarContaAux.js" />
+    <Content Include="Scripts\contacliente\indexfuncionario.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
@@ -302,6 +305,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\simplepagination.js" />
     <Content Include="Scripts\solicitacao\index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
