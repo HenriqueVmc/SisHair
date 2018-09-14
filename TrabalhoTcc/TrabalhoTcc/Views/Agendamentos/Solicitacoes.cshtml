@@ -41,6 +41,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Cliente.Nome)
@@ -70,6 +71,7 @@
                             @Html.ActionLink(" Agendar", "SalvarSolicitacao", new { id = item.Id }, new { @class = "fa fa-save btn btn-outline-success" })
                         </td>
                     </tr>
+
                 }
             </tbody>
             <tfoot></tfoot>

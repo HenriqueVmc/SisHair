@@ -163,14 +163,13 @@
         if (agendamentoSelecionado != null) {
 
             $('#Id').val(agendamentoSelecionado.agendamentoId);
-            $('#FuncionarioId').val(agendamentoSelecionado.funcionario).change();
-            $('#ClienteId').val(agendamentoSelecionado.cliente).change();
+            $('#FuncionarioId').val(agendamentoSelecionado.funcionario).trigger('change');
+            
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
             $('#DataHoraFinal').val(agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A'));
-            $("#Situacao").val(agendamentoSelecionado.situacao).change();
-            $("#Descricao").val(agendamentoSelecionado.descricao);
-            $("#selectServicos").val(agendamentoSelecionado.servicos[0], agendamentoSelecionado.servicos[1]).change();
-            //$('#selectServicos').val(agendamentoSelecionado.descricao);
+            $('#Situacao').val(agendamentoSelecionado.situacao).change();
+            $('#Descricao').val(agendamentoSelecionado.descricao);
+
         }
         $('#agendamento-modal').modal('hide');
         $('#agendamento-modal-salvar').modal();
@@ -196,14 +195,14 @@
             return;
         }
 
-        if ($('#selectServicos').val() == null) {
+        if ($('#selectServicos').val() == "") {
             new PNotify('Selecione um Serviço!');
             return;
         }
         //else {
         var hrInicio = moment($('#DataHoraInicio').val(), "DD/MM/YYYY HH:mm A").toDate();
         var hrFinal = moment($('#DataHoraFinal').val(), "DD/MM/YYYY HH:mm A").toDate();
-        if (hrInicio > hrFinal) {
+        if (hrInicio >= hrFinal) {
             new PNotify({
                 title: 'Horários Inválidos',
                 text: 'Data e Horário de finalização deve ser maior que inicial...'

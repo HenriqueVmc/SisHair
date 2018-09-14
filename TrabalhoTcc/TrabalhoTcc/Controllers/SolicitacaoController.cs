@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using TrabalhoTcc.Context;
 using TrabalhoTcc.Models;
 using Newtonsoft.Json;
+using TrabalhoTcc.Models.Conta;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -18,12 +19,25 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         [HttpGet]
-        public ActionResult Agendamento(int? idCliente)
+        public ActionResult Agendamento()
         {
-            //Receber cliente e rotornar em ViewBag para campos hiddens 
-            ViewBag.ClienteId = idCliente;
-            ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).ToList();
-            return View();
+            try
+            {
+                int id = (int)Session["ClienteId"];
+                if (id > 0)
+                {
+                    //Receber cliente e rotornar em ViewBag para campos hiddens 
+                    ViewBag.ClienteId = id;
+                    ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).ToList();
+                    return View();
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                return Redirect("/ContaCliente/Login");
+            }
+
+            return Redirect("/ContaCliente/Login");
         }
 
         [HttpGet]
@@ -34,12 +48,12 @@ namespace TrabalhoTcc.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agendamento([Bind(Include ="Id, DataHoraInicio, DataHoraFinal, ClienteId, FuncionarioId, Descricao")]Solicitacao solicitacao, List<int> servicos)
+        public ActionResult Agendamento([Bind(Include = "Id, DataHoraInicio, DataHoraFinal, ClienteId, FuncionarioId, Descricao")]Solicitacao solicitacao, List<int> servicos)
         {
             if (ModelState.IsValid)
             {
-                solicitacao.Situacao = "Pendente";                
-                db.Solicitacoes.Add(solicitacao);                
+                solicitacao.Situacao = "Pendente";
+                db.Solicitacoes.Add(solicitacao);
 
                 if (servicos != null)
                 {
@@ -56,7 +70,7 @@ namespace TrabalhoTcc.Controllers
                         db.SaveChanges();
                     }
                 }
-                
+
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
             }
 
@@ -72,14 +86,28 @@ namespace TrabalhoTcc.Controllers
             db.Solicitacoes.Remove(solicitacao);
             db.SaveChanges();
 
-            return RedirectToAction("Index");            
+            return RedirectToAction("Index");
         }
 
         // GET: Solicitacao
-        public async Task<ActionResult> Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            var solicitacoes = db.Solicitacoes.Include(s => s.Cliente).Include(s => s.Funcionario);
-            return View(await solicitacoes.ToListAsync());
+            try
+            {
+                int id = (int)Session["ClienteId"];
+                if (id > 0)
+                {
+                    var solicitacoes = db.Solicitacoes.Where(s => s.ClienteId == id).Include(s => s.Cliente).Include(s => s.Funcionario).ToList();
+                    return View(solicitacoes);
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                return Redirect("/ContaCliente/Login");
+            }
+
+            return Redirect("/ContaCliente/Login");
         }
 
 
@@ -153,13 +181,28 @@ namespace TrabalhoTcc.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult AreaDoCliente(int? idCliente)
+        [HttpGet]
+        public ActionResult AreaDoCliente()
         {
-            ViewBag.ClienteId = idCliente;
-            ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.Id == idCliente).ToList();
-            return View();
+            try
+            {
+                int id = (int)Session["ClienteId"];
+                if (id > 0)
+                {
+                    //Receber cliente e rotornar em ViewBag para campos hiddens 
+                    ViewBag.ClienteId = id;
+                    ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.Id == id).ToList();
+                    return View();
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                return Redirect("/ContaCliente/Login");
+            }
+
+            return Redirect("/ContaCliente/Login");
         }
-        
+
         [HttpGet]
         public ActionResult AvaliacaoModal(int? id)
         {
@@ -178,7 +221,7 @@ namespace TrabalhoTcc.Controllers
             }
 
             //ViewBag.ClienteId = avaliacao.Agendamento.ClienteId;
-           // ViewBag.Avaliacoes = db.Funcionarios.Include(f => f.Cargo).ToList();
+            // ViewBag.Avaliacoes = db.Funcionarios.Include(f => f.Cargo).ToList();
 
             return View(avaliacao);
         }

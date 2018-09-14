@@ -47,13 +47,13 @@
 
         </div>
 
-            <footer>
-                <form action="/ContaFuncionario/LogOff" method="GET">
+        <footer>
+            <form action="/ContaFuncionario/LogOff" method="GET">
 
-                    <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
+                <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
 
-                </form>
-            </footer>
+            </form>
+        </footer>
 
 
 
@@ -93,33 +93,33 @@
 
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHoraInicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DataHoraFinal)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Servicos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Situacao)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Editar", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" }) 
-                        @Html.ActionLink("Cancelar", "Cancelar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHoraFinal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Servicos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Situacao)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
+                            @Html.ActionLink("Cancelar", "Cancelar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                        </td>
+                    </tr>
                 }
 
             </table>

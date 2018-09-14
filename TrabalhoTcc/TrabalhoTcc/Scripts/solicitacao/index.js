@@ -1,17 +1,31 @@
 ﻿$(document).ready(function () {
     $("table").on("click", ".btnSolicitar", function () {
         //Id do Funcionario
+        debugger;
         $id = $(this).data("id");
 
-        $.ajax({
-            url: "/Solicitacao/AgendamentoModal?id=" + $id,
-            method: "GET",
-            success: function (data) {
-                $("body").append(data);
-                $("#modal-agendamento").modal('show');
-            }
-        });
+        if ($("#modal-agendamento").length == 0) {
+            $.ajax({
+                url: "/Solicitacao/AgendamentoModal?id=" + $id,
+                method: "GET",
+                success: function (data) {
+                    $("body").append(data);
+                    $("#modal-agendamento").modal('show');
+                },
+                error: function () {
+                    $("#modal-agendamento").modal('hide');
+                    new PNotify({
+                        title: 'Erro:',
+                        text: 'Não foi possível realizar a solicitação',
+                        type: 'error'
+                    });
+                }
+            });
 
+        } else {
+            $("#modal-agendamento").modal('show');
+            limparCampos();
+        }      
     });
 
     $('#dtDataHoraInicio2, #dtDataHoraFinal2').datetimepicker({
@@ -21,7 +35,12 @@
         minDate: new Date()
     });
 
-    $("#modal-agendamento-salvar").on("click", function () { 
+    $("#modal-agendamento-salvar").on("click", function () {
+        debugger;
+        if (validarCampos() == 0) {
+            return;
+        }
+
         $.ajax({
             url: "/Solicitacao/Agendamento",
             method: "post",
@@ -40,7 +59,14 @@
                     title: 'Solicitação Realizada!',
                     text: 'Pronto! Agora é só aguardar nosso retorno :)',
                     type: 'success'
-                });                
+                });
+            },
+            error: function () {
+                new PNotify({
+                    title: 'Erro:',
+                    text: 'Não foi possível realizar a solicitação',
+                    type: 'error'
+                });
             }
         });
     });
@@ -49,7 +75,7 @@
         $("#DataHoraInicio").val("");
         $("#DataHoraFinal").val("");
         $("#Descricao").val("");
-        $("#selectServicos").val("");
+        $("#selectServicos").val("").change();
     }
 
     $("#selectServicos").select2({
@@ -73,4 +99,36 @@
             }
         }
     });
+
+    $('#modal-agendamento').on('hidden', function () {
+        $(this).data('modal', null);
+    });
+
+    function validarCampos() {
+        debugger;
+        if ($('#DataHoraInicio').val().trim() == "") {
+            new PNotify('Horário de inicio deve ser preenchido!');
+            return 0;
+        }
+        if ($('#DataHoraFinal').val().trim() == "") {
+            new PNotify('Horário de finalização deve ser preenchido!');
+            return 0;
+        }
+        
+        if ($('#selectServicos').val() == "") {
+            new PNotify('Selecione um Serviço!');
+            return 0;
+        }
+        //else {
+        
+        var hrInicio = moment($('#DataHoraInicio').val(), "DD/MM/YYYY HH:mm A").toDate();
+        var hrFinal = moment($('#DataHoraFinal').val(), "DD/MM/YYYY HH:mm A").toDate();
+        if (hrInicio >= hrFinal) {
+            new PNotify({
+                title: 'Horários Inválidos',
+                text: 'Data e Horário de finalização deve ser maior que inicial...'
+            });
+            return 0;
+        }
+    }
 });
