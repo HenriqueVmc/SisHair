@@ -161,19 +161,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="DataSet\Estrutura 01.sql" />
     <Content Include="DataSet\Estrututa.sql" />
-    <Content Include="DesgnerLogim\css\flexslider.css" />
-    <Content Include="DesgnerLogim\css\font-awesome.css" />
-    <Content Include="DesgnerLogim\css\style.css" />
-    <Content Include="DesgnerLogim\fonts\fontawesome-webfont.svg" />
-    <Content Include="DesgnerLogim\images\22.jpg" />
-    <Content Include="DesgnerLogim\images\logo.png" />
-    <Content Include="DesgnerLogim\images\t1.jpg" />
-    <Content Include="DesgnerLogim\images\t2.jpg" />
-    <Content Include="DesgnerLogim\images\t3.jpg" />
-    <Content Include="DesgnerLogim\index.html" />
-    <Content Include="DesgnerLogim\js\jquery.flexslider.js" />
-    <Content Include="DesgnerLogim\js\jquery.min.js" />
-    <Content Include="DesgnerLogim\w3layouts-License.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
@@ -186,6 +173,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caixa\index.js" />
+    <Content Include="Scripts\cliente\index.js" />
     <Content Include="Scripts\tables\index.js" />
     <Content Include="Scripts\contacliente\criarContaAux.js" />
     <Content Include="Scripts\contacliente\indexfuncionario.js" />
@@ -285,11 +273,6 @@
     <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="DesgnerLogim\fonts\fontawesome-webfont.eot" />
-    <Content Include="DesgnerLogim\fonts\fontawesome-webfont.ttf" />
-    <Content Include="DesgnerLogim\fonts\fontawesome-webfont.woff" />
-    <Content Include="DesgnerLogim\fonts\fontawesome-webfont.woff2" />
-    <Content Include="DesgnerLogim\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -298,7 +281,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\login\index.js" />
+    <Content Include="Scripts\funcionario\login\index.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pnotify.custom.min.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -314,7 +297,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DBContext.cs" />
-    <Compile Include="Controllers\AdmController.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
     <Compile Include="Controllers\AreaDoClienteController.cs" />
     <Compile Include="Controllers\CaixaController.cs" />
@@ -330,9 +312,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201809141651319_inicio.cs" />
-    <Compile Include="Migrations\201809141651319_inicio.Designer.cs">
-      <DependentUpon>201809141651319_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201809150344413_inicio.cs" />
+    <Compile Include="Migrations\201809150344413_inicio.Designer.cs">
+      <DependentUpon>201809150344413_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -377,11 +359,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
-    <Content Include="Views\Adm\Index.cshtml" />
-    <Content Include="Views\Adm\CadastrarFuncionario.cshtml" />
-    <Content Include="Views\Adm\ConsultarCliente.cshtml" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
-    <Content Include="Views\Shared\MasterADM.cshtml" />
     <Content Include="Views\ContaCliente\Login.cshtml" />
     <Content Include="Views\ContaCliente\CriarConta.cshtml" />
     <Content Include="Views\ContaFuncionario\Login.cshtml" />
@@ -440,8 +418,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809141651319_inicio.resx">
-      <DependentUpon>201809141651319_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809150344413_inicio.resx">
+      <DependentUpon>201809150344413_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

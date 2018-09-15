@@ -101,11 +101,6 @@ C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.CopyComplete
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.dll
 C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.pdb
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.cache
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.adiconandoservicosSolicitacao.resources
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.servicosEmAgendamento.resources
-C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csprojAssemblyReference.cache
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.dll
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.pdb
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\TrabalhoTcc.dll.config
@@ -131,3 +126,5 @@ C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTc
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\bin\System.Web.Mvc.xml
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
 C:\Users\104959\Documents\GitHub\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.Cache
+C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.Migrations.inicio.resources
+C:\Users\Henrique\Documents\GitHub\Entra21\entra21-c-sharp-grupo-02\TrabalhoTcc\TrabalhoTcc\obj\Debug\TrabalhoTcc.csproj.GenerateResource.cache
