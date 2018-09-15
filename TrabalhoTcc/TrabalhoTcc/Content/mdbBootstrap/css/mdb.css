@@ -1638,10 +1638,10 @@ h1, h2, h3, h4, h5, h6 {
 a.text-primary:hover, a.text-primary:focus {
   color: #1266f1 !important; }
 
-.text-danger {
+. {
   color: #ff3547 !important; }
 
-a.text-danger:hover, a.text-danger:focus {
+a.:hover, a.:focus {
   color: #ff0219 !important; }
 
 .text-warning {

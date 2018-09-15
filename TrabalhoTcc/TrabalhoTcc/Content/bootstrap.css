@@ -8895,11 +8895,11 @@ a.text-warning:hover, a.text-warning:focus {
   color: #d39e00 !important;
 }
 
-.text-danger {
+. {
   color: #dc3545 !important;
 }
 
-a.text-danger:hover, a.text-danger:focus {
+a.:hover, a.:focus {
   color: #bd2130 !important;
 }
 
