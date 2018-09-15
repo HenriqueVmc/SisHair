@@ -28,16 +28,17 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Funcionarios/Details/5
-         [Authorize(Roles = "Administrador, Funcionario")]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Funcionario funcionario = await db.Funcionarios.Include(f => f.Cargo).Where(f => f.Id == id).FirstAsync();
 
-               ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).SingleOrDefault();
+            ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == id).SingleOrDefault();
 
             if (funcionario == null)
             {
@@ -74,7 +75,7 @@ namespace TrabalhoTcc.Controllers
                 {
                     new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
                 }
-         
+
                 ////
                 var loginF = new LoginFuncionario()
                 {
@@ -169,7 +170,7 @@ namespace TrabalhoTcc.Controllers
             return View(funcionario);
         }
 
-         
+
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]

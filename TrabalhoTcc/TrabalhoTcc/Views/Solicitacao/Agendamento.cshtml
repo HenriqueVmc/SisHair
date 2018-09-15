@@ -34,7 +34,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
-
                     <li class="nav-item">
                         <a class="nav-link" href="/Solicitacao/Index">Meus Agendamentos</a>
                     </li>
@@ -42,11 +41,7 @@
                         <a class="nav-link" href="/Solicitacao/AreaDoCliente"> Minhas Avaliações</a>
                     </li>
                 </ul>
-
             </div>
-
-
-
         </div>
 
         <footer>
@@ -72,46 +67,49 @@
                     </thead>
 
                     <tbody scope="row">
-                        @foreach (var funcionario in ViewBag.Funcionarios)
+                        @if (ViewBag.Funcionarios != null)
                         {
-                            <tr>
-                                <!-- Cabeleireiro -->
-                                <td>
-                                    <blockquote>
-                                        <div class="row">
-                                            <div class="col-md-3 text-center">
-                                                <img class="img-circle" src="https://seletronic.com.br/noticias/wp-content/uploads/sites/4/2017/11/beautiful-black-girl-selfie.jpg" style="width:110px;height:100px;">
-                                                <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
-                                            </div>
-                                            <div class="col-md-9">
-                                                <h4>@funcionario.Nome</h4>
-                                                <small>@funcionario.Cargo.Nome</small>
-                                                <hr />
-                                                <div class="row">
-                                                    <div id="redes-sociais" class="col-md-12">
-                                                        <div class="">
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                            <a href="#" class="fa fa-whatsapp"></a>
-                                                            <a href="#" class="fa fa-instagram"></a>
-                                                            <a href="#" class="fa fa-snapchat-ghost"></a>
+                            foreach (var funcionario in ViewBag.Funcionarios)
+                            {
+                                <tr>
+                                    <!-- Cabeleireiro -->
+                                    <td>
+                                        <blockquote>
+                                            <div class="row">
+                                                <div class="col-md-3 text-center">
+                                                    <img class="img-circle" src="https://seletronic.com.br/noticias/wp-content/uploads/sites/4/2017/11/beautiful-black-girl-selfie.jpg" style="width:110px;height:100px;">
+                                                    <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h4>@funcionario.Nome</h4>
+                                                    <small>@funcionario.Cargo.Nome</small>
+                                                    <hr />
+                                                    <div class="row">
+                                                        <div id="redes-sociais" class="col-md-12">
+                                                            <div class="">
+                                                                <a href="#" class="fa fa-facebook"></a>
+                                                                <a href="#" class="fa fa-whatsapp"></a>
+                                                                <a href="#" class="fa fa-instagram"></a>
+                                                                <a href="#" class="fa fa-snapchat-ghost"></a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </blockquote>
+                                    </td>
+
+                                    <td scope="col">
+                                        <div class="mt-5" style="margin-top: 25%;">
+                                            <!--hidden valuie=idFuncionario-->
+                                            <!-- Enviar Dados do Agendamento, Cliente e Funcionario para Solicitacoes -->
+                                            <a href="#" data-id="@funcionario.Id" class="btnSolicitar btn btn-success mt-5">Solicitar Agendamento</a>
+
+                                            @*@Html.ActionLink("Solicitar Agendamento", "Agendamento", new { id = funcionario.Id }, htmlAttributes: new { @class = "btn btn-success", @id = "btnSolicitar" + funcionario.Id })*@
                                         </div>
-                                    </blockquote>
-                                </td>
-
-                                <td scope="col">
-                                    <div class="mt-5" style="margin-top: 25%;">
-                                        <!--hidden valuie=idFuncionario-->
-                                        <!-- Enviar Dados do Agendamento, Cliente e Funcionario para Solicitacoes -->
-                                        <a href="#" data-id="@funcionario.Id" class="btnSolicitar btn btn-success mt-5">Solicitar Agendamento</a>
-
-                                        @*@Html.ActionLink("Solicitar Agendamento", "Agendamento", new { id = funcionario.Id }, htmlAttributes: new { @class = "btn btn-success", @id = "btnSolicitar" + funcionario.Id })*@
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            }
                         }
                     </tbody>
 

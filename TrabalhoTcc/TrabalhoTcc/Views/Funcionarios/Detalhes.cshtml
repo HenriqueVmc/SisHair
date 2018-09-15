@@ -66,69 +66,73 @@
                 </dd>
             </dl>
         </div>
+
         <div class="col-md-6">
+            @if (ViewBag.Endereco != null)
+            {
+                <h4>Endereço - Funcionário</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        Rua:
+                    </dt>
 
-            <h4>Endereço - Funcionário</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    Rua:
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Rua
+                    </dd>
 
-                <dd>
-                    @ViewBag.Endereco.Rua
-                </dd>
+                    <dt>
+                        Número
+                    </dt>
 
-                <dt>
-                    Número
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Numero
+                    </dd>
 
-                <dd>
-                    @ViewBag.Endereco.Numero
-                </dd>
+                    <dt>
+                        Bairro:
+                    </dt>
 
-                <dt>
-                    Bairro:
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Bairro
+                    </dd>
 
-                <dd>
-                    @ViewBag.Endereco.Bairro
-                </dd>
+                    <dt>
+                        Cidade:
+                    </dt>
 
-                <dt>
-                    Cidade:
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Cidade
+                    </dd>
 
-                <dd>
-                    @ViewBag.Endereco.Cidade
-                </dd>
+                    <dt>
+                        Estado:
+                    </dt>
 
-                <dt>
-                    Estado:
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Estado
+                    </dd>
 
-                <dd>
-                    @ViewBag.Endereco.Estado
-                </dd>
+                    <dt>
+                        Complemento:
+                    </dt>
 
-                <dt>
-                    Complemento:
-                </dt>
+                    <dd>
+                        @ViewBag.Endereco.Complemento
+                    </dd>
+                    <dt>
+                        CEP:
+                    </dt>
 
-                <dd>
-                    @ViewBag.Endereco.Complemento
-                </dd>
-                <dt>
-                    CEP:
-                </dt>
-
-                <dd>
-                    @ViewBag.Endereco.Cep
-                </dd>
-            </dl>
+                    <dd>
+                        @ViewBag.Endereco.Cep
+                    </dd>
+                </dl>
+            }
         </div>
+        
         <p class="float-left ml-3">
-            @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = Model.Id }, new { @class = " fa fa-pencil btn btn-outline-dark" }) 
+            @Html.ActionLink(" Editar", "Editar", "Funcionarios", new { id = Model.Id }, new { @class = " fa fa-pencil btn btn-outline-dark" })
             @Html.ActionLink(" Lista de Funcionários", "Index", "Funcionarios", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
         </p>
     </div>

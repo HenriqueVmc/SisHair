@@ -33,6 +33,7 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <input type="hidden" id="Id" namw="Id" value="@item.Id" />
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>

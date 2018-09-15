@@ -14,7 +14,7 @@
             </p>
         </div>
         <div class="col-md-4">
-            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquise por uma palavra-chave" class="form-control"/>
+            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquise por uma palavra-chave" class="form-control" />
         </div>
     </div>
 
@@ -47,6 +47,7 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <input type="hidden" id="Id" namw="Id" value="@item.Id" />
                     <td>
                         @Html.DisplayFor(modelItem => item.Nome)
                     </td>

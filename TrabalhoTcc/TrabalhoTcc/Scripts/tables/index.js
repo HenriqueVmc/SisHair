@@ -12,4 +12,23 @@
         });
     });
 
+    $("#tableCliente").on("dblclick", "tr", function () {
+        var id = $(this).find("#Id").val();
+        window.location.replace("/Cliente/Detalhes?id=" + id);        
+    });
+
+    $("#tableFuncionarios").on("dblclick", "tr", function () {
+        var id = $(this).find("#Id").val();
+        window.location.replace("/Funcionarios/Detalhes?id=" + id);
+    });
+
+    $("#tableServicos").on("dblclick", "tr", function () {
+        var id = $(this).find("#Id").val();
+        window.location.replace("/Servicos/Detalhes?id=" + id);
+    });
+
+    $("#tableServicos").on("dblclick", "tr", function () {
+        var id = $(this).find("#Id").val();
+        window.location.replace("/Servicos/Detalhes?id=" + id);
+    });
 });

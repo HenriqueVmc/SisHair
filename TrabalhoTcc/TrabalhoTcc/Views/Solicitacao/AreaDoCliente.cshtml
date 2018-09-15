@@ -24,40 +24,43 @@
                 </tr>
             </thead>
             <tbody scope="row">
-                @foreach (var agendamento in ViewBag.AgendamentosParaAvaliar)
+                @if (ViewBag.AgendamentosParaAvaliar != null)
                 {
-                    <tr>
-                        <td>
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h4> @agendamento.Funcionario.Nome</h4>
-                                        <hr />
+                    foreach (var agendamento in ViewBag.AgendamentosParaAvaliar)
+                    {
+                        <tr>
+                            <td>
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h4> @agendamento.Funcionario.Nome</h4>
+                                            <hr />
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label>@agendamento.Situacao</label>
+                                            <label>@agendamento.DataHoraInicio</label>
+                                            <label>@agendamento.DataHoraFinal</label>
+                                        </div>
                                     </div>
-                                    <div class="col-md-9">
-                                        <label>@agendamento.Situacao</label>
-                                        <label>@agendamento.DataHoraInicio</label>
-                                        <label>@agendamento.DataHoraFinal</label>
+                                </blockquote>
+                            </td>
+                            <td scope="col">
+                                @if (agendamento.Situacao != "Pendente")
+                                {
+                                    <div class="mt-3" style=" margin-top: 22%;">
+                                        <a href="#" data-id="@agendamento.Id" class="btnRealizarAvaliacao btn btn-success">Realizar avaliação</a>
                                     </div>
-                                </div>
-                            </blockquote>
-                        </td>
-                        <td scope="col">
-                            @if (agendamento.Situacao != "Pendente")
-                            {
-                                <div class="mt-3" style=" margin-top: 22%;">
-                                    <a href="#" data-id="@agendamento.Id" class="btnRealizarAvaliacao btn btn-success">Realizar avaliação</a>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="mt-3" style=" margin-top: 22%;">
-                                    <a href="#" class="btn btn btn-danger disabled">Não é possivel avaliar um agendamento pendente</a>
-                                </div>
-                            }
-                            
-                        </td>
-                    </tr>
+                                }
+                                else
+                                {
+                                    <div class="mt-3" style=" margin-top: 22%;">
+                                        <a href="#" class="btn btn btn-danger disabled">Não é possivel avaliar um agendamento pendente</a>
+                                    </div>
+                                }
+
+                            </td>
+                        </tr>
+                    }
                 }
             </tbody>
             <tfoot class="thead-dark">
@@ -66,7 +69,7 @@
                     <th>
                         <a href="/Solicitacao/Agendamento">
                             <i class="text-white">
-                            Fazer Agendamento
+                                Fazer Agendamento
                             </i>
                         </a>
                     </th>
