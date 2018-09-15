@@ -61,16 +61,15 @@
                 <div class="form-group">
                     <div class="col-md-10">
                         <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> Cadastrar</button>
-                        @Html.ActionLink(" Back to List", "Index", "Cliente", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary ml-4" })
+                        @Html.ActionLink(" Lista de Clientes", "Index", "Cliente", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary ml-4" })
                     </div>
                 </div>
             </div>
         </div>
     }
-
-
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</div>
+@section scripts{
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-</div>
+    <script src="~/Scripts/cliente/index.js"></script>
+}

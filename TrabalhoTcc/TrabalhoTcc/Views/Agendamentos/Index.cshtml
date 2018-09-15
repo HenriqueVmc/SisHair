@@ -3,6 +3,14 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
+@section styles{
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+}
+
 <div class="offset-2 mt-3">
     <div id="agenda"></div>
 
@@ -109,7 +117,11 @@
         </div>
     </div>
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section scripts{
+    <script src="~/Scripts/fullcalendar/index.js"></script>
+    <script src="~/Scripts/fullcalendar/moment.min.js"></script>
+    <script src="~/Scripts/fullcalendar/bootstrap.min.js"></script>
+    <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/fullcalendar/pt-br.js"></script>
+}

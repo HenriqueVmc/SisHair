@@ -25,30 +25,26 @@
 
                 <div class="form-group">
                     <label for="campo-senha">Senha:</label>
-                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control", @type="password" })
+                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control", @type = "password" })
                 </div>
                 <hr />
-                <div class="offset-6">
-                    <a href="/ContaCliente/EmailCliente">
-                        Esqueceu sua senha?
-                    </a>
-                </div>
-                <div class="row">
-
-                    <div clas="col-md-6">
+                @*<div class="offset-6">
+                        <a href="/ContaCliente/EmailCliente">
+                            Esqueceu sua senha?
+                        </a>
+                    </div>*@
+       
+                    <div class="row">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
-                                <i class="fa fa-save"> Entrar</i>
+                            <button type="submit" class="btn btn-success ml-3" name="btnEnviar" id="btnEnviar">
+                                Entrar
                             </button>
                         </div>
-                    </div>
-                    <div clas="col-md-6">
-                        <div class="form-group">
-                            <a href="/ContaCliente/CriarConta" class="btn btn-outline-success">Criar nova conta</a>
-                        </div>
-                    </div>
 
-                </div>
+                        <div class="form-group">
+                            <a href="/ContaCliente/CriarConta" class="btn btn-primary">Criar nova conta</a>
+                        </div>
+                    </div>           
             }
         </div>
         <div class="col-md-4"></div>

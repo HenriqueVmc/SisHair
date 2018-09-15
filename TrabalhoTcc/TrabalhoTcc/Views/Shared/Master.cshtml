@@ -10,30 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Salao de beleza - sem nome ainda</title>
-    @*<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript"></script>*@
-    <link href="~/Content/mdbBootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="~/Content/mdbBootstrap/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+    <link href="~/Content/mdbBootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <!--Bootstrap core CSS-->
     <link href="~/Content/mdbBootstrap/css/style.min.css" rel="stylesheet">
 
-    <style type="text/css">
-        html,
-        body,
-        header,
-        .carousel {
-            height: 100%;
-        }
-
-        @@media (min-width: 800px) and (max-width: 850px) {
-            .navbar:not(.top-nav-collapse) {
-                background: #1C2331 !important;
-            }
-        }
-    </style>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     @*<script type="text/javascript" src="~/Scripts/criarContaGoogle.js"></script>*@
-    
+
 </head>
 <body>
     <div class="custom-scrollbar" style="display:none;"></div>
@@ -41,7 +26,7 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar navbar-dark bg-dark  scrolling-navbar">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand" href="#" target="_blank">
+            <a class="navbar-brand" href="/Home/Index">
                 <strong>Salão e barbearia</strong>
             </a>
             <!-- Collapse -->
@@ -50,23 +35,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-
-
-
             <!-- Links -->
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left -->
                 <ul class="navbar-nav mr-auto">
@@ -77,13 +46,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" target="_blank">Sobre</a>
+                        <a class="nav-link" href="#Sobre">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" target="_blank">Serviços</a>
+                        <a class="nav-link" href="#Servicos">Serviços</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" target="_blank">Agendamento</a>
+                        <a class="nav-link" href="/Home">Agendamento</a>
                     </li>
                 </ul>
                 <!-- Right -->
@@ -94,19 +63,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/ContaFuncionario/Login" class="nav-link" target="_blank">
+                        <a href="/ContaFuncionario/Login" class="nav-link">
                             <i class="text-white">Área restrita</i>
                         </a>
+                    </li>
                 </ul>
 
-
-                <footer>
-                    <form action="/ContaFuncionario/LogOff" method="GET">
-
-                        <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
-
-                    </form>
-                </footer>
             </div>
         </div>
     </nav>
@@ -127,7 +89,7 @@
 
                 <!-- Grid column -->
                 <div class="col-md-4 mx-auto">
-                    
+
                     <!-- Content -->
                     <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contato</h5>
                     <a href="tel:47-4444-2121">Telefone Fixo: (47)4444-2121</a>
@@ -135,7 +97,7 @@
                     <a href="tel:47-99988-6755">Celular/WhatsApp: (47) 99988-6755</a>
                     <hr />
                     <p>Email: salao@beleza.com</p>
-                    <p>______________________________</p>
+                    <hr />
                     <p>Redes sociais</p>
                     <p>
                         <a class="white-text fa fa-facebook-official" href="https://www.facebook.com/"> Facebook</a>
@@ -207,16 +169,12 @@
 
     </footer>
     <!-- Footer -->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
 
-    @*<script src="~/Scripts/jquery-3.0.0.js"></script>*@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
-    @*<script src="~/Scripts/jquery.validate.min.js"></script>*@
-    @*<script type="text/javascript" src="~/Content/mdbBootstrap/js/jquery-3.3.1.min.js"></script>*@
+
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="~/Content/mdbBootstrap/js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -227,10 +185,10 @@
     <script type="text/javascript">
         new WOW().init();
     </script>
-    @*<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>*@
-   
+
+
+
+
     @*<script src="~/Scripts/messages_pt_BR.js"></script>*@
     <script src="~/Scripts/contacliente/indexfuncionario.js"></script>
     <script src="~/Scripts/fullcalendar/moment.min.js"></script>

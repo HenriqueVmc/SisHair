@@ -32,10 +32,10 @@
                     <div class="col-md-3">
 
                         @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
-                        <input type="text" id="Divida" name="Divida" class="form-control" readonly/>
+                        <input type="text" id="Divida" name="Divida" class="form-control" readonly />
                         @Html.ValidationMessageFor(model => model.Divida, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-3">  
+                    <div class="col-md-3">
                         @Html.Label("Troco:", htmlAttributes: new { @class = "control-label" })
                         <input type="text" id="Troco" name="Troco" class="form-control" readonly />
                     </div>
@@ -136,6 +136,9 @@
         </div>
     }
 </div>
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section scripts{
+    <script src="~/Scripts/caixa/index.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
