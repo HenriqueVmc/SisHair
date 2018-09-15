@@ -60,7 +60,7 @@ namespace TrabalhoTcc.Controllers
                     {
                         return Redirect(returnUrl);
                     }
-                    return RedirectToAction("Index", "Agendamentos");
+                    return RedirectToAction("Agendamentos", "Estatisticas");
                 }
                 else
                 {

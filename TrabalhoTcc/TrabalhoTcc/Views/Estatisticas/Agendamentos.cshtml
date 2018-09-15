@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Agendamentos";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<div class="col-10 offset-2">
+
+    <h3 class="text-center"> Estatísticas mensais:</h3>
+    <canvas id="chartAgendamentos"></canvas>
+</div>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="~/Scripts/chartJS/index.js"></script>
+}
