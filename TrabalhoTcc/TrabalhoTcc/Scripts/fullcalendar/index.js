@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(function () {
 
     var agendamentos = [];
     var agendamentoSelecionado = null;
@@ -62,7 +62,7 @@
             },
 
             eventTextColor: 'white',
-            eventColor: '#000',
+            eventColor: 'rgb(47, 53, 58)',
             events: agendamentos,
             eventClick: function (Agendamento, jsEvent, view) {
                 agendamentoSelecionado = Agendamento;

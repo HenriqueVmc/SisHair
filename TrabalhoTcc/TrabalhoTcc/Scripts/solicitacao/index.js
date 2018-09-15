@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(function () {
     $("table").on("click", ".btnSolicitar", function () {
         //Id do Funcionario
         debugger;
