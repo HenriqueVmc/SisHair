@@ -173,7 +173,9 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caixa\index.js" />
+    <Content Include="Scripts\chartJS\index.js" />
     <Content Include="Scripts\cliente\index.js" />
+    <Content Include="Scripts\funcionario\endereco\index.js" />
     <Content Include="Scripts\tables\index.js" />
     <Content Include="Scripts\contacliente\criarContaAux.js" />
     <Content Include="Scripts\contacliente\indexfuncionario.js" />
@@ -304,6 +306,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaClienteController.cs" />
     <Compile Include="Controllers\ContaFuncionarioController.cs" />
+    <Compile Include="Controllers\EstatisticasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServicosController.cs" />
@@ -315,6 +318,10 @@
     <Compile Include="Migrations\201809150344413_inicio.cs" />
     <Compile Include="Migrations\201809150344413_inicio.Designer.cs">
       <DependentUpon>201809150344413_inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151810297_removerequiredtelefone.cs" />
+    <Compile Include="Migrations\201809151810297_removerequiredtelefone.Designer.cs">
+      <DependentUpon>201809151810297_removerequiredtelefone.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -401,6 +408,7 @@
     <Content Include="Views\Caixa\Deletar.cshtml" />
     <Content Include="Views\Caixa\Editar.cshtml" />
     <Content Include="Views\Caixa\Index.cshtml" />
+    <Content Include="Views\Estatisticas\Agendamentos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -420,6 +428,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809150344413_inicio.resx">
       <DependentUpon>201809150344413_inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151810297_removerequiredtelefone.resx">
+      <DependentUpon>201809151810297_removerequiredtelefone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
