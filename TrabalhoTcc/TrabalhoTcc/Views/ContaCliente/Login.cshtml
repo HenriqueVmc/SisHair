@@ -21,32 +21,35 @@
                 <div class="form-group">
                     <label for="campo-usuario">Usuário:</label>
                     @Html.TextBoxFor(m => m.Usuario, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
                     <label for="campo-senha">Senha:</label>
-                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control", @type = "password" })
+                    @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+
+                    <a class="pull-right" href="/ContaCliente/EmailCliente">
+                        Esqueceu sua senha?
+                    </a>
                 </div>
                 <hr />
-                @*<div class="offset-6">
-                        <a href="/ContaCliente/EmailCliente">
-                            Esqueceu sua senha?
-                        </a>
-                    </div>*@
-       
-                    <div class="row">
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success ml-3" name="btnEnviar" id="btnEnviar">
-                                Entrar
-                            </button>
-                        </div>
+                <div class="row">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success ml-3" name="btnEnviar" id="btnEnviar">
+                            Entrar
+                        </button>
+                    </div>
 
-                        <div class="form-group">
-                            <a href="/ContaCliente/CriarConta" class="btn btn-primary">Criar nova conta</a>
-                        </div>
-                    </div>           
+                    <div class="form-group">
+                        <a href="/ContaCliente/CriarConta" class="btn btn-primary">Criar nova conta</a>
+                    </div>
+                </div>
             }
         </div>
         <div class="col-md-4"></div>
     </div>
 </div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.js"></script>
+}

@@ -33,7 +33,6 @@ namespace TrabalhoTcc.Models
         [Display(Name = "Celular:")]
         public string Celular { get; set; }
 
-        [Required(ErrorMessage = "Telefone deve ser preenchido")]
         [MinLength(11, ErrorMessage = "Número de Telefone inválido")]
         [MaxLength(15, ErrorMessage = "Número de Telefone inválido")]
         public string Telefone { get; set; }

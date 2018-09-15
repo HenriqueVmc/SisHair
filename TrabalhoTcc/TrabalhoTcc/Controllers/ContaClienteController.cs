@@ -32,20 +32,19 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult Login(LoginCliente loginC, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(loginC);
-            }
-            var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
+                var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
 
-            if (usuario != null)
-            {
-                Session["ClienteId"] = usuario.ClienteId;
-                return RedirectToAction("Agendamento", "Solicitacao");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Login Inválido");
+                if (usuario != null)
+                {
+                    Session["ClienteId"] = usuario.ClienteId;
+                    return RedirectToAction("Agendamento", "Solicitacao");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Login Inválido");
+                }
             }
 
             return View(loginC);
@@ -61,20 +60,27 @@ namespace TrabalhoTcc.Controllers
         public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
             if (ModelState.IsValid)
-            {
-                db.Clientes.Add(cliente);
-
-                var LoginCliente = new LoginCliente()
+            {                
+                if (!(LoginCliente.Existe(loginC)))
                 {
-                    Usuario = loginC.Usuario,
-                    Senha = CriptoHelper.HashMD5(loginC.Senha),
-                    ClienteId = cliente.Id
-                };
+                    db.Clientes.Add(cliente);
 
-                db.LoginClientes.Add(LoginCliente);
+                    var LoginCliente = new LoginCliente()
+                    {
+                        Usuario = loginC.Usuario,
+                        Senha = CriptoHelper.HashMD5(loginC.Senha),
+                        ClienteId = cliente.Id
+                    };
 
-                db.SaveChanges();
-                return RedirectToAction("Login", "ContaCliente");
+                    db.LoginClientes.Add(LoginCliente);
+
+                    db.SaveChanges();
+                    return RedirectToAction("Login", "ContaCliente");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Esse usuário já existe!");
+                }
             }
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;

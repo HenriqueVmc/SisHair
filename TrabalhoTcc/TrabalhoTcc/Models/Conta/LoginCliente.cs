@@ -42,6 +42,22 @@ namespace TrabalhoTcc.Models.Conta
             }
             return ret;
         }
+
+        public static bool Existe(LoginCliente login)
+        {
+            DBContext db = new DBContext();
+            bool ret = false;
+
+            try
+            {
+                ret = db.LoginClientes.Where(x => x.Usuario == login.Usuario).Any();
+            }
+            catch (EntityException e)
+            {
+                return ret;
+            }
+            return ret;
+        }
     }
 }
 

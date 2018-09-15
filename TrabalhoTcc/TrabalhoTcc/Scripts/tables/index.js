@@ -3,6 +3,7 @@
     $("#tableFuncionarios").pagination();
     $("#tableServicos").pagination();
     $("#tableCargos").pagination();
+    $("#tableCaixa").pagination();
 
     $("#pesquisa").on("keyup", function () {
         var value = $(this).val().toLowerCase();

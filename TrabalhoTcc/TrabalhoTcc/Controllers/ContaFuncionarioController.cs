@@ -32,39 +32,40 @@ namespace TrabalhoTcc.Controllers
         public ActionResult Login(LoginFuncionario loginF, string returnUrl)
         {
             //Valida dados
-            var usuario = LoginFuncionario.ValidarUsuario(loginF.Usuario, loginF.Senha);
-           
-            if (usuario != null)
+            if (ModelState.IsValid)
             {
-                int id = usuario.Id;
-                var a = db.LoginFuncionarios.Where(end => end.Id == id).Single();
-                int b = a.PermissoesId;
+                var usuario = LoginFuncionario.ValidarUsuario(loginF.Usuario, loginF.Senha);
 
-                if (b == 1)
+                if (usuario != null)
                 {
-                    permissao = "Administrador";
+                    int id = usuario.Id;
+                    var a = db.LoginFuncionarios.Where(end => end.Id == id).Single();
+                    int b = a.PermissoesId;
+
+                    if (b == 1)
+                    {
+                        permissao = "Administrador";
+                    }
+                    else if (b != 1)
+                    {
+                        permissao = "Funcionario";
+                    }
+
+                    //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
+                    var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
+                    var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
+                    Response.Cookies.Add(cookie);
+
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Agendamentos");
                 }
-                else if (b != 1)
+                else
                 {
-                    permissao = "Funcionario";
+                    ModelState.AddModelError("", "Login Inválido");
                 }
-
-
-
-                //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
-                var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
-                var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
-                Response.Cookies.Add(cookie);
-
-                if (Url.IsLocalUrl(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
-                return RedirectToAction("Index", "Agendamentos");
-            }
-            else
-            {
-                ModelState.AddModelError("", "Login Inválido");
             }
 
             return View(loginF);
