@@ -200,7 +200,7 @@ namespace TrabalhoTcc.Controllers
             var valores = new int[12];
             foreach (var y  in registros)
             {
-                valores[y.Mes] = y.Quantidade;
+                valores[(y.Mes)-1] = y.Quantidade;
             }
             //var agendamentosbyMes = db.Agendamentos.Where(a => a.DataHoraFinal.Year == DateTime.Now.Year).GroupBy(a => a.DataHoraFinal.Month).Count();            
 
