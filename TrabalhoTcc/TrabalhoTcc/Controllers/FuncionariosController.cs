@@ -217,5 +217,36 @@ namespace TrabalhoTcc.Controllers
             //return Json(Results, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Relatorios()
+        {
+            var list = db.Funcionarios.ToList();
+
+            var grid = new GridView();
+            grid.DataSource = from data in list
+                              select new
+                              {
+                                  Nome = data.Nome,
+                                  DataNascimento = data.DataNascimento,
+                                  CPF = data.Cpf,
+                                  Telefone = data.Telefone,
+                                  Celular = data.Celular,
+                                  Cargo = data.Cargo
+                              };
+
+            grid.DataBind();
+            Response.ClearContent();
+            Response.AddHeader("content-dispotation", "attachment;filename=ExpotedClientsList.xls");
+            Response.ContentType = "application/excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htmltextwriter = new HtmlTextWriter(sw);
+            grid.RenderControl(htmltextwriter);
+            Response.Write(sw.ToString());
+            Response.End();
+
+
+
+            return View();
+        }
+
     }
 }
