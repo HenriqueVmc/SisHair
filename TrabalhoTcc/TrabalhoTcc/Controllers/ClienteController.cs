@@ -12,6 +12,9 @@ using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 using Newtonsoft.Json;
 using TrabalhoTcc.Helpers;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -166,6 +169,37 @@ namespace TrabalhoTcc.Controllers
             });
             return Content(JsonConvert.SerializeObject(new { items = Results }));
             //return Json(Results, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Relatorios()
+        {
+            var list = db.Clientes.ToList();
+
+            var grid = new GridView();
+            grid.DataSource = from data in list
+                              select new
+                              {
+                                  Nome = data.Nome,
+                                  DatadeNascimento = data.Data_nascimento,
+                                  Celular = data.Celular,
+                                  Telefone = data.Telefone,
+                                  Email = data.Email
+                                  
+                              };
+
+            grid.DataBind();
+            Response.ClearContent();
+            Response.AddHeader("content-dispotation", "attachment;filename=ExpotedClientsList.xls");
+            Response.ContentType = "application/excel";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htmltextwriter = new HtmlTextWriter(sw);
+            grid.RenderControl(htmltextwriter);
+            Response.Write(sw.ToString());
+            Response.End();
+
+
+
+            return View();
         }
     }
 }
