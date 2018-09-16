@@ -22,7 +22,7 @@
     <script src="~/Content/mdbBootstrap/js/addons/datatables.js"></script>
     <script>
         $(document).ready(function () {
-            $('#tabelaAgendamentos').dataTable({
+            $('#tabelaAvaliacoes').dataTable({
                 "oLanguage": {
                     "sEmptyTable": "Nenhum registro encontrado",
                     "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -95,51 +95,79 @@
             <thead class="thead-dark">
                 <tr>
                     <th>
-                        @* Texto sobre a avaliacao *@
+                        @*Texto sobre a avaliacao *@
+                        <label>Sua Avaliacao:</label>
                     </th>
                     <th>
                         @* nota VoltariaNovamente *@
+                        <label>Nota Voltaria novamente</label>
                     </th>
                     <th>
                         @* Nota Agendamento *@
+                        <label> Nota do seu agendamento</label>
                     </th>
                     <th>
                         @* Nota Experiencia Atendimento *@
+                        <label> Sua nota para sua Experiência no Atendimento</label>
                     </th>
                     <th>
                         @* Nota Condicoes Fisicas Estabelecimentos *@
+                        <label>Sua nota para as condições físicas do estabelecimento</label>
                     </th>
                     <th>
                         @* Voltaria novamente *@
+                        <label>Voltaria Novamente?</label>
                     </th>
                     <th>
                         @* Recomendaria Alguem *@
+                        <label> Recomendaria a alguem</label>
                     </th>
                 </tr>
             </thead>
-            @foreach()//mostrar as avaliacoes pro cara)
+            @foreach(var avaliacao in ViewBag.MinhasAvaliacoes)//mostrar as avaliacoes pro cara)
             {
                 <tr>
                     <th>
-                        @* texto sobre a avaliacao *@
+                        @* Avaliacao Usuario *@
+                        @avaliacao.AvaliacaoUsuario
                     </th>
                     <th>
                         @* Nota Voltaria novamente *@
+                        @avaliacao.NotaVoltarNovamente
                     </th>
                     <th>
                         @* nota agendamento *@
+                        @avaliacao.NotaAgendamento
                     </th>
                     <th>
                         @* nota experiencia atendimento *@
+                        @avaliacao.NotaExperienciaAtendimento
                     </th>
                     <th>
                         @* Nota condicoes Fisicas estabelecimento *@
+                        @avaliacao.NotaCondicoesFisicasEstabelecimento
                     </th>
                     <th>
                         @* Voltaria novamente *@
+                        @if(avaliacao.VoltariaNovamente == true)
+                        {
+                            <label>Sim</label>
+                        }
+                        else
+                        {
+                            <label>Não</label>
+                        }
                     </th>
                     <th>
                         @* Recomendaria a alguem *@
+                        @if(avaliacao.RecomendariaAlguem == true)
+                        {
+                            <label>Sim</label>
+                        }
+                        else
+                        {
+                            <label>Não</label>
+                        }
                     </th>
                 </tr>
             }
