@@ -300,7 +300,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
-    <Compile Include="Controllers\AreaDoClienteController.cs" />
     <Compile Include="Controllers\CaixaController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -315,13 +314,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201809150344413_inicio.cs" />
-    <Compile Include="Migrations\201809150344413_inicio.Designer.cs">
-      <DependentUpon>201809150344413_inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809151810297_removerequiredtelefone.cs" />
-    <Compile Include="Migrations\201809151810297_removerequiredtelefone.Designer.cs">
-      <DependentUpon>201809151810297_removerequiredtelefone.cs</DependentUpon>
+    <Compile Include="Migrations\201809152039282_inicio.cs" />
+    <Compile Include="Migrations\201809152039282_inicio.Designer.cs">
+      <DependentUpon>201809152039282_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -401,7 +396,6 @@
     <Content Include="Views\Agendamentos\Index.cshtml" />
     <Content Include="Views\Agendamentos\Solicitacoes.cshtml" />
     <Content Include="Views\ContaCliente\EmailCliente.cshtml" />
-    <Content Include="Views\AreaDoCliente\Index.cshtml" />
     <Content Include="Views\Solicitacao\AreaDoCliente.cshtml" />
     <Content Include="Views\Solicitacao\AvaliacaoModal.cshtml" />
     <Content Include="Views\Caixa\Pagamento.cshtml" />
@@ -409,6 +403,10 @@
     <Content Include="Views\Caixa\Editar.cshtml" />
     <Content Include="Views\Caixa\Index.cshtml" />
     <Content Include="Views\Estatisticas\Agendamentos.cshtml" />
+    <Content Include="Views\ContaCliente\RedefinirSenha.cshtml" />
+    <Content Include="Views\ContaCliente\VerificarCodigo.cshtml" />
+    <Content Include="Views\ContaFuncionario\EsqueciMinhaSenha.cshtml" />
+    <Content Include="Views\ContaFuncionario\RedefinirSenha.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -426,11 +424,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809150344413_inicio.resx">
-      <DependentUpon>201809150344413_inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809151810297_removerequiredtelefone.resx">
-      <DependentUpon>201809151810297_removerequiredtelefone.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809152039282_inicio.resx">
+      <DependentUpon>201809152039282_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
