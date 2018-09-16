@@ -86,3 +86,22 @@
         $("#NotaCondicoesFisicasEstabelecimento").val("");                    
     }
 });
+
+//$(document).ready(function () {
+//    var validator = $("#table").validate({
+//        rules: {
+//            AvaliacaoUsuario: { // <- this is the NAME of the field
+//                required: true,
+//                minlength: 12,
+//                maxlength: 150,
+//                minWords: 5
+//            }
+//        },
+//        messages: {
+//            AvaliacaoUsuario: {
+//                required: "A avaliação deve ser preenchida",
+//                minWords: "Digite uma avaliação valida"
+//            }
+//        }
+//    }
+//});

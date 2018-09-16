@@ -12,7 +12,7 @@ namespace TrabalhoTcc.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage="Avaliação deve ser preenchida")]
-        [MinLength(12, ErrorMessage="A avaliação deve conter no mínimo 12 caracteres")]
+        [MinLength(5, ErrorMessage="A avaliação deve conter no mínimo 5 caracteres")]
         public string AvaliacaoUsuario { get; set; }
         
         [Required]
