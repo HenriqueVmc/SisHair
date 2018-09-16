@@ -12,6 +12,9 @@ using TrabalhoTcc.Models;
 using TrabalhoTcc.Models.Conta;
 using Newtonsoft.Json;
 using TrabalhoTcc.Helpers;
+using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace TrabalhoTcc.Controllers
 {
