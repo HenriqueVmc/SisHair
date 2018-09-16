@@ -43,31 +43,39 @@ namespace TrabalhoTcc.Models.Conta
 
             return ret;
         }
-    }
-}
 
-/*
-using (var db = new SqlConnection())
-    {
 
-        db.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Tcc;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-        db.Open();
-        using (var cmd = new SqlCommand())
+        public static LoginFuncionario RecuperarPeloId(int id)
         {
-            cmd.Connection = db;
-            cmd.CommandText = string.Format("SELECT Id, Usuario, Senha FROM LoginFuncionarios WHERE Usuario = '{0}' AND Senha = '{1}'", login, senha);
-            var reader = cmd.ExecuteReader();
+            DBContext db = new DBContext();
+            //LoginFuncionario ret = null;
 
-            if (reader.Read())//Encontrou
+            var ret = db.LoginFuncionarios.Where(l => l.Id == id).SingleOrDefault();
+
+            LoginFuncionario login = new LoginFuncionario(){
+                Id = ret.Id,
+                Usuario = ret.Usuario,
+                Senha = ret.Senha,
+                PermissoesId = ret.PermissoesId,
+                FuncionarioId = ret.FuncionarioId
+            };
+
+            return login;
+        }
+
+        public static LoginFuncionario RecuperarUsuario(string email, string cpf)
+        {
+            DBContext db = new DBContext();
+            LoginFuncionario login = null;
+            Funcionario funcionario = null;
+
+            funcionario = db.Funcionarios.Where(x => x.Email == email && x.Cpf == cpf).SingleOrDefault();
+            if (funcionario != null)
             {
-                ret = new LoginFuncionario
-                {
-                    Id = (int)reader["Id"],
-                    Usuario = (string)reader["Usuario"],
-                    Senha = (string)reader["Senha"]
-                };
+                login = db.LoginFuncionarios.Where(x => x.FuncionarioId == funcionario.Id).SingleOrDefault();
             }
 
+            return login;
         }
     }
-*/
+}

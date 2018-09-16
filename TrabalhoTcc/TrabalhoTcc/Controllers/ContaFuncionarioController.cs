@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,12 +79,8 @@ namespace TrabalhoTcc.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "ContaFuncionario");
         }
-
-
-       
-
 
         [HttpGet]
         [AllowAnonymous]
@@ -182,5 +179,89 @@ namespace TrabalhoTcc.Controllers
             //return Json(Results, JsonRequestBehavior.AllowGet);
         }
 
+        [AllowAnonymous]
+        public ActionResult EsqueciMinhaSenha(string email, string cpf)
+        {
+            if (HttpContext.Request.HttpMethod.ToUpper() == "GET")
+            {
+                ViewBag.EmailEnviado = false;
+                ModelState.Clear();
+            }
+            else
+            {
+                var usuario = LoginFuncionario.RecuperarUsuario(email, cpf);
+                if (usuario != null)
+                {
+                    EnviarEmailRedefinicaoSenha(usuario);
+                    ViewBag.EmailEnviado = true;
+                }
+                else
+                {
+                    ViewBag.EmailEnviado = false;
+                    ModelState.AddModelError("", "Dados inválidos!");                  
+                }
+            }
+
+            return View();
+        }
+
+        private void EnviarEmailRedefinicaoSenha(LoginFuncionario usuario)
+        {
+            var callbackUrl = Url.Action("RedefinirSenha", "ContaFuncionario", new { id = usuario.Id }, protocol: Request.Url.Scheme);
+
+            MailMessage mail = new MailMessage();
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+            smtp.EnableSsl = true;
+
+
+            mail.From = new MailAddress("salaosuporte@gmail.com");
+            mail.To.Add(usuario.Funcionario.Email);
+            mail.Subject = "Redefinição de senha";
+            mail.Body = string.Format("Redefina a sua senha <a href='{0}'>clicando aqui!</a>", callbackUrl);
+            mail.IsBodyHtml = true;
+
+            smtp.Send(mail);
+        }
+
+        [AllowAnonymous]
+        public ActionResult RedefinirSenha(int id)
+        {
+            var usuario = LoginFuncionario.RecuperarPeloId(id);
+            if (usuario == null)
+            {
+                id = -1;
+            }
+
+            ViewBag.Mensagem = null;
+
+            return View(usuario);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult RedefinirSenha(LoginFuncionario login)
+        {
+            ViewBag.Mensagem = null;
+
+            if (!ModelState.IsValid)
+            {
+                return View(login);
+            }
+
+            var usuario = LoginFuncionario.RecuperarPeloId(login.Id);
+            if (usuario != null)
+            {
+                usuario.Senha = CriptoHelper.HashMD5(login.Senha);
+                db.Entry(usuario).State = EntityState.Modified;
+                db.SaveChanges();
+
+                ViewBag.Mensagem = "Sucesso!";
+            }
+
+            return View();
+        }
     }
 }

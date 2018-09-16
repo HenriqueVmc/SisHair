@@ -29,6 +29,10 @@
                     <label for="campo-senha">Senha:</label>
                     @Html.TextBoxFor(m => m.Senha, new { @class = "form-control", @type = "password" })
                     @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
+
+                    <a class="pull-right" href="/ContaFuncionario/EsqueciMinhaSenha">
+                        Esqueceu sua senha?
+                    </a>
                 </div>
                 <hr />
                 <div class="text-center">
