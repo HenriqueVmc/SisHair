@@ -23,7 +23,15 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public JsonResult GetAgendamentos()//int? id
         {
+
+            int id = (int)Session["FuncionarioId"];
             var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao, a.Servicos }).ToList();//.Where(a => a.FuncionarioId == id)
+
+            if (id > 0)
+            {
+                agendamentos = null;
+                agendamentos = db.Agendamentos.Where(a => a.FuncionarioId == id).Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao, a.Servicos }).ToList();//.Where(a => a.FuncionarioId == id)                
+            }
 
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
@@ -149,7 +157,7 @@ namespace TrabalhoTcc.Controllers
 
             s.Situacao = "Confirmado";
             db.Entry(s).State = EntityState.Modified;
-            
+
             db.SaveChanges();
 
             var servicosSolicitacao = db.ServicosSolicitacao.Where(ss => ss.SolicitacaoId == id).Select(ss => new { ss.ServicoId }).ToList();
@@ -184,7 +192,7 @@ namespace TrabalhoTcc.Controllers
             return RedirectToAction("Solicitacoes");
         }
 
-        
+
         [HttpGet]
         public JsonResult GetAgendamentosByMes()
         {
@@ -192,19 +200,22 @@ namespace TrabalhoTcc.Controllers
             var x = from ag in db.Agendamentos
                     where ag.DataHoraFinal.Year == 2018
                     group ag by ag.DataHoraFinal.Month into groupmonth
-                    select new { Quantidade = groupmonth.Count(), 
-                        Mes = groupmonth.Key};
+                    select new
+                    {
+                        Quantidade = groupmonth.Count(),
+                        Mes = groupmonth.Key
+                    };
             var registros = x.ToList();
 
             var teste = x.ToArray();
             var valores = new int[12];
-            foreach (var y  in registros)
+            foreach (var y in registros)
             {
-                valores[(y.Mes)-1] = y.Quantidade;
+                valores[(y.Mes) - 1] = y.Quantidade;
             }
             //var agendamentosbyMes = db.Agendamentos.Where(a => a.DataHoraFinal.Year == DateTime.Now.Year).GroupBy(a => a.DataHoraFinal.Month).Count();            
 
-            return new JsonResult { Data = valores , JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = valores, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

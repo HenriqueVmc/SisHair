@@ -39,7 +39,7 @@ namespace TrabalhoTcc.Controllers
                 if (usuario != null)
                 {
                     int id = usuario.Id;
-                    var a = db.LoginFuncionarios.Where(end => end.Id == id).Single();
+                    var a = db.LoginFuncionarios.Where(end => end.Id == id).SingleOrDefault();
                     int b = a.PermissoesId;
 
                     if (b == 1)
@@ -55,6 +55,9 @@ namespace TrabalhoTcc.Controllers
                     var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
                     var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
                     Response.Cookies.Add(cookie);
+
+
+                    Session["FuncionarioId"] = usuario.FuncionarioId;
 
                     if (Url.IsLocalUrl(returnUrl))
                     {
