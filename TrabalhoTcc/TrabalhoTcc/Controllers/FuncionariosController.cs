@@ -55,7 +55,6 @@ namespace TrabalhoTcc.Controllers
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
-            ViewBag.PermissoesId = new SelectList(db.permissoes, "Id", "TipoPermissao");
             return View();
         }
 
@@ -121,6 +120,10 @@ namespace TrabalhoTcc.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+            
             Funcionario funcionario = await db.Funcionarios.FindAsync(id);
 
             ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
@@ -129,6 +132,7 @@ namespace TrabalhoTcc.Controllers
             {
                 return HttpNotFound();
             }
+            //ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
         }
@@ -137,18 +141,19 @@ namespace TrabalhoTcc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Editar(Funcionario funcionario, EnderecoFuncionario endereco)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;
-                db.SaveChanges();
-
+   
                 new EnderecoFuncionario().EditarEndereco(endereco);
 
                 return RedirectToAction("Index");
             }
+
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
         }

@@ -176,7 +176,7 @@
     }
 
     $('#btnSalvarAgendamento').click(function () {
-        debugger;
+       
         //Validation/
         if ($('#DataHoraInicio').val().trim() == "") {
             new PNotify('Horário de inicio deve ser preenchido!');
@@ -226,7 +226,7 @@
     });
 
     function SalvarAgendamento(data) {
-        debugger;
+        
         $.ajax({
             type: "POST",
             url: '/Agendamentos/Salvar',

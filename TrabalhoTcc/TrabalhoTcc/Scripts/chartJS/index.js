@@ -1,5 +1,5 @@
 ﻿$(function () {
-    debugger;
+    
     var registros = [];
 
     var ctx = document.getElementById('chartAgendamentos').getContext('2d');
