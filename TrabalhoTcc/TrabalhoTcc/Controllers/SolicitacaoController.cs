@@ -193,6 +193,7 @@ namespace TrabalhoTcc.Controllers
                     ViewBag.ClienteId = id;
                     ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.ClienteId == id).ToList();
                     return View();
+                    // - bool para bloquear realizar a avaliacao mais de uma vez, if avaliou == false { permitir avaliar }
                 }
             }
             catch (NullReferenceException e)
@@ -224,6 +225,29 @@ namespace TrabalhoTcc.Controllers
             // ViewBag.Avaliacoes = db.Funcionarios.Include(f => f.Cargo).ToList();
 
             return View(avaliacao);
+        }
+
+        public ActionResult MinhasAvaliacoes()
+        {
+            try
+            {
+                int id = (int)Session["ClienteId"];
+                if (id > 0)
+                {
+                    //Receber cliente e rotornar em ViewBag para campos hiddens 
+                    ViewBag.ClienteId = id;
+                    //ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.ClienteId == id).ToList();
+                    ViewBag.MinhasAvaliacoes = db.Avaliacoes.Where(c => c.Id == id).ToList();
+                    return View();
+                }
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("/ContaCliente/Login");
+            }
+
+            return Redirect("/ContaCliente/Login");
+
         }
     }
 }

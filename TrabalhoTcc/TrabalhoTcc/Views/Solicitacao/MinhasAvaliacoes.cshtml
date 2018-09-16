@@ -1,8 +1,7 @@
-﻿@model IEnumerable<TrabalhoTcc.Models.Solicitacao>
-
+﻿
 @{
-    ViewBag.Title = "Index";
-    Layout = null;
+    ViewBag.Title = "MinhasAvaliacoes";
+    Layout = null; //"~/Views/Shared/Master.cshtml";
 }
 
 <!DOCTYPE html>
@@ -47,7 +46,7 @@
                         "sSortDescending": ": Ordenar colunas de forma descendente"
                     }
                 }
- 
+
             })
         });
     </script>
@@ -90,70 +89,63 @@
         </footer>
     </nav>
     <div class="container mt-4 mb-3">
-
-        <div class="row mt-5">
-            <input type="hidden" id="ClienteId" name="ClienteId" value="@ViewBag.ClienteId" />
-            <table id="tabelaAgendamentos"class="table table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>
-                            @Html.DisplayName("Cliente:")
-                        </th>
-                        <th>
-                            @Html.DisplayName("Funcionário:")
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DataHoraInicio)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DataHoraFinal)
-                        </th>
-                        <th>
-                            @Html.DisplayName("Serviços:")
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Descricao)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Situacao)
-                        </th>
-                        <th>Ações:</th>
-                    </tr>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataHoraInicio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataHoraFinal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Servicos)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Situacao)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Editar", "Editar", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
-                            @Html.ActionLink("Cancelar", "Cancelar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
+    <div class="row mt-5">
+        <input type="hidden" id="ClienteId" name="ClienteId" value="@ViewBag.ClienteId" />
+        <table id="tabelaAvaliacoes" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @* Texto sobre a avaliacao *@
+                    </th>
+                    <th>
+                        @* nota VoltariaNovamente *@
+                    </th>
+                    <th>
+                        @* Nota Agendamento *@
+                    </th>
+                    <th>
+                        @* Nota Experiencia Atendimento *@
+                    </th>
+                    <th>
+                        @* Nota Condicoes Fisicas Estabelecimentos *@
+                    </th>
+                    <th>
+                        @* Voltaria novamente *@
+                    </th>
+                    <th>
+                        @* Recomendaria Alguem *@
+                    </th>
+                </tr>
+            </thead>
+            @foreach()//mostrar as avaliacoes pro cara)
+            {
+                <tr>
+                    <th>
+                        @* texto sobre a avaliacao *@
+                    </th>
+                    <th>
+                        @* Nota Voltaria novamente *@
+                    </th>
+                    <th>
+                        @* nota agendamento *@
+                    </th>
+                    <th>
+                        @* nota experiencia atendimento *@
+                    </th>
+                    <th>
+                        @* Nota condicoes Fisicas estabelecimento *@
+                    </th>
+                    <th>
+                        @* Voltaria novamente *@
+                    </th>
+                    <th>
+                        @* Recomendaria a alguem *@
+                    </th>
+                </tr>
+            }
+        </table>
     </div>
-</body>
+ </div>
+</body>         
 </html>
+
