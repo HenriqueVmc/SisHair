@@ -180,7 +180,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult EsqueciMinhaSenha(string email, string cpf)
+        public ActionResult EsqueciMinhaSenha(string email, string CpfLogin)
         {
             if (HttpContext.Request.HttpMethod.ToUpper() == "GET")
             {
@@ -189,7 +189,7 @@ namespace TrabalhoTcc.Controllers
             }
             else
             {
-                var usuario = LoginFuncionario.RecuperarUsuario(email, cpf);
+                var usuario = LoginFuncionario.RecuperarUsuario(email, CpfLogin);
                 if (usuario != null)
                 {
                     EnviarEmailRedefinicaoSenha(usuario);

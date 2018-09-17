@@ -67,7 +67,11 @@
                             @Html.DropDownListFor(model => model.CargoId, null, htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.CargoId, "", new { @class = "text-danger" })
                         </div>
-
+                        @if (ViewBag.Permissao != null)
+                        {
+                            <input type="hidden" value="@ViewBag.Permissao.TipoPermissao" id="permissao" name="permissao" />
+                            <input type="hidden" value="@ViewBag.Permissao.Id" id="idPermissao" name="idPermissao" />
+                        }
                         <div class="col-md-6">
                             <label>Permissão:<span class="text-danger"> *</span></label>
                             <select id="PermissoesId" name="PermissoesId" class="custom-select"></select>

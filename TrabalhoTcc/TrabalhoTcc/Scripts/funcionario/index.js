@@ -2,10 +2,10 @@
 
     $("#Cpf").mask('000.000.000-00', { reverse: true });
     $("#Celular").mask('(00) 00000-0000');
-    $("#Telefone").mask('(00) 0000-0000');    
+    $("#Telefone").mask('(00) 0000-0000');
 
     $("#PermissoesId").select2({
-        width: "100%",        
+        width: "100%",
         ajax: {
             url: "/ContaFuncionario/GetPermissoes",
             dataType: 'json',
@@ -24,8 +24,11 @@
                 };
             }
         }
-    });    
-
+    });
+    $('#PermissoesId').select2("trigger", "select", { data: { text: $("#permissao").val(), id: parseInt($("#idPermissao").val()) } });
+    //if ($("#Nome").length > 0) {
+    //    $('#PermissoesId').select2("trigger", "select", { data: { text: $("#permissao").val(), id: parseInt($("#idPermissao").val()) } });
+    //}
 });
 
 

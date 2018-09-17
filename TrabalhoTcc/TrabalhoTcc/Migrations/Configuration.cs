@@ -22,9 +22,9 @@ namespace TrabalhoTcc.Migrations
 
             // --------------  AUTO INSERT NAS TABELAS ----------------- //
             context.Servicos.AddOrUpdate(x => x.Id,
-                new Servico() { Id = 1, Nome = "Corte Masculino", Duracao = 30 },
-                new Servico() { Id = 2, Nome = "Corte Feminino", Duracao = 50 },
-                new Servico() { Id = 3, Nome = "Corte Infantil", Duracao = 50 }
+                new Servico() { Id = 1, Nome = "Corte Masculino", Valor = 30, Duracao = 30 },
+                new Servico() { Id = 2, Nome = "Corte Feminino", Valor = 60, Duracao = 50 },
+                new Servico() { Id = 3, Nome = "Corte Infantil", Valor = 15, Duracao = 50 }
             );
 
             context.Cargos.AddOrUpdate(x => x.Id,

@@ -65,6 +65,7 @@
             eventColor: 'rgb(47, 53, 58)',
             events: agendamentos,
             eventClick: function (Agendamento, jsEvent, view) {
+
                 agendamentoSelecionado = Agendamento;
                 $('#agendamento-modal #eventTitle').text(Agendamento.cliente);
 
@@ -160,23 +161,26 @@
 
 
     function frmEditarAgendamento() {
-        if (agendamentoSelecionado != null) {
 
+        if (agendamentoSelecionado != null) {
+            debugger;
             $('#Id').val(agendamentoSelecionado.agendamentoId);
-            $('#FuncionarioId').val(agendamentoSelecionado.funcionario).trigger('change');
-            
+
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
             $('#DataHoraFinal').val(agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A'));
-            $('#Situacao').val(agendamentoSelecionado.situacao).change();
+            $('#Situacao').val(agendamentoSelecionado.situacao);
             $('#Descricao').val(agendamentoSelecionado.descricao);
+            $('#ClienteId').select2("trigger", "select", { data: { text: agendamentoSelecionado.cliente, id: parseInt(agendamentoSelecionado.clienteId) } });
+            $('#FuncionarioId').select2("trigger", "select", { data: { text: agendamentoSelecionado.funcionario, id: parseInt(agendamentoSelecionado.funcionarioId) } });
 
+            //adicionarSelectServicos(agendamentoSelecionado.servicos);                    
         }
         $('#agendamento-modal').modal('hide');
         $('#agendamento-modal-salvar').modal();
     }
 
     $('#btnSalvarAgendamento').click(function () {
-       
+
         //Validation/
         if ($('#DataHoraInicio').val().trim() == "") {
             new PNotify('Horário de inicio deve ser preenchido!');
@@ -226,7 +230,7 @@
     });
 
     function SalvarAgendamento(data) {
-        
+
         $.ajax({
             type: "POST",
             url: '/Agendamentos/Salvar',
@@ -339,13 +343,28 @@
         }
     });
 
-    //function limparCampos() {
-    //    $('#Id').val("");
-    //    $('#DataHoraInicio').val("");
-    //    $('#DataHoraFinal').val("");
-    //    $("#Situacao").val("");
-    //    $("#selectServicos").val("");
-    //    $('#FuncionarioId').val("");
-    //    $('#ClienteId').val("");
+    function limparCampos() {
+        $('#Id').val("");
+        $('#DataHoraInicio').val("");
+        $('#DataHoraFinal').val("");
+        $("#Situacao").val("");
+        $("#selectServicos").val("").change();
+        $('#FuncionarioId').val("").change();
+        $('#ClienteId').val("").change();
+    }
+
+    //function adicionarSelectServicos(val) {
+        //var servicoSelecionado = val;
+        //if (servicoSelecionado != null) {
+        //    var servicos = [];
+        //    var servicos = servicoSelecionado.split(',');
+
+        //    for (var i = 0; i < servicos.length; i++) {
+        //        servicos[i] = servicos[i].replace(/^\s*/, "").replace(/\s*$/, "");                    
+        //    }
+
+        //    $("#selectServicos").val(servicos).trigger("change");
+        //    //$('#selectServicos').select2("trigger", "select", { data: { text: agendamentoSelecionado.servicos, id: parseInt(agendamentoSelecionado.servicos) } });
+        //}                
     //}
 });

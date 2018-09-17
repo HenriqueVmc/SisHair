@@ -122,6 +122,10 @@ namespace TrabalhoTcc.Controllers
 
             ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
 
+            // --- Iria trazer as permissões tbem...
+            int idPermissao = db.LoginFuncionarios.Where(p => p.FuncionarioId == funcionario.Id).SingleOrDefault().PermissoesId;
+            ViewBag.Permissao = db.permissoes.Where(p => p.Id == idPermissao).SingleOrDefault();
+
             if (funcionario == null)
             {
                 return HttpNotFound();
@@ -135,7 +139,7 @@ namespace TrabalhoTcc.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Editar(Funcionario funcionario, EnderecoFuncionario endereco)
+        public ActionResult Editar(Funcionario funcionario, EnderecoFuncionario endereco, int PermissoesId)
         {
             if (ModelState.IsValid)
             {
@@ -144,6 +148,12 @@ namespace TrabalhoTcc.Controllers
 
                 endereco.FuncionarioId = funcionario.Id;
                 new EnderecoFuncionario().EditarEndereco(endereco);
+
+                LoginFuncionario login = db.LoginFuncionarios.Where(p => p.FuncionarioId == funcionario.Id).SingleOrDefault();
+                login.PermissoesId = PermissoesId;
+
+                db.Entry(login).State = EntityState.Modified;
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }

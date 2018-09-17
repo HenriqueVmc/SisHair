@@ -137,7 +137,7 @@
             <footer class="footer mb-4 bg-dark">
                 <form action="/ContaFuncionario/LogOff" method="GET">
                     <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-sm" type="submit">Sair</button> Usuário: @User.Identity.Name
-                </form>                
+                </form>
             </footer>
         </div>
     </div>
@@ -146,7 +146,6 @@
         @RenderBody()
     </div>
 
-    @*<script src="~/Scripts/jquery-3.0.0.js"></script>*@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
@@ -155,13 +154,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="~/Content/jquery.mask.js"></script>
     <script src="~/Content/mascara.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/simplepagination.js"></script>
+    <script src="~/Scripts/tables/index.js"></script>
+
+    @*<script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/popper.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/tables/index.js"></script>
-    @*<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
-    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
     @RenderSection("scripts", false)
 </body>
 </html>

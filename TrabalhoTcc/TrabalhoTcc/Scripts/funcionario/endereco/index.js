@@ -79,7 +79,7 @@
         }
     });
 
-    $("#btnCadFuncionario").on(click, function () {
+    $("#btnCadFuncionario").on("click", function () {
 
         if ($("[name='Endereco.Numero']").val() == "") {
             $("[name='Endereco.Numero']").val("0")
