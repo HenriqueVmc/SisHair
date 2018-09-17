@@ -17,7 +17,7 @@ namespace TrabalhoTcc.Controllers
     {
         private DBContext db = new DBContext();
 
-        [Authorize]
+        [Authorize(Roles = "Administrador, Funcionario")]
         // GET: Servicoes
         public async Task<ActionResult> Index()
         {
@@ -25,6 +25,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Servicoes/Details/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -40,6 +41,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Servicoes/Create
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Cadastrar()
         {
             return View();
@@ -63,6 +65,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Servicoes/Edit/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
@@ -94,6 +97,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Servicoes/Delete/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)

@@ -16,6 +16,7 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Agendamentos()
         {
 
