@@ -116,11 +116,13 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Index()
         {
             return View(await db.LoginFuncionarios.ToListAsync());
         }
 
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)
