@@ -51,9 +51,9 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,basicWeek,basicDay,agenda'
+                right: 'month,agendaWeek,agendaDay,listMonth'
             },
-            defaultView: 'agenda',
+            defaultView: 'listMonth',
             /*scrollTime: ,*/
             allDaySlot: false,
             eventLimit: true,
@@ -84,6 +84,7 @@
                 $('#agendamento-modal').modal();
             },
             selectable: true,
+            selectHelper: true,
             select: function (start, end, agendamento) {
                 agendamentoSelecionado = {
                     agendamentoId: 0,

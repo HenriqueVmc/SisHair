@@ -36,7 +36,6 @@ namespace TrabalhoTcc.Controllers
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-
         [HttpPost]
         public JsonResult Salvar([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
         {
@@ -130,7 +129,6 @@ namespace TrabalhoTcc.Controllers
             return new JsonResult { Data = new { status = status } };
         }
 
-
         public ActionResult Solicitacoes()
         {
             var solicitacoes = db.Solicitacoes.ToList();
@@ -190,32 +188,6 @@ namespace TrabalhoTcc.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Solicitacoes");
-        }
-
-
-        [HttpGet]
-        public JsonResult GetAgendamentosByMes()
-        {
-            //SELECT MONTH(DataHoraFinal), COUNT(DataHoraFinal) FROM Agendamentoes WHERE YEAR(DataHoraFinal) = '2018' GROUP BY  MONTH(DataHoraFinal);
-            var x = from ag in db.Agendamentos
-                    where ag.DataHoraFinal.Year == 2018
-                    group ag by ag.DataHoraFinal.Month into groupmonth
-                    select new
-                    {
-                        Quantidade = groupmonth.Count(),
-                        Mes = groupmonth.Key
-                    };
-            var registros = x.ToList();
-
-            var teste = x.ToArray();
-            var valores = new int[12];
-            foreach (var y in registros)
-            {
-                valores[(y.Mes) - 1] = y.Quantidade;
-            }
-            //var agendamentosbyMes = db.Agendamentos.Where(a => a.DataHoraFinal.Year == DateTime.Now.Year).GroupBy(a => a.DataHoraFinal.Month).Count();            
-
-            return new JsonResult { Data = valores, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿$(function () {
-    
+
+    debugger;
     var registros = [];
 
     var ctx = document.getElementById('chartAgendamentos').getContext('2d');
@@ -12,7 +13,7 @@
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: "/Agendamentos/GetAgendamentosByMes",
+            url: "/Estatisticas/GetAgendamentosByMes",
             success: function (valores) {
                 for (var i = 0; i < 12; i++) {
                     chart.data.datasets[0].data[i] = valores[i];
@@ -33,10 +34,10 @@
                 label: "Agendamentos",
                 backgroundColor: 'rgb(125, 15, 174)',
                 borderColor: 'rgb(255, 99, 132)',
+                data: registros
             }]
         },
         // Configuration options go here
         options: {}
     });
-
 });
