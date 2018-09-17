@@ -120,21 +120,24 @@
 
                         </ul>
                     </div>
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                    {
+                        <a class="nav-link bg-dark" data-toggle="collapse" href="#ralatorios" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <span class="fa fa-file-text"></span> <b>RELATÓRIOS</b>
+                            <li class="fa fa-angle-down "></li>
+                        </a>
+                        <div class="collapse" id="ralatorios" data-parent="#accordion">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a class="nav-link" href="/Estatisticas/Agendamentos">Agendamentos</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/Estatisticas/Funcionarios">Funcionários</a>
+                                </li>
+                            </ul>
 
-                    <a class="nav-link bg-dark" data-toggle="collapse" href="#ralatorios" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-file-text"></span> <b>RELATÓRIOS</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="ralatorios" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Estatisticas/Agendamentos">Agendamentos</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Estatisticas/Funcionarios">Funcionários</a>
-                            </li>
-                        </ul>
-                    </div>
+                        </div>
+                            }
                 </ul>
             </nav>
             <footer class="footer mb-4 bg-dark">

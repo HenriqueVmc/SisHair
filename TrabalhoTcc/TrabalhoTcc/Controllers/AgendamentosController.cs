@@ -15,10 +15,13 @@ namespace TrabalhoTcc.Controllers
     {
         private DBContext db = new DBContext();
         // GET: Agendamentos
+
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Index()
         {
             return View();
         }
+
 
         [HttpGet]
         public JsonResult GetAgendamentos()//int? id
@@ -35,6 +38,7 @@ namespace TrabalhoTcc.Controllers
 
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
+
 
         [HttpPost]
         public JsonResult Salvar([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
@@ -112,6 +116,7 @@ namespace TrabalhoTcc.Controllers
             }
             return new JsonResult { Data = new { status = status } };
         }
+
 
         [HttpPost]
         public JsonResult Deletar(int id)
