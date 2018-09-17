@@ -3,6 +3,9 @@
     Layout = "/Views/Shared/Master.cshtml";
 }
 
+@section styles{
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+}
 <div class="container mt-3 mb-3">
     <div class="row">
         <!--Parte de baixo = Cadastro de cliente-->
@@ -20,14 +23,17 @@
                             <label for="campo-nome">Nome:</label>
                             @Html.EditorFor(model => model.Cliente.Nome, new { htmlAttributes = new { @class = "form-control" } })
                             @*<input type="text" class="form-control" name="Cliente.Nome" id="Cliente.Nome"/>*@
+                            <p id="nomeValidation" name="nomeValidation"></p>
                             @Html.ValidationMessageFor(m => m.Cliente.Nome, "", new { @class = "text-danger" })
+
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="campo-data-nascimento">Data de Nascimento:</label>
-                            @Html.EditorFor(model => model.Cliente.Data_nascimento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Cliente.Data_nascimento, new { htmlAttributes = new { @class = "form-control", @min = "1910-01-01" } })
                             @*<input type="date" class="form-control" name="Cliente.Data_Nascimento" id="Cliente.Data_Nascimento" />*@
+                            <p id="dataNascimentoValidation" name="dataNascimentoValidation"></p>
                             @Html.ValidationMessageFor(m => m.Cliente.Data_nascimento, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -38,7 +44,8 @@
                         <div class="form-group">
                             <label for="campo-celular">Celular:</label>
                             @Html.EditorFor(model => model.Cliente.Celular, new { htmlAttributes = new { @class = "form-control" } })
-                            @*<input type="text" class="form-control" name="Cliente.Celular" id="Cliente.Celular" />*@
+                            @*<input type="text" class="form-control" name="Celular" id="Cliente.Celular" />*@
+                            <p id="celularValidation" name="celularValidation"></p>
                             @Html.ValidationMessageFor(m => m.Cliente.Celular, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -46,7 +53,8 @@
                         <div class="form-group">
                             <label for="campo-telefone">Telefone:</label>
                             @Html.EditorFor(model => model.Cliente.Telefone, new { htmlAttributes = new { @class = "form-control" } })
-                            @*<input type="text" class="form-control" name="Cliente.Telefone" id="Cliente.Telefone" />*@
+                            @*<input type="text" class="form-control" name="Telefone" id="Telefone" />*@
+                            <p id="telefoneValidation" name="telefoneValidation"></p>
                             @Html.ValidationMessageFor(m => m.Cliente.Telefone, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -57,6 +65,7 @@
                             <label for="campo-email">Email:</label>
                             @Html.EditorFor(model => model.Cliente.Email, new { htmlAttributes = new { @class = "form-control" } })
                             @*<input type="text" class="form-control" name="Cliente.Email" id="Cliente.Email" />*@
+                            <p id="emailValidation" name="emailValidation"></p>
                             @Html.ValidationMessageFor(m => m.Cliente.Email, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -68,6 +77,7 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Usuario, new { @class = "control-label" })
                             @Html.EditorFor(m => m.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                            <p id="usuarioValidation" name="usuarioValidation"></p>
                             @Html.ValidationMessageFor(m => m.Usuario, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -78,6 +88,7 @@
                         <div class="form-group">
                             @Html.LabelFor(m => m.Senha, new { @class = "ccontrol-label" })
                             @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
+                            <p id="senhaValidation" name="senhaValidation"></p>
                             @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -86,6 +97,7 @@
                         <div class="form-group">
                             <label for="campo-confirmarSenha">Confirmar Senha:</label>
                             <input type="password" class="form-control" name="ConfirmarSenha" id="ConfirmarSenha" />
+                            <p id="confSenhaValidation" name="confSenhaValidation"></p>
                         </div>
                     </div>
                 </div>
@@ -105,12 +117,12 @@
                             @*<button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
                                     <i class="fa fa-save"> Cadastrar</i>
                                 </button>*@
-                            <button type="submit" id="btnEnviar" name="btnEnviar" class="btn btn-success">
-                                Entrar
+                            <button type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-success">
+                                Cadastrar
                             </button>
 
                             <button type="reset" class="btn btn-danger" name=" btnLimpar" id="btnLimpar">
-                               Limpar
+                                Limpar
                             </button>
                         </div>
                     </div>
@@ -120,5 +132,8 @@
     </div>
     <div class="col-md-3"></div>
 </div>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section scripts{
+    <script src="~/Scripts/contacliente/autoCadastoCliente.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

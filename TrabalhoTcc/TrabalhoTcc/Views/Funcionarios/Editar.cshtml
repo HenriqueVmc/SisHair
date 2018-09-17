@@ -6,8 +6,9 @@
 
 <div class="offset-2">
 
-    @using (Html.BeginForm("Cadastrar", "Funcionarios", FormMethod.Post, new { id = "formCadastroFuncionario" }))
+    @using (Html.BeginForm("Editar", "Funcionarios", FormMethod.Post, new { id = "formCadastroFuncionario" }))
     {
+
         @Html.AntiForgeryToken()
         <div class="">
             <h2 class="text-center">Editar Funcionário</h2>
@@ -84,6 +85,7 @@
                     @*@Html.Action("_Endereco", "Funcionarios")*@
                     @if (ViewBag.Endereco != null)
                     {
+                        <input type="hidden" id="Endereco.Id" name="Endereco.Id" value="@ViewBag.Endereco.Id" />
                         <h4 class="text-center">Endereço:</h4>
                         <div class="form-group">
                             <div class="col-md-6">
@@ -121,7 +123,7 @@
                             </div>
                             <div class="col-md-2">
                                 <label class="control-label">UF:</label>
-                                <input type="text" class="form-control" id="Endereco.Estado" name="Endereco.Estado" value="@ViewBag.Endereco.Estado"/>
+                                <input type="text" class="form-control" id="Endereco.Estado" name="Endereco.Estado" value="@ViewBag.Endereco.Estado" />
                             </div>
                         </div>
                     }

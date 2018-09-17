@@ -77,7 +77,6 @@ namespace TrabalhoTcc.Controllers
                 {
                     new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
                 }
-
                 ////
                 var loginF = new LoginFuncionario()
                 {
@@ -98,7 +97,6 @@ namespace TrabalhoTcc.Controllers
             return View(funcionario);
         }
 
-
         private string gerarSenha(Funcionario funcionario)
         {
             string senha = Convert.ToString(funcionario.DataNascimento.Day.ToString().PadLeft(2, '0'));
@@ -107,13 +105,6 @@ namespace TrabalhoTcc.Controllers
 
             return CriptoHelper.HashMD5(senha);
         }
-
-
-
-
-
-
-
 
         // GET: Funcionarios/Edit/5
         [Authorize(Roles = "Administrador")]
@@ -126,7 +117,7 @@ namespace TrabalhoTcc.Controllers
 
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
-            
+
             Funcionario funcionario = await db.Funcionarios.FindAsync(id);
 
             ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
@@ -149,7 +140,9 @@ namespace TrabalhoTcc.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(funcionario).State = EntityState.Modified;
-   
+                db.SaveChanges();
+
+                endereco.FuncionarioId = funcionario.Id;
                 new EnderecoFuncionario().EditarEndereco(endereco);
 
                 return RedirectToAction("Index");
@@ -177,7 +170,6 @@ namespace TrabalhoTcc.Controllers
             }
             return View(funcionario);
         }
-
 
         // POST: Funcionarios/Delete/5
         [HttpPost, ActionName("Deletar")]
@@ -213,7 +205,6 @@ namespace TrabalhoTcc.Controllers
             {
                 text = s.Nome,
                 id = s.Id
-
             });
 
             return Content(JsonConvert.SerializeObject(new { items = Results }));
@@ -245,8 +236,6 @@ namespace TrabalhoTcc.Controllers
             grid.RenderControl(htmltextwriter);
             Response.Write(sw.ToString());
             Response.End();
-
-
 
             return View();
         }

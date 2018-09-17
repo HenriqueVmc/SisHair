@@ -63,7 +63,7 @@ namespace TrabalhoTcc.Models
             return cadastro;
         }
 
-        public void EditarEndereco(EnderecoFuncionario endereco)
+        public void EditarEndereco(EnderecoFuncionario endereco)//[Bind(Include ="Rua,Bairro,Numero,Cidade,Complemento,Estado,Cep")]
         {
             db.Entry(endereco).State = EntityState.Modified;
             db.SaveChanges();

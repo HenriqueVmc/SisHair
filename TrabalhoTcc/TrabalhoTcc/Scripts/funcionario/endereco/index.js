@@ -1,5 +1,6 @@
 ﻿$(function () {
 
+    $("[name='Endereco.Cep']").mask('00000-000'); 
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
         $("[name='Endereco.Rua']").val("");
@@ -80,8 +81,8 @@
 
     $("#btnCadFuncionario").on(click, function () {
 
-        if ($("#Endereco.Numero").val() == "") {
-            $("#Endereco.Numero").val("0")
+        if ($("[name='Endereco.Numero']").val() == "") {
+            $("[name='Endereco.Numero']").val("0")
         }    
     });
 });
