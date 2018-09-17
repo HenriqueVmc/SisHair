@@ -23,12 +23,14 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Cliente
+         [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Clientes.ToListAsync());
         }
 
         // GET: Cliente/Details/5
+         [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -45,6 +47,7 @@ namespace TrabalhoTcc.Controllers
 
         // GET: Cliente/Create
         [Authorize]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Cadastrar()
         {
             return View();
@@ -86,6 +89,7 @@ namespace TrabalhoTcc.Controllers
             return CriptoHelper.HashMD5(senha);
         }
         // GET: Cliente/Edit/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Editar(int? id)
         {
             if (id == null)
@@ -117,6 +121,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Cliente/Delete/5
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Deletar(int? id)
         {
             if (id == null)
