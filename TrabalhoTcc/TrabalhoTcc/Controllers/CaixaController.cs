@@ -25,6 +25,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // GET: Caixa/Create
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Pagamento(int? id)
         {
             if (id > 0)

@@ -17,14 +17,14 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Cargo
-        [Authorize(Roles = "Administrador, Funcionario")]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Cargos.ToListAsync());
         }
 
         // GET: Cargo/Details/5
-        [Authorize(Roles = "Administrador, Funcionario")]
+        [Authorize(Roles = "Administrador")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -113,6 +113,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // POST: Cargo/Delete/5
+         [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
