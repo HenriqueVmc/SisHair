@@ -254,8 +254,9 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult SalvarAvaliacao(Avaliacao avaliacao)
         {
+            avaliacao.AvaliouSalao = true;
             if (ModelState.IsValid)
-            {
+            {                
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
                 return Content(JsonConvert.SerializeObject(new { id = avaliacao.Id }));

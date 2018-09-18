@@ -35,6 +35,8 @@ namespace TrabalhoTcc.Models
 
         public bool AvaliacaoAprovadaParaIndex { get; set; }
 
+        public bool AvaliouSalao { get; set; }
+
         public virtual Agendamento Agendamento { get; set; }
         public int AgendamentoId { get; set; }
 
