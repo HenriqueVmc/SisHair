@@ -1,0 +1,38 @@
+﻿@model TrabalhoTcc.Models.Conta.NovaSenha
+@{
+    Layout = "/Views/Shared/Master.cshtml";
+}
+
+<div class="container col-12 mt-5 mb-5">
+
+    <div class="row offset-4">
+        <v class="col-6">
+            @using (Html.BeginForm("RedefinirSenha", "ContaCliente", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="mt-5">
+                    <h2>Digite uma nova senha</h2>
+                </div>
+                <div class="form-group">
+                    <label for="campo-senha">Senha</label>
+                    @Html.TextBoxFor(m => m.Senha, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="campo-senha">Confirme Sua Senha</label>
+                    @Html.TextBoxFor(m => m.ConfirmarSenha, new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-success offset-6" name="btnEnviar" id="btnEnviar">
+                        <i class="fa fa-save"> Salvar</i>
+                    </button>
+                </div>
+            }
+    </div>
+    <div class="col-md-4"></div>
+
+</div>
+
