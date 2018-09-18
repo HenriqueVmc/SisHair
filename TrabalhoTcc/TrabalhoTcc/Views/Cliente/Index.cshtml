@@ -12,9 +12,12 @@
     <div class="row">
         <div class="col-md-8">
             <p>
-                @Html.ActionLink("Novo Cliente", "Cadastrar", "Cliente", new { @class = "btn btn-success" })
-
-                @Html.ActionLink("Relatorios", "Relatorios", "Cliente", new { @class = "btn btn-success" })
+                <a href="@Url.Action("Cadastrar")" class="btn btn-success">
+                    <span class="fa fa-plus "></span> Cliente
+                </a>
+                <a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+                    <span class="fa fa-download "></span> Exportar para Excel
+                </a>
             </p>
         </div>
         <div class="col-md-4">
@@ -41,7 +44,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Email)
                 </th>
-                <th>Ações:</th>
+                <th>Ações: </th>
             </tr>
         </thead>
         <tbody>
@@ -65,9 +68,9 @@
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
                     <td>
-                        @Html.ActionLink(" Editar", "Editar", "Cliente", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" })
-                        @Html.ActionLink(" Detalhes", "Detalhes", "Cliente", new { id = item.Id }, new { @class = "fa fa-file btn btn-outline-primary" })
-                        @Html.ActionLink(" Deletar", "Deletar", "Cliente", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
+                        @Html.ActionLink(" ", "Editar", "Cliente", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                       
+                        @Html.ActionLink(" ", "Deletar", "Cliente", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
                     </td>
                 </tr>
             }

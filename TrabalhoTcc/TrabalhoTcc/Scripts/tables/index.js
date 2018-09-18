@@ -4,6 +4,7 @@
     $("#tableServicos").pagination();
     $("#tableCargos").pagination();
     $("#tableCaixa").pagination();
+    $("#tableSolicitacoes").pagination();
 
     $("#pesquisa").on("keyup", function () {
         var value = $(this).val().toLowerCase();
@@ -27,8 +28,8 @@
         window.location.replace("/Servicos/Detalhes?id=" + id);
     });
 
-    $("#tableServicos").on("dblclick", "tr", function () {
+    $("#tableCargos").on("dblclick", "tr", function () {
         var id = $(this).find("#Id").val();
-        window.location.replace("/Servicos/Detalhes?id=" + id);
+        window.location.replace("/Cargos/Detalhes?id=" + id);
     });
 });

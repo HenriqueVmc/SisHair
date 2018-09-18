@@ -221,34 +221,26 @@ namespace TrabalhoTcc.Controllers
             //return Json(Results, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Relatorios()
+        public ActionResult ExportExcel()
         {
             var list = db.Funcionarios.ToList();
+            var gv = new GridView();
 
-            var grid = new GridView();
-            grid.DataSource = from data in list
-                              select new
-                              {
-                                  Nome = data.Nome,
-                                  DataNascimento = data.DataNascimento,
-                                  CPF = data.Cpf,
-                                  Telefone = data.Telefone,
-                                  Celular = data.Celular,
-                                  Cargo = data.Cargo
-                              };
-
-            grid.DataBind();
+            gv.DataSource = list;
+            gv.DataBind();
             Response.ClearContent();
-            Response.AddHeader("content-dispotation", "attachment;filename=ExpotedClientsList.xls");
-            Response.ContentType = "application/excel";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter htmltextwriter = new HtmlTextWriter(sw);
-            grid.RenderControl(htmltextwriter);
-            Response.Write(sw.ToString());
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=PlanilhaSisHAIR(" + DateTime.Now.ToString("dd_MM_yyyy_hh_mm") + ").xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
             Response.End();
 
             return View();
         }
-
     }
 }

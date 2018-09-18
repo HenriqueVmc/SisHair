@@ -9,7 +9,12 @@
     <div class="row">
         <div class="col-md-8">
             <p>
-                @Html.ActionLink("Novo Cargo", "Cadastrar", "Cargos", new { @class = "btn btn-success float right mr-2" })
+                <a href="@Url.Action("Cadastrar")" class="btn btn-success">
+                    <span class="fa fa-plus "></span> Cargo
+                </a>
+                @*<a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+                    <span class="fa fa-download "></span> Exportar para Excel
+                </a>*@
             </p>
         </div>
         <div class="col-md-4">
