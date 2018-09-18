@@ -4,158 +4,222 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>MasterAdiministrador</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SisHAIR</title>
+
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/css/style.css" rel="stylesheet" />
-    <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <link href="~/Content/pnotify.custom.min.css" rel="stylesheet" />
 
     @RenderSection("styles", false)
+    <link href="~/Content/layout/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/layout/custom.min.css" rel="stylesheet" />
+
 </head>
-<body class="bg-light header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-    @* app header-fixed <sidebar-fixed> aside-menu-fixed sidebar-lg-show *@
-    <div class="">
-        <div class="sidebar" id="accordion">
-            <nav class="sidebar-nav">
 
-                <ul class="nav">
-                    <div class="ml-4 mt-4 mb-4">
-                        <img src="~/fonts/logoSisHAIR.png" width="165px" />
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><img src="~/fonts/logoSisHAIR.png" width="115" /></a>
                     </div>
 
-                    <a class="nav-link bg-dark" data-toggle="collapse" href="#agendamentos" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-calendar"></span> <b>AGENDAMENTOS</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="agendamentos" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Agendamentos/Index">Minha Agenda</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Agendamentos/Solicitacoes">Solicitações</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="clearfix"></div>
 
-                    <a class="nav-link bg-dark" data-toggle="collapse" href="#cliente" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-users"></span> <b>CLIENTES</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="cliente" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Cliente/Cadastrar">Cadastro de Cliente</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/Cliente/Index">Consulta de Clientes</a>
-                            </li>
-                        </ul>
-                    </div>
-                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
-                    {
-                        <a class="nav-link bg-dark" data-toggle="collapse" href="#funcionario" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <span class="fa fa-briefcase"></span> <b>FUNCIONÁRIOS</b>
-                            <li class="fa fa-angle-down "></li>
-                        </a>
-                        <div class="collapse" id="funcionario" data-parent="#accordion">
-                            <ul class="list-unstyled">
+                    <!-- menu profile quick info -->
+                    @*<div class="profile clearfix">
+                            <div class="profile_info">
+                            </div>
+                        </div>*@
+                    <!-- /menu profile quick info -->
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+
                                 <li>
-                                    <a class="nav-link" href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
+                                    <a><i class="fa fa-calendar"></i> <b>AGENDAMENTOS</b> <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Agendamentos/Index">Minha Agenda</a>
+                                        <li>
+
+                                        <li>
+                                            <a href="/Agendamentos/Solicitacoes">Solicitações</a>
+                                        </li>
+                                    </ul>
                                 </li>
+
                                 <li>
-                                    <a class="nav-link" href="/Funcionarios/Index">Consulta de Funcionários</a>
+                                    <a> <i class="fa fa-users"></i> <b>CLIENTES</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Cliente/Cadastrar">Cadastro de Cliente</a>
+                                        <li>
+
+                                        <li>
+                                            <a class="nav-link" href="/Cliente/Index">Consulta de Clientes</a>
+                                        </li>
+                                    </ul>
                                 </li>
+
                                 <li>
-                                    <a class="nav-link" href="/ContaFuncionario/Index">Usuários</a>
+                                    <a> <i class="fa fa-briefcase"></i> <b>FUNCIONÁRIOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
+                                        <li>
+
+                                        <li>
+                                            <a href="/Funcionarios/Index">Consulta de Funcionários</a>
+                                        </li>
+                                        <li>
+                                            <a href="/ContaFuncionario/Index">Usuários</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a> <i class="fa fa-cut"></i> <b>SERVIÇOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Servicos/Cadastrar">Cadastro de Serviço</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Servicos/Index">Consulta de Serviços</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a> <i class="fa fa-cogs"></i> <b>CARGOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Cargos/Cadastrar">Cadastro de Cargo</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Cargos/Index">Consulta de Cargos</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a> <i class="fa fa-book"></i> <b>HISTÓRICO</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Caixa/Index">Histórico do Caixa</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a> <i class="fa fa-file-text"></i> <b>RELATÓRIOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="/Estatisticas/Agendamentos">Agendamentos</a>
+                                        </li>
+                                        <li>
+                                            <a href="/Estatisticas/Funcionarios">Funcionários</a>
+                                        </li>
+
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
-                    }
-                    <a class="nav-link bg-dark" data-toggle="collapse" href="#servico" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-cut"></span> <b>SERVIÇOS</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="servico" data-parent="#accordion">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Servicos/Cadastrar">Cadastro de Serviço</a>
+
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                                                
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Usuário logado: @User.Identity.Name
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <form action="/ContaFuncionario/LogOff" method="GET">
+                                            <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-block pull-right" type="submit"><i class="fa fa-sign-out pull-right"></i> Sair</button>
+                                        </form>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a class="nav-link" href="/Servicos/Index">Consulta de Serviços</a>
+
+                            @* Exemplo de caixa de entrada *@
+                            <li role="presentation" class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-envelope-o"></i>
+                                </a>
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
-                    {
-                        <a class="nav-link bg-dark" data-toggle="collapse" href="#cargos" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <span class="fa fa-cogs"></span> <b>CARGOS</b>
-                            <li class="fa fa-angle-down "></li>
-                        </a>
-                        <div class="collapse" id="cargos" data-parent="#accordion">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a class="nav-link" href="/Cargos/Cadastrar">Cadastro de Cargo</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="/Cargos/Index">Consulta de Cargos</a>
-                                </li>
-                            </ul>
-                        </div>
-                    }
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
 
-                    <a class="nav-link bg-dark" data-toggle="collapse" href="#hitorico" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="fa fa-book"></span> <b>HISTÓRICO</b>
-                        <li class="fa fa-angle-down "></li>
-                    </a>
-                    <div class="collapse" id="hitorico" data-parent="#accordion">
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a class="nav-link" href="/Caixa/Index">Histórico do Caixa</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
-                    {
-                        <a class="nav-link bg-dark" data-toggle="collapse" href="#ralatorios" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <span class="fa fa-file-text"></span> <b>RELATÓRIOS</b>
-                            <li class="fa fa-angle-down "></li>
-                        </a>
-                        <div class="collapse" id="ralatorios" data-parent="#accordion">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a class="nav-link" href="/Estatisticas/Agendamentos">Agendamentos</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link" href="/Estatisticas/Funcionarios">Funcionários</a>
-                                </li>
-                            </ul>
-
-                        </div>
-                            }
-                </ul>
-            </nav>
-            <footer class="footer mb-4 bg-dark">
-                <form action="/ContaFuncionario/LogOff" method="GET">
-                    <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-sm" type="submit">Sair</button> Usuário: @User.Identity.Name
-                </form>
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    SisHAIR - Desenvolvido por grupo de alunos do Entra21
+                </div>
+                <div class="clearfix"></div>
             </footer>
+            <!-- /footer content -->
         </div>
     </div>
+    <!-- Custom Theme Scripts -->
+    <script src="~/Scripts/layout/jquery.min.js"></script>
+    <script src="~/Scripts/layout/moment.min.js"></script>
+    <script src="~/Scripts/layout/bootstrap.min.js"></script>
+    <script src="~/Scripts/layout/custom.min.js"></script>
 
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/pnotify.custom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="~/Content/jquery.mask.js"></script>
@@ -163,13 +227,7 @@
     <script src="~/Scripts/simplepagination.js"></script>
     <script src="~/Scripts/tables/index.js"></script>
 
-    @*<script src="~/Scripts/jquery-3.0.0.js"></script>
-    <script src="~/Scripts/popper.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-
     @RenderSection("scripts", false)
 </body>
 </html>
+

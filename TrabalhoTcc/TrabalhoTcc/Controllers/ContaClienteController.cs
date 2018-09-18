@@ -65,14 +65,14 @@ namespace TrabalhoTcc.Controllers
                 {
                     db.Clientes.Add(cliente);
 
-                    var LoginCliente = new LoginCliente()
+                    var LoginCliente1 = new LoginCliente()
                     {
                         Usuario = loginC.Usuario,
                         Senha = CriptoHelper.HashMD5(loginC.Senha),
                         ClienteId = cliente.Id
                     };
 
-                    db.LoginClientes.Add(LoginCliente);
+                    db.LoginClientes.Add(LoginCliente1);
 
                     db.SaveChanges();
                     return RedirectToAction("Login", "ContaCliente");
