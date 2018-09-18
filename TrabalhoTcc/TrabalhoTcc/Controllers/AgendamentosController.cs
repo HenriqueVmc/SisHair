@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity.Validation;
+using System.Net.Mail;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -156,10 +157,45 @@ namespace TrabalhoTcc.Controllers
                 Servicos = s.Servicos
             };
 
-            db.Agendamentos.Add(agendamento);
+            try
+            {
+                var ss = db.Clientes.Where(a=> a.Id == s.ClienteId).SingleOrDefault();
+                string assunto = @"Olá, sua solitação foi confirmada. Obrigado!
+Atenciosamente: SisHair";
 
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("salaosuporte@gmail.com");
+                mail.To.Add(ss.Email);
+                mail.Subject = assunto;
+
+
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                return RedirectToAction("VerificarCodigo");
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+
+
+
+
+
+
+
+            db.Agendamentos.Add(agendamento);
+     
             s.Situacao = "Confirmado";
             db.Entry(s).State = EntityState.Modified;
+
+           
 
             db.SaveChanges();
 
@@ -180,6 +216,7 @@ namespace TrabalhoTcc.Controllers
                 }
             }
 
+            
             //s.Situacao = "Confirmado";            
 
             return RedirectToAction("Index");
@@ -194,5 +231,8 @@ namespace TrabalhoTcc.Controllers
 
             return RedirectToAction("Solicitacoes");
         }
+
+        
     }
+
 }

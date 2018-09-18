@@ -14,6 +14,7 @@ using TrabalhoTcc.Models.Conta;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.UI;
+using System.Net.Mail;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -72,6 +73,42 @@ namespace TrabalhoTcc.Controllers
                         db.ServicosSolicitacao.Add(sa);
                         db.SaveChanges();
                     }
+
+                    try
+                    {
+                    int a = solicitacao.FuncionarioId;
+                    var aa = db.Funcionarios.Where(aaa => aaa.Id == a).SingleOrDefault();
+
+                  
+                string assunto = @"Uma solicitação de agendamento foi realizada, consulte sua Lista de Solicitações..";
+
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("salaosuporte@gmail.com");
+                mail.To.Add(aa.Email);
+                mail.Subject = "SisHair";
+                mail.Body = assunto;
+
+
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+                
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+
+
+
+
+
+
                 }
 
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
