@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+<div class="">
     @using (Html.BeginForm())
     {
         <h2 class="text-center">Pagamento: </h2>
@@ -51,7 +51,7 @@
                     <div class="col-md-4">
                         @Html.LabelFor(model => model.FormaPagamento, htmlAttributes: new { @class = "control-label" })
 
-                        <select class="custom-select" id="FormaPagamento" name="FormaPagamento">
+                        <select class="form-control  " id="FormaPagamento" name="FormaPagamento">
                             <option value="Dinheiro" selected>Dinheiro</option>
                             <option value="Débito">Débito</option>
                             <option value="Crédito">Crédito</option>
@@ -63,7 +63,7 @@
                     <div class="col-md-4">
                         @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
 
-                        <select class="custom-select" id="Status" name="Status">
+                        <select class="form-control" id="Status" name="Status">
                             <option value="Pago" selected>Pago</option>
                             <option value="Pendente">Pendente</option>
                         </select>
