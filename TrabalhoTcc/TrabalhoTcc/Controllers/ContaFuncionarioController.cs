@@ -40,23 +40,14 @@ namespace TrabalhoTcc.Controllers
                 if (usuario != null)
                 {
                     int id = usuario.Id;
-                    var a = db.LoginFuncionarios.Where(end => end.Id == id).SingleOrDefault();
-                    int b = a.PermissoesId;
+                    int p = db.LoginFuncionarios.Where(end => end.Id == id).SingleOrDefault().PermissoesId;
 
-                    if (b == 1)
-                    {
-                        permissao = "Administrador";
-                    }
-                    else if (b != 1)
-                    {
-                        permissao = "Funcionario";
-                    }
+                    permissao = (p == 1) ? "Administrador" : "Funcionario";
 
                     //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
                     var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
                     var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
                     Response.Cookies.Add(cookie);
-
 
                     Session["FuncionarioId"] = usuario.FuncionarioId;
 
@@ -96,17 +87,21 @@ namespace TrabalhoTcc.Controllers
             if (ModelState.IsValid)
             {
                 senha = CriptoHelper.HashMD5(senha);
-                LoginFuncionario loginAntigo = db.LoginFuncionarios.SingleOrDefault(lf => lf.Usuario == usuario && lf.Senha == senha);
-
-                if (loginAntigo != null)
+                try
                 {
-                    loginAntigo.Usuario = novoUsuario;
-                    loginAntigo.Senha = CriptoHelper.HashMD5(novaSenha);
+                    LoginFuncionario loginAntigo = db.LoginFuncionarios.SingleOrDefault(lf => lf.Usuario == usuario && lf.Senha == senha);
 
-                    db.Entry(loginAntigo).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-                return Content(JsonConvert.SerializeObject(new { id = loginAntigo.Id }));
+                    if (loginAntigo != null)
+                    {
+                        loginAntigo.Usuario = novoUsuario;
+                        loginAntigo.Senha = CriptoHelper.HashMD5(novaSenha);
+
+                        db.Entry(loginAntigo).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    return Content(JsonConvert.SerializeObject(new { id = loginAntigo.Id }));
+
+                }catch(Exception e) { ModelState.AddModelError("", "Algo deu errado, tente novamente");  }
             }
             else
             {
@@ -143,9 +138,12 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            LoginFuncionario loginFuncionario = await db.LoginFuncionarios.FindAsync(id);
-            db.LoginFuncionarios.Remove(loginFuncionario);
-            await db.SaveChangesAsync();
+            try
+            {
+                LoginFuncionario loginFuncionario = await db.LoginFuncionarios.FindAsync(id);
+                db.LoginFuncionarios.Remove(loginFuncionario);
+                await db.SaveChangesAsync();
+            }catch(Exception e) { }
             return RedirectToAction("Index");
         }
 
@@ -158,26 +156,29 @@ namespace TrabalhoTcc.Controllers
             base.Dispose(disposing);
         }
 
-
-
         [HttpGet]
         public ActionResult GetPermissoes(string term)
         {
-            var permissoes = db.permissoes.ToList();
-
-            if (term != null)
+            try
             {
-                permissoes = db.permissoes.Where(p => p.TipoPermissao.ToLower().StartsWith(term.ToLower())).ToList();
-            }
+                var permissoes = db.permissoes.ToList();
 
-            var Results = permissoes.Select(p => new
-            {
-                text = p.TipoPermissao,
-                id = p.Id
+                if (term != null)
+                {
+                    permissoes = db.permissoes.Where(p => p.TipoPermissao.ToLower().StartsWith(term.ToLower())).ToList();
+                }
 
-            });
+                var Results = permissoes.Select(p => new
+                {
+                    text = p.TipoPermissao,
+                    id = p.Id
+                });
 
-            return Content(JsonConvert.SerializeObject(new { items = Results }));
+                return Content(JsonConvert.SerializeObject(new { items = Results }));
+
+            }catch(Exception e) { }
+
+            return null;
             //return Json(Results, JsonRequestBehavior.AllowGet);
         }
 
@@ -217,7 +218,6 @@ namespace TrabalhoTcc.Controllers
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
             smtp.EnableSsl = true;
-
 
             mail.From = new MailAddress("salaosuporte@gmail.com");
             mail.To.Add(usuario.Funcionario.Email);

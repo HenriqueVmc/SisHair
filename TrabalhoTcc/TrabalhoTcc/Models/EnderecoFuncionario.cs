@@ -41,7 +41,7 @@ namespace TrabalhoTcc.Models
         private DBContext db = new DBContext();
 
         public EnderecoFuncionario CadastrarEndereco([Bind(Include = "Id, Rua, Bairro, Numero, Complemento, Estado, Cidade, Cep")]EnderecoFuncionario endereco, int idFunc)
-        {            
+        {
             var cadastro = new EnderecoFuncionario()
             {
                 Rua = endereco.Rua,
@@ -65,8 +65,11 @@ namespace TrabalhoTcc.Models
 
         public void EditarEndereco(EnderecoFuncionario endereco)//[Bind(Include ="Rua,Bairro,Numero,Cidade,Complemento,Estado,Cep")]
         {
-            db.Entry(endereco).State = EntityState.Modified;
-            db.SaveChanges();
+            try
+            {
+                db.Entry(endereco).State = EntityState.Modified;
+                db.SaveChanges();
+            }catch(Exception e) { return; }
         }
     }
 }

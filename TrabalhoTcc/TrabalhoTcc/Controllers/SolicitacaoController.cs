@@ -74,41 +74,7 @@ namespace TrabalhoTcc.Controllers
                         db.SaveChanges();
                     }
 
-                    try
-                    {
-                    int a = solicitacao.FuncionarioId;
-                    var aa = db.Funcionarios.Where(aaa => aaa.Id == a).SingleOrDefault();
-
-                  
-                string assunto = @"Uma solicitação de agendamento foi realizada, consulte sua Lista de Solicitações..";
-
-                MailMessage mail = new MailMessage();
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-
-                mail.From = new MailAddress("salaosuporte@gmail.com");
-                mail.To.Add(aa.Email);
-                mail.Subject = "SisHair";
-                mail.Body = assunto;
-
-
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                
-
-            }
-            catch (Exception ex)
-            {
-               
-            }
-
-
-
-
-
-
+                    EnviarEmail(solicitacao);
                 }
 
                 return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
@@ -149,7 +115,6 @@ namespace TrabalhoTcc.Controllers
 
             return Redirect("/ContaCliente/Login");
         }
-
 
         // GET: Solicitacao/Edit/5
         public async Task<ActionResult> Editar(int? id)
@@ -256,7 +221,7 @@ namespace TrabalhoTcc.Controllers
         {
             avaliacao.AvaliouSalao = true;
             if (ModelState.IsValid)
-            {                
+            {
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
                 return Content(JsonConvert.SerializeObject(new { id = avaliacao.Id }));
@@ -311,6 +276,35 @@ namespace TrabalhoTcc.Controllers
             Response.End();
 
             return View();
+        }
+
+        public void EnviarEmail(Solicitacao s)
+        {
+            try
+            {
+                int a = s.FuncionarioId;
+                var aa = db.Funcionarios.Where(aaa => aaa.Id == a).SingleOrDefault();
+                var callbackUrl = Url.Action("Solicitacoes", "Agendamentos", null, protocol: Request.Url.Scheme);
+
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("salaosuporte@gmail.com");
+                mail.To.Add(aa.Email);
+                mail.Subject = "SisHAIR";
+                mail.Body = string.Format("Uma solicitação de agendamento foi realizada! Consulte sua <a href='{0}'>Lista de Solicitações</a> ", callbackUrl);
+
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
         }
     }
 }

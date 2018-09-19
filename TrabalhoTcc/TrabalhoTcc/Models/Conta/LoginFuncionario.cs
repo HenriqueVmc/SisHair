@@ -39,27 +39,36 @@ namespace TrabalhoTcc.Models.Conta
 
             senha = CriptoHelper.HashMD5(senha);
 
-            ret = db.LoginFuncionarios.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
-
+            try
+            {
+                ret = db.LoginFuncionarios.Where(x => x.Usuario == login && x.Senha == senha).SingleOrDefault();
+            }
+            catch (Exception e) { }
             return ret;
         }
 
 
         public static LoginFuncionario RecuperarPeloId(int id)
         {
+            LoginFuncionario login = null;
             DBContext db = new DBContext();
             //LoginFuncionario ret = null;
+            try
+            {
+                var ret = db.LoginFuncionarios.Where(l => l.Id == id).SingleOrDefault();
 
-            var ret = db.LoginFuncionarios.Where(l => l.Id == id).SingleOrDefault();
+                login = new LoginFuncionario()
+                {
+                    Id = ret.Id,
+                    Usuario = ret.Usuario,
+                    Senha = ret.Senha,
+                    PermissoesId = ret.PermissoesId,
+                    FuncionarioId = ret.FuncionarioId
+                };
 
-            LoginFuncionario login = new LoginFuncionario(){
-                Id = ret.Id,
-                Usuario = ret.Usuario,
-                Senha = ret.Senha,
-                PermissoesId = ret.PermissoesId,
-                FuncionarioId = ret.FuncionarioId
-            };
-
+                return login;
+            }
+            catch (Exception e) { }
             return login;
         }
 
@@ -69,12 +78,15 @@ namespace TrabalhoTcc.Models.Conta
             LoginFuncionario login = null;
             Funcionario funcionario = null;
 
-            funcionario = db.Funcionarios.Where(x => x.Email == email && x.Cpf == cpf).SingleOrDefault();
-            if (funcionario != null)
+            try
             {
-                login = db.LoginFuncionarios.Where(x => x.FuncionarioId == funcionario.Id).SingleOrDefault();
+                funcionario = db.Funcionarios.Where(x => x.Email == email && x.Cpf == cpf).SingleOrDefault();
+                if (funcionario != null)
+                {
+                    login = db.LoginFuncionarios.Where(x => x.FuncionarioId == funcionario.Id).SingleOrDefault();
+                }
             }
-
+            catch (Exception e) { }
             return login;
         }
     }

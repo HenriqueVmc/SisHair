@@ -54,7 +54,6 @@ namespace TrabalhoTcc.Controllers
         [Authorize(Roles = "Administrador")]
         public ActionResult Cadastrar()
         {
-
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
@@ -146,9 +145,11 @@ namespace TrabalhoTcc.Controllers
                 db.Entry(funcionario).State = EntityState.Modified;
                 db.SaveChanges();
 
-                endereco.FuncionarioId = funcionario.Id;
-                new EnderecoFuncionario().EditarEndereco(endereco);
-
+                if (endereco != null)
+                {
+                    endereco.FuncionarioId = funcionario.Id;
+                    new EnderecoFuncionario().EditarEndereco(endereco);
+                }
                 LoginFuncionario login = db.LoginFuncionarios.Where(p => p.FuncionarioId == funcionario.Id).SingleOrDefault();
                 login.PermissoesId = PermissoesId;
 

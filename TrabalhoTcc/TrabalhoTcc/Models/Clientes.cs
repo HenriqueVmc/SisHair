@@ -22,7 +22,7 @@ namespace TrabalhoTcc.Models
         [DataType(DataType.Date)]
         public DateTime Data_nascimento { get; set; }
 
-        [Required(ErrorMessage="Celular deve seer preenchida")]
+        [Required(ErrorMessage="Celular deve ser preenchida")]
         [MinLength(11,ErrorMessage="Digite um número de Celular valido")]
         [MaxLength(15, ErrorMessage="Digite um número de Celular valido")]
         [Display(Name="Celular: ")]
@@ -37,7 +37,7 @@ namespace TrabalhoTcc.Models
 
         [Display(Name="Email: ")]
         [EmailAddress]
+        [Required(ErrorMessage = "Email deve ser preenchido")]
         public string Email { get; set; }              
-
     }
 }
