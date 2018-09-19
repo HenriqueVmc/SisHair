@@ -29,6 +29,7 @@
     //if ($("#Nome").length > 0) {
     //    $('#PermissoesId').select2("trigger", "select", { data: { text: $("#permissao").val(), id: parseInt($("#idPermissao").val()) } });
     //}
+
 });
 
 

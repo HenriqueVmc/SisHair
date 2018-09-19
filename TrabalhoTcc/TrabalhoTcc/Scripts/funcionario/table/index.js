@@ -1,14 +1,11 @@
 ﻿$(function () {
 
-    $("#tableCliente").on("dblclick", "tr", function () {
+    $("#tableFuncionarios").on("dblclick", "tr", function () {
         var id = $(this).find("#Id").val();
-        window.location.replace("/Cliente/Detalhes?id=" + id);
+        window.location.replace("/Funcionarios/Detalhes?id=" + id);
     });
 
-    $("#Celular").mask('(00) 00000-0000');
-    $("#Telefone").mask('(00) 0000-0000');
-    
-    $("#tableCliente").DataTable({
+    $("#tableFuncionarios").DataTable({
         "oLanguage": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -31,12 +28,15 @@
                 "sSortAscending": ": Ordenar colunas de forma ascendente",
                 "sSortDescending": ": Ordenar colunas de forma descendente"
             }
-        }, 
+        },
         dom: 'Bfrtip',
         buttons: [
-            { extend: 'copy', text: 'Copiar' }, { extend:'print',text:'Iprimir'}
+            { extend: 'copy', text: 'Copiar' }, { extend: 'print', text: 'Iprimir' }
         ],
         responsive: true
     });
 
 });
+
+
+

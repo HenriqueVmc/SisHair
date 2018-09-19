@@ -62,19 +62,23 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Clientes.Add(cliente);
-
-                var loginC = new LoginCliente()
+                try
                 {
-                    Usuario = cliente.Email,
-                    Senha = gerarSenha(cliente),
-                    ClienteId = cliente.Id
-                };
+                    db.Clientes.Add(cliente);
 
-                db.LoginClientes.Add(loginC);
-                await db.SaveChangesAsync();
+                    var loginC = new LoginCliente()
+                    {
+                        Usuario = cliente.Email,
+                        Senha = gerarSenha(cliente),
+                        ClienteId = cliente.Id
+                    };
 
-                return RedirectToAction("Index");
+                    db.LoginClientes.Add(loginC);
+                    await db.SaveChangesAsync();
+
+                    return RedirectToAction("Index");
+                }catch(Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+                
             }
 
             return View(cliente);
@@ -113,9 +117,13 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cliente).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Entry(cliente).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
             return View(cliente);
         }
@@ -141,10 +149,15 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Cliente cliente = await db.Clientes.FindAsync(id);
-            db.Clientes.Remove(cliente);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            try
+            {
+                Cliente cliente = await db.Clientes.FindAsync(id);
+                db.Clientes.Remove(cliente);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+            return RedirectToAction("Deletar");
         }
 
         protected override void Dispose(bool disposing)
@@ -174,6 +187,14 @@ namespace TrabalhoTcc.Controllers
             });
             return Content(JsonConvert.SerializeObject(new { items = Results }));
             //return Json(Results, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult GetClientesDataTable()
+        {
+            var clientes = db.Clientes.ToList();
+
+            return Content(JsonConvert.SerializeObject(new { data = clientes }));
         }
 
         public ActionResult ExportExcel()

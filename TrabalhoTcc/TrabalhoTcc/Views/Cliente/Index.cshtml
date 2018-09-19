@@ -4,26 +4,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
+@section styles{
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+}
+<h3 class="text-center">Clientes:</h3>
 
-<div class="offset-2">
+<a href="@Url.Action("Cadastrar")" class="btn btn-success">
+    <span class="fa fa-plus "></span> Cliente
+</a>
+<a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+    <span class="fa fa-download "></span> Exportar para Excel
+</a>
 
-    <h2 class="text-center">Clientes:</h2>
-
-    <div class="row">
-        <div class="col-md-8">
-            <p>
-                <a href="@Url.Action("Cadastrar")" class="btn btn-success">
-                    <span class="fa fa-plus "></span> Cliente
-                </a>
-                <a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
-                    <span class="fa fa-download "></span> Exportar para Excel
-                </a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquise por uma palavra-chave" class="form-control">
-        </div>
-    </div>
+<div class="x_panel">
 
     <table class="table table-striped" id="tableCliente" number-per-page="5" current-page="0">
         <thead class="thead-dark">
@@ -69,7 +63,7 @@
                     </td>
                     <td>
                         @Html.ActionLink(" ", "Editar", "Cliente", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
-                       
+
                         @Html.ActionLink(" ", "Deletar", "Cliente", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
                     </td>
                 </tr>
@@ -98,3 +92,16 @@
         </tfoot>
     </table>
 </div>
+
+@section scripts{
+
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+
+    <script src="~/Scripts/cliente/table/index.js"></script>
+
+}

@@ -3,33 +3,46 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+@section styles{
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+}
+<h3 class="text-center">Usuários dos funcionários:</h3>
 
-    <h2 class="text-center">Usuários dos funcionários:</h2>
-
-    <table class="table table-striped">
-        <thead class="thead-dark">
+<table class="table table-striped" id="tableUsuarios">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th class="">Ações:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Usuario)
-                </th>
-                <th class="">Ações:</th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "AlterarLogin", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                    @Html.ActionLink(" ", "Deletar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Usuario)
-                    </td>
-                    <td>
-                        @Html.ActionLink(" Alterar Login", "AlterarLogin", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-outline-dark" }) |
-                        @Html.ActionLink(" Deletar", "Deletar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-        <tfoot></tfoot>
-    </table>
-</div>
+        }
+    </tbody>
+    <tfoot></tfoot>
+</table>
+@section scripts{
+
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+
+    <script src="~/Scripts/historico/index.js"></script>
+
+}

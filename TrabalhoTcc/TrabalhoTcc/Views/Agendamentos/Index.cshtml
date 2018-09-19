@@ -13,113 +13,112 @@
     <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 }
 
-<div class="offset-2 mt-3">
-    <div id="agenda"></div>
+<div id="agenda"></div>
 
-    <div id="agendamento-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Agendamento: <span id="eventTitle"></span></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p id="pDetails"></p>
-                </div>
-                <div class="modal-footer">
-                    <button id="btnPagar" class="btn btn-success btn-sm pull-right" style="margin-left:5px;">
-                        <span class="fa fa-dollar"></span> Pagar
-                    </button>
-
-                    <button id="btnDeletar" class="btn btn-danger btn-sm pull-right" style="margin-right:5px;">
-                        <span class="fa fa-trash"></span> Deletar
-                    </button>
-
-                    <button id="btnEditar" class="btn btn-dark btn-sm pull-right" style="margin-right:5px;">
-                        <span class="fa fa-pencil"></span> Editar
-                    </button>
-
-                </div>
+<div id="agendamento-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Agendamento: <span id="eventTitle"></span></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-        </div>
-    </div>
+            <div class="modal-body">
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="btnPagar" class="btn btn-success btn-sm pull-right" style="margin-left:5px;">
+                    <span class="fa fa-dollar"></span> Pagar
+                </button>
 
-    <div id="agendamento-modal-salvar" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Savar Agendamento</h4>
-                    <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
+                <button id="btnDeletar" class="btn btn-danger btn-sm pull-right" style="margin-right:5px;">
+                    <span class="fa fa-trash"></span> Deletar
+                </button>
 
-                    <input type="hidden" id="Id" value="0" />
+                <button id="btnEditar" class="btn btn-dark btn-sm pull-right" style="margin-right:5px;">
+                    <span class="fa fa-pencil"></span> Editar
+                </button>
 
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Funcionários:</label>
-                                <select name="FuncionarioId" id="FuncionarioId" class="custom-select"></select>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Clientes:</label>
-                                <select name="ClienteId" id="ClienteId" class="custom-select"></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Horário de Início:</label>
-                                <div class="input-group date" id="dtDataHoraInicio">
-                                    <input type="text" id="DataHoraInicio" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.DataHoraInicio, "", new { @class = "text-danger" })
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Horário de Finalização:</label>
-                                <div class="input-group date" id="dtDataHoraFinal">
-                                    <input type="text" id="DataHoraFinal" class="form-control" />
-                                    @Html.ValidationMessageFor(model => model.DataHoraFinal, "", new { @class = "text-danger" })
-                                    <span class="input-group-addon">
-                                        <span class="fa fa-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Serviços:</label>
-                                <select multiple="multiple" name="states[]" id="selectServicos" class="custom-select"></select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Descrição:</label>
-                        <textarea id="Descricao" name="Descricao" rows="3" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Situação</label>
-                        <select id="Situacao" class="form-control">
-                            <option value="Confirmado" selected>Confirmado</option>
-                            <option value="Pendente">Pendente</option>
-                        </select>
-                    </div>
-
-                    <button type="button" id="btnSalvarAgendamento" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
-                    <button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash"></i> Fechar</button>
-
-                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div id="agendamento-modal-salvar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Savar Agendamento</h4>
+                <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <input type="hidden" id="Id" value="0" />
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Funcionários:</label>
+                            <select name="FuncionarioId" id="FuncionarioId" class="custom-select"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Clientes:</label>
+                            <select name="ClienteId" id="ClienteId" class="custom-select"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Horário de Início:</label>
+                            <div class="input-group date" id="dtDataHoraInicio">
+                                <input type="text" id="DataHoraInicio" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.DataHoraInicio, "", new { @class = "text-danger" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Horário de Finalização:</label>
+                            <div class="input-group date" id="dtDataHoraFinal">
+                                <input type="text" id="DataHoraFinal" class="form-control" />
+                                @Html.ValidationMessageFor(model => model.DataHoraFinal, "", new { @class = "text-danger" })
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Serviços:</label>
+                            <select multiple="multiple" name="states[]" id="selectServicos" class="custom-select"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição:</label>
+                    <textarea id="Descricao" name="Descricao" rows="3" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Situação</label>
+                    <select id="Situacao" class="form-control">
+                        <option value="Confirmado" selected>Confirmado</option>
+                        <option value="Pendente">Pendente</option>
+                    </select>
+                </div>
+
+                <button type="button" id="btnSalvarAgendamento" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+                <button type="reset" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash"></i> Fechar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
     <script src="~/Scripts/fullcalendar/index.js"></script>
     <script src="~/Scripts/fullcalendar/moment.min.js"></script>

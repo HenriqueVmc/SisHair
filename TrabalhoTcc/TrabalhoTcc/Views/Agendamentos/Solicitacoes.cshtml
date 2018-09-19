@@ -4,22 +4,17 @@
     ViewBag.Title = "Solicitacoes";
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
+@section styles{
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+}
+<h3 class="text-center">Solicitações:</h3>
 
-<div class="offset-2">
+<a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+    <span class="fa fa-download "></span> Exportar para Excel
+</a>
 
-    <h2 class="text-center">Solicitações de agendamento:</h2>
-    <div class="row">
-        <div class="col-md-8">
-            <p>
-                <a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
-                    <span class="fa fa-download "></span> Exportar para Excel
-                </a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <input type="text" id="pesquisa" name="pesquisa" placeholder="Pesquise por uma palavra-chave" class="form-control">
-        </div>
-    </div>
+<div class="x_panel">
 
     <table id="tableSolicitacoes" class="table table-striped">
         <thead class="thead-dark">
@@ -76,9 +71,9 @@
                     </td>
                     <td>
                         @*@Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
-                            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |*@
-                        @Html.ActionLink(" Deletar", "CancelarSolicitacao", new { id = item.Id }, new { @class = "fa fa-trash btn btn-outline-danger" }) |
-                        @Html.ActionLink(" Agendar", "SalvarSolicitacao", new { id = item.Id }, new { @class = "fa fa-save btn btn-outline-success" })
+        @Html.ActionLink("Detalhes", "Detalhes", new { id = item.Id }) |*@
+                        @Html.ActionLink(" ", "CancelarSolicitacao", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
+                        @Html.ActionLink(" ", "SalvarSolicitacao", new { id = item.Id }, new { @class = "fa fa-check btn btn-success" })
                     </td>
                 </tr>
 
@@ -88,3 +83,16 @@
     </table>
 
 </div>
+
+@section scripts{
+
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+
+    <script src="~/Scripts/historico/index.js"></script>
+
+}
