@@ -67,33 +67,53 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco, int PermissoesId)
         {
-            if (ModelState.IsValid)
+
+            string aaa = funcionario.Email;
+            string verificarCpf = funcionario.Cpf;
+            var aa = db.Funcionarios.Where(a => a.Email == aaa || a.Cpf == verificarCpf).SingleOrDefault();
+
+            if (aa != null)
             {
-                db.Funcionarios.Add(funcionario);
-                db.SaveChanges();
-
-                if (endereco != null)
-                {
-                    new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
-                }
-                ////
-                var loginF = new LoginFuncionario()
-                {
-                    Usuario = funcionario.Email,
-                    Senha = gerarSenha(funcionario),
-                    FuncionarioId = funcionario.Id,
-                    PermissoesId = PermissoesId
-                };
-                ////
-                db.LoginFuncionarios.Add(loginF);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
+                ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
+                ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
+                ModelState.AddModelError("", "Esse Cadastro já Existe!");
+                return View(funcionario);                
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Funcionarios.Add(funcionario);
+                    db.SaveChanges();
+
+                    if (endereco != null)
+                    {
+                        new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
+                    }
+                    ////
+                    var loginF = new LoginFuncionario()
+                    {
+                        Usuario = funcionario.Email,
+                        Senha = gerarSenha(funcionario),
+                        FuncionarioId = funcionario.Id,
+                        PermissoesId = PermissoesId
+                    };
+                    ////
+                    db.LoginFuncionarios.Add(loginF);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
+
+
+
         }
 
         private string gerarSenha(Funcionario funcionario)
