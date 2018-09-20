@@ -59,27 +59,37 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
-            if (ModelState.IsValid)
-            {                
-                if (!(LoginCliente.Existe(loginC)))
-                {
-                    db.Clientes.Add(cliente);
+            string VEmail = cliente.Email;            
+            var ValidarEmail = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();           
+            if (ValidarEmail != null)
+            {
+                ModelState.AddModelError("", "Esse Cadastro já Existe!");
+            }
+            else
+            {
 
-                    var LoginCliente1 = new LoginCliente()
+                if (ModelState.IsValid)
+                {
+                    if (!(LoginCliente.Existe(loginC)))
                     {
-                        Usuario = loginC.Usuario,
-                        Senha = CriptoHelper.HashMD5(loginC.Senha),
-                        ClienteId = cliente.Id
-                    };
+                        db.Clientes.Add(cliente);
 
-                    db.LoginClientes.Add(LoginCliente1);
+                        var LoginCliente1 = new LoginCliente()
+                        {
+                            Usuario = loginC.Usuario,
+                            Senha = CriptoHelper.HashMD5(loginC.Senha),
+                            ClienteId = cliente.Id
+                        };
 
-                    db.SaveChanges();
-                    return RedirectToAction("Login", "ContaCliente");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Esse usuário já existe!");
+                        db.LoginClientes.Add(LoginCliente1);
+
+                        db.SaveChanges();
+                        return RedirectToAction("Login", "ContaCliente");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Esse usuário já existe!");
+                    }
                 }
             }
             HtmlHelper.ClientValidationEnabled = true;
