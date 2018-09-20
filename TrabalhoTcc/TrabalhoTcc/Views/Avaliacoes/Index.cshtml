@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TrabalhoTcc.Models.Avaliacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<h3 class="text-center">AvaliacoesUsuarios</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            <label>Usuário</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvaliacaoUsuario)
+        </th>
+        <th>
+            <label>Média das Avaliações</label>
+        </th>
+
+
+    </tr>
+    @if (ViewBag.Avaliacoes != null)
+    {
+        foreach (var avaliacao in ViewBag.Avaliacoes)
+        {
+            <tr>
+                <td>
+                    @avaliacao.Agendamento.Cliente.Nome
+                </td>
+                <td>
+                    @avaliacao.AvaliacaoUsuario
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    }
+</table>
