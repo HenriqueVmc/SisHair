@@ -122,7 +122,7 @@ namespace TrabalhoTcc.Controllers
 
         public ActionResult Solicitacoes()
         {
-            var solicitacoes = db.Solicitacoes.ToList();
+            var solicitacoes = db.Solicitacoes.Where(a=> a.Situacao.Contains("Pendente")).ToList();
             return View(solicitacoes);
         }
 
