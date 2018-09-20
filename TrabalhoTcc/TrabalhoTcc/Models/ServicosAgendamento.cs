@@ -19,7 +19,7 @@ namespace TrabalhoTcc.Models
         public int AgendamentoId { get; set; }
 
         public virtual Servico Servico { get; set; }
-        public int ServicoId { get; set; }
+        public int ServicoId { get; set; }       
 
         public string salvarServicosAgendamento([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
         {

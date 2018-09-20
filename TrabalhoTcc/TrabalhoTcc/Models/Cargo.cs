@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,8 @@ namespace TrabalhoTcc.Models
         public string Nome { get; set; }
 
         public string Descricao { get; set; }
+        [DefaultValue(true)]
+        public bool RegistroCargoAtivo { get; set; }
 
         public virtual ICollection<Funcionario> Funcionario { get; set; }
     }

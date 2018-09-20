@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -32,6 +33,9 @@ namespace TrabalhoTcc.Models
 
         [Display(Name = "Status")]
         public string Status { get; set; }
+
+        [DefaultValue(true)]
+        public bool RegistroCaixaAtivo { get; set; }
 
         public virtual Agendamento Agendamento { get; set; }
         public int AgendamentoId { get; set; }

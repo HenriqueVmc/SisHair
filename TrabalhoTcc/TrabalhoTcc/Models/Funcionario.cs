@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -46,6 +47,8 @@ namespace TrabalhoTcc.Models
 
         [Display(Name = "Cargo:")]
         public virtual Cargo Cargo { get; set; }
+        [DefaultValue(true)]
+        public bool RegistroFuncionarioAtivo { get; set; }
 
     }
 }

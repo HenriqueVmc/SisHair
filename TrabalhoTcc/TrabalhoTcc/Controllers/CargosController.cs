@@ -12,6 +12,7 @@ using TrabalhoTcc.Models;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.UI;
+using TrabalhoTcc.Repositorio;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -58,6 +59,7 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
+                cargo.RegistroCargoAtivo = true;
                 db.Cargos.Add(cargo);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -126,6 +128,23 @@ namespace TrabalhoTcc.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+         [Authorize(Roles = "Administrador")]
+         [HttpPost, ActionName("InativarRegistro")]
+         [ValidateAntiForgeryToken]
+         public ActionResult InativarRegistro(int id)
+         {
+             Cargo cargo = db.Cargos.Find(id);
+             cargo.RegistroCargoAtivo = false;
+             //db.Cargos.Attach(Cargo);
+             //db.Entry(Cargo).Property(x => InativarRegistroCargo).IsModified = true;
+             db.Entry(cargo).State = EntityState.Modified;
+             db.SaveChanges();
+             
+             //Cargo cargo = db.Cargos.Find(id);
+             //bool alterado = new InativarRegistro().InativarRegistroCargo(cargo);
+             return RedirectToAction("Index");
+         }
 
         protected override void Dispose(bool disposing)
         {

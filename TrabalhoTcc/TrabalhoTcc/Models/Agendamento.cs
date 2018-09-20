@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -40,7 +41,8 @@ namespace TrabalhoTcc.Models
         [Display(Name = "Cliente: ")]
         public virtual Cliente Cliente { get; set; }
         public int ClienteId { get; set; }
-
+        [DefaultValue(true)]
+        public bool RegistroAgendamentoAtivo { get; set; }
         //public ICollection<Servico> Servicos { get; set; }
        
     }

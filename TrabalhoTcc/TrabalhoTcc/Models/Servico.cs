@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -27,5 +28,7 @@ namespace TrabalhoTcc.Models
         //[Required(ErrorMessage = "Descriçao não pode ser vasio")]
         [Display(Name = "Descrição: ")]
         public string Descricao { get; set; }
+        [DefaultValue(true)]
+        public bool RegistroServicoAtivo { get; set; }
     }
 }

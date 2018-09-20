@@ -38,6 +38,8 @@ namespace TrabalhoTcc.Models
 
         public int FuncionarioId { get; set; }
 
+        public bool RegistroEnderecoFuncionarioAtivo { get; set; }
+
         private DBContext db = new DBContext();
 
         public EnderecoFuncionario CadastrarEndereco([Bind(Include = "Id, Rua, Bairro, Numero, Complemento, Estado, Cidade, Cep")]EnderecoFuncionario endereco, int idFunc)
@@ -71,5 +73,7 @@ namespace TrabalhoTcc.Models
                 db.SaveChanges();
             }catch(Exception e) { return; }
         }
+
+       
     }
 }

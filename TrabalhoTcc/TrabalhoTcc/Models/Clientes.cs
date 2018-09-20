@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -34,10 +35,12 @@ namespace TrabalhoTcc.Models
         [Display(Name=("Telefone: "))]
         public string Telefone { get; set; }
 
-
         [Display(Name="Email: ")]
         [EmailAddress]
         [Required(ErrorMessage = "Email deve ser preenchido")]
-        public string Email { get; set; }              
+        public string Email { get; set; }
+
+        [DefaultValue(true)]
+        public bool RegistroClienteAtivo { get; set; }
     }
 }
