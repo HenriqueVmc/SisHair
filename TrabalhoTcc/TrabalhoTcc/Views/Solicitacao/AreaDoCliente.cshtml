@@ -28,7 +28,7 @@
                 {
                     foreach (var agendamento in ViewBag.AgendamentosParaAvaliar)
                     {
-                        if (agendamento.Situacao != "Pendente")
+                        if (agendamento.Situacao == "Pago")
                         {
                             <tr>
                                 <td>
