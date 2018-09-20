@@ -60,26 +60,42 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Cadastrar([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
         {
-            if (ModelState.IsValid)
+
+            string VEmail = cliente.Email;
+            var clienteVerificar = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
+
+            if (clienteVerificar != null)
             {
-                try
-                {
-                    db.Clientes.Add(cliente);
-
-                    var loginC = new LoginCliente()
-                    {
-                        Usuario = cliente.Email,
-                        Senha = gerarSenha(cliente),
-                        ClienteId = cliente.Id
-                    };
-
-                    db.LoginClientes.Add(loginC);
-                    await db.SaveChangesAsync();
-
-                    return RedirectToAction("Index");
-                }catch(Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
-                
+                ModelState.AddModelError("", "Esse Cadastro já Existe!");
+                return View(cliente);  
             }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        db.Clientes.Add(cliente);
+
+                        var loginC = new LoginCliente()
+                        {
+                            Usuario = cliente.Email,
+                            Senha = gerarSenha(cliente),
+                            ClienteId = cliente.Id
+                        };
+
+                        db.LoginClientes.Add(loginC);
+                        await db.SaveChangesAsync();
+
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+
+                }
+            }
+
+
+          
 
             return View(cliente);
         }
