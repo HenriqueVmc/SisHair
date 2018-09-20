@@ -55,7 +55,7 @@
                                 </li>
 
                                 <li>
-                                    <a> <i class="fa fa-users"></i> <b>CLIENTES</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <a> <i class="fa fa-users"></i> <b>CLIENTES</b> <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <a href="/Cliente/Cadastrar">Cadastro de Cliente</a>
@@ -67,24 +67,28 @@
                                     </ul>
                                 </li>
 
-                                <li>
-                                    <a> <i class="fa fa-black-tie"></i> <b>FUNCIONÁRIOS</b> <span class="fa fa-chevron-down"></span></a></a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
-                                        <li>
+                                @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                                {
+                                    <li>
 
-                                        <li>
-                                            <a href="/Funcionarios/Index">Consulta de Funcionários</a>
-                                        </li>
-                                        <li>
-                                            <a href="/ContaFuncionario/Index">Usuários</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                        <a> <i class="fa fa-black-tie"></i> <b>FUNCIONÁRIOS</b> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/Funcionarios/Cadastrar">Cadastro de Funcionário</a>
+                                            <li>
+
+                                            <li>
+                                                <a href="/Funcionarios/Index">Consulta de Funcionários</a>
+                                            </li>
+                                            <li>
+                                                <a href="/ContaFuncionario/Index">Usuários</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
 
                                 <li>
-                                    <a> <i class="fa fa-cut"></i> <b>SERVIÇOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <a> <i class="fa fa-cut"></i> <b>SERVIÇOS</b> <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <a href="/Servicos/Cadastrar">Cadastro de Serviço</a>
@@ -95,20 +99,23 @@
                                     </ul>
                                 </li>
 
-                                <li>
-                                    <a> <i class="fa fa-briefcase"></i> <b>CARGOS</b> <span class="fa fa-chevron-down"></span></a></a>
-                                    <ul class="nav child_menu">
-                                        <li>
-                                            <a href="/Cargos/Cadastrar">Cadastro de Cargo</a>
-                                        </li>
-                                        <li>
-                                            <a href="/Cargos/Index">Consulta de Cargos</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                                {
+                                    <li>
+                                        <a> <i class="fa fa-briefcase"></i> <b>CARGOS</b> <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>
+                                                <a href="/Cargos/Cadastrar">Cadastro de Cargo</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Cargos/Index">Consulta de Cargos</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
 
                                 <li>
-                                    <a> <i class="fa fa-book"></i> <b>HISTÓRICO</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <a> <i class="fa fa-book"></i> <b>HISTÓRICO</b> <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <a href="/Caixa/Index">Histórico do Caixa</a>
@@ -118,7 +125,7 @@
                                 </li>
 
                                 <li>
-                                    <a> <i class="fa fa-line-chart"></i> <b>GRÁFICOS</b> <span class="fa fa-chevron-down"></span></a></a>
+                                    <a> <i class="fa fa-line-chart"></i> <b>GRÁFICOS</b> <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <a href="/Estatisticas/Agendamentos">Agendamentos</a>
@@ -225,4 +232,3 @@
     @RenderSection("scripts", false)
 </body>
 </html>
-
