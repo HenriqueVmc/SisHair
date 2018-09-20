@@ -47,7 +47,7 @@ namespace TrabalhoTcc.Controllers
                 if (a.Id > 0)
                 {
                     //Update no Agendamento
-                    var agendamento = db.Agendamentos.Where(agen => agen.Id == a.Id).FirstOrDefault();
+                    var agendamento = db.Agendamentos.Where(agen => agen.Id == a.Id).SingleOrDefault();
 
                     if (agendamento != null)
                     {
@@ -57,6 +57,8 @@ namespace TrabalhoTcc.Controllers
                         agendamento.FuncionarioId = a.FuncionarioId;
                         agendamento.ClienteId = a.ClienteId;
                         agendamento.Descricao = a.Descricao;
+
+                        db.Entry(agendamento).State = EntityState.Modified;
 
                         if (servicos != null)
                         {
