@@ -23,11 +23,9 @@ namespace TrabalhoTcc.Controllers
             return View();
         }
 
-
         [HttpGet]
         public JsonResult GetAgendamentos()//int? id
         {
-
             int id = (int)Session["FuncionarioId"];
             var agendamentos = db.Agendamentos.Select(a => new { a.Id, a.DataHoraInicio, a.DataHoraFinal, a.FuncionarioId, Funcionario = a.Funcionario.Nome, a.ClienteId, Cliente = a.Cliente.Nome, a.Situacao, a.Descricao, a.Servicos }).ToList();//.Where(a => a.FuncionarioId == id)
 
@@ -39,7 +37,6 @@ namespace TrabalhoTcc.Controllers
 
             return new JsonResult { Data = agendamentos, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
 
         [HttpPost]
         public JsonResult Salvar([Bind(Include = "Id,DataHoraInicio,DataHoraFinal,Descricao,Situacao,ClienteId,FuncionarioId")]Agendamento a, List<int> servicos)
@@ -75,8 +72,7 @@ namespace TrabalhoTcc.Controllers
                             agendamento.Servicos = null;
                             agendamento.Servicos = new ServicosAgendamento().salvarServicosAgendamento(agendamento, servicos);
                         }
-                    }
-
+                    }               
                 }
                 else
                 {
@@ -101,37 +97,26 @@ namespace TrabalhoTcc.Controllers
                 db.SaveChanges();
                 status = true;
             }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
-            }
+            catch (Exception e) { }
             return new JsonResult { Data = new { status = status } };
         }
-
 
         [HttpPost]
         public JsonResult Deletar(int id)
         {
             var status = false;
 
-            var result = db.Agendamentos.Where(agen => agen.Id == id).FirstOrDefault();
-            if (result != null)
+            try
             {
-                db.Agendamentos.Remove(result);
-                db.SaveChanges();
-                status = true;
+                var result = db.Agendamentos.Where(agen => agen.Id == id).FirstOrDefault();
+                if (result != null)
+                {
+                    db.Agendamentos.Remove(result);
+                    db.SaveChanges();
+                    status = true;
+                }
             }
-
+            catch (Exception e) { }
             return new JsonResult { Data = new { status = status } };
         }
 
@@ -144,24 +129,75 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public ActionResult SalvarSolicitacao(int id)
         {
-            var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
-
-            var agendamento = new Agendamento()
-            {
-                DataHoraInicio = s.DataHoraInicio,
-                DataHoraFinal = s.DataHoraFinal,
-                FuncionarioId = s.FuncionarioId,
-                ClienteId = s.ClienteId,
-                Situacao = "Confirmado",
-                Descricao = s.Descricao,
-                Servicos = s.Servicos
-            };
-
             try
             {
-                var ss = db.Clientes.Where(a=> a.Id == s.ClienteId).SingleOrDefault();
-                string assunto = @"Olá, sua solitação foi confirmada. Obrigado!
-Atenciosamente: SisHair";
+                var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
+
+                var agendamento = new Agendamento()
+                {
+                    DataHoraInicio = s.DataHoraInicio,
+                    DataHoraFinal = s.DataHoraFinal,
+                    FuncionarioId = s.FuncionarioId,
+                    ClienteId = s.ClienteId,
+                    Situacao = "Confirmado",
+                    Descricao = s.Descricao,
+                    Servicos = s.Servicos
+                };
+
+                db.Agendamentos.Add(agendamento);
+                s.Situacao = "Confirmado";
+
+                EnviarEmail(s);
+
+                db.Entry(s).State = EntityState.Modified;
+                db.SaveChanges();
+
+                var servicosSolicitacao = db.ServicosSolicitacao.Where(ss => ss.SolicitacaoId == id).Select(ss => new { ss.ServicoId }).ToList();
+
+                if (servicosSolicitacao != null)
+                {
+                    foreach (var ss in servicosSolicitacao)
+                    {
+                        var servico = db.Servicos.Where(ser => ser.Id == ss.ServicoId).SingleOrDefault();
+
+                        ServicosAgendamento sa = new ServicosAgendamento();
+                        sa.AgendamentoId = agendamento.Id;
+                        sa.ServicoId = servico.Id;
+
+                        db.ServicosAgendamento.Add(sa);
+                        db.SaveChanges();
+                    }
+                }       
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("", "Algo deu errado");
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult CancelarSolicitacao(int id)
+        {
+            try
+            {
+                var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
+
+                db.Solicitacoes.Remove(s);
+                db.SaveChanges();
+            }catch(Exception e) { ModelState.AddModelError("", "Algo deu errado"); }
+
+            return RedirectToAction("Solicitacoes");
+        }
+
+        public void EnviarEmail(Solicitacao s)
+        {
+            try
+            {
+                var ss = db.Clientes.Where(a => a.Id == s.ClienteId).SingleOrDefault();
+                string assunto = @"Olá, sua solitação foi confirmada. Obrigado!";
 
                 MailMessage mail = new MailMessage();
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com");
@@ -170,69 +206,15 @@ Atenciosamente: SisHair";
                 mail.To.Add(ss.Email);
                 mail.Subject = assunto;
 
-
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
-                return RedirectToAction("VerificarCodigo");
-
             }
-            catch (Exception ex)
-            {
-               
-            }
-
-
-
-
-
-
-
-            db.Agendamentos.Add(agendamento);
-     
-            s.Situacao = "Confirmado";
-            db.Entry(s).State = EntityState.Modified;
-
-           
-
-            db.SaveChanges();
-
-            var servicosSolicitacao = db.ServicosSolicitacao.Where(ss => ss.SolicitacaoId == id).Select(ss => new { ss.ServicoId }).ToList();
-
-            if (servicosSolicitacao != null)
-            {
-                foreach (var ss in servicosSolicitacao)
-                {
-                    var servico = db.Servicos.Where(ser => ser.Id == ss.ServicoId).SingleOrDefault();
-
-                    ServicosAgendamento sa = new ServicosAgendamento();
-                    sa.AgendamentoId = agendamento.Id;
-                    sa.ServicoId = servico.Id;
-
-                    db.ServicosAgendamento.Add(sa);
-                    db.SaveChanges();
-                }
-            }
-
-            
-            //s.Situacao = "Confirmado";            
-
-            return RedirectToAction("Index");
-        }
-        [HttpGet]
-        public ActionResult CancelarSolicitacao(int id)
-        {
-            var s = db.Solicitacoes.Where(soli => soli.Id == id).SingleOrDefault();
-
-            db.Solicitacoes.Remove(s);
-            db.SaveChanges();
-
-            return RedirectToAction("Solicitacoes");
+            catch (Exception ex){ }
         }
 
-        
     }
 
 }

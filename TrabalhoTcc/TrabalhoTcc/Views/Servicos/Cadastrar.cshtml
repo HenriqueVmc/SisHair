@@ -51,8 +51,10 @@
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-md-10">
-                    <button type="submit" class="btn btn-outline-success"><i class="fa fa-save"></i> Cadastrar</button>
-                    @Html.ActionLink(" Lista de Serviços", "Index", "Funcionarios", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary ml-4" })
+                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Cadastrar</button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                        <span class="fa fa-arrow-circle-left"></span> Lista de Serviços
+                    </a>
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+<div class="">
 
     @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAlterarLogin" }))
     {
@@ -11,7 +11,7 @@
         <h2 class="text-center">Alterar Usuário/Senha</h2>
         <hr />
         <div class="row">
-            <div class="form-horizontal offset-2 col-md-8">
+            <div class="form-horizontal col-md-12">
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.Id)
@@ -53,9 +53,11 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="form-group">
-                    <div class="col-md-10">
-                        <a href="#" id="btnSalvar" class="btn btn-success">Salvar</a>
-                        @*<input type="submit" value="Savar" class="btn btn-default" />*@
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                            <span class="fa fa-arrow-circle-left"></span> Lista de Usuários
+                        </a>
                     </div>
                 </div>
             </div>

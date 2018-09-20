@@ -164,7 +164,7 @@
     function frmEditarAgendamento() {
 
         if (agendamentoSelecionado != null) {
-            debugger;
+   
             $('#Id').val(agendamentoSelecionado.agendamentoId);
 
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
@@ -355,17 +355,17 @@
     }
 
     //function adicionarSelectServicos(val) {
-        //var servicoSelecionado = val;
-        //if (servicoSelecionado != null) {
-        //    var servicos = [];
-        //    var servicos = servicoSelecionado.split(',');
+    //var servicoSelecionado = val;
+    //if (servicoSelecionado != null) {
+    //    var servicos = [];
+    //    var servicos = servicoSelecionado.split(',');
 
-        //    for (var i = 0; i < servicos.length; i++) {
-        //        servicos[i] = servicos[i].replace(/^\s*/, "").replace(/\s*$/, "");                    
-        //    }
+    //    for (var i = 0; i < servicos.length; i++) {
+    //        servicos[i] = servicos[i].replace(/^\s*/, "").replace(/\s*$/, "");                    
+    //    }
 
-        //    $("#selectServicos").val(servicos).trigger("change");
-        //    //$('#selectServicos').select2("trigger", "select", { data: { text: agendamentoSelecionado.servicos, id: parseInt(agendamentoSelecionado.servicos) } });
-        //}                
+    //    $("#selectServicos").val(servicos).trigger("change");
+    //    //$('#selectServicos').select2("trigger", "select", { data: { text: agendamentoSelecionado.servicos, id: parseInt(agendamentoSelecionado.servicos) } });
+    //}                
     //}
 });

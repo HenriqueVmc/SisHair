@@ -5,8 +5,7 @@
 }
 
 @section styles{
-
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="~/Content/bootstrap/bootstrap-glyphicons.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar/fullcalendar.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
@@ -43,7 +42,7 @@
     </div>
 </div>
 
-<div id="agendamento-modal-salvar" class="modal fade" role="dialog">
+<div id="agendamento-modal-salvar" class="modal fade" role="dialog" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -94,6 +93,9 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-12">
+                            <a href="@Url.Action("Cadastrar","Servicos")" class="btn btn-success pull-right mb-1">
+                                <span class="fa fa-plus "></span>
+                            </a>
                             <label>Serviços:</label>
                             <select multiple="multiple" name="states[]" id="selectServicos" class="custom-select"></select>
                         </div>

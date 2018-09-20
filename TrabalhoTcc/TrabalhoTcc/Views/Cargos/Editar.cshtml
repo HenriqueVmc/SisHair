@@ -1,47 +1,50 @@
 ﻿@model TrabalhoTcc.Models.Cargo
 
 @{
+    ViewBag.Title = "Editar | Cargo";
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
-<div class="offset-2">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Cargo</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id)
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h3 class="text-center">Editar de Cargo</h3>
+    <hr />
+    <div class="row">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-                </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
+        </div>
 
+    </div>
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-body">
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> Salvar</button>
-                    @Html.ActionLink(" Lista de Clientes", "Index", "Ccargos", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
+                <div class="col-md-10">
+                    <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Salvar</button>
+                    <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                        <span class="fa fa-arrow-circle-left"></span> Lista de Cargos
+                    </a>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 
-
-</div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
