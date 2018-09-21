@@ -30,8 +30,8 @@
             labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
             datasets: [{
                 label: "Agendamentos",
-                backgroundColor: 'rgb(125, 15, 174)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: '#2A3F54',
+                borderColor: 'black',
                 data: registros
             }]
         },

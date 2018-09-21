@@ -47,6 +47,33 @@ namespace TrabalhoTcc.Migrations
                 new LoginFuncionario() { Id = 1, Usuario = "adm", Senha = "b09c600fddc573f117449b3723f23d64", FuncionarioId = 1, PermissoesId = 1 },
                 new LoginFuncionario() { Id = 2, Usuario = "fun", Senha = "77004ea213d5fc71acf74a8c9c6795fb", FuncionarioId = 2, PermissoesId = 2 }
             );
+
+
+
+            context.Clientes.AddOrUpdate(x => x.Id,
+                new Cliente() { Id = 1, Nome = "Maria das Flores", Data_nascimento = DateTime.Now, Celular = "(47)99816-1423", Telefone = "(47)3441-2988", Email = "asdnjsadjsdh@gmail.com" }
+                );
+
+            context.Agendamentos.AddOrUpdate(x=> x.Id,
+                new Agendamento() {Id = 1, DataHoraInicio = new DateTime(2018, 1, 18), DataHoraFinal = new DateTime(2018, 1, 18) , Situacao = "Confirmado", Descricao = "", Servicos= "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true},
+                new Agendamento() { Id = 2, DataHoraInicio = new DateTime(2018, 1, 19), DataHoraFinal = new DateTime(2018, 1, 19), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+
+
+                new Agendamento() {Id = 3, DataHoraInicio = new DateTime(2018, 2, 21), DataHoraFinal = new DateTime(2018, 2, 21), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+
+
+                new Agendamento() {Id = 4, DataHoraInicio = new DateTime(2018, 3, 23), DataHoraFinal = new DateTime(2018, 3, 23), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+                new Agendamento() { Id = 5, DataHoraInicio = new DateTime(2018, 3, 01), DataHoraFinal = new DateTime(2018, 3, 01), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+                new Agendamento() { Id = 6, DataHoraInicio = new DateTime(2018, 3, 17), DataHoraFinal = new DateTime(2018, 3, 17), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+
+                new Agendamento() { Id = 7, DataHoraInicio = new DateTime(2018, 5, 04), DataHoraFinal = new DateTime(2018, 5, 04), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+                new Agendamento() { Id = 8, DataHoraInicio = new DateTime(2018, 5, 03), DataHoraFinal = new DateTime(2018, 5, 03), Situacao = "Confirmado", Descricao = "", Servicos = "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true },
+
+
+                new Agendamento() {Id = 9, DataHoraInicio = new DateTime(2018, 6, 10), DataHoraFinal = new DateTime(2018, 6, 10) , Situacao = "Confirmado", Descricao = "", Servicos= "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true},
+                new Agendamento() {Id = 10, DataHoraInicio = new DateTime(2018, 7, 12), DataHoraFinal = new DateTime(2018, 7, 12) , Situacao = "Confirmado", Descricao = "", Servicos= "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true},
+                new Agendamento() {Id = 11, DataHoraInicio = new DateTime(2018, 9, 15), DataHoraFinal = new DateTime(2018, 9, 15) , Situacao = "Confirmado", Descricao = "", Servicos= "Corte Masculino", FuncionarioId = 1, ClienteId = 1, RegistroAgendamentoAtivo = true}
+                );
         }
     }
 }
