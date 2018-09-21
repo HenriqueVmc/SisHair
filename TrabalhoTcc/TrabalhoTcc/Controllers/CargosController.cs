@@ -146,6 +146,23 @@ namespace TrabalhoTcc.Controllers
              return RedirectToAction("Index");
          }
 
+         [Authorize(Roles = "Administrador")]
+         [HttpPost, ActionName("RecuperarRegistro")]
+         [ValidateAntiForgeryToken]
+         public ActionResult InativarRegistro(int id)
+         {
+             Cargo cargo = db.Cargos.Find(id);
+             cargo.RegistroCargoAtivo = true;
+             //db.Cargos.Attach(Cargo);
+             //db.Entry(Cargo).Property(x => InativarRegistroCargo).IsModified = true;
+             db.Entry(cargo).State = EntityState.Modified;
+             db.SaveChanges();
+
+             //Cargo cargo = db.Cargos.Find(id);
+             //bool alterado = new InativarRegistro().InativarRegistroCargo(cargo);
+             return RedirectToAction("Index");
+         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

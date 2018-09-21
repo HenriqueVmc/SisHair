@@ -34,6 +34,12 @@
         <a href="@Url.Action("Index", new { id = Model.Id })" class="btn btn-outline-dark">
             <span class="fa fa-arrow-circle-left"></span> Lista de Cargos
         </a>
+        @if (Model.RegistroCargoAtivo == false)
+        {
+            <a href="@Url.Action("RecuperarRegistro", new { id = Model.Id })" class="btn btn-outline-white">
+            <span class="fa fa-arrow-circle-left"></span> Lista de Cargos
+            </a>
+        }
     </p>
 
 </div>
