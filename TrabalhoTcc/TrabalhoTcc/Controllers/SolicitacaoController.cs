@@ -36,7 +36,7 @@ namespace TrabalhoTcc.Controllers
                     return View();
                 }
             }
-            catch (NullReferenceException e)
+            catch (Exception e)
             {
                 return Redirect("/ContaCliente/Login");
             }
@@ -56,28 +56,32 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                solicitacao.Situacao = "Pendente";
-                db.Solicitacoes.Add(solicitacao);
-
-                if (servicos != null)
+                try
                 {
-                    foreach (int idServico in servicos)
+                    solicitacao.Situacao = "Pendente";
+                    db.Solicitacoes.Add(solicitacao);
+
+                    if (servicos != null)
                     {
-                        var servico = db.Servicos.Where(s => s.Id == idServico).SingleOrDefault();
+                        foreach (int idServico in servicos)
+                        {
+                            var servico = db.Servicos.Where(s => s.Id == idServico).SingleOrDefault();
 
-                        ServicosSolicitacao sa = new ServicosSolicitacao();
-                        sa.SolicitacaoId = solicitacao.Id;
-                        sa.ServicoId = servico.Id;
-                        solicitacao.Servicos += (string.IsNullOrEmpty(solicitacao.Servicos)) ? servico.Nome : ", " + servico.Nome;
+                            ServicosSolicitacao sa = new ServicosSolicitacao();
+                            sa.SolicitacaoId = solicitacao.Id;
+                            sa.ServicoId = servico.Id;
+                            solicitacao.Servicos += (string.IsNullOrEmpty(solicitacao.Servicos)) ? servico.Nome : ", " + servico.Nome;
 
-                        db.ServicosSolicitacao.Add(sa);
-                        db.SaveChanges();
+                            db.ServicosSolicitacao.Add(sa);
+                            db.SaveChanges();
+                        }
+
+                        EnviarEmail(solicitacao);
                     }
 
-                    EnviarEmail(solicitacao);
+                    return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
                 }
-
-                return Content(JsonConvert.SerializeObject(new { id = solicitacao.Id }));
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
 
             ViewBag.ClienteId = solicitacao.ClienteId;
@@ -88,10 +92,13 @@ namespace TrabalhoTcc.Controllers
 
         public ActionResult Cancelar(int? id)
         {
-            Solicitacao solicitacao = db.Solicitacoes.Find(id);
-            db.Solicitacoes.Remove(solicitacao);
-            db.SaveChanges();
-
+            try
+            {
+                Solicitacao solicitacao = db.Solicitacoes.Find(id);
+                db.Solicitacoes.Remove(solicitacao);
+                db.SaveChanges();
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return RedirectToAction("Index");
         }
 
@@ -108,7 +115,7 @@ namespace TrabalhoTcc.Controllers
                     return View(solicitacoes);
                 }
             }
-            catch (NullReferenceException e)
+            catch (Exception e)
             {
                 return Redirect("/ContaCliente/Login");
             }
@@ -142,8 +149,12 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(solicitacao).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.Entry(solicitacao).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
                 return RedirectToAction("Index");
             }
             ViewBag.ClienteId = new SelectList(db.Clientes, "Id", "Nome", solicitacao.ClienteId);
@@ -201,7 +212,7 @@ namespace TrabalhoTcc.Controllers
                     // - bool para bloquear realizar a avaliacao mais de uma vez, if avaliou == false { permitir avaliar }
                 }
             }
-            catch (NullReferenceException e)
+            catch (Exception e)
             {
                 return Redirect("/ContaCliente/Login");
             }

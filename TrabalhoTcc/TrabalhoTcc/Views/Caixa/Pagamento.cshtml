@@ -136,8 +136,11 @@
             <div class="panel-body">
                 <div class="form-group">
                     <div class="col-md-10">
-                        <button class="btn btn-outline-success" type="submit"><i class="fa fa-save"></i> Pagar</button>
-                        @Html.ActionLink(" Caixa", "Index", "Caixa", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary " })
+                        <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Pagar</button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                            <span class="fa fa-arrow-circle-left"></span> Histórico do caixa
+                        </a>
+                        
                     </div>
                 </div>
             </div>

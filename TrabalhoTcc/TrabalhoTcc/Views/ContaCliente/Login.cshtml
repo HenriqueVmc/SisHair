@@ -3,7 +3,9 @@
 
     Layout = "/Views/Shared/Master.cshtml";
 }
-
+@section styles{
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+}
 <div class="container mt-3 mb-3">
     <div class="row">
         <!--Parte de baixo = Cadastro de cliente-->
@@ -30,7 +32,7 @@
                     @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
 
                     <a class="pull-right" href="/ContaCliente/EmailCliente">
-                        Esqueceu sua senha?
+                        <b>Esqueceu sua senha?</b>
                     </a>
                 </div>
                 <hr />

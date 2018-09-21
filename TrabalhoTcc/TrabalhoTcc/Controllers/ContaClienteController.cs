@@ -34,17 +34,21 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
+                try
+                {
+                    var usuario = LoginCliente.ValidarUsuario(loginC.Usuario, loginC.Senha);
 
-                if (usuario != null)
-                {
-                    Session["ClienteId"] = usuario.ClienteId;
-                    return RedirectToAction("Agendamento", "Solicitacao");
+                    if (usuario != null)
+                    {
+                        Session["ClienteId"] = usuario.ClienteId;
+                        return RedirectToAction("Agendamento", "Solicitacao");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Login Inválido");
+                    }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Login Inválido");
-                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
 
             return View(loginC);
@@ -59,38 +63,42 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
         {
-            string VEmail = cliente.Email;            
-            var ValidarEmail = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();           
-            if (ValidarEmail != null)
-            {
-                ModelState.AddModelError("", "Esse Cadastro já Existe!");
-            }
-            else
-            {
 
-                if (ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    if (!(LoginCliente.Existe(loginC)))
+                    string VEmail = cliente.Email;
+                    var ValidarEmail = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
+                    if (ValidarEmail != null)
                     {
-                        db.Clientes.Add(cliente);
-
-                        var LoginCliente1 = new LoginCliente()
-                        {
-                            Usuario = loginC.Usuario,
-                            Senha = CriptoHelper.HashMD5(loginC.Senha),
-                            ClienteId = cliente.Id
-                        };
-
-                        db.LoginClientes.Add(LoginCliente1);
-
-                        db.SaveChanges();
-                        return RedirectToAction("Login", "ContaCliente");
+                        ModelState.AddModelError("", "Esse Cadastro já Existe!");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Esse usuário já existe!");
+                        if (!(LoginCliente.Existe(loginC)))
+                        {
+                            db.Clientes.Add(cliente);
+
+                            var LoginCliente1 = new LoginCliente()
+                            {
+                                Usuario = loginC.Usuario,
+                                Senha = CriptoHelper.HashMD5(loginC.Senha),
+                                ClienteId = cliente.Id
+                            };
+
+                            db.LoginClientes.Add(LoginCliente1);
+
+                            db.SaveChanges();
+                            return RedirectToAction("Login", "ContaCliente");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Esse usuário já existe!");
+                        }
                     }
                 }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
@@ -105,34 +113,30 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public ActionResult EmailCliente()
         {
-
             return View();
         }
         [HttpPost]
         public ActionResult EmailCliente(string email)
         {
-
-            Cliente cli = db.Clientes.Where(c => c.Email == email).SingleOrDefault();
-
-
-
-            if (cli != null)
+            try
             {
-                PassarMensagem error = new PassarMensagem();
-                error.ErrorMessage = email;
-                error.Codigo = cli.Id;
-                TempData["Error"] = error;
+                Cliente cli = db.Clientes.Where(c => c.Email == email).SingleOrDefault();
 
-                return RedirectToAction("CadastrarCodigo");
+                if (cli != null)
+                {
+                    PassarMensagem error = new PassarMensagem();
+                    error.ErrorMessage = email;
+                    error.Codigo = cli.Id;
+                    TempData["Error"] = error;
+
+                    return RedirectToAction("CadastrarCodigo");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email Invalido");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "Email Invalido");
-
-            }
-
-
-
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
 
             return View();
         }
@@ -181,7 +185,6 @@ namespace TrabalhoTcc.Controllers
                 mail.To.Add(email);
                 mail.Subject = assunto;
 
-
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
@@ -194,8 +197,6 @@ namespace TrabalhoTcc.Controllers
             {
                 return Content(ex.Message);
             }
-
-            return View();
         }
 
         [HttpGet]
@@ -207,26 +208,28 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult VerificarCodigo(string CodigoRetorno)
         {
-            if (CodigoRetorno != null)
+            try
             {
-                CodigoCliente codCliente = db.CodigosClientes.Where(c => c.Codigo == CodigoRetorno).SingleOrDefault();
-
-                if (codCliente != null)
+                if (CodigoRetorno != null)
                 {
+                    CodigoCliente codCliente = db.CodigosClientes.Where(c => c.Codigo == CodigoRetorno).SingleOrDefault();
 
-                    return RedirectToAction("RedefinirSenha");
+                    if (codCliente != null)
+                    {
+
+                        return RedirectToAction("RedefinirSenha");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Codigo Invalido");
+                    }
                 }
                 else
                 {
                     ModelState.AddModelError("", "Codigo Invalido");
                 }
-
             }
-            else
-            {
-                ModelState.AddModelError("", "Codigo Invalido");
-            }
-
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return View();
         }
 
@@ -239,34 +242,34 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult RedefinirSenha(string Senha, string ConfirmarSenha)
         {
-
-            if (Senha == ConfirmarSenha)
+            try
             {
-                PassarMensagem error = TempData["error"] as PassarMensagem;
-                int id = error.Codigo;
-                Cliente cli = db.Clientes.Where(c => c.Id == id).SingleOrDefault();
-
-                if (cli != null)
+                if (Senha == ConfirmarSenha)
                 {
-                    LoginCliente log = db.LoginClientes.Where(d => d.ClienteId == id).SingleOrDefault();
-                    if (log != null)
+                    PassarMensagem error = TempData["error"] as PassarMensagem;
+                    int id = error.Codigo;
+                    Cliente cli = db.Clientes.Where(c => c.Id == id).SingleOrDefault();
+
+                    if (cli != null)
                     {
-                        log.Senha = Senha;
-                        string codigo = error.CodigoVerdadeiro;
-                        CodigoCliente cod = db.CodigosClientes.Where(d => d.Codigo == codigo).SingleOrDefault();
-                        db.CodigosClientes.Remove(cod);
-                        db.SaveChanges();
-                        return RedirectToAction("Login");
+                        LoginCliente log = db.LoginClientes.Where(d => d.ClienteId == id).SingleOrDefault();
+                        if (log != null)
+                        {
+                            log.Senha = Senha;
+                            string codigo = error.CodigoVerdadeiro;
+                            CodigoCliente cod = db.CodigosClientes.Where(d => d.Codigo == codigo).SingleOrDefault();
+                            db.CodigosClientes.Remove(cod);
+                            db.SaveChanges();
+                            return RedirectToAction("Login");
+                        }
                     }
                 }
-
-
+                else
+                {
+                    ModelState.AddModelError("", "Senhas não conferem");
+                }
             }
-            else
-            {
-                ModelState.AddModelError("", "Senhas não conferem");
-            }
-
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return View();
         }
 

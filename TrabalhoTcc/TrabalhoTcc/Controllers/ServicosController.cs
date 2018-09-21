@@ -59,8 +59,12 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Servicos.Add(servico);
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.Servicos.Add(servico);
+                    await db.SaveChangesAsync();                   
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
                 return RedirectToAction("Index");
             }
 
@@ -92,8 +96,12 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(servico).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                try
+                {
+                    db.Entry(servico).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
                 return RedirectToAction("Index");
             }
             return View(servico);
@@ -120,9 +128,13 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Servico servico = await db.Servicos.FindAsync(id);
-            db.Servicos.Remove(servico);
-            await db.SaveChangesAsync();
+            try
+            {
+                Servico servico = await db.Servicos.FindAsync(id);
+                db.Servicos.Remove(servico);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return RedirectToAction("Index");
         }
 
@@ -139,21 +151,27 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public ActionResult GetServicos(string term)
         {
-            var servicos = db.Servicos.ToList();
-
-            if (term != null)
+            try
             {
-                servicos = db.Servicos.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+                var servicos = db.Servicos.ToList();
+
+                if (term != null)
+                {
+                    servicos = db.Servicos.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+                }
+
+                var Results = servicos.Select(s => new
+                {
+                    text = s.Nome,
+                    id = s.Id
+
+                });
+                return Content(JsonConvert.SerializeObject(new { items = Results }));
+                //return Json(Results, JsonRequestBehavior.AllowGet);
             }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+            return null;
 
-            var Results = servicos.Select(s => new
-            {
-                text = s.Nome,
-                id = s.Id
-
-            });
-            return Content(JsonConvert.SerializeObject(new { items = Results }));
-            //return Json(Results, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ExportExcel()

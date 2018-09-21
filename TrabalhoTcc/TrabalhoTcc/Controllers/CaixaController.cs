@@ -31,23 +31,26 @@ namespace TrabalhoTcc.Controllers
         [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Pagamento(int? id)
         {
-            if (id > 0)
+            try
             {
-                /*            
-                SELECT a.Descricao, SUM(s.Valor) AS 'Valor Total' FROM ServicosAgendamentoes sa
-                LEFT JOIN Agendamentoes a ON sa.AgendamentoId = a.Id
-                JOIN Servicoes s ON sa.ServicoId = s.Id GROUP BY a.Descricao
-                */
-                ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == id).Include(sa => sa.Servico).Select(sa => new
+                if (id > 0)
                 {
-                    sa.Servico.Valor
-                }).Sum(s => s.Valor);
+                    /*            
+                    SELECT a.Descricao, SUM(s.Valor) AS 'Valor Total' FROM ServicosAgendamentoes sa
+                    LEFT JOIN Agendamentoes a ON sa.AgendamentoId = a.Id
+                    JOIN Servicoes s ON sa.ServicoId = s.Id GROUP BY a.Descricao
+                    */
+                    ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == id).Include(sa => sa.Servico).Select(sa => new
+                    {
+                        sa.Servico.Valor
+                    }).Sum(s => s.Valor);
 
-                ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == id).SingleOrDefault();
-                
-                return View();
+                    ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == id).SingleOrDefault();
+
+                    return View();
+                }
             }
-
+            catch (Exception e) { ModelState.AddModelError("", "Algo deu errado... tente novamente mais tarde."); }
             return RedirectToAction("Index");
         }
 
@@ -57,25 +60,29 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult Pagamento([Bind(Include = "Id,ValorTotal,ValorPago,Divida,FormaPagamento,DataPagamento,Status,AgendamentoId")] Caixa caixa)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Caixa.Add(caixa);
+                if (ModelState.IsValid)
+                {
+                    db.Caixa.Add(caixa);
 
-                //Alterar Situação do Agendamento; Ou, Excluir e add no Histórico?            
-                Agendamento agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
-                agendamento.Situacao = "Pago";
+                    //Alterar Situação do Agendamento; Ou, Excluir e add no Histórico?            
+                    Agendamento agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
+                    agendamento.Situacao = "Pago";
 
-                //db.Agendamentos.Remove(agendamento);
+                    //db.Agendamentos.Remove(agendamento);
 
-                db.SaveChanges();
+                    db.SaveChanges();
 
-                //db.Solicitacoes.Where(s => s.DataHoraInicio == agendamento.DataHoraInicio &&
-                //                           s.DataHoraFinal == agendamento.DataHoraFinal &&
-                //                           s.ClienteId == agendamento.ClienteId &&
-                //                           s.FuncionarioId == agendamento.FuncionarioId).SingleOrDefault();
+                    //db.Solicitacoes.Where(s => s.DataHoraInicio == agendamento.DataHoraInicio &&
+                    //                           s.DataHoraFinal == agendamento.DataHoraFinal &&
+                    //                           s.ClienteId == agendamento.ClienteId &&
+                    //                           s.FuncionarioId == agendamento.FuncionarioId).SingleOrDefault();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
             }
+            catch (Exception e) { ModelState.AddModelError("", "Algo deu errado... tente novamente mais tarde."); }
 
             ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == caixa.AgendamentoId).Include(sa => sa.Servico).Select(sa => new
             {
@@ -83,6 +90,7 @@ namespace TrabalhoTcc.Controllers
             }).Sum(s => s.Valor);
 
             ViewBag.Agendamento = db.Agendamentos.Where(a => a.Id == caixa.AgendamentoId).SingleOrDefault();
+
             return View(caixa);
         }
 
@@ -116,9 +124,13 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(caixa).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Entry(caixa).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Algo deu errado... tente novamente mais tarde."); }
             }
             ViewBag.ValorTotal = db.ServicosAgendamento.Where(sa => sa.AgendamentoId == caixa.AgendamentoId).Include(sa => sa.Servico).Select(sa => new
             {
@@ -150,9 +162,13 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Caixa caixa = await db.Caixa.FindAsync(id);
-            db.Caixa.Remove(caixa);
-            await db.SaveChangesAsync();
+            try
+            {
+                Caixa caixa = await db.Caixa.FindAsync(id);
+                db.Caixa.Remove(caixa);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Algo deu errado... tente novamente mais tarde."); }
             return RedirectToAction("Index");
         }
 

@@ -4,10 +4,9 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+<div class="x_panel">
     <h3>Deseja realmente deletar esse registro?</h3>
-    <div>
-        <h4>LoginFuncionario</h4>
+    <div>        
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -23,10 +22,12 @@
         {
             @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Deletar" class="btn btn-default" /> |
-                @Html.ActionLink(" Lista de Usuários", "Index")
-            </div>
+        <div class="form-actions no-color">
+            <button class="btn btn-success" type="submit"><i class="fa fa-trash"></i> Deletar</button>
+            <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                <span class="fa fa-arrow-circle-left"></span> Lista de Usuários
+            </a>
+        </div>
         }
     </div>
 </div>

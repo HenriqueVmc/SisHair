@@ -23,14 +23,14 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
 
         // GET: Cliente
-         [Authorize(Roles = "Administrador, Funcionario")]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Clientes.ToListAsync());
         }
 
         // GET: Cliente/Details/5
-         [Authorize(Roles = "Administrador, Funcionario")]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Detalhes(int? id)
         {
             if (id == null)
@@ -61,20 +61,20 @@ namespace TrabalhoTcc.Controllers
         public async Task<ActionResult> Cadastrar([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente)
         {
 
-            string VEmail = cliente.Email;
-            var clienteVerificar = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
-
-            if (clienteVerificar != null)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Esse Cadastro já Existe!");
-                return View(cliente);  
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                try
                 {
-                    try
+                    string VEmail = cliente.Email;
+                    var clienteVerificar = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
+
+                    if (clienteVerificar != null)
                     {
+                        ModelState.AddModelError("", "Esse Cadastro já Existe!");
+                        return View(cliente);
+                    }
+                    else
+                    {                    
                         db.Clientes.Add(cliente);
 
                         var loginC = new LoginCliente()
@@ -89,14 +89,9 @@ namespace TrabalhoTcc.Controllers
 
                         return RedirectToAction("Index");
                     }
-                    catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
-
                 }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
-
-
-          
-
             return View(cliente);
         }
 
@@ -108,6 +103,7 @@ namespace TrabalhoTcc.Controllers
 
             return CriptoHelper.HashMD5(senha);
         }
+
         // GET: Cliente/Edit/5
         [Authorize(Roles = "Administrador, Funcionario")]
         public async Task<ActionResult> Editar(int? id)
@@ -222,7 +218,7 @@ namespace TrabalhoTcc.Controllers
             gv.DataBind();
             Response.ClearContent();
             Response.Buffer = true;
-            Response.AddHeader("content-disposition", "attachment; filename=PlanilhaSisHAIR("+ DateTime.Now.ToString("dd_MM_yyyy_hh_mm") + ").xls");
+            Response.AddHeader("content-disposition", "attachment; filename=PlanilhaSisHAIR(" + DateTime.Now.ToString("dd_MM_yyyy_hh_mm") + ").xls");
             Response.ContentType = "application/ms-excel";
             Response.Charset = "";
             StringWriter objStringWriter = new StringWriter();

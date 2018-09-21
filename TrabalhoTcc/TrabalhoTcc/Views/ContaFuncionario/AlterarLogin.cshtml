@@ -2,7 +2,9 @@
 @{
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
-
+@section styles{
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+}
 <div class="">
 
     @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "frmAlterarLogin" }))

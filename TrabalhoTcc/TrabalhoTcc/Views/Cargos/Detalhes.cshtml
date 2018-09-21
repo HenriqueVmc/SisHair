@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+<div class="x_panel">
     <div>
-        <h4>Cargo</h4>
+        <h4>Detalhes:</h4>
         <hr />
         <dl class="dl-horizontal">
             <dt>
@@ -27,8 +27,13 @@
 
         </dl>
     </div>
-    <p>
-        @Html.ActionLink(" Editar", "Editar", "Cargos", new { id = Model.Id }, new { @class = " fa fa-pencil btn btn-outline-dark" })
-        @Html.ActionLink(" Lista de Clientes", "Index", "Cargos", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
+    <p class="float-left ml-3">
+        <a href="@Url.Action("Editar", new { id = Model.Id })" class="btn btn-success">
+            <span class="fa fa-pencil"></span> Editar
+        </a>
+        <a href="@Url.Action("Index", new { id = Model.Id })" class="btn btn-outline-dark">
+            <span class="fa fa-arrow-circle-left"></span> Lista de Cargos
+        </a>
     </p>
+
 </div>

@@ -35,32 +35,36 @@ namespace TrabalhoTcc.Controllers
             //Valida dados
             if (ModelState.IsValid)
             {
-                var usuario = LoginFuncionario.ValidarUsuario(loginF.Usuario, loginF.Senha);
-
-                if (usuario != null)
+                try
                 {
-                    int id = usuario.Id;
-                    int p = db.LoginFuncionarios.Where(end => end.Id == id).SingleOrDefault().PermissoesId;
+                    var usuario = LoginFuncionario.ValidarUsuario(loginF.Usuario, loginF.Senha);
 
-                    permissao = (p == 1) ? "Administrador" : "Funcionario";
-
-                    //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
-                    var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
-                    var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
-                    Response.Cookies.Add(cookie);
-
-                    Session["FuncionarioId"] = usuario.FuncionarioId;
-
-                    if (Url.IsLocalUrl(returnUrl))
+                    if (usuario != null)
                     {
-                        return Redirect(returnUrl);
+                        int id = usuario.Id;
+                        int p = db.LoginFuncionarios.Where(end => end.Id == id).SingleOrDefault().PermissoesId;
+
+                        permissao = (p == 1) ? "Administrador" : "Funcionario";
+
+                        //FormsAuthentication.SetAuthCookie(loginF.Usuario, false);
+                        var ticket = FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, loginF.Usuario, DateTime.Now, DateTime.Now.AddHours(12), false, permissao));
+                        var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, ticket);
+                        Response.Cookies.Add(cookie);
+
+                        Session["FuncionarioId"] = usuario.FuncionarioId;
+
+                        if (Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        return RedirectToAction("Agendamentos", "Estatisticas");
                     }
-                    return RedirectToAction("Agendamentos", "Estatisticas");
+                    else
+                    {
+                        ModelState.AddModelError("", "Login Inválido");
+                    }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Login Inválido");
-                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
 
             return View(loginF);
@@ -143,7 +147,8 @@ namespace TrabalhoTcc.Controllers
                 LoginFuncionario loginFuncionario = await db.LoginFuncionarios.FindAsync(id);
                 db.LoginFuncionarios.Remove(loginFuncionario);
                 await db.SaveChangesAsync();
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return RedirectToAction("Index");
         }
 
@@ -176,7 +181,8 @@ namespace TrabalhoTcc.Controllers
 
                 return Content(JsonConvert.SerializeObject(new { items = Results }));
 
-            }catch(Exception e) { }
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
 
             return null;
             //return Json(Results, JsonRequestBehavior.AllowGet);

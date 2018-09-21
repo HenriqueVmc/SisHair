@@ -3,7 +3,9 @@
     ViewBag.Title = "Redefinir Senha";
     Layout = "~/Views/Shared/Master.cshtml";
 }
-
+@section styles{
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+}
 
 <div class="container mt-3 mb-3">
 
@@ -25,7 +27,7 @@
                 {
                     <div class="alert alert-success">
                         <strong>@ViewBag.Mensagem</strong> <a href="/ContaFuncionario/Login"> Realizar Login</a>
-                    </div>                    
+                    </div>
                 }
                 else
                 {
@@ -36,7 +38,7 @@
                     </div>
                     <div class="form-group">
                         @Html.Label("Confirmar Senha:", new { @class = "control-label" })
-                        <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control"/>
+                        <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control" />
                         @Html.ValidationMessage("ConfirmarSenha", "", new { @class = "text-danger" })
                     </div>
                     <hr />

@@ -67,53 +67,52 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cadastrar(Funcionario funcionario, EnderecoFuncionario endereco, int PermissoesId)
         {
-
-            string aaa = funcionario.Email;
-            string verificarCpf = funcionario.Cpf;
-            var aa = db.Funcionarios.Where(a => a.Email == aaa || a.Cpf == verificarCpf).SingleOrDefault();
-
-            if (aa != null)
+            if (ModelState.IsValid)
             {
-                ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
-                ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
-                ModelState.AddModelError("", "Esse Cadastro já Existe!");
-                return View(funcionario);                
-            }
-            else
-            {
-                if (ModelState.IsValid)
+                try
                 {
-                    db.Funcionarios.Add(funcionario);
-                    db.SaveChanges();
+                    string aaa = funcionario.Email;
+                    string verificarCpf = funcionario.Cpf;
+                    var aa = db.Funcionarios.Where(a => a.Email == aaa || a.Cpf == verificarCpf).SingleOrDefault();
 
-                    if (endereco != null)
+                    if (aa != null)
                     {
-                        new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
+                        ViewBag.Endereco = db.EnderecoFuncionarios.Where(end => end.Funcionario.Id == funcionario.Id).SingleOrDefault();
+                        ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
+                        ModelState.AddModelError("", "Esse Cadastro já Existe!");
+                        return View(funcionario);
                     }
-                    ////
-                    var loginF = new LoginFuncionario()
+                    else
                     {
-                        Usuario = funcionario.Email,
-                        Senha = gerarSenha(funcionario),
-                        FuncionarioId = funcionario.Id,
-                        PermissoesId = PermissoesId
-                    };
-                    ////
-                    db.LoginFuncionarios.Add(loginF);
-                    db.SaveChanges();
+                        db.Funcionarios.Add(funcionario);
+                        db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                        if (endereco != null)
+                        {
+                            new EnderecoFuncionario().CadastrarEndereco(endereco, funcionario.Id);
+                        }
+                        ////
+                        var loginF = new LoginFuncionario()
+                        {
+                            Usuario = funcionario.Email,
+                            Senha = gerarSenha(funcionario),
+                            FuncionarioId = funcionario.Id,
+                            PermissoesId = PermissoesId
+                        };
+                        ////
+                        db.LoginFuncionarios.Add(loginF);
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index");
+                    }
                 }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
-
 
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
             ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome", funcionario.CargoId);
             return View(funcionario);
-
-
-
         }
 
         private string gerarSenha(Funcionario funcionario)
@@ -162,20 +161,23 @@ namespace TrabalhoTcc.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(funcionario).State = EntityState.Modified;
-                db.SaveChanges();
-
-                if (endereco != null)
+                try
                 {
-                    endereco.FuncionarioId = funcionario.Id;
-                    new EnderecoFuncionario().EditarEndereco(endereco);
+                    db.Entry(funcionario).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    if (endereco != null)
+                    {
+                        endereco.FuncionarioId = funcionario.Id;
+                        new EnderecoFuncionario().EditarEndereco(endereco);
+                    }
+                    LoginFuncionario login = db.LoginFuncionarios.Where(p => p.FuncionarioId == funcionario.Id).SingleOrDefault();
+                    login.PermissoesId = PermissoesId;
+
+                    db.Entry(login).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
-                LoginFuncionario login = db.LoginFuncionarios.Where(p => p.FuncionarioId == funcionario.Id).SingleOrDefault();
-                login.PermissoesId = PermissoesId;
-
-                db.Entry(login).State = EntityState.Modified;
-                db.SaveChanges();
-
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
                 return RedirectToAction("Index");
             }
 
@@ -207,9 +209,13 @@ namespace TrabalhoTcc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Funcionario funcionario = await db.Funcionarios.FindAsync(id);
-            db.Funcionarios.Remove(funcionario);
-            await db.SaveChangesAsync();
+            try
+            {
+                Funcionario funcionario = await db.Funcionarios.FindAsync(id);
+                db.Funcionarios.Remove(funcionario);
+                await db.SaveChangesAsync();
+            }
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return RedirectToAction("Index");
         }
 
@@ -225,21 +231,26 @@ namespace TrabalhoTcc.Controllers
         [HttpGet]
         public ActionResult GetFuncionarios(string term)
         {
-            var funcionarios = db.Funcionarios.ToList();
-
-            if (term != null)
+            try
             {
-                funcionarios = db.Funcionarios.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+                var funcionarios = db.Funcionarios.ToList();
+
+                if (term != null)
+                {
+                    funcionarios = db.Funcionarios.Where(s => s.Nome.ToLower().StartsWith(term.ToLower())).ToList();
+                }
+
+                var Results = funcionarios.Select(s => new
+                {
+                    text = s.Nome,
+                    id = s.Id
+                });
+
+                return Content(JsonConvert.SerializeObject(new { items = Results }));
+                //return Json(Results, JsonRequestBehavior.AllowGet);
             }
-
-            var Results = funcionarios.Select(s => new
-            {
-                text = s.Nome,
-                id = s.Id
-            });
-
-            return Content(JsonConvert.SerializeObject(new { items = Results }));
-            //return Json(Results, JsonRequestBehavior.AllowGet);
+            catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+            return null;
         }
 
         public ActionResult ExportExcel()
