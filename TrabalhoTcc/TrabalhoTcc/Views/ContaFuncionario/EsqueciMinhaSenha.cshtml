@@ -30,12 +30,12 @@
                 else
                 {
                     <div class="form-group">
-                        @Html.Label("Email: ", new { @class = "control-label" })
+                        @Html.Label("Email: ", new { @class = "control-label" })<span class="text-danger"> *</span>
                         <input type="text" id="email" name="email" class="form-control" />
                         <p id="emailValidation" name="emailValidation"></p>
                     </div>
                     <div class="form-group">
-                        @Html.Label("CPF: ", new { @class = "control-label" })
+                        @Html.Label("CPF: ", new { @class = "control-label" })<span class="text-danger"> *</span>
                         <input type="text" id="CpfLogin" name="CpfLogin" class="form-control" />
                     </div>
 

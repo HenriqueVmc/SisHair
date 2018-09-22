@@ -32,12 +32,12 @@
                 else
                 {
                     <div class="form-group">
-                        @Html.LabelFor(m => m.Senha, new { @class = "control-label" })
+                        @Html.LabelFor(m => m.Senha, new { @class = "control-label" })<span class="text-danger"> *</span>
                         @Html.PasswordFor(m => m.Senha, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Senha, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        @Html.Label("Confirmar Senha:", new { @class = "control-label" })
+                        @Html.Label("Confirmar Senha:", new { @class = "control-label" })<span class="text-danger"> *</span>
                         <input type="password" id="ConfirmarSenha" name="ConfirmarSenha" class="form-control" />
                         @Html.ValidationMessage("ConfirmarSenha", "", new { @class = "text-danger" })
                     </div>
