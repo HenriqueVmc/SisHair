@@ -142,18 +142,14 @@ namespace TrabalhoTcc.Controllers
              return RedirectToAction("Index");
          }
 
-        [Authorize(Roles = "Administrador")]        
+        [Authorize(Roles = "Administrador")]
+        [HttpPost, ActionName("AtivarRegistro")]
         public ActionResult AtivarRegistro(int? id)
         {
             Cargo cargo = db.Cargos.Find(id);
-            cargo.RegistroCargoAtivo = true;
-            //db.Cargos.Attach(Cargo);
-            //db.Entry(Cargo).Property(x => InativarRegistroCargo).IsModified = true;
+            cargo.RegistroCargoAtivo = true;            
             db.Entry(cargo).State = EntityState.Modified;
-            db.SaveChanges();
-
-            //Cargo cargo = db.Cargos.Find(id);
-            //bool alterado = new InativarRegistro().InativarRegistroCargo(cargo);
+            db.SaveChanges();            
             return RedirectToAction("Index");
         }
 

@@ -4,7 +4,7 @@
 }
 
 <div class="x_panel">
-    <h3>Deseja realmente delegar esse registro?</h3>
+    <h3>Deseja realmente deletar esse registro?</h3>
     <div>
         <hr />
         <dl class="dl-horizontal">
@@ -29,13 +29,27 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-2">
-                    @using (Html.BeginForm("InativarRegistro", "Cargos", FormMethod.Post))
+                    @if (Model.RegistroCargoAtivo == true)
                     {
-                        @Html.AntiForgeryToken()
-                        @Html.HiddenFor(model => model.Id)
-                        <div class="form-actions no-color">
-                            <button type="submit" class="btn btn-success btn-block"><i class="fa fa-power-off"></i> Inativar Registro</button>
-                        </div>
+                        using (Html.BeginForm("InativarRegistro", "Cargos", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-actions no-color">
+                                <button type="submit" class="btn btn-success btn-block"><i class="fa fa-power-off"></i> Inativar Registro</button>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("AtivarRegistro", "Cargos", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.Id)
+                            <div>
+                                <button type="submit" class="btn btn-success btn-block"><i class="fas fa-redo">Reativar Registro</i></button>
+                            </div>
+                        }
                     }
                 </div>
                 <div class="col-md-10">
