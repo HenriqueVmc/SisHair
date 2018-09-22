@@ -26,7 +26,7 @@ namespace TrabalhoTcc.Controllers
         [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Index()
         {
-            var funcionarios = db.Funcionarios.Include(f => f.Cargo);
+            var funcionarios = db.Funcionarios.Include(f => f.Cargo).Where(f => f.RegistroFuncionarioAtivo == true);
             return View(funcionarios);
         }
 
