@@ -43,7 +43,15 @@
                         @Html.DisplayFor(modelItem => item.Descricao)
                     </td>
                     <td>
-                        @Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })                        
+
+                        @if (item.RegistroCargoAtivo == false)
+                        {
+                            @Html.ActionLink(" ", "AtivarRegistro", "Cargos", new { id = item.Id }, new { @class = "fa fa-check btn btn-success" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                        }
                         @Html.ActionLink(" ", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
                     </td>
                 </tr>

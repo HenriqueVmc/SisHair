@@ -31,7 +31,7 @@
             datasets: [{
                 label: "Agendamentos",
                 backgroundColor: '#2A3F54',
-                borderColor: 'black',
+                borderColor: '#1ABB9C',
                 data: registros
             }]
         },

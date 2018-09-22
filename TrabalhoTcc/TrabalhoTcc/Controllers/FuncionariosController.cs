@@ -56,7 +56,7 @@ namespace TrabalhoTcc.Controllers
         {
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
-            ViewBag.CargoId = new SelectList(db.Cargos, "Id", "Nome");
+            ViewBag.CargoId = new SelectList(db.Cargos.Where(c=> c.RegistroCargoAtivo == true), "Id", "Nome");
             return View();
         }
 

@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
-<div class="offset-2">
+<div class="x_panel">
     <h3>Deseja realmente delegar esse registro?</h3>
     <div>
         <hr />
@@ -26,24 +26,34 @@
 
         </dl>
         <hr />
-        @using (Html.BeginForm(""))
-        {
-            @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    @using (Html.BeginForm("InativarRegistro", "Cargos", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-actions no-color">
+                            <button type="submit" class="btn btn-success btn-block"><i class="fa fa-power-off"></i> Inativar Registro</button>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-10">
+                    @using (Html.BeginForm(""))
+                    {
+                        @Html.AntiForgeryToken()
 
-            <div class="form-actions no-color">
-                <button type="submit" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Deletar</button> | 
-                @Html.ActionLink(" Lista de Clientes", "Index", "Cargos", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
-            </div>
+                        <div class="form-actions no-color">
+                            <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> Deletar</button>
+                            <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                                <span class="fa fa-arrow-circle-left"></span> Lista de Cargos
+                            </a>
+                        </div>
 
-        }
-        @using (Html.BeginForm("InativarRegistro", "Cargos", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(model => model.Id)
-            <div class="form-actions no-color">
-                <button type="submit" class="btn btn-outline-green"><i class="fa fa-pencil"></i> Inativar Registro</button>
-                @Html.ActionLink(" Lista de Clientes", "Index", "Cargos", new { @class = "fa fa-arrow-circle-left btn btn-outline-primary" })
+                    }
+                </div>
+
             </div>
-        }
+        </div>
     </div>
 </div>
