@@ -220,7 +220,7 @@ namespace TrabalhoTcc.Controllers
             catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             return RedirectToAction("Index");
         }
-        [Authorize(Roles = "Adminstrador")]
+        [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("InativarRegistro")]
         [ValidateAntiForgeryToken]
         public ActionResult InativarRegistro(int id)
@@ -229,7 +229,7 @@ namespace TrabalhoTcc.Controllers
             funcionario.RegistroFuncionarioAtivo = false;
             db.Entry(funcionario).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");            
         }
 
         [Authorize(Roles = "Administrador")]

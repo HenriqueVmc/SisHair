@@ -142,7 +142,7 @@ namespace TrabalhoTcc.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpPost, ActionName("AtivarRegistro")]
-        public ActionResult AtivarRegistro(int? id)
+        public ActionResult AtivarRegistro(int id)
         {
             Cargo cargo = db.Cargos.Find(id);
             cargo.RegistroCargoAtivo = true;            
