@@ -26,7 +26,7 @@ namespace TrabalhoTcc.Controllers
         [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult Index()
         {
-            var funcionarios = db.Funcionarios.Include(f => f.Cargo).Where(f => f.RegistroFuncionarioAtivo == true);
+            var funcionarios = db.Funcionarios.Include(f => f.Cargo).ToList();
             return View(funcionarios);
         }
 
@@ -84,6 +84,7 @@ namespace TrabalhoTcc.Controllers
                     }
                     else
                     {
+                        funcionario.RegistroFuncionarioAtivo = true;
                         db.Funcionarios.Add(funcionario);
                         db.SaveChanges();
 
@@ -205,6 +206,7 @@ namespace TrabalhoTcc.Controllers
         }
 
         // POST: Funcionarios/Delete/5
+        [Authorize(Roles ="Administrador")]
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
@@ -216,6 +218,29 @@ namespace TrabalhoTcc.Controllers
                 await db.SaveChangesAsync();
             }
             catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+            return RedirectToAction("Index");
+        }
+        [Authorize(Roles = "Adminstrador")]
+        [HttpPost, ActionName("InativarRegistro")]
+        [ValidateAntiForgeryToken]
+        public ActionResult InativarRegistro(int id)
+        {
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            funcionario.RegistroFuncionarioAtivo = false;
+            db.Entry(funcionario).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPost, ActionName("AtivarRegistro")]
+        [ValidateAntiForgeryToken]
+        public ActionResult AtivarRegistro(int id)
+        {
+            Funcionario funcionario = db.Funcionarios.Find(id);
+            funcionario.RegistroFuncionarioAtivo = true;
+            db.Entry(funcionario).State = EntityState.Modified;
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

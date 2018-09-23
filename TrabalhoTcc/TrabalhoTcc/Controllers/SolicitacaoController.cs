@@ -32,7 +32,7 @@ namespace TrabalhoTcc.Controllers
                 {
                     //Receber cliente e rotornar em ViewBag para campos hiddens 
                     ViewBag.ClienteId = id;
-                    ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).ToList();
+                    ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).Where(a => a.RegistroFuncionarioAtivo == true).ToList();
                     return View();
                 }
             }

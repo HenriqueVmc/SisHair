@@ -135,10 +135,8 @@ namespace TrabalhoTcc.Controllers
          {
              Cargo cargo = db.Cargos.Find(id);
              cargo.RegistroCargoAtivo = false;
-
              db.Entry(cargo).State = EntityState.Modified;
-             db.SaveChanges();
-             
+             db.SaveChanges();             
              return RedirectToAction("Index");
          }
 

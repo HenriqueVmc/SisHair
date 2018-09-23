@@ -5,7 +5,18 @@
 }
 
 <div class="x_panel">
-    <h3>Deseja realmente deletar esse registro?</h3>
+    @if(Model.RegistroFuncionarioAtivo == true)
+    {
+        <h3>Deseja deletar o registro ou inativa-lo ?</h3>
+        <h4>Caso delete o registro, não poderá ser mais recuperado</h4>
+        <h5>Caso inative-o, pode o reativar depois futuramente</h5>
+    }
+    else
+    {
+        <h3>Deseja deletar o registro ou reativar-lo?</h3>
+        <h4>Caso delete o registro, não poderá ser mais recuperado</h4>
+        <h5>Caso reative, o Funcionario voltará ser listado como funcionario existente</h5>
+    }
     <div>
         <hr />
         <dl class="dl-horizontal">
@@ -67,6 +78,33 @@
 
         </dl>
         <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                    @if(Model.RegistroFuncionarioAtivo == true)
+                    {
+                        using (Html.BeginForm("InativarRegistro", "Funcionarios", FormMethod.Post))
+                        {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        <div class="form-actions no-color">
+                            <button type="submit" class="btn btn-success btn-block"><i class="fa fa-power-off"></i> Inativar Registro</button>
+                        </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("AtivarRegistro", "Funcionarios", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(model => model.Id)
+                        <div>
+                            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-redo">Reativar Registro</i></button>
+                        </div>
+                        }
+                    }
+                </div>
+        <div class="col-md-10">
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -78,5 +116,8 @@
             </a>
         </div>
         }
+            </div>
+          </div>
+       </div>
     </div>
 </div>
