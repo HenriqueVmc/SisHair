@@ -28,7 +28,7 @@
                 background: #1C2331 !important;
             }
         }
-    </style>
+    </style>    
 </head>
 
 <body>
@@ -97,7 +97,7 @@
             <div class="carousel-item active">
                 <div class="view">
                     <!--Video source-->
-                    <img src="~/fonts/wallpapers3.jpg" width="100%"/>
+                    <img src="~/fonts/wallpapers3.jpg" width="100%" />
 
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -161,7 +161,7 @@
             <div class="carousel-item">
                 <div class="view">
                     <!--Video source-->
-                    <img src="~/fonts/wallpapers1.jpg" width="100%"/>
+                    <img src="~/fonts/wallpapers1.jpg" width="100%" />
                     <!-- Mask & flexbox options-->
                     <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
                         <!-- Content -->
@@ -380,6 +380,7 @@
             <!--Section: Not enough-->
             <section>
                 <h2 class="my-5 h3 text-center">Não esta satisfeito?</h2>
+                          
                 <div class="my-3 h3 text-center">
                     <p>
                         Confira nossas redes sociais !
@@ -502,12 +503,13 @@
                 <hr class="clearfix w-100 d-md-none">
 
                 <!-- Grid column -->
-                <div class="col-md-7 mx-auto">
-                    <a class="white-text">Nossa loja</a>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
-                    </div>
-                </div>
+                @*<div class="col-md-7 mx-auto">
+                        <a class="white-text">Nossa loja</a>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                        </div>
+                    </div>*@
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227806.58478111765!2d-49.23918750766369!3d-26.85655398192966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df1e408b5c3095%3A0xacfb8520bc1a7644!2sBlumenau%2C+SC!5e0!3m2!1spt-BR!2sbr!4v1537730613846" width="670" height="360" frameborder="0" style="border:0" allowfullscreen></iframe>
                 <!-- Grid column -->
 
             </div>
@@ -524,7 +526,7 @@
                 <h5 class="mb-1">Área do cliente</h5>
             </li>
             <li class="list-inline-item">
-                <a href="#!" class="btn btn-danger btn-rounded">Entre!</a>
+                <a href="/ContaCliente/Login" class="btn btn-danger btn-rounded">Entre!</a>
             </li>
         </ul>
         <!-- Call to action -->
