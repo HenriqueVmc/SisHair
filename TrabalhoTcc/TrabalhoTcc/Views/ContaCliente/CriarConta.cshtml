@@ -16,6 +16,7 @@
         <div class="col-md-6 mt-4">
             @using (Html.BeginForm("CriarConta", "ContaCliente", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "formCriarContaCliente" }))
             {
+                HtmlHelper.UnobtrusiveJavaScriptEnabled = false;
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="row">
                     <div class="col-md-6">
