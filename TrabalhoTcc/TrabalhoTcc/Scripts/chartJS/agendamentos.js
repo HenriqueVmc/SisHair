@@ -41,11 +41,10 @@
                 {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true                            
                         }
-
                     }]
-                }
+                }           
         }
     });
 });
