@@ -100,8 +100,8 @@
             eventDrop: function (agendamento) {
                 var data = {
                     Id: agendamento.agendamentoId,
-                    DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
-                    DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
+                    DataHoraInicio: moment(agendamento.start).format('YYYY-MM-DD HH:mm:ss'),
+                    DataHoraFinal: moment(agendamento.end).format('YYYY-MM-DD HH:mm:ss'),
                     Situacao: agendamento.situacao,
                     FuncionarioId: agendamento.funcionarioId,
                     ClienteId: agendamento.clienteId,
@@ -112,8 +112,8 @@
             eventResize: function (agendamento) {
                 var data = {
                     Id: agendamento.agendamentoId,
-                    DataHoraInicio: agendamento.start.format('DD/MM/YYYY HH:mm A'),
-                    DataHoraFinal: agendamento.end.format('DD/MM/YYYY HH:mm A'),
+                    DataHoraInicio: agendamento.start.format('YYYY-MM-DD HH:mm:ss'),
+                    DataHoraFinal: agendamento.end.format('YYYY-MM-DD HH:mm:ss'),
                     Situacao: agendamento.situacao,
                     FuncionarioId: agendamento.funcionarioId,
                     ClienteId: agendamento.clienteId,
@@ -166,7 +166,6 @@
         if (agendamentoSelecionado != null) {
    
             $('#Id').val(agendamentoSelecionado.agendamentoId);
-
             $('#DataHoraInicio').val(agendamentoSelecionado.start.format('DD/MM/YYYY HH:mm A'));
             $('#DataHoraFinal').val(agendamentoSelecionado.end.format('DD/MM/YYYY HH:mm A'));
             $('#Situacao').val(agendamentoSelecionado.situacao);
@@ -191,16 +190,16 @@
             new PNotify('Horário de finalização deve ser preenchido!');
             return;
         }
-        if ($('#FuncionarioId').val() == null) {
+        if ($('#FuncionarioId').val() == "NaN") {
             new PNotify('Selecione um Funcionário!');
             return;
         }
-        if ($('#ClienteId').val() == null) {
+        if ($('#ClienteId').val() == "NaN") {
             new PNotify('Selecione um Cliente!');
             return;
         }
 
-        if ($('#selectServicos').val() == "") {
+        if ($('#selectServicos').val() == "NaN") {
             new PNotify('Selecione um Serviço!');
             return;
         }
