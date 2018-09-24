@@ -36,6 +36,16 @@
             }]
         },
         // Configuration options go here
-        options: {}
+        options: {
+            scales:
+                {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+
+                    }]
+                }
+        }
     });
 });
