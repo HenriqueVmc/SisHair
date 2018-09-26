@@ -1,8 +1,10 @@
 ﻿@model TrabalhoTcc.Models.Cliente
 
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+                /**/
+
+                ViewBag.Title = "Create";
+                Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
 }
 
 @using (Html.BeginForm())
@@ -57,7 +59,7 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Cadastrar</button>
                     <a href="@Url.Action("Index")" class="btn btn-outline-dark">
                         <span class="fa fa-arrow-circle-left"></span> Lista de Clientes
@@ -65,6 +67,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="pull-right">
+        <p><span class="text-danger">* </span>Login: Por padrão, <strong class="text-danger">Usuário</strong> é composto por Email e a <strong class="text-danger">Senha</strong> por Data de nascimento do Cliente.</p>
     </div>
 }
 

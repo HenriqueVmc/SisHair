@@ -53,9 +53,12 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
-                    <a href="@Url.Action("Index")" class="btn btn-outline-dark">
-                        <span class="fa fa-arrow-circle-left"></span> Lista de Usuários
-                    </a>
+                    @if (Request.IsAuthenticated && User.IsInRole("Administrador"))
+                    {
+                        <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                            <span class="fa fa-arrow-circle-left"></span> Lista de Usuários
+                        </a>
+                    }
                 </div>
             </div>
         </div>

@@ -23,14 +23,14 @@ namespace TrabalhoTcc.Controllers
         private DBContext db = new DBContext();
         public ActionResult Index()
         {
-            var result = db.Avaliacoes.Include(a => a.Agendamento.Cliente).ToList();
-            
-            
-            ViewBag.Avaliacoes = result;
-            
-            
-            return View();
+            //var result = db.Avaliacoes.Include(a => a.Agendamento.Cliente).ToList();
 
+
+            //ViewBag.Avaliacoes = result;
+
+
+            //return View();
+            return RedirectToAction("EmConstrucao", "Home");
         }
     }
 

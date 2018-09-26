@@ -14,27 +14,14 @@ namespace TrabalhoTcc.Controllers
         // GET: Index
         public ActionResult Index()
         {
-            ViewBag.AvaliacoesParaIndex = db.Avaliacoes.Where(c => c.AvaliacaoAprovadaParaIndex == true).ToList();
+            //ViewBag.AvaliacoesParaIndex = db.Avaliacoes.Where(c => c.AvaliacaoAprovadaParaIndex == true).ToList();
             return View();
         }
 
-        [HttpGet]
-        public ActionResult SolicitarAgendamento()
-        {
+        public ActionResult EmConstrucao()
+        {         
             return View();
         }
 
-        [HttpGet]
-        public ActionResult AreaDoCliente()
-        {
-            //Verifica se os campos estão preenchidos
-            //Estando tudo OK, Chama View AreaDoCliente
-            return View();
-        }
-
-        public ActionResult Cadastro()
-        {            
-            return View();
-        }
     }
 }

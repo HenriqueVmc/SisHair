@@ -138,7 +138,7 @@
                                 </li>
 
                                 <li>
-                                    <a> <i class="fa fa-line-chart"></i> <b>AVALIAÇÕES</b> <span class="fa fa-chevron-down"></span></a>
+                                    <a> <i class="fa fa-star"></i> <b>AVALIAÇÕES</b> <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li>
                                             <a href="/Avaliacoes/Index">Avaliaçoes dos usuários</a>
@@ -175,15 +175,14 @@
                                     Usuário logado: @User.Identity.Name
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
+
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                                     <li>
+                                        <a href="/ContaFuncionario/AlterarLogin"><i class="fa fa-cog pull-right"></i>Alterar Usuário/Senha</a>
+                                    </li>
+                                    <li>
                                         <form action="/ContaFuncionario/LogOff" method="GET">
-                                            <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-block pull-right" type="submit"><i class="fa fa-sign-out pull-right"></i> Sair</button>
-                                        </form>
-
-                                        <form action="/ContaFuncionario/LogOff" method="GET">
-                                                <a href="/Funcionarios/PerfilFuncionario">Perfil</a>
-                                                >
+                                            <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-dark btn-block" type="submit"><i class="fa fa-sign-out pull-right"></i> Sair</button>
                                         </form>
                                     </li>
                                 </ul>

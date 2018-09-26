@@ -79,6 +79,7 @@ namespace TrabalhoTcc.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [Authorize(Roles = "Administrador, Funcionario")]
         public ActionResult AlterarLogin()
         {
             return View();
@@ -102,10 +103,16 @@ namespace TrabalhoTcc.Controllers
 
                         db.Entry(loginAntigo).State = EntityState.Modified;
                         db.SaveChanges();
-                    }
-                    return Content(JsonConvert.SerializeObject(new { id = loginAntigo.Id }));
 
-                }catch(Exception e) { ModelState.AddModelError("", "Algo deu errado, tente novamente");  }
+                        return RedirectToAction("LogOff");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Usuário ou senha não existem...");
+                    }
+
+                }
+                catch(Exception e) { ModelState.AddModelError("", "Algo deu errado, tente novamente");  }
             }
             else
             {
