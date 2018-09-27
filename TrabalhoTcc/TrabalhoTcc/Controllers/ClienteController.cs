@@ -74,7 +74,7 @@ namespace TrabalhoTcc.Controllers
                         return View(cliente);
                     }
                     else
-                    {                    
+                    {
                         db.Clientes.Add(cliente);
 
                         var loginC = new LoginCliente()
@@ -230,5 +230,33 @@ namespace TrabalhoTcc.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult PerfilEditar()
+        {
+            int id = (int)Session["ClienteId"];
+            var cliente = db.Clientes.Where(c => c.Id == id).SingleOrDefault();
+
+            return View(cliente);
+        }
+
+        [HttpPost]
+        public ActionResult PerfilEditar([Bind(Include = "Id,Nome,Data_nascimento,Celular,Telefone,Email")] Cliente cliente, string usuario, string senha, string novoUsuario, string novaSenha)
+        {
+            int id = (int)Session["ClienteId"];
+            cliente.Id = id;
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Entry(cliente).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Agendamento", "Solicitacao");
+                }
+                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
+            }
+            return View(cliente);
+        }
+
     }
 }
