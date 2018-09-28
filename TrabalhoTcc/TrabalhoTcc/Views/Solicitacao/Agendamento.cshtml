@@ -45,37 +45,37 @@
                     </li>
                 </ul>
             </div>
-        <div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-orange user-profile dropdown-toggle bg-danger text-black-50" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="id" name="id">@ViewBag.Nome</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/Cliente/PerfilEditar">Perfil</a>
-                        <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Home/Index">Sair</a>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn user-profile dropdown-toggle text-black-50" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="id" name="id"><b>@ViewBag.Nome</b></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/Cliente/PerfilEditar">Perfil</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/Home/Index">Sair</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
         @*
-    <li class="">
-        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Usuário logado: @User.Identity.Name
-            <span class=" fa fa-angle-down"></span>
-        </a>
+            <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Usuário logado: @User.Identity.Name
+                    <span class=" fa fa-angle-down"></span>
+                </a>
 
-        <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li>
-                <a href="/ContaFuncionario/AlterarLogin"><i class="fa fa-cog pull-right"></i>Alterar Usuário/Senha</a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li>
+                        <a href="/ContaFuncionario/AlterarLogin"><i class="fa fa-cog pull-right"></i>Alterar Usuário/Senha</a>
+                    </li>
+                    <li>
+                        <form action="/ContaFuncionario/LogOff" method="GET">
+                            <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-dark btn-block" type="submit"><i class="fa fa-sign-out pull-right"></i> Sair</button>
+                        </form>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <form action="/ContaFuncionario/LogOff" method="GET">
-                    <button id="btnLogOff" name="btnLogOff" class="btn btn-default btn-dark btn-block" type="submit"><i class="fa fa-sign-out pull-right"></i> Sair</button>
-                </form>
-            </li>
-        </ul>
-    </li>
         *@
 
 

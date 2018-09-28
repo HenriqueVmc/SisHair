@@ -34,6 +34,7 @@ namespace TrabalhoTcc.Controllers
                 if (id > 0)
                 {
                     //Receber cliente e rotornar em ViewBag para campos hiddens 
+                    ViewBag.ClienteId = id;
                     ViewBag.Nome = Nome;
                     ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).Where(a => a.RegistroFuncionarioAtivo == true).ToList();
                     return View();

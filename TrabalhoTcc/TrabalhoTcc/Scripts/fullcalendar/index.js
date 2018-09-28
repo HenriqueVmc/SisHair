@@ -51,7 +51,11 @@
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay,listMonth'
+                right: 'month,basicWeek,agendaWeek,agendaDay,listMonth'
+            },
+            buttonText: {
+                agendaWeek: "Hora / Semana",
+                basicWeek:"Semana"
             },
             defaultView: 'listMonth',
             /*scrollTime: ,*/
@@ -60,7 +64,6 @@
             validRange: {
                 start: date
             },
-
             eventTextColor: 'white',
             eventColor: 'rgb(47, 53, 58)',
             events: agendamentos,

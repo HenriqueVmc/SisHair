@@ -13,7 +13,7 @@
     <title>SisHAIR</title>
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <link href="~/Content/font-awesome.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
     <link href="~/Content/pnotify.custom.min.css" rel="stylesheet" />
 
     @RenderSection("styles", false)
@@ -172,11 +172,14 @@
 
                             <li class="">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                       PERFIL
+                                    <strong>PERFIL</strong>
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <h5 class="text-center">Usuário Logado: <strong>@User.Identity.Name</strong></h5>
+                                    </li>
                                     <li>
                                         <a href="/ContaFuncionario/AlterarLogin"><i class="fa fa-cog pull-right"></i>Alterar Usuário/Senha</a>
                                     </li>
@@ -197,7 +200,7 @@
                                     <li>
                                         <a>
                                             <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                                Henrique Venâncio realizou uma nova solicitação de Agendamento...
                                             </span>
                                         </a>
                                     </li>
@@ -205,7 +208,7 @@
                                     <li>
                                         <div class="text-center">
                                             <a>
-                                                <strong>See All Alerts</strong>
+                                                <strong>Ver todas mensagens</strong>
                                                 <i class="fa fa-angle-right"></i>
                                             </a>
                                         </div>
@@ -238,7 +241,8 @@
     <script src="~/Scripts/layout/bootstrap.min.js"></script>
     <script src="~/Scripts/layout/custom.min.js"></script>
     <script src="~/Scripts/pnotify.custom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    
+    <script src="~/Scripts/select2.min.js"></script>
     <script src="~/Content/jquery.mask.js"></script>
     <script src="~/Content/mascara.js"></script>
 

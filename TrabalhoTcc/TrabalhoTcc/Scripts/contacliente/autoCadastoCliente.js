@@ -36,7 +36,6 @@
         if (telefone.val().length < 14) {
             telefoneV.text("Telefone inválido");
             telefoneV.css("color", "red");
-            telefone.focus();
             return;
         } else{
             telefoneV.text("");
@@ -48,7 +47,6 @@
         if (celular.val().length < 15) {
             celularV.text("Celular inválido");
             celularV.css("color", "red");
-            celular.focus();
             return;
         } else {
             celularV.text("");
@@ -68,7 +66,6 @@
         if (usuario.val().length < 4) {
             usuarioV.text("Usuario deve possuir pelo menos 4 caracteres");
             usuarioV.css("color", "red");
-            usuario.focus();
             return;
         } else {
             usuarioV.text("");
@@ -81,7 +78,6 @@
         if (senha.val().length < 4) {
             senhaV.text("Senha deve possuir pelo menos 4 caracteres");
             senhaV.css("color", "red");
-            senha.focus();
             return;
         } else {
             senhaV.text("");
@@ -107,7 +103,6 @@
         if (input.val() == "") {
             validacao.text("Campo obrigatório!")
             validacao.css('color', 'red');
-            input.focus();
             return;
         } else {
             validacao.text("");
