@@ -28,10 +28,13 @@ namespace TrabalhoTcc.Controllers
             try
             {
                 int id = (int)Session["ClienteId"];
+                var j = db.Clientes.Where(a => a.Id == id).SingleOrDefault();
+                var upper = char.ToUpper(j.Nome[0]) + j.Nome.Substring(1);
+                string Nome = upper;
                 if (id > 0)
                 {
                     //Receber cliente e rotornar em ViewBag para campos hiddens 
-                    ViewBag.ClienteId = id;
+                    ViewBag.Nome = Nome;
                     ViewBag.Funcionarios = db.Funcionarios.Include(f => f.Cargo).Where(a => a.RegistroFuncionarioAtivo == true).ToList();
                     return View();
                 }
