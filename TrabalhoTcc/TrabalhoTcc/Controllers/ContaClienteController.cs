@@ -61,44 +61,53 @@ namespace TrabalhoTcc.Controllers
         }
 
         [HttpPost]
-        public ActionResult CriarConta(Cliente cliente, LoginCliente loginC)
+        public ActionResult CriarConta(Cliente cliente, LoginCliente loginC, string ConfirmarSenha)
         {
 
             if (ModelState.IsValid)
             {
-                try
+                if (loginC.Senha != ConfirmarSenha)
                 {
-                    string VEmail = cliente.Email;
-                    var ValidarEmail = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
-                    if (ValidarEmail != null)
+                    ModelState.AddModelError("", "Senhas não coincidem");
+                }
+                else
+                {
+                    try
                     {
-                        ModelState.AddModelError("", "Esse Cadastro já Existe!");
-                    }
-                    else
-                    {
-                        if (!(LoginCliente.Existe(loginC)))
+                        string VEmail = cliente.Email;
+                        var ValidarEmail = db.Clientes.Where(a => a.Email == VEmail).SingleOrDefault();
+                        if (ValidarEmail != null)
                         {
-                            db.Clientes.Add(cliente);
-
-                            var LoginCliente1 = new LoginCliente()
-                            {
-                                Usuario = loginC.Usuario,
-                                Senha = CriptoHelper.HashMD5(loginC.Senha),
-                                ClienteId = cliente.Id
-                            };
-
-                            db.LoginClientes.Add(LoginCliente1);
-
-                            db.SaveChanges();
-                            return RedirectToAction("Login", "ContaCliente");
+                            ModelState.AddModelError("", "Esse Cadastro já Existe!");
                         }
+
+
                         else
                         {
-                            ModelState.AddModelError("", "Esse usuário já existe!");
+                            if (!(LoginCliente.Existe(loginC)))
+                            {
+                                db.Clientes.Add(cliente);
+
+                                var LoginCliente1 = new LoginCliente()
+                                {
+                                    Usuario = loginC.Usuario,
+                                    Senha = CriptoHelper.HashMD5(loginC.Senha),
+                                    ClienteId = cliente.Id
+                                };
+
+                                db.LoginClientes.Add(LoginCliente1);
+
+                                db.SaveChanges();
+                                return RedirectToAction("Login", "ContaCliente");
+                            }
+                            else
+                            {
+                                ModelState.AddModelError("", "Esse usuário já existe!");
+                            }
                         }
                     }
+                    catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
                 }
-                catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }
             }
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
