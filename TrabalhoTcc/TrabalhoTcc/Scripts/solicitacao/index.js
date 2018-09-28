@@ -23,8 +23,9 @@
             });
 
         } else {
-            $("#modal-agendamento").modal('show');
             limparCampos();
+            $("#modal-agendamento").modal('show');                        
+            $("#FuncionarioId").val($id);
         }
     });
 
