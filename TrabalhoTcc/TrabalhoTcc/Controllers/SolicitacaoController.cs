@@ -211,7 +211,7 @@ namespace TrabalhoTcc.Controllers
                 {
                     //Receber cliente e rotornar em ViewBag para campos hiddens 
                     ViewBag.ClienteId = id;
-                    ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.ClienteId == id).ToList();
+                    ViewBag.AgendamentosParaAvaliar = db.Agendamentos.Where(c => c.ClienteId == id && c.AvaliouSalao == false).ToList();
                     return View();
                     // - bool para bloquear realizar a avaliacao mais de uma vez, if avaliou == false { permitir avaliar }
                 }
@@ -234,9 +234,22 @@ namespace TrabalhoTcc.Controllers
         [HttpPost]
         public ActionResult SalvarAvaliacao(Avaliacao avaliacao)
         {
-            avaliacao.AvaliouSalao = true;
+            //avaliacao.AvaliouSalao = true;
+
+            
+            //funcionario.RegistroFuncionarioAtivo = false;
+            
+            //db.Entry(agendamento).State = EntityState.Modified;
+            //db.SaveChanges();
+
+            
             if (ModelState.IsValid)
             {
+                Agendamento agendamento = db.Agendamentos.Find(avaliacao.AgendamentoId);
+                agendamento.AvaliouSalao = true;
+                db.Entry(agendamento).State = EntityState.Modified;
+                db.SaveChanges(); 
+
                 db.Avaliacoes.Add(avaliacao);
                 db.SaveChanges();
                 return Content(JsonConvert.SerializeObject(new { id = avaliacao.Id }));

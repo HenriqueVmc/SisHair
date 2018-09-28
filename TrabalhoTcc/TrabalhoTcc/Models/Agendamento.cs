@@ -43,6 +43,8 @@ namespace TrabalhoTcc.Models
         public int ClienteId { get; set; }
         [DefaultValue(true)]
         public bool RegistroAgendamentoAtivo { get; set; }
+
+        public bool AvaliouSalao { get; set; }
         //public ICollection<Servico> Servicos { get; set; }
        
     }
