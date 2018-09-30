@@ -61,7 +61,89 @@ namespace TrabalhoTcc.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Login Inválido");
+
+                        var User = loginF;
+                        var logFun = db.LoginFuncionarios.Where(a => a.Usuario == User.Usuario).SingleOrDefault();
+                        //Vai inserir uma tentativa na tabela, antes vai ver se a quantidade na tabela esta menor que 3
+                        if (User != null)
+                        {
+                            //Vendo se usuario ja tem uma tabela criada
+                            var aa = db.segLogin.Where(a => a.IdUsuario == logFun.FuncionarioId).SingleOrDefault();
+                            //Caso o usuario tiver cadastrado na tabela segLogin vai ser somado 1 tentativa na tabela
+                            if (aa != null)
+                            {
+                                int qtd = aa.Quantidade;
+                                //se a quantidade de tentativas fort menor que 3, vai ser somado
+                                if (qtd < 2)
+                                {
+                                    qtd = qtd + 1;
+                                    aa.Quantidade = qtd;
+                                    db.Entry(aa).State = EntityState.Modified;
+                                    db.SaveChanges();
+                                    ModelState.AddModelError("", "Login Inválido");
+
+
+                                }
+                                else
+                                {
+
+                                    var usuarioRet = db.Funcionarios.Where(a => a.Id == aa.IdUsuario).SingleOrDefault();
+
+                                    if (usuarioRet != null)
+                                    {
+                                    try
+                                    {
+                                            string email = usuarioRet.Email;
+                                        string assunto = "Ja foram 3 tentativas de acesso a sua conta no site SisHair, caso não seja você que fez este acesso porfavor entre em contato com seu encarregado para uma troca de senha";
+
+                                          
+
+                                        MailMessage mail = new MailMessage();
+                                        SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+
+                                        mail.From = new MailAddress("salaosuporte@gmail.com");
+                                        mail.To.Add(email);
+                                        mail.Subject = assunto;
+
+                                        smtp.Port = 587;
+                                        smtp.UseDefaultCredentials = false;
+                                        smtp.Credentials = new System.Net.NetworkCredential("salaosuporte@gmail.com", "suporteadm");
+                                        smtp.EnableSsl = true;
+                                        smtp.Send(mail);
+
+                                            qtd = 0;
+                                            aa.Quantidade = qtd;
+                                            db.Entry(aa).State = EntityState.Modified;
+                                            db.SaveChanges();
+                                            ModelState.AddModelError("", "Login Inválido");
+
+
+
+                                        }
+                                    catch (Exception ex)
+                                    {
+                                        return Content(ex.Message);
+                                    }
+                                    }
+                                }
+                          
+                            }
+                            
+
+                        else
+                        {
+                            ModelState.AddModelError("", "Login Inválido");
+                            int idfun = logFun.FuncionarioId;
+                            segurancaLogin seg = new segurancaLogin();
+
+                            seg.IdUsuario = logFun.FuncionarioId;
+                            seg.Quantidade = 1;
+
+                            db.segLogin.Add(seg);
+                            db.SaveChanges();
+                        }
+                        }
+
                     }
                 }
                 catch (Exception e) { ModelState.AddModelError("", "Confira os dados e tente novamente"); }

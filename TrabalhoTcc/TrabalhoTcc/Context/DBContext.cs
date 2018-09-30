@@ -31,5 +31,7 @@ namespace TrabalhoTcc.Context
         public DbSet<ServicosAgendamento> ServicosAgendamento { get; set; }
         public DbSet<ServicosSolicitacao> ServicosSolicitacao { get; set; }
 
+        public DbSet<segurancaLogin> segLogin { get; set; }
+
     }
 }
