@@ -17,6 +17,20 @@
         }
     });
 
+    $("#confSenha").on("focusout", function () {
+        var confSenha = $("#confSenha").val();
+        var senha = $("#novaSenha").val();
+        if (confSenha != senha) {
+            $("#confSenha").val("");
+            $("#senhaV").text("Senhas não conferem!");
+            $("#senhaV").css("color", "red");
+            $("#novaSenha").focus();
+            return;
+        } else {
+            $("#senhaV").text("");
+        }
+    });
+
     function isEmail(email) {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         return regex.test(email);

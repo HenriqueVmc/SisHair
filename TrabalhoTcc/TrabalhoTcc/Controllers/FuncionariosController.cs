@@ -299,23 +299,5 @@ namespace TrabalhoTcc.Controllers
 
             return View();
         }
-
-        public ActionResult PerfilFuncionario()
-        {
-
-            int id = Convert.ToInt32(Session["FuncionarioId"]);
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Funcionario funcionario = db.Funcionarios.Where(a => a.Id == id).Single();
-            if (funcionario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(funcionario);
-
-
-        }
     }
 }

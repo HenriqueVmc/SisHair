@@ -22,6 +22,188 @@ SELECT * FROM LoginClientes;
 INSERT INTO Clientes (Nome, Data_nascimento, Celular, Telefone, Email) VALUES ('Alan', '2000-05-05', '479998956', '4566666666', 'alaneduardoalves2018@gmail.com')
 INSERT INTO LoginClientes (Usuario, Senha, ClienteId) VALUES ('cli','cli', 1);
 
+-- DATABASE GENERATE BY ENTITY
+CREATE TABLE [dbo].[Agendamentoes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [DataHoraInicio] [datetime] NOT NULL,
+    [DataHoraFinal] [datetime] NOT NULL,
+    [Situacao] [nvarchar](max),
+    [Descricao] [nvarchar](max),
+    [Servicos] [nvarchar](max),
+    [FuncionarioId] [int] NOT NULL,
+    [ClienteId] [int] NOT NULL,
+    [RegistroAgendamentoAtivo] [bit] NOT NULL,
+    [AvaliouSalao] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Agendamentoes] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_FuncionarioId] ON [dbo].[Agendamentoes]([FuncionarioId])
+CREATE INDEX [IX_ClienteId] ON [dbo].[Agendamentoes]([ClienteId])
+CREATE TABLE [dbo].[Clientes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Nome] [nvarchar](100) NOT NULL,
+    [Data_nascimento] [datetime] NOT NULL,
+    [Celular] [nvarchar](15) NOT NULL,
+    [Telefone] [nvarchar](15) NOT NULL,
+    [Email] [nvarchar](max) NOT NULL,
+    [RegistroClienteAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Clientes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[Funcionarios] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Nome] [nvarchar](100) NOT NULL,
+    [DataNascimento] [datetime] NOT NULL,
+    [Cpf] [nvarchar](max) NOT NULL,
+    [Celular] [nvarchar](15),
+    [Telefone] [nvarchar](15),
+    [Email] [nvarchar](max),
+    [CargoId] [int] NOT NULL,
+    [RegistroFuncionarioAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Funcionarios] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_CargoId] ON [dbo].[Funcionarios]([CargoId])
+CREATE TABLE [dbo].[Cargoes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Nome] [nvarchar](max) NOT NULL,
+    [Descricao] [nvarchar](max),
+    [RegistroCargoAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Cargoes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[Avaliacaos] (
+    [Id] [int] NOT NULL IDENTITY,
+    [AvaliacaoUsuario] [nvarchar](max) NOT NULL,
+    [NotaVoltarNovamente] [tinyint] NOT NULL,
+    [NotaAgendamento] [tinyint] NOT NULL,
+    [NotaExperienciaAtendimento] [tinyint] NOT NULL,
+    [NotaCondicoesFisicasEstabelecimento] [tinyint] NOT NULL,
+    [VoltariaNovamente] [bit] NOT NULL,
+    [RecomendariaAlguem] [bit] NOT NULL,
+    [AvaliacaoAprovadaParaIndex] [bit] NOT NULL,
+    [AvaliouSalao] [bit] NOT NULL,
+    [RegistroAvaliacaoAtivo] [bit] NOT NULL,
+    [AgendamentoId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.Avaliacaos] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_AgendamentoId] ON [dbo].[Avaliacaos]([AgendamentoId])
+CREATE TABLE [dbo].[Caixas] (
+    [Id] [int] NOT NULL IDENTITY,
+    [ValorTotal] [decimal](18, 2) NOT NULL,
+    [ValorPago] [decimal](18, 2) NOT NULL,
+    [Divida] [decimal](18, 2) NOT NULL,
+    [FormaPagamento] [nvarchar](max),
+    [DataPagamento] [datetime] NOT NULL,
+    [Status] [nvarchar](max),
+    [RegistroCaixaAtivo] [bit] NOT NULL,
+    [AgendamentoId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.Caixas] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_AgendamentoId] ON [dbo].[Caixas]([AgendamentoId])
+CREATE TABLE [dbo].[CodigoClientes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Id_Usuario] [int] NOT NULL,
+    [Email] [nvarchar](max),
+    [Codigo] [nvarchar](max),
+    CONSTRAINT [PK_dbo.CodigoClientes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[EnderecoFuncionarios] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Rua] [nvarchar](max),
+    [Bairro] [nvarchar](max),
+    [Numero] [int] NOT NULL,
+    [Complemento] [nvarchar](max),
+    [Cidade] [nvarchar](max),
+    [Estado] [nvarchar](max),
+    [Cep] [nvarchar](max),
+    [FuncionarioId] [int] NOT NULL,
+    [RegistroEnderecoFuncionarioAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.EnderecoFuncionarios] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_FuncionarioId] ON [dbo].[EnderecoFuncionarios]([FuncionarioId])
+CREATE TABLE [dbo].[LoginClientes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Usuario] [nvarchar](max) NOT NULL,
+    [Senha] [nvarchar](max) NOT NULL,
+    [ClienteId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.LoginClientes] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_ClienteId] ON [dbo].[LoginClientes]([ClienteId])
+CREATE TABLE [dbo].[LoginFuncionarios] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Usuario] [nvarchar](max) NOT NULL,
+    [Senha] [nvarchar](max) NOT NULL,
+    [FuncionarioId] [int] NOT NULL,
+    [PermissoesId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.LoginFuncionarios] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_FuncionarioId] ON [dbo].[LoginFuncionarios]([FuncionarioId])
+CREATE INDEX [IX_PermissoesId] ON [dbo].[LoginFuncionarios]([PermissoesId])
+CREATE TABLE [dbo].[Permissoes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [TipoPermissao] [nvarchar](max),
+    CONSTRAINT [PK_dbo.Permissoes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[Servicoes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [Nome] [nvarchar](max),
+    [Valor] [decimal](18, 2) NOT NULL,
+    [Duracao] [int] NOT NULL,
+    [Descricao] [nvarchar](max),
+    [RegistroServicoAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Servicoes] PRIMARY KEY ([Id])
+)
+CREATE TABLE [dbo].[ServicosAgendamentoes] (
+    [Id] [int] NOT NULL IDENTITY,
+    [AgendamentoId] [int] NOT NULL,
+    [ServicoId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.ServicosAgendamentoes] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_AgendamentoId] ON [dbo].[ServicosAgendamentoes]([AgendamentoId])
+CREATE INDEX [IX_ServicoId] ON [dbo].[ServicosAgendamentoes]([ServicoId])
+CREATE TABLE [dbo].[ServicosSolicitacaos] (
+    [Id] [int] NOT NULL IDENTITY,
+    [SolicitacaoId] [int] NOT NULL,
+    [ServicoId] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.ServicosSolicitacaos] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_SolicitacaoId] ON [dbo].[ServicosSolicitacaos]([SolicitacaoId])
+CREATE INDEX [IX_ServicoId] ON [dbo].[ServicosSolicitacaos]([ServicoId])
+CREATE TABLE [dbo].[Solicitacaos] (
+    [Id] [int] NOT NULL IDENTITY,
+    [DataHoraInicio] [datetime] NOT NULL,
+    [DataHoraFinal] [datetime] NOT NULL,
+    [Situacao] [nvarchar](max),
+    [FuncionarioId] [int] NOT NULL,
+    [ClienteId] [int] NOT NULL,
+    [Descricao] [nvarchar](max),
+    [Servicos] [nvarchar](max),
+    [RegistroSolicitacaoAtivo] [bit] NOT NULL,
+    CONSTRAINT [PK_dbo.Solicitacaos] PRIMARY KEY ([Id])
+)
+CREATE INDEX [IX_FuncionarioId] ON [dbo].[Solicitacaos]([FuncionarioId])
+CREATE INDEX [IX_ClienteId] ON [dbo].[Solicitacaos]([ClienteId])
+
+CREATE TABLE [dbo].[segurancaLogins] (
+    [Id] [int] NOT NULL IDENTITY,
+    [IdUsuario] [int] NOT NULL,
+    [EmailUsuario] [nvarchar](max),
+    [Quantidade] [int] NOT NULL,
+    CONSTRAINT [PK_dbo.segurancaLogins] PRIMARY KEY ([Id])
+)
+
+ALTER TABLE [dbo].[Agendamentoes] ADD CONSTRAINT [FK_dbo.Agendamentoes_dbo.Clientes_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [dbo].[Clientes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Agendamentoes] ADD CONSTRAINT [FK_dbo.Agendamentoes_dbo.Funcionarios_FuncionarioId] FOREIGN KEY ([FuncionarioId]) REFERENCES [dbo].[Funcionarios] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Funcionarios] ADD CONSTRAINT [FK_dbo.Funcionarios_dbo.Cargoes_CargoId] FOREIGN KEY ([CargoId]) REFERENCES [dbo].[Cargoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Avaliacaos] ADD CONSTRAINT [FK_dbo.Avaliacaos_dbo.Agendamentoes_AgendamentoId] FOREIGN KEY ([AgendamentoId]) REFERENCES [dbo].[Agendamentoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Caixas] ADD CONSTRAINT [FK_dbo.Caixas_dbo.Agendamentoes_AgendamentoId] FOREIGN KEY ([AgendamentoId]) REFERENCES [dbo].[Agendamentoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[EnderecoFuncionarios] ADD CONSTRAINT [FK_dbo.EnderecoFuncionarios_dbo.Funcionarios_FuncionarioId] FOREIGN KEY ([FuncionarioId]) REFERENCES [dbo].[Funcionarios] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[LoginClientes] ADD CONSTRAINT [FK_dbo.LoginClientes_dbo.Clientes_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [dbo].[Clientes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[LoginFuncionarios] ADD CONSTRAINT [FK_dbo.LoginFuncionarios_dbo.Funcionarios_FuncionarioId] FOREIGN KEY ([FuncionarioId]) REFERENCES [dbo].[Funcionarios] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[LoginFuncionarios] ADD CONSTRAINT [FK_dbo.LoginFuncionarios_dbo.Permissoes_PermissoesId] FOREIGN KEY ([PermissoesId]) REFERENCES [dbo].[Permissoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ServicosAgendamentoes] ADD CONSTRAINT [FK_dbo.ServicosAgendamentoes_dbo.Agendamentoes_AgendamentoId] FOREIGN KEY ([AgendamentoId]) REFERENCES [dbo].[Agendamentoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ServicosAgendamentoes] ADD CONSTRAINT [FK_dbo.ServicosAgendamentoes_dbo.Servicoes_ServicoId] FOREIGN KEY ([ServicoId]) REFERENCES [dbo].[Servicoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ServicosSolicitacaos] ADD CONSTRAINT [FK_dbo.ServicosSolicitacaos_dbo.Servicoes_ServicoId] FOREIGN KEY ([ServicoId]) REFERENCES [dbo].[Servicoes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[ServicosSolicitacaos] ADD CONSTRAINT [FK_dbo.ServicosSolicitacaos_dbo.Solicitacaos_SolicitacaoId] FOREIGN KEY ([SolicitacaoId]) REFERENCES [dbo].[Solicitacaos] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Solicitacaos] ADD CONSTRAINT [FK_dbo.Solicitacaos_dbo.Clientes_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [dbo].[Clientes] ([Id]) ON DELETE CASCADE
+ALTER TABLE [dbo].[Solicitacaos] ADD CONSTRAINT [FK_dbo.Solicitacaos_dbo.Funcionarios_FuncionarioId] FOREIGN KEY ([FuncionarioId]) REFERENCES [dbo].[Funcionarios] ([Id]) ON DELETE CASCADE
 
 
 CREATE TABLE funcionarios(

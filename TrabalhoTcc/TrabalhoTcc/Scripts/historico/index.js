@@ -57,7 +57,7 @@
         },
         dom: 'Bfrtip',
         buttons: [
-            { extend: 'copy', text: 'Copiar' }, { extend: 'print', text: 'Iprimir' }
+            { extend: 'copy', text: 'Copiar' }, { extend: 'print', text: 'Imprimir' }
         ],
         responsive: true
     });
