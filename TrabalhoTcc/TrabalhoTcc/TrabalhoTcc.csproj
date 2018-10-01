@@ -99,6 +99,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap\bootstrap-grid.css" />
@@ -126,20 +130,6 @@
     <Content Include="Content\mdbBootstrap\css\mdb.min.css" />
     <Content Include="Content\mdbBootstrap\css\style.css" />
     <Content Include="Content\mdbBootstrap\css\style.min.css" />
-    <Content Include="Content\mdbBootstrap\img\lightbox\default-skin.png" />
-    <Content Include="Content\mdbBootstrap\img\lightbox\default-skin.svg" />
-    <Content Include="Content\mdbBootstrap\img\lightbox\preloader.gif" />
-    <Content Include="Content\mdbBootstrap\img\overlays\01.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\02.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\03.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\04.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\05.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\06.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\07.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\08.png" />
-    <Content Include="Content\mdbBootstrap\img\overlays\09.png" />
-    <Content Include="Content\mdbBootstrap\img\svg\arrow_left.svg" />
-    <Content Include="Content\mdbBootstrap\img\svg\arrow_right.svg" />
     <Content Include="Content\mdbBootstrap\js\addons\datatables.js" />
     <Content Include="Content\mdbBootstrap\js\addons\datatables.min.js" />
     <Content Include="Content\mdbBootstrap\js\bootstrap.js" />
@@ -158,39 +148,35 @@
     <Content Include="Content\mdbBootstrap\js\modules\wow.js" />
     <Content Include="Content\mdbBootstrap\js\popper.min.js" />
     <Content Include="Content\pnotify.custom.min.css" />
+    <Content Include="Content\select2.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="DataSet\Estrutura 01.sql" />
     <Content Include="DataSet\Estrututa.sql" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\emConstrucao.jpg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\logoSisHAIR.png" />
+    <Content Include="fonts\user.png" />
+    <Content Include="fonts\wallpapers1.jpg" />
+    <Content Include="fonts\wallpapers2.jpeg" />
+    <Content Include="fonts\wallpapers3.jpg" />
+    <Content Include="fonts\wallpapers4.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="Imagem-carrosel-index\7742-projeto-sal-atilde-o-solid-aacute-rio-article_media_item-1.jpg" />
-    <Content Include="Imagem-carrosel-index\haircut3.jpg" />
-    <Content Include="Imagem-carrosel-index\shutterstock_624972605_maszynka2.jpg" />
     <Content Include="Scripts\additional-methods.min.js" />
     <Content Include="Scripts\avaliacao\avaliacao.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caixa\index.js" />
-    <Content Include="Scripts\chartJS\index.js" />
+    <Content Include="Scripts\cargos\index.js" />
+    <Content Include="Scripts\chartJS\agendamentos.js" />
+    <Content Include="Scripts\chartJS\funcionarios.js" />
     <Content Include="Scripts\cliente\index.js" />
+    <Content Include="Scripts\cliente\table\index.js" />
+    <Content Include="Scripts\contacliente\autoCadastoCliente.js" />
+    <Content Include="Scripts\criarContaGoogle.js" />
     <Content Include="Scripts\funcionario\endereco\index.js" />
-    <Content Include="Scripts\tables\index.js" />
     <Content Include="Scripts\contacliente\criarContaAux.js" />
     <Content Include="Scripts\contacliente\indexfuncionario.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
@@ -217,47 +203,12 @@
     <Content Include="Content\mdbBootstrap\font\roboto\Roboto-Thin.ttf" />
     <Content Include="Content\mdbBootstrap\font\roboto\Roboto-Thin.woff" />
     <Content Include="Content\mdbBootstrap\font\roboto\Roboto-Thin.woff2" />
-    <Content Include="Content\mdbBootstrap\scss\addons\_datatables.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\bootstrap\_functions.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\bootstrap\_variables.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_colors.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_global.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_helpers.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_masks.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_mixins.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_typography.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_variables.scss" />
-    <Content Include="Content\mdbBootstrap\scss\core\_waves.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_animations-basic.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_animations-extended.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_badges.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_buttons.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_cards.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_carousels.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_depreciated.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_dropdowns.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_footers.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_forms.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_input-group.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_list-group.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_modals.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_msc.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_navbars.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_pagination.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_switch.scss" />
-    <Content Include="Content\mdbBootstrap\scss\free\_tables.scss" />
-    <Content Include="Content\mdbBootstrap\scss\mdb.scss" />
-    <Content Include="Content\mdbBootstrap\scss\style.scss" />
-    <Content Include="Content\mdbBootstrap\scss\_custom-skin.scss" />
-    <Content Include="Content\mdbBootstrap\scss\_custom-styles.scss" />
-    <Content Include="Content\mdbBootstrap\scss\_custom-variables.scss" />
     <Content Include="Content\bootstrap\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap\bootstrap-reboot.min.css.map" />
     <Content Include="Content\bootstrap\bootstrap.css.map" />
     <Content Include="Content\bootstrap\bootstrap.min.css.map" />
-    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Content\fullcalendar\bootstrap.min.css" />
     <Content Include="Scripts\fullcalendar\bootstrap.min.js" />
     <Content Include="Scripts\fullcalendar\fullcalendar.js" />
@@ -266,31 +217,28 @@
     <Content Include="Scripts\fullcalendar\moment.min.js" />
     <Content Include="Scripts\fullcalendar\pt-br.js" />
     <Content Include="Scripts\funcionario\index.js" />
+    <Content Include="Scripts\funcionario\table\index.js" />
     <Content Include="Scripts\funcionario\validacao.js" />
-    <Content Include="Scripts\indexadm.js" />
-    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\historico\index.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\funcionario\login\index.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\layout\bootstrap.min.js" />
+    <Content Include="Scripts\layout\custom.min.js" />
+    <Content Include="Scripts\layout\daterangepicker.js" />
+    <Content Include="Scripts\layout\fastclick.js" />
+    <Content Include="Scripts\layout\jquery.min.js" />
+    <Content Include="Scripts\layout\moment.min.js" />
+    <Content Include="Scripts\messages_pt_BR.js" />
     <Content Include="Scripts\pnotify.custom.min.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\simplepagination.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\servicos\index.js" />
     <Content Include="Scripts\solicitacao\index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -300,6 +248,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\DBContext.cs" />
     <Compile Include="Controllers\AgendamentosController.cs" />
+    <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\CaixaController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -314,9 +263,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201809152039282_inicio.cs" />
-    <Compile Include="Migrations\201809152039282_inicio.Designer.cs">
-      <DependentUpon>201809152039282_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201809281942060_zappkkk.cs" />
+    <Compile Include="Migrations\201809281942060_zappkkk.Designer.cs">
+      <DependentUpon>201809281942060_zappkkk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810011637546_inicio.cs" />
+    <Compile Include="Migrations\201810011637546_inicio.Designer.cs">
+      <DependentUpon>201810011637546_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -330,6 +283,7 @@
     <Compile Include="Models\Conta\NovaSenha.cs" />
     <Compile Include="Models\Conta\PassarMensagem.cs" />
     <Compile Include="Models\Conta\Permissoes.cs" />
+    <Compile Include="Models\Conta\segurancaLogin.cs" />
     <Compile Include="Models\Conta\VerificarCodigo.cs" />
     <Compile Include="Models\EnderecoFuncionario.cs" />
     <Compile Include="Models\Funcionario.cs" />
@@ -347,20 +301,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\Master.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.0.0.min.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
     <Content Include="Views\Shared\MasterAdiministrador.cshtml" />
     <Content Include="Views\ContaCliente\Login.cshtml" />
     <Content Include="Views\ContaCliente\CriarConta.cshtml" />
@@ -407,6 +349,18 @@
     <Content Include="Views\ContaCliente\VerificarCodigo.cshtml" />
     <Content Include="Views\ContaFuncionario\EsqueciMinhaSenha.cshtml" />
     <Content Include="Views\ContaFuncionario\RedefinirSenha.cshtml" />
+    <Content Include="Views\Avaliacoes\Index.cshtml" />
+    <Content Include="Views\Cliente\PerfilEditar.cshtml" />
+    <Content Include="Views\Estatisticas\Funcionarios.cshtml" />
+    <Content Include="Views\Funcionarios\PerfilFuncionario.cshtml" />
+    <Content Include="Views\Home\EmConstrucao.cshtml" />
+    <Content Include="Views\Solicitacao\MinhasAvaliacoes.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -415,17 +369,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809152039282_inicio.resx">
-      <DependentUpon>201809152039282_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809281942060_zappkkk.resx">
+      <DependentUpon>201809281942060_zappkkk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810011637546_inicio.resx">
+      <DependentUpon>201810011637546_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
