@@ -263,13 +263,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201809281942060_zappkkk.cs" />
-    <Compile Include="Migrations\201809281942060_zappkkk.Designer.cs">
-      <DependentUpon>201809281942060_zappkkk.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810011637546_inicio.cs" />
-    <Compile Include="Migrations\201810011637546_inicio.Designer.cs">
-      <DependentUpon>201810011637546_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201810011803061_inicio.cs" />
+    <Compile Include="Migrations\201810011803061_inicio.Designer.cs">
+      <DependentUpon>201810011803061_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -375,11 +371,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809281942060_zappkkk.resx">
-      <DependentUpon>201809281942060_zappkkk.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810011637546_inicio.resx">
-      <DependentUpon>201810011637546_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810011803061_inicio.resx">
+      <DependentUpon>201810011803061_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
