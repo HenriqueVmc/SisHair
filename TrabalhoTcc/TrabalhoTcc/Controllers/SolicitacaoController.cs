@@ -320,7 +320,8 @@ namespace TrabalhoTcc.Controllers
                 mail.From = new MailAddress("salaosuporte@gmail.com");
                 mail.To.Add(aa.Email);
                 mail.Subject = "SisHAIR";
-                mail.Body = string.Format("Uma solicitação de agendamento foi realizada! Consulte sua <a href='{0}'>Lista de Solicitações</a> ", callbackUrl);
+                mail.Body = string.Format("Uma solicitação de agendamento foi realizada! Consulte sua <a href='{0}'>Lista de Solicitações</a>", callbackUrl);
+                mail.IsBodyHtml = true;
 
                 smtp.Port = 587;
                 smtp.UseDefaultCredentials = false;

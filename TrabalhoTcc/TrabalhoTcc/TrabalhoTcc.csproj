@@ -105,6 +105,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-glyphicons.css" />
     <Content Include="Content\bootstrap\bootstrap-grid.css" />
     <Content Include="Content\bootstrap\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap\bootstrap-reboot.css" />
@@ -114,13 +115,29 @@
     <Content Include="Content\bootstrap\font-awesome.css" />
     <Content Include="Content\bootstrap\font-awesome.min.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\datatables.net\buttons.dataTables.min.css" />
+    <Content Include="Content\datatables.net\buttons.flash.min.js" />
+    <Content Include="Content\datatables.net\buttons.html5.min.js" />
+    <Content Include="Content\datatables.net\buttons.print.min.js" />
+    <Content Include="Content\datatables.net\dataTables.buttons.min.js" />
+    <Content Include="Content\datatables.net\jquery.dataTables.min.css" />
+    <Content Include="Content\datatables.net\jquery.dataTables.min.js" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\fullcalendar\bootstrap-glyphicons.css" />
     <Content Include="Content\fullcalendar\fullcalendar.css" />
     <Content Include="Content\fullcalendar\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar\fullcalendar.print.css" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
     <Content Include="Content\jquery.mask.js" />
+    <Content Include="Content\layout\bootstrap.min.css" />
+    <Content Include="Content\layout\custom.min.css" />
+    <Content Include="Content\layout\daterangepicker.css" />
+    <Content Include="Content\layout\font-awesome.min.css" />
     <Content Include="Content\mascara.js" />
     <Content Include="Content\mdbBootstrap\css\addons\datatables.css" />
     <Content Include="Content\mdbBootstrap\css\addons\datatables.min.css" />
@@ -168,13 +185,26 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\caixa\index.js" />
     <Content Include="Scripts\cargos\index.js" />
-    <Content Include="Scripts\chartJS\agendamentos.js" />
     <Content Include="Scripts\chartJS\funcionarios.js" />
+    <Content Include="Scripts\chartJS\agendamentos.js" />
     <Content Include="Scripts\cliente\index.js" />
     <Content Include="Scripts\cliente\table\index.js" />
     <Content Include="Scripts\contacliente\autoCadastoCliente.js" />
     <Content Include="Scripts\criarContaGoogle.js" />
     <Content Include="Scripts\funcionario\endereco\index.js" />
+    <Content Include="Scripts\funcionario\table\index.js" />
+    <Content Include="Scripts\historico\index.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\layout\bootstrap.min.js" />
+    <Content Include="Scripts\layout\custom.min.js" />
+    <Content Include="Scripts\layout\daterangepicker.js" />
+    <Content Include="Scripts\layout\fastclick.js" />
+    <Content Include="Scripts\layout\jquery.min.js" />
+    <Content Include="Scripts\layout\moment.min.js" />
+    <Content Include="Scripts\messages_pt_BR.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\servicos\index.js" />
     <Content Include="Scripts\contacliente\criarContaAux.js" />
     <Content Include="Scripts\contacliente\indexfuncionario.js" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -217,28 +247,15 @@
     <Content Include="Scripts\fullcalendar\moment.min.js" />
     <Content Include="Scripts\fullcalendar\pt-br.js" />
     <Content Include="Scripts\funcionario\index.js" />
-    <Content Include="Scripts\funcionario\table\index.js" />
     <Content Include="Scripts\funcionario\validacao.js" />
-    <Content Include="Scripts\historico\index.js" />
-    <Content Include="Scripts\jquery-3.0.0.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\funcionario\login\index.js" />
-    <Content Include="Scripts\layout\bootstrap.min.js" />
-    <Content Include="Scripts\layout\custom.min.js" />
-    <Content Include="Scripts\layout\daterangepicker.js" />
-    <Content Include="Scripts\layout\fastclick.js" />
-    <Content Include="Scripts\layout\jquery.min.js" />
-    <Content Include="Scripts\layout\moment.min.js" />
-    <Content Include="Scripts\messages_pt_BR.js" />
     <Content Include="Scripts\pnotify.custom.min.js" />
-    <Content Include="Scripts\select2.min.js" />
-    <Content Include="Scripts\servicos\index.js" />
     <Content Include="Scripts\solicitacao\index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -263,9 +280,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CriptoHelper.cs" />
-    <Compile Include="Migrations\201810011803061_inicio.cs" />
-    <Compile Include="Migrations\201810011803061_inicio.Designer.cs">
-      <DependentUpon>201810011803061_inicio.cs</DependentUpon>
+    <Compile Include="Migrations\201810040008225_inicio.cs" />
+    <Compile Include="Migrations\201810040008225_inicio.Designer.cs">
+      <DependentUpon>201810040008225_inicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agendamento.cs" />
@@ -345,18 +362,19 @@
     <Content Include="Views\ContaCliente\VerificarCodigo.cshtml" />
     <Content Include="Views\ContaFuncionario\EsqueciMinhaSenha.cshtml" />
     <Content Include="Views\ContaFuncionario\RedefinirSenha.cshtml" />
-    <Content Include="Views\Avaliacoes\Index.cshtml" />
-    <Content Include="Views\Cliente\PerfilEditar.cshtml" />
     <Content Include="Views\Estatisticas\Funcionarios.cshtml" />
-    <Content Include="Views\Funcionarios\PerfilFuncionario.cshtml" />
-    <Content Include="Views\Home\EmConstrucao.cshtml" />
-    <Content Include="Views\Solicitacao\MinhasAvaliacoes.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Avaliacoes\Index.cshtml" />
+    <Content Include="Views\Home\EmConstrucao.cshtml" />
+    <Content Include="Views\Cliente\PerfilEditar.cshtml" />
+    <Content Include="Views\Solicitacao\MinhasAvaliacoes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -371,13 +389,16 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810011803061_inicio.resx">
-      <DependentUpon>201810011803061_inicio.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810040008225_inicio.resx">
+      <DependentUpon>201810040008225_inicio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

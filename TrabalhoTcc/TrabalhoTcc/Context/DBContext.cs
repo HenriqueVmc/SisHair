@@ -10,7 +10,7 @@ namespace TrabalhoTcc.Context
 {
     public class DBContext : DbContext
     {
-        public DBContext() : base("Tcc")
+        public DBContext() : base("Tcc")//Data Source=sis-hair-tcc.mssql.somee.com;Initial Catalog=sis-hair-tcc;Integrated Security=False;User ID=henriquevmc_SQLLogin_1;Password=tw7f23l1wn;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
         {
 
         }

@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity.Validation;
 using System.Net.Mail;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace TrabalhoTcc.Controllers
 {
@@ -217,6 +220,27 @@ namespace TrabalhoTcc.Controllers
             catch (Exception ex){ }
         }
 
+        public ActionResult ExportExcel()
+        {
+            var list = db.Solicitacoes.ToList();
+            var gv = new GridView();
+
+            gv.DataSource = list;
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=PlanilhaSisHAIR(" + DateTime.Now.ToString("dd_MM_yyyy_hh_mm") + ").xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter objStringWriter = new StringWriter();
+            HtmlTextWriter objHtmlTextWriter = new HtmlTextWriter(objStringWriter);
+            gv.RenderControl(objHtmlTextWriter);
+            Response.Output.Write(objStringWriter.ToString());
+            Response.Flush();
+            Response.End();
+
+            return View();
+        }
     }
 
 }

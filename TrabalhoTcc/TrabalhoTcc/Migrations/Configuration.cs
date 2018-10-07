@@ -24,7 +24,8 @@ namespace TrabalhoTcc.Migrations
             context.Servicos.AddOrUpdate(x => x.Id,
                 new Servico() { Id = 1, Nome = "Corte Masculino", Valor = 30, Duracao = 30, RegistroServicoAtivo = true },
                 new Servico() { Id = 2, Nome = "Corte Feminino", Valor = 60, Duracao = 50, RegistroServicoAtivo = true },
-                new Servico() { Id = 3, Nome = "Corte Infantil", Valor = 15, Duracao = 50, RegistroServicoAtivo = false }
+                new Servico() { Id = 3, Nome = "Sobrancelha", Valor = 12, Duracao = 50, RegistroServicoAtivo = true },
+                new Servico() { Id = 4, Nome = "Corte Infantil", Valor = 15, Duracao = 50, RegistroServicoAtivo = false }
             );
 
             context.Cargos.AddOrUpdate(x => x.Id,
@@ -34,9 +35,8 @@ namespace TrabalhoTcc.Migrations
             );
 
             context.Funcionarios.AddOrUpdate(x => x.Id,
-                new Funcionario() { Id = 1, Nome = "Rosimeire de Oliveira", DataNascimento = DateTime.Now, Telefone = "(48)9987-3454", Cpf = "765.964.582-02", RegistroFuncionarioAtivo = true, CargoId = 1 },
-                new Funcionario() { Id = 2, Nome = "Cláudia Soares", DataNascimento = DateTime.Now, Telefone = "(11)96620-1234", Cpf = "303.811.642-41", RegistroFuncionarioAtivo = true, CargoId = 1 },
-                new Funcionario() { Id = 3, Nome = "Diomedes Chinaski", DataNascimento = DateTime.Now, Telefone = "(47)99157-4567", Cpf = "064.159.882-39", Email = "salaosuporte@gmail.com", RegistroFuncionarioAtivo = true, CargoId = 1 }
+                new Funcionario() { Id = 1, Nome = "Rosimeire de Oliveira", DataNascimento =  new DateTime(1975, 12, 01), Telefone = "(48)9987-3454", Cpf = "765.964.582-02", Email = "salaosuporte@gmail.com", RegistroFuncionarioAtivo = true, CargoId = 1 },
+                new Funcionario() { Id = 2, Nome = "Cláudia Soares", DataNascimento = new DateTime(1975, 10, 04), Telefone = "(11)96620-1234", Cpf = "303.811.642-41", Email = "henriquevmcunha99@gmail.com", RegistroFuncionarioAtivo = true, CargoId = 1 }                
             );
 
             context.permissoes.AddOrUpdate(x => x.Id,
@@ -52,7 +52,7 @@ namespace TrabalhoTcc.Migrations
 
 
             context.Clientes.AddOrUpdate(x => x.Id,
-                new Cliente() { Id = 1, Nome = "Maria das Flores", Data_nascimento = DateTime.Now, Celular = "(47)99816-1423", Telefone = "(47)3441-2988", Email = "asdnjsadjsdh@gmail.com", RegistroClienteAtivo = true }
+                new Cliente() { Id = 1, Nome = "Francisco Sans", Data_nascimento = new DateTime(1994, 1, 18), Celular = "(47)99816-1423", Telefone = "(47)3441-2988", Email = "henriquevmcunha99@gmail.com", RegistroClienteAtivo = true }
             );
 
             context.Agendamentos.AddOrUpdate(x => x.Id,
