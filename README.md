@@ -2,14 +2,18 @@
 
 <h4>Turma:</h4>
 <ul>
-<li>Desenvolvimento C# .NET</li>
+  <li>Desenvolvimento C# .NET</li>
+</ul>
+<h4>Orientador:</h4>
+<ul>
+  <li>Francisco Lucas Sens</li>
 </ul>
 <h4>Integrantes:</h4>
 <ul>
-<li>Adrian Boaventura</li>
-<li>Alan Eduardo Alves</li>
-<li>Eduardo Valois</li>
-<li>Henrique Venâncio</li>
+  <li>Adrian Boaventura</li>
+  <li>Alan Eduardo Alves</li>
+  <li>Eduardo Valois</li>
+  <li>Henrique Venâncio</li>
 </ul>
 <h5>O que?</h5>
 Consiste em um sistema para automatização de processos rotineiros de salões de beleza e barbearias.
@@ -23,9 +27,9 @@ Disponibilizado na web, prezando pela flexibilidade, agilidade e segurança.
 
 <h4>Tecnologias utilizadas:</h4>
 <ul>
-<li>IDE: Visual Studio</li>
-<li>SGBD: Microsoft SQL Server</li>
-<li>Linguagem: C#</li>
-<li>Frameworks: ASP .NET MVC; Entity Framework; Bootstrap</li>
-<li>Outras: Razor; JavaScript; JQuery + Ajax</li>
+  <li>IDE: Visual Studio</li>
+  <li>SGBD: Microsoft SQL Server</li>
+  <li>Linguagem: C#</li>
+  <li>Frameworks: ASP .NET MVC; Entity Framework; Bootstrap</li>
+  <li>Outras: Razor; JavaScript; JQuery + Ajax</li>
 </ul>
