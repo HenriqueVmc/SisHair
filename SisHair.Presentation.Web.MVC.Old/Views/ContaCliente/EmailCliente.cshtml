@@ -1,0 +1,39 @@
+﻿@model SisHair.Presentation.Web.MVC.Old.Models.Cliente
+@{
+    Layout = "/Views/Shared/Master.cshtml";
+}
+@section styles{
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+}
+<div class="container mt-5">
+    <div class="row col-12">
+        <div class="col-md-12">
+        </div>
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4 mt-4">
+            @using (Html.BeginForm("EmailCliente", "ContaCliente", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <h1>Recuperar Senha</h1>
+                    <label for="campo-usuario">Digite seu E-mail:</label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    <div class="offset-3">
+                        <button type="submit" class="btn btn-outline-success" name="btnEnviar" id="btnEnviar">
+                            <i class="fa fa-location-arrow"> Enviar</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

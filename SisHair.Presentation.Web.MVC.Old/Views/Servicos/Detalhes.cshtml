@@ -1,0 +1,54 @@
+﻿@model SisHair.Presentation.Web.MVC.Old.Models.Servico
+
+@{
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<div class="x_panel">
+    <div>
+        <h4>Detalhes:</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Duracao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Duracao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+
+        </dl>
+    </div>
+    <p class="float-left ml-3">
+        <a href="@Url.Action("Editar", new { id = Model.Id })" class="btn btn-success">
+            <span class="fa fa-pencil"></span> Editar
+        </a>
+        <a href="@Url.Action("Index", new { id = Model.Id })" class="btn btn-outline-dark">
+            <span class="fa fa-arrow-circle-left"></span> Lista de Serviços
+        </a>
+    </p>
+</div>

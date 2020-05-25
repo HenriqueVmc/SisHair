@@ -1,0 +1,143 @@
+﻿@model IEnumerable<SisHair.Presentation.Web.MVC.Old.Models.Funcionario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+@section styles{
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+}
+
+<h3 class="text-center">Funcionários:</h3>
+
+<a href="@Url.Action("Cadastrar")" class="btn btn-success">
+    <span class="fa fa-plus "></span> Funcionário
+</a>
+<a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+    <span class="fa fa-download "></span> Exportar para Excel
+</a>
+
+<div class="x_panel table-responsive">
+    <table class="table table-striped" id="tableFuncionarios">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cpf)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Cargo.Nome)
+                </th>
+                <th>
+                    Situação do Registro
+                </th>
+                <th>Ações:</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <input type="hidden" id="Id" namw="Id" value="@item.Id" />
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cpf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Celular)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cargo.Nome)
+                    </td>
+                    @if(item.RegistroFuncionarioAtivo == true)
+                    {
+                        <td>Registro encontra-se como <i class="green">Ativo</i></td>
+                    }
+                    else
+                    {
+                        <td>Registro encontra-se como <i class="red">Inativo</i></td>
+                    }
+                        <td>
+                            @if (item.RegistroFuncionarioAtivo == true)
+                            {
+                                @Html.ActionLink(" ", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(" ", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                            }
+                            @*@Html.ActionLink(" ", "Editar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })*@
+                            @*@Html.ActionLink(" ", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })*@
+                            @if (item.RegistroFuncionarioAtivo == true)
+                            {
+                                @Html.ActionLink(" ", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger", @data_toggle = "tooltip", @data_placement = "top", title = "Registro encontrase como Ativo, Para desativar clique aqui" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(" ", "Deletar", "Funcionarios", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger", @data_toggle = "tooltip", @data_placement = "top", title = "Registro encontrase como Inativo, Para ativar clique aqui" })
+                            }
+                        </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataNascimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cpf)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Cargo.Nome)
+                </th>
+                <th>Ações:</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+@section scripts{
+
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+
+    <script src="~/Scripts/funcionario/table/index.js"></script>
+
+}

@@ -1,0 +1,155 @@
+﻿@model SisHair.Presentation.Web.MVC.Old.Models.Caixa
+
+@{
+    ViewBag.Title = "Pagamento";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+<div class="">
+    @using (Html.BeginForm())
+    {
+        <h2 class="text-center">Pagamento: </h2>
+        <hr />
+        <div class="row">
+
+            <div class="form-horizontal col-md-6">
+                <input type="hidden" id="AgendamentoId" name="AgendamentoId" value="@ViewBag.Agendamento.Id" />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ValorTotal, htmlAttributes: new { @class = "control-label" })
+
+                        @if (ViewBag.ValorTotal != null)
+                        {
+                            <input type="text" id="ValorTotal" name="ValorTotal" value="@ViewBag.ValorTotal" class="form-control" />
+                        }
+                        else
+                        {
+                            <input type="text" id="ValorTotal" name="ValorTotal" class="form-control" />
+                        }
+
+                        @Html.ValidationMessageFor(model => model.ValorTotal, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.ValorPago, htmlAttributes: new { @class = "control-label" })
+                        <input type="text" id="ValorPago" name="ValorPago" class="form-control" />
+                        @Html.ValidationMessageFor(model => model.ValorPago, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+
+                        @Html.LabelFor(model => model.Divida, htmlAttributes: new { @class = "control-label" })
+                        <input type="text" id="Divida" name="Divida" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.Divida, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3">
+                        @Html.Label("Troco:", htmlAttributes: new { @class = "control-label" })
+                        <input type="text" id="Troco" name="Troco" class="form-control" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.FormaPagamento, htmlAttributes: new { @class = "control-label" })
+
+                        <select class="form-control  " id="FormaPagamento" name="FormaPagamento">
+                            <option value="Dinheiro" selected>Dinheiro</option>
+                            <option value="Débito">Débito</option>
+                            <option value="Crédito">Crédito</option>
+                        </select>
+
+                        @Html.ValidationMessageFor(model => model.FormaPagamento, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label" })
+
+                        <select class="form-control" id="Status" name="Status">
+                            <option value="Pago" selected>Pago</option>
+                            <option value="Pendente">Pendente</option>
+                        </select>
+
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.DataPagamento, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.DataPagamento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DataPagamento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-horizontal col-md-6">
+                <div class="panel panel-default">
+                    <h4 class="text-center">Agendamento:</h4>
+                    <div class="panel-body">
+                        @if (ViewBag.Agendamento != null)
+                        {
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Agendamento.Cliente)
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.Agendamento.Cliente.Nome
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayName("Funcionário:")
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.Agendamento.Funcionario.Nome
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Agendamento.DataHoraInicio)
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.Agendamento.DataHoraInicio
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Agendamento.DataHoraFinal)
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.Agendamento.DataHoraFinal
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Agendamento.Servicos)
+                                </dt>
+
+                                <dd>
+                                    @ViewBag.Agendamento.Servicos
+                                </dd>
+                            </dl>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> Pagar</button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                            <span class="fa fa-arrow-circle-left"></span> Histórico do caixa
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section scripts{
+    <script src="~/Scripts/caixa/index.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

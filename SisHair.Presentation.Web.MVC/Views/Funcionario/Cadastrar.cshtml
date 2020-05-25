@@ -1,0 +1,158 @@
+﻿@model SisHair.FuncionarioContext.Application.ViewModels.FuncionarioViewModel
+
+@{
+    ViewData["Title"] = "Cadastrar";
+    //Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+
+
+@using (Html.BeginForm("Cadastrar", "Funcionario", FormMethod.Post, new { id = "formCadastroFuncionario" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="">
+        <h3 class="text-center">Cadastro de Funcionário</h3>
+        <hr class="text-dark" />
+        <div class="row">
+            <div class="form-horizontal col-md-6">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Nome, "Nome:", htmlAttributes: new { @class = "control-label" })<span class="text-danger"> *</span>
+
+                        @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.DataNascimento, "Data de Nascimento:", htmlAttributes: new { @class = "control-label" })<span class="text-danger"> *</span>
+                        @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Cpf, "CPF:", htmlAttributes: new { @class = "control-label", @maxlength = "14" })<span class="text-danger"> *</span>
+                        @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Celular, "Celular:", htmlAttributes: new { @class = "control-label", @maxlength = "15" })<span class="text-danger"> *</span>
+                        @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+
+                        @Html.LabelFor(model => model.Telefone, "Telefone:", htmlAttributes: new { @class = "control-label" })<span class="text-danger"> *</span>
+                        @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Email, "E-mail:", htmlAttributes: new { @class = "control-label" })<span class="text-danger"> *</span>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        @Html.LabelFor(model => model.Cargo, "Cargo:", htmlAttributes: new { @class = "control-label" })<span class="text-danger"> *</span>
+                        @Html.DropDownListFor(model => model.Cargo.Id, (SelectList)ViewBag.CargosDisponiveis, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Permissão:<span class="text-danger"> *</span></label>
+                        <select id="PermissoesId" name="PermissoesId" class="custom-select"></select>
+                    </div>
+                </div>
+
+                @*<fieldset>
+                        <legend>Endereços</legend>
+                        @Ajax.ActionLink("Novo Endereço", "NovoEndereco", null, new AjaxOptions() { HttpMethod = "GET", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "enderecos" }, new { @class = "btn btn-default btn-sm" })
+                        <div id="enderecos"></div>
+                    </fieldset>*@
+            </div>
+
+            @*
+                    @<div class="form-horizontal col-md-6">
+                    @Html.Action("_Endereco", "Funcionarios")@
+
+                    <h4 class="text-center">Endereço:</h4>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-labe">CEP:<span class="text-danger"> *</span></label>
+                            <input type="text" class="form-control" id="Endereco.Cep" name="Endereco.Cep" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Número:<span class="text-danger"> *</span></label>
+                            <input type="text" class="form-control" id="Endereco.Numero" name="Endereco.Numero" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="control-label">Rua:</label>
+                            <input type="text" class="form-control" id="Endereco.Rua" name="Endereco.Rua" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <label class="control-label">Bairro:</label>
+                            <input type="text" class="form-control" id="Endereco.Bairro" name="Endereco.Bairro" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="control-label">Complemento:</label>
+                            <input type="text" class="form-control" id="Endereco.Complemento" name="Endereco.Complemento" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <label class="control-label">Cidade:</label>
+                            <input type="text" class="form-control" id="Endereco.Cidade" name="Endereco.Cidade" />
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">UF:</label>
+                            <input type="text" class="form-control" id="Endereco.Estado" name="Endereco.Estado" />
+                        </div>
+                    </div>
+                </div>
+            *@
+
+        </div>
+        <hr>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <button id="btnCadFuncionario" class="btn btn-success" type="submit"><i class="fa fa-save"></i> Cadastrar</button>
+                        <a href="@Url.Action("Index")" class="btn btn-outline-dark">
+                            <span class="fa fa-arrow-circle-left"></span> Lista de Funcionários
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right">
+            <p><span class="text-danger">* </span>Login: Por padrão, <strong class="text-danger">Usuário</strong> é composto por Email e a <strong class="text-danger">Senha</strong> por Data de nascimento do Funcionário.</p>
+        </div>
+    </div>
+
+
+}
+
+@section scripts{
+    <script src="~/js/funcionario/validacao.js"></script>
+    <script src="~/js/funcionario/index.js"></script>    
+    <script src="~/js/funcionario/endereco/index.js"></script>
+}
+

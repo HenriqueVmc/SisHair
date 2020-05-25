@@ -1,0 +1,118 @@
+﻿@model IEnumerable<SisHair.Presentation.Web.MVC.Old.Models.Cargo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MasterAdiministrador.cshtml";
+}
+@section styles{
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+}
+<h3 class="text-center">Cargos:</h3>
+
+<a href="@Url.Action("Cadastrar")" class="btn btn-success">
+    <span class="fa fa-plus "></span> Cargo
+</a>
+<a href="@Url.Action("ExportExcel")" class="btn btn-outline-success">
+    <span class="fa fa-download "></span> Exportar para Excel
+</a>
+
+<div class="x_panel">
+
+    <table class="table table-striped" id="tableCargos">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.RegistroCargoAtivo)*@
+                    Situação do Registro
+                </th>
+                <th>Ações:</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <input type="hidden" id="Id" name="Id" value="@item.Id" />
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    @if (item.RegistroCargoAtivo == true)
+                    {
+                        <td>Registro encontra-se como <i class="green">Ativo</i></td>
+                    }
+                    else
+                    {
+                        <td>Registro encontra-se como <i class="red"> Inativo</i></td>
+                    }
+                    <td>
+                        @if (item.RegistroCargoAtivo == true)
+                        {
+                            @Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                        }
+                        @*@Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })*@
+                        @*@if (item.RegistroCargoAtivo == false)
+                            {
+                                @Html.ActionLink(" ", "AtivarRegistro", "Cargos", new { id = item.Id }, new { @class = "fa fa-check btn btn-success" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink(" ", "Editar", "Cargos", new { id = item.Id }, new { @class = "fa fa-pencil btn btn-dark" })
+                            }*@
+                        @if (item.RegistroCargoAtivo == true)
+                        {
+                            @Html.ActionLink(" ", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger", @data_toggle = "tooltip", data_placement = "top", title = "Registro Ativo, para desativar clique aqui" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(" ", "Deletar", "Cargos", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger", @data_toggle = "tooltip", data_placement = "top", title = "Registro Inativo, para ativar-lo clique aqui" })
+                        }
+
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(Model => Model.RegistroCargoAtivo)*@
+
+                </th>
+                <th>Ações:</th>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+@section scripts{
+
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+
+    <script src="~/Scripts/cargos/index.js"></script>
+
+}

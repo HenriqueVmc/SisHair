@@ -1,0 +1,167 @@
+﻿@model IEnumerable<SisHair.Presentation.Web.MVC.Old.Models.Solicitacao>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Meus Agendamentos</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.css" />
+    <link href="~/Content/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link href="~/Content/fullcalendar/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <link href="~/Content/datatables.net/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/datatables.net/buttons.dataTables.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark scrolling-navbar">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" target="_blank">
+                <strong>Salão e barbearia</strong>
+            </a>
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Solicitacao/Agendamento">Minhas Solicitações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Solicitacao/AreaDoCliente"> Área do Cliente</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/Solicitacao/MinhasAvaliacoes"> Minhas Avaliações</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <form action="/ContaFuncionario/LogOff" method="GET">
+
+                <button id="btnLogOff" name="btnLogOff" class="btn btn-danger" type="submit">Logout</button>
+
+            </form>
+        </footer>
+    </nav>
+    <div class="container table-responsive mt-4">
+
+        <input type="hidden" id="ClienteId" name="ClienteId" value="@ViewBag.ClienteId" />
+        <table id="tabelaAgendamentos" class="table table-striped ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Cliente:")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Funcionário:")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataHoraInicio)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataHoraFinal)
+                    </th>
+                    <th>
+                        @Html.DisplayName("Serviços:")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Situacao)
+                    </th>
+                    <th>Ações:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHoraInicio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataHoraFinal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Servicos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Situacao)
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "Cancelar", new { id = item.Id }, new { @class = "fa fa-trash btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/datatables.net/jquery.dataTables.min.js"></script>
+    <script src="~/Content/datatables.net/dataTables.buttons.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.print.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.html5.min.js"></script>
+    <script src="~/Content/datatables.net/buttons.flash.min.js"></script>
+    <script>
+        $(function () {
+            $('#tabelaAgendamentos').dataTable({
+                "oLanguage": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+
+            })
+        });
+    </script>
+</body>
+</html>
