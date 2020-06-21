@@ -1,11 +1,12 @@
 ﻿using SisHair.CoreContext.BaseInterfaces;
 using System;
 
-namespace SisHair.FuncionarioContext.Application.Commands
+namespace SisHair.FuncionarioContext.Application.Events
 {
-    public class CadastrarFuncionarioCommand : ICommand
+    public class CadastrarFuncionarioEvent : IEvent
     {
-        public CadastrarFuncionarioCommand(
+        public CadastrarFuncionarioEvent(
+            int id,
             string nome,
             DateTime dataNascimento,
             string cpf,
@@ -15,6 +16,7 @@ namespace SisHair.FuncionarioContext.Application.Commands
             int cargoId
             )
         {
+            this.Id = id;
             this.Nome = nome;
             this.DataNascimento = dataNascimento;
             this.Cpf = cpf;
@@ -24,6 +26,7 @@ namespace SisHair.FuncionarioContext.Application.Commands
             this.CargoId = cargoId;
         }
 
+        public int Id { get; private set; }
         public string Nome { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public string Cpf { get; private set; }
@@ -31,10 +34,5 @@ namespace SisHair.FuncionarioContext.Application.Commands
         public string Telefone { get; private set; }
         public string Email { get; private set; }
         public int CargoId { get; private set; }
-
-        public bool IsValid()
-        {
-            return true;
-        }
     }
 }

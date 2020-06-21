@@ -1,4 +1,4 @@
-﻿using SisHair.CoreContext.BaseInterfaces.Commands;
+﻿using SisHair.CoreContext.BaseInterfaces;
 
 namespace SisHair.FuncionarioContext.Application.Commands
 {

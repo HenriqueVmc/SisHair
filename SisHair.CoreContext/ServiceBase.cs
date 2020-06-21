@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SisHair.CoreContext.Infra.Data
+namespace SisHair.CoreContext
 {
     public abstract class ServiceBase<TEntity, TRepository> : IServiceBase<TEntity> where TEntity : class where TRepository : class, IRepositoryBase<TEntity>
     {

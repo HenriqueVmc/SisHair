@@ -1,7 +1,9 @@
 ﻿using SisHair.FuncionarioContext.Application.Commands;
+using SisHair.FuncionarioContext.Application.Events;
 using SisHair.FuncionarioContext.Application.ViewModels;
 using SisHair.FuncionarioContext.Domain.Entities;
 using SisHair.FuncionarioContext.Domain.ValueObjects;
+using System;
 
 namespace SisHair.FuncionarioContext.Application
 {
@@ -53,5 +55,18 @@ namespace SisHair.FuncionarioContext.Application
                 Id = cargo.Id,
                 Nome = cargo.Nome
             };
+
+        public static CadastrarFuncionarioEvent FuncionarioToCadastrarFuncionarioEvent(Funcionario funcionario) =>
+            funcionario == null ? null :
+            new CadastrarFuncionarioEvent(
+                funcionario.Id,
+                funcionario.Nome,
+                funcionario.DataNascimento,
+                funcionario.Cpf,
+                funcionario.Contato.Celular,
+                funcionario.Contato.Telefone,
+                funcionario.Contato.Email,
+                funcionario.CargoId
+            );
     }
 }

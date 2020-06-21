@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SisHair.CoreContext.Mediator;
 using SisHair.FuncionarioContext.Application.Commands;
-using SisHair.FuncionarioContext.Application.Handlers;
 using SisHair.FuncionarioContext.Application.Queries;
 using SisHair.FuncionarioContext.Application.ViewModels;
 using System.Threading.Tasks;
@@ -11,12 +11,12 @@ namespace SisHair.Presentation.Web.MVC.Controllers
     public class FuncionarioController : Controller
     {
         private readonly IFuncionarioQueries query;
-        private readonly IFuncionarioCommandHandler commandHandler;
+        private readonly IMediatorHandler handler;
 
-        public FuncionarioController(IFuncionarioQueries query, IFuncionarioCommandHandler commandHandler)
+        public FuncionarioController(IFuncionarioQueries query, IMediatorHandler handler)
         {
             this.query = query;
-            this.commandHandler = commandHandler;
+            this.handler = handler;
         }
 
         [HttpGet]
@@ -34,7 +34,7 @@ namespace SisHair.Presentation.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(FuncionarioViewModel model)
+        public async Task<IActionResult> Cadastrar(FuncionarioViewModel model)
         {
             var command = new CadastrarFuncionarioCommand(
                 model.Nome,
@@ -46,7 +46,7 @@ namespace SisHair.Presentation.Web.MVC.Controllers
                 model.Cargo.Id
             );
 
-            var result = commandHandler.Handle(command);
+            var result = await handler.SendCommand(command);
 
             //return View(result);
             return RedirectToAction("Index");
@@ -76,7 +76,7 @@ namespace SisHair.Presentation.Web.MVC.Controllers
                 model.Cargo.Id
             );
 
-            var result = commandHandler.Handle(command);
+            var result = handler.SendCommand(command);
 
             return RedirectToAction("Index");
             //return View(result);
@@ -84,7 +84,7 @@ namespace SisHair.Presentation.Web.MVC.Controllers
 
         public IActionResult Remover(int id)
         {
-            var result = commandHandler.Handle(new RemoverFuncionarioCommand(id));
+            var result = handler.SendCommand(new RemoverFuncionarioCommand(id));
 
             return RedirectToAction("Index");
             //return View(result);

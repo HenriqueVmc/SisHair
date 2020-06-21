@@ -1,5 +1,5 @@
 ﻿
-using SisHair.CoreContext.BaseInterfaces.Commands;
+using SisHair.CoreContext.BaseInterfaces;
 using System;
 
 namespace SisHair.FuncionarioContext.Application.Commands

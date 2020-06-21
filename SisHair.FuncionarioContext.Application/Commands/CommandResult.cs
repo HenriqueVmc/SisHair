@@ -1,4 +1,4 @@
-﻿using SisHair.CoreContext.BaseInterfaces.Commands;
+﻿using SisHair.CoreContext.BaseInterfaces;
 using System.Collections.Generic;
 
 namespace SisHair.FuncionarioContext.Application.Commands
@@ -15,6 +15,8 @@ namespace SisHair.FuncionarioContext.Application.Commands
 
         public List<string> GetNotifications() =>
             notifications;
+
+        public CommandResult() { }
 
         public CommandResult(bool state, string message)
         {

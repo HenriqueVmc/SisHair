@@ -5,17 +5,11 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisHair.Presentation.Web.MVC.Old", "SisHair.Presentation.Web.MVC.Old\SisHair.Presentation.Web.MVC.Old.csproj", "{39E983C5-FD17-4937-A10F-CC5B742386F9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.CoreContext.Domain", "SisHair.CoreContext.Domain\SisHair.CoreContext.Domain.csproj", "{4A1F8006-D4D3-4901-9DC4-714040B2F74E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.CoreContext.Infra.Data", "SisHair.CoreContext.Infra.Data\SisHair.CoreContext.Infra.Data.csproj", "{80C4D918-E913-49AB-B9D3-37471B9A3ADC}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Application", "SisHair.FuncionarioContext.Application\SisHair.FuncionarioContext.Application.csproj", "{1D9C0974-7DC7-41FC-B2DF-97CF38800C93}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Domain", "SisHair.FuncionarioContext.Domain\SisHair.FuncionarioContext.Domain.csproj", "{5F1BA6F7-1CAE-4A1B-9F3B-08045170D395}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Tests", "SisHair.FuncionarioContext.Tests\SisHair.FuncionarioContext.Tests.csproj", "{CEC9586B-619C-4A54-9D98-22E6FCBBA0AF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Infra.CrossCutting.IoC", "SisHair.FuncionarioContext.Infra.CrossCutting.IoC\SisHair.FuncionarioContext.Infra.CrossCutting.IoC.csproj", "{557D827B-1288-4BEE-92A5-70095C4366BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.Presentation.Web.MVC", "SisHair.Presentation.Web.MVC\SisHair.Presentation.Web.MVC.csproj", "{4FC9B087-F145-4C18-B274-4CED353F6B15}"
 EndProject
@@ -27,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreContext", "CoreContext"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FuncionarioContext", "FuncionarioContext", "{5B8E8F16-BB96-4D52-A715-1C27365D7C61}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.CoreContext", "SisHair.CoreContext\SisHair.CoreContext.csproj", "{1F693812-FE06-48D4-B01A-D106EB0685F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,14 +33,6 @@ Global
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4A1F8006-D4D3-4901-9DC4-714040B2F74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A1F8006-D4D3-4901-9DC4-714040B2F74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A1F8006-D4D3-4901-9DC4-714040B2F74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A1F8006-D4D3-4901-9DC4-714040B2F74E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80C4D918-E913-49AB-B9D3-37471B9A3ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80C4D918-E913-49AB-B9D3-37471B9A3ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80C4D918-E913-49AB-B9D3-37471B9A3ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80C4D918-E913-49AB-B9D3-37471B9A3ADC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1D9C0974-7DC7-41FC-B2DF-97CF38800C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1D9C0974-7DC7-41FC-B2DF-97CF38800C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D9C0974-7DC7-41FC-B2DF-97CF38800C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,10 +45,6 @@ Global
 		{CEC9586B-619C-4A54-9D98-22E6FCBBA0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC9586B-619C-4A54-9D98-22E6FCBBA0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC9586B-619C-4A54-9D98-22E6FCBBA0AF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{557D827B-1288-4BEE-92A5-70095C4366BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{557D827B-1288-4BEE-92A5-70095C4366BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{557D827B-1288-4BEE-92A5-70095C4366BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{557D827B-1288-4BEE-92A5-70095C4366BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FC9B087-F145-4C18-B274-4CED353F6B15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FC9B087-F145-4C18-B274-4CED353F6B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC9B087-F145-4C18-B274-4CED353F6B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,20 +53,22 @@ Global
 		{6C2CD715-BA5D-45E1-BF57-7251FB5A0808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C2CD715-BA5D-45E1-BF57-7251FB5A0808}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C2CD715-BA5D-45E1-BF57-7251FB5A0808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F693812-FE06-48D4-B01A-D106EB0685F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F693812-FE06-48D4-B01A-D106EB0685F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F693812-FE06-48D4-B01A-D106EB0685F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F693812-FE06-48D4-B01A-D106EB0685F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{39E983C5-FD17-4937-A10F-CC5B742386F9} = {95C7A2B9-F211-40E4-B584-D75083BC71EE}
-		{4A1F8006-D4D3-4901-9DC4-714040B2F74E} = {A00C4A15-74CB-4506-B8EC-E82264165337}
-		{80C4D918-E913-49AB-B9D3-37471B9A3ADC} = {A00C4A15-74CB-4506-B8EC-E82264165337}
 		{1D9C0974-7DC7-41FC-B2DF-97CF38800C93} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{5F1BA6F7-1CAE-4A1B-9F3B-08045170D395} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{CEC9586B-619C-4A54-9D98-22E6FCBBA0AF} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
-		{557D827B-1288-4BEE-92A5-70095C4366BA} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{4FC9B087-F145-4C18-B274-4CED353F6B15} = {95C7A2B9-F211-40E4-B584-D75083BC71EE}
 		{6C2CD715-BA5D-45E1-BF57-7251FB5A0808} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
+		{1F693812-FE06-48D4-B01A-D106EB0685F5} = {A00C4A15-74CB-4506-B8EC-E82264165337}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9736D60-541E-43D3-BE05-351F97593D27}

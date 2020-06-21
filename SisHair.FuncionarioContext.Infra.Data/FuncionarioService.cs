@@ -1,4 +1,4 @@
-﻿using SisHair.CoreContext.Infra.Data;
+﻿using SisHair.CoreContext;
 using SisHair.FuncionarioContext.Domain.Entities;
 using SisHair.FuncionarioContext.Domain.Interfaces;
 using System;
@@ -9,7 +9,7 @@ namespace SisHair.FuncionarioContext.Infra.Data
 {
     public class FuncionarioService : ServiceBase<Funcionario, IFuncionarioRepository>, IFuncionarioService
     {
-        IFuncionarioRepository repository;
+        private readonly IFuncionarioRepository repository;
 
         public FuncionarioService(IFuncionarioRepository funcionarioRepository) : base(funcionarioRepository)
         {

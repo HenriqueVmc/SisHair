@@ -1,22 +1,31 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using SisHair.CoreContext.BaseInterfaces;
+using SisHair.CoreContext.Mediator;
+using SisHair.FuncionarioContext.Application.Commands;
 using SisHair.FuncionarioContext.Application.Events;
-using SisHair.FuncionarioContext.Application.Events.Interfaces;
 using SisHair.FuncionarioContext.Application.Handlers;
 using SisHair.FuncionarioContext.Application.Queries;
 using SisHair.FuncionarioContext.Domain.Interfaces;
 using SisHair.FuncionarioContext.Infra.Data;
 
-namespace SisHair.FuncionarioContext.Infra.CrossCutting.IoC
+namespace SisHair.Presentation.Web.MVC.Setup
 {
-    public static class FuncionarioDependencyInjection
+    public static class NativeDependencyInjection
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterServices(this IServiceCollection services)
         {            
             // Application
             services.AddScoped<IFuncionarioQueries, FuncionarioQueries>();
-            services.AddScoped<IFuncionarioCommandHandler, FuncionarioCommandHandler>();
-            services.AddScoped<ICadastrarFuncionarioEventHandler, CadastrarFuncionarioEventHandler>();
+            
+            services.AddScoped<IMediatorHandler, MediatorHandler>();
+            
+            services.AddScoped<IRequestHandler<CadastrarFuncionarioCommand, ICommandResult>, IFuncionarioCommandHandler>();
+            services.AddScoped<IRequestHandler<AtualizarFuncionarioCommand, ICommandResult>, IFuncionarioCommandHandler>();
+            services.AddScoped<IRequestHandler<RemoverFuncionarioCommand, ICommandResult>, IFuncionarioCommandHandler>();
+
+            services.AddScoped<INotificationHandler<CadastrarFuncionarioEvent>, FuncionarioEventHandler>();
 
             // Infra - Data
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
