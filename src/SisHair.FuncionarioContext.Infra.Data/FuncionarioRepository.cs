@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SisHair.CoreContext.BaseInterfaces;
 using SisHair.FuncionarioContext.Domain.Entities;
 using SisHair.FuncionarioContext.Domain.Interfaces;
 using System;
@@ -17,41 +18,19 @@ namespace SisHair.FuncionarioContext.Infra.Data
             this.context = context;
         }
 
+        public IUnitOfWork UnitOfWork => context;
+
         public void Dispose() => context.Dispose();
 
-        public virtual bool SaveChanges()
-        {
-            var success = false;
+        public virtual void Add(Funcionario obj) => context.Funcionarios.Add(obj);
 
-            try
-            {
-                success = context.SaveChanges() >= 0;
-            }
-            catch(Exception ex)
-            {
-                // Logger
-            }
+        public virtual void Update(Funcionario obj) => context.Funcionarios.Update(obj);
 
-            return success;
-        }
+        public virtual void Remove(Funcionario obj) => context.Remove(obj);
 
-        public virtual void Add(Funcionario funcionario) => 
-            context.Funcionarios.Add(funcionario);
+        public virtual Funcionario GetById(int id) => context.Funcionarios.Find(id);
 
-        public virtual void Update(Funcionario funcionario) => 
-            context.Funcionarios.Update(funcionario);
-
-        public virtual void Remove(Funcionario funcionario) => 
-            context.Remove(funcionario);
-
-        public virtual Funcionario GetById(int id) => 
-            context.Funcionarios.Find(id);
-
-        public virtual IQueryable<Funcionario> GetAll()
-        {
-            var teste = context.Funcionarios.AsQueryable();
-            return teste;
-        }
+        public virtual IQueryable<Funcionario> GetAll() => context.Funcionarios.AsNoTracking();
 
         public virtual async Task<IEnumerable<Funcionario>> GetAllWithCargoAsNoTracking() => 
             await context.Funcionarios.Include(i => i.Cargo).AsNoTracking().ToListAsync();
@@ -62,7 +41,6 @@ namespace SisHair.FuncionarioContext.Infra.Data
         public async Task<Funcionario> GetByIdAsNoTracking(int id) =>
             await context.Funcionarios.AsNoTracking().FirstOrDefaultAsync(f => f.Id == id);
 
-        public bool ExistsBy(Func<Funcionario, bool> predicate) =>
-            context.Funcionarios.Any(predicate);
+        public bool ExistsBy(Func<Funcionario, bool> predicate) => context.Funcionarios.Any(predicate);
     }
 }

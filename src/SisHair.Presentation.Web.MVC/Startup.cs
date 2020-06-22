@@ -1,11 +1,12 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SisHair.FuncionarioContext.Infra.Data;
 using SisHair.Presentation.Web.MVC.Setup;
-
 namespace SisHair.Presentation.Web.MVC
 {
     public class Startup
@@ -21,6 +22,11 @@ namespace SisHair.Presentation.Web.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            
+            services.AddDbContext<FuncionarioDataContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            
             services.AddMediatR(typeof(Startup));
             services.RegisterServices();
         }

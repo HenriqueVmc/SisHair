@@ -37,9 +37,9 @@ namespace SisHair.FuncionarioContext.Tests.Repositories
 
             funcionarioRepository.Add(funcionario);
 
-            var result = funcionarioRepository.SaveChanges();
+            var result = funcionarioRepository.UnitOfWork.Commit();
 
-            Assert.IsFalse(result);
+            Assert.IsFalse(result.Result);
         } 
         
         [TestMethod]
@@ -59,9 +59,9 @@ namespace SisHair.FuncionarioContext.Tests.Repositories
 
             funcionarioRepository.Add(funcionario);
 
-            var result = funcionarioRepository.SaveChanges();
+            var result = funcionarioRepository.UnitOfWork.Commit();
 
-            Assert.IsTrue(result);
+            Assert.IsTrue(result.Result);
         }
 
         private Cargo CriarCargo()

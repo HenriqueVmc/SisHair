@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SisHair.CoreContext.BaseInterfaces
 {
@@ -10,6 +11,6 @@ namespace SisHair.CoreContext.BaseInterfaces
         IEnumerable<TEntity> BuscarTodos();
         void Atualizar(TEntity obj);
         void Remover(TEntity obj);
-        bool SaveChanges();
+        Task<bool> SaveChanges();
     }
 }

@@ -43,9 +43,7 @@ namespace SisHair.FuncionarioContext.Application.Handlers
             try
             {
                 funcionario = FuncionarioAdapter.CadastrarFuncionarioCommandToFuncionario(command);
-                service.Adicionar(funcionario);
-
-                if (!service.SaveChanges()) return result;
+                service.Adicionar(funcionario);                
             }
             catch (Exception ex)
             {
@@ -55,6 +53,8 @@ namespace SisHair.FuncionarioContext.Application.Handlers
             new Thread(() => cadastrarFuncionarioEventHandler.Handle(
                 FuncionarioAdapter.FuncionarioToCadastrarFuncionarioEvent(funcionario), CancellationToken.None)
             ).Start();
+
+            if (!await service.SaveChanges()) return result;
 
             return new CommandResult(true, "Funcionário cadastrado com sucesso!");
         }
@@ -79,9 +79,7 @@ namespace SisHair.FuncionarioContext.Application.Handlers
                 //var funcionarioAtual = service.BuscarPorId(funcionarioAtualizado.Id);
                 //funcionarioAtual = funcionarioAtualizado;
 
-                service.Atualizar(funcionarioAtualizado);
-
-                if (!service.SaveChanges()) return result;
+                service.Atualizar(funcionarioAtualizado);                
             }
             catch (Exception ex)
             {
@@ -89,6 +87,8 @@ namespace SisHair.FuncionarioContext.Application.Handlers
             }
 
             // Invocar eventos
+
+            if (!await service.SaveChanges()) return result;
 
             return new CommandResult(true, "Funcionário atualizado com sucesso!");
         }
@@ -107,9 +107,7 @@ namespace SisHair.FuncionarioContext.Application.Handlers
                 if (funcionario == null)
                     return result.AddNotifications("Funcionário não cadastrado");
 
-                service.Remover(funcionario);
-
-                if (!service.SaveChanges()) return result;
+                service.Remover(funcionario);                
             }
             catch (Exception ex)
             {
@@ -117,6 +115,8 @@ namespace SisHair.FuncionarioContext.Application.Handlers
             }
 
             // Invocar eventos
+            
+            if (!await service.SaveChanges()) return result;
 
             return new CommandResult(true, "Funcionário removido com sucesso!");
         }

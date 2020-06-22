@@ -10,6 +10,7 @@ namespace SisHair.CoreContext.BaseInterfaces
         IQueryable<TEntity> GetAll();
         void Update(TEntity obj);
         void Remove(TEntity obj);
-        bool SaveChanges();
+
+        IUnitOfWork UnitOfWork { get; }
     }
 }
