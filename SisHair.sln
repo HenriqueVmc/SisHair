@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Infra.Data", "src\SisHair.FuncionarioContext.Infra.Data\SisHair.FuncionarioContext.Infra.Data.csproj", "{176EF698-1855-49C5-99AE-2FAD10E782FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Tests", "src\SisHair.FuncionarioContext.Tests\SisHair.FuncionarioContext.Tests.csproj", "{9598A034-672B-48B9-873C-68A170F3EB41}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.Presentation.Web.MVC", "src\SisHair.Presentation.Web.MVC\SisHair.Presentation.Web.MVC.csproj", "{6EF68F68-2AC6-4A0C-9F3A-76FDBF71BA52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisHair.Presentation.Web.MVC.Old", "old\SisHair.Presentation.Web.MVC.Old\SisHair.Presentation.Web.MVC.Old.csproj", "{39E983C5-FD17-4937-A10F-CC5B742386F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisHair.FuncionarioContext.Tests", "tests\SisHair.FuncionarioContext.Tests\SisHair.FuncionarioContext.Tests.csproj", "{44AE6055-85D3-4352-8CF9-780884C15E2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,6 @@ Global
 		{176EF698-1855-49C5-99AE-2FAD10E782FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{176EF698-1855-49C5-99AE-2FAD10E782FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{176EF698-1855-49C5-99AE-2FAD10E782FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9598A034-672B-48B9-873C-68A170F3EB41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9598A034-672B-48B9-873C-68A170F3EB41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9598A034-672B-48B9-873C-68A170F3EB41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9598A034-672B-48B9-873C-68A170F3EB41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EF68F68-2AC6-4A0C-9F3A-76FDBF71BA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EF68F68-2AC6-4A0C-9F3A-76FDBF71BA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EF68F68-2AC6-4A0C-9F3A-76FDBF71BA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +53,10 @@ Global
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39E983C5-FD17-4937-A10F-CC5B742386F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44AE6055-85D3-4352-8CF9-780884C15E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44AE6055-85D3-4352-8CF9-780884C15E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44AE6055-85D3-4352-8CF9-780884C15E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44AE6055-85D3-4352-8CF9-780884C15E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,9 +66,9 @@ Global
 		{015CB8AD-8F02-4119-84C2-515DD384FB5C} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{71494831-ED2E-47E5-A599-FA94CF5389F5} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{176EF698-1855-49C5-99AE-2FAD10E782FB} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
-		{9598A034-672B-48B9-873C-68A170F3EB41} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 		{6EF68F68-2AC6-4A0C-9F3A-76FDBF71BA52} = {95C7A2B9-F211-40E4-B584-D75083BC71EE}
 		{39E983C5-FD17-4937-A10F-CC5B742386F9} = {95C7A2B9-F211-40E4-B584-D75083BC71EE}
+		{44AE6055-85D3-4352-8CF9-780884C15E2E} = {5B8E8F16-BB96-4D52-A715-1C27365D7C61}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9736D60-541E-43D3-BE05-351F97593D27}
